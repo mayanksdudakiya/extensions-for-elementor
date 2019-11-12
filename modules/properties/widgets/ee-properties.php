@@ -1066,16 +1066,16 @@ class EE_Properties extends Base_Widget {
 
 		$data_location = $data_min = $data_max = $data_bedrooms = $data_type = $data_radius = $data_lat = $data_long = $sort = $view = '';
 		if(isset($_GET) && !empty($_GET)):
-		    $data_location =  (isset($_GET['location'])) ? $_GET['location'] : '';
-		    $data_min = (isset($_GET['min'])) ? $_GET['min'] : '';
-		    $data_max =  (isset($_GET['max'])) ? $_GET['max'] : '';
-		    $data_bedrooms =(isset($_GET['room'])) ? $_GET['room'] : '';
-		    $data_type =  (isset($_GET['property_type'])) ? $_GET['property_type'] : '';
-		    $data_radius =  (isset($_GET['radius'])) ? $_GET['radius'] : '';
-		    $data_lat =  (isset($_GET['lat'])) ? $_GET['lat'] : '';
-		    $data_long = (isset($_GET['long'])) ? $_GET['long'] : '';
-		    $sort = (isset($_GET['price_sort'])) ? $_GET['price_sort'] : '';
-		    $view = (isset($_GET['view'])) ? $_GET['view'] : '';
+		    $data_location =  (isset($_GET['location'])) ? sanitize_text_field($_GET['location']) : '';
+		    $data_min = (isset($_GET['min'])) ? intval($_GET['min']) : '';
+		    $data_max =  (isset($_GET['max'])) ? intval($_GET['max']) : '';
+		    $data_bedrooms =(isset($_GET['room'])) ? intval($_GET['room']) : '';
+		    $data_type =  (isset($_GET['property_type'])) ? sanitize_text_field($_GET['property_type']) : '';
+		    $data_radius =  (isset($_GET['radius'])) ? intval($_GET['radius']) : '';
+		    $data_lat =  (isset($_GET['lat'])) ? sanitize_text_field($_GET['lat']) : '';
+		    $data_long = (isset($_GET['long'])) ? sanitize_text_field($_GET['long']) : '';
+		    $sort = (isset($_GET['price_sort'])) ? sanitize_text_field($_GET['price_sort']) : '';
+		    $view = (isset($_GET['view'])) ? sanitize_text_field($_GET['view']) : '';
 		endif;
 
 		?>
@@ -1296,27 +1296,27 @@ class EE_Properties extends Base_Widget {
 		$property_args['posts_per_page'] = -1;
 		$property_args['post_status'] = 'publish';
 
-		$default_sort = $request['default_sort'];
-
-		if((!empty($request['price_sort']) && $request['price_sort'] != 'most_recent') || $default_sort !== 'most_recent'):	
-			$property_args['meta_key'] = 'price';
-			$property_args['orderby'] = 'meta_value_num';
-			$property_args['order'] = $request['price_sort'] ? $request['price_sort'] : $default_sort;
-		endif;
+		$default_sort = sanitize_text_field($request['default_sort']);
 
 		if((!empty($request['price_sort']) && $request['price_sort'] == 'most_recent') || $default_sort == 'most_recent'):
 			$property_args['orderby'] = 'date';
 			$property_args['order'] = 'DESC';
 		endif;
-		
-		$location = $request['location'];
-		$proximity = $request['radius'];
+
+		if((!empty($request['price_sort']) && $request['price_sort'] != 'most_recent') || $default_sort !== 'most_recent'):	
+			$property_args['meta_key'] = 'price';
+			$property_args['orderby'] = 'meta_value_num';
+			$property_args['order'] = $request['price_sort'] ? sanitize_text_field($request['price_sort']) : $default_sort;
+		endif;
+
+		$location = sanitize_text_field($request['location']);
+		$proximity = intval($request['radius']);
 		$lat = (float)$request['lat'];
 		$lng = (float)$request['long'];
-		$price_max = $request['max'];
-		$price_min = $request['min'];
-		$bedrooms = $request['room'];
-		$property_type = $request['property_type'];
+		$price_max = intval($request['max']);
+		$price_min = intval($request['min']);
+		$bedrooms = intval($request['room']);
+		$property_type = sanitize_text_field($request['property_type']);
 
 		if(!empty($property_type) || !empty($bedrooms) || !empty($price_min) || !empty($price_max)):
 			$meta_query = array( 'relation' => 'AND' );

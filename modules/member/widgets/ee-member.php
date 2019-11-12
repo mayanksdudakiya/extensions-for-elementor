@@ -1217,7 +1217,7 @@ class EE_Member extends Base_Widget {
 
 			if(!empty($get_industrial_sector)):
 				if(isset($_GET['industry'])):
-					$remembered_industry = $_GET['industry'];
+					$remembered_industry = esc_html($_GET['industry']);
 				endif;
 				echo '<div class="inner_filter_wrapper">';
 					echo '<select class="drp_industrial_sector ee_mb_drp_member" id="drp_industrial_sector">';
@@ -1236,7 +1236,7 @@ class EE_Member extends Base_Widget {
 
 			if(!empty($get_status)):
 				if(isset($_GET['statusby'])):
-					$remembered_statusby = $_GET['statusby'];
+					$remembered_statusby = esc_html($_GET['statusby']);
 				endif;
 				echo '<div class="inner_filter_wrapper">';
 					echo '<select class="drp_status ee_mb_drp_member" id="drp_status">';
@@ -1249,7 +1249,7 @@ class EE_Member extends Base_Widget {
 			endif;
 
 			if(isset($_GET['sortby'])):
-				$remembered_sort = $_GET['sortby'];
+				$remembered_sort = esc_html($_GET['sortby']);
 			else:
 				$remembered_sort = $settings['default_member_sort'];
 			endif;
@@ -1257,8 +1257,8 @@ class EE_Member extends Base_Widget {
 			echo '<div class="sorting_wrapper">';
 				echo '<select class="drp_sorting ee_mb_drp_member" id="drp_sorting">';
 					echo '<option value="" selected> -- Sort By -- </option>';
-					echo '<option value="name" '.(( $remembered_sort == '_ee_mb_name') ? 'selected' : '').'>Name</option>';
-					echo '<option value="company_name" '.(( $remembered_sort == '_ee_mb_company_name') ? 'selected' : '').'>Company Name</option>';
+					echo '<option value="_ee_mb_name" '.(( $remembered_sort == '_ee_mb_name') ? 'selected' : '').'>Name</option>';
+					echo '<option value="_ee_mb_company_name" '.(( $remembered_sort == '_ee_mb_company_name') ? 'selected' : '').'>Company Name</option>';
 				echo '</select>';
 			echo '</div>';
 
@@ -1275,7 +1275,7 @@ class EE_Member extends Base_Widget {
 		);
 
 		if(!empty($_GET['sortby'])){
-			$member_args['meta_key'] = $_GET['sortby'];
+			$member_args['meta_key'] = sanitize_text_field($_GET['sortby']);
 			$member_args['orderby'] = 'meta_value';
 			$member_args['order'] = 'ASC';
 		}else{
@@ -1291,7 +1291,7 @@ class EE_Member extends Base_Widget {
 				$filterby = array(
 					'taxonomy'=> 'filter',
 					'field' => 'id',
-					'terms' => $_GET['filterby'],
+					'terms' => sanitize_text_field($_GET['filterby']),
 					'include_children' => false
 				);
 			}
@@ -1300,7 +1300,7 @@ class EE_Member extends Base_Widget {
 				$statusby = array(
 					'taxonomy'=> 'ee_mb_member_status',
 					'field' => 'id',
-					'terms' => $_GET['statusby'],
+					'terms' => sanitize_text_field($_GET['statusby']),
 					'include_children' => false
 				);
 			}
@@ -1309,7 +1309,7 @@ class EE_Member extends Base_Widget {
 				$industry = array(
 					'taxonomy'=> 'ee_mb_member_industrial_sector',
 					'field' => 'id',
-					'terms' => $_GET['industry'],
+					'terms' => sanitize_text_field($_GET['industry']),
 					'include_children' => false
 				);
 			}
