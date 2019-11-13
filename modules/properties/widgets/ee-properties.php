@@ -1655,10 +1655,10 @@ class EE_Properties extends Base_Widget {
 		$ee_mb_agent = EE_MB_Setting_Common::get_settings_key( 'ee_mb_agent' );
 
 		$name = $request['name'];
-		$email = (!empty($ee_mb_agent->sender_email)) ? $ee_mb_agent->sender_email : $request['email']; 
+		$email = (!empty($ee_mb_agent->sender_email)) ? sanitize_email($ee_mb_agent->sender_email) : sanitize_email($request['email']); 
 		$message = $request['message'];
-		$telephone = $request['phone'];
-		$sendto = $request['sendto'];
+		$telephone = sanitize_text_field($request['phone']);
+		$sendto = sanitize_email($request['sendto']);
 
 		/*@Validation start*/
 		$validate_input = [];
@@ -1694,9 +1694,11 @@ class EE_Properties extends Base_Widget {
 			$headers[] = 'Content-Type: text/html; charset=UTF-8';
 
 			$mail_template = str_replace('[contact_name]',$name,$mail_template);
-			$mail_template = str_replace('[contact_email]',$request['email'],$mail_template);
+			$mail_template = str_replace('[contact_email]',sanitize_email($request['email']),$mail_template);
 			$mail_template = str_replace('[contact_number]',$telephone,$mail_template);
 			$mail_template = str_replace('[contact_message]',$message,$mail_template);
+
+			$mail_template = html_entity_decode(stripslashes($mail_template));
 		
 			$is_mail_sent = wp_mail($sendto, $subject, $mail_template, $headers);
 			

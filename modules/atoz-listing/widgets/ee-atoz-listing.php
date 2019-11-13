@@ -729,9 +729,9 @@ class EE_Atoz_Listing extends Base_Widget {
 				foreach($listing_alphabets as $key => $alphabet):
 
 					if(in_array($alphabet, $post_alphabets)):
-						echo '<li class="active"><a href="#'.$alphabet.'">'.$alphabet.'</a></li>';
+						echo '<li class="active"><a href="#'.esc_html($alphabet).'">'.esc_html($alphabet).'</a></li>';
 					else:
-						echo '<li><a href="javascript:void(0);">'.$alphabet.'</a></li>';
+						echo '<li><a href="javascript:void(0);">'.esc_html($alphabet).'</a></li>';
 					endif;
 					
 				endforeach;
@@ -756,7 +756,7 @@ class EE_Atoz_Listing extends Base_Widget {
 						$name = $category['name'];
 						$taxonomy_data = json_encode($category, JSON_PRETTY_PRINT);
 						$cat_name_load = strtolower(str_replace(' ','',$name));
-						echo "<li><a href='javascript:void(0);' id='".$cat_name_load."' data-setting='".$taxonomy_data."'>".$name."</a></li>";
+						echo "<li><a href='javascript:void(0);' id='".esc_html($cat_name_load)."' data-setting='".$taxonomy_data."'>".esc_html($name)."</a></li>";
 					endforeach;
 					echo '</ul>';
 				echo '</div>';
@@ -780,17 +780,17 @@ class EE_Atoz_Listing extends Base_Widget {
 		if(!empty($post_alphabets)):
 				
 			foreach($post_alphabets as $key => $alphabet):
-				echo '<div class="posts_listing" id="'.$alphabet.'">';
+				echo '<div class="posts_listing" id="'.esc_html($alphabet).'">';
 
 					echo '<div class="letter">';
-						echo '<span>'.$alphabet.'</span>';
+						echo '<span>'.esc_html($alphabet).'</span>';
 					echo '</div>';
 
 					if(!empty($alphabets_listing['listings']) && !empty($alphabets_listing['listings'][$alphabet])):
 						echo '<div class="posts">';
 							echo '<ul>';	
 								foreach($alphabets_listing['listings'][$alphabet] as $key => $list):
-									echo '<li><a href="'.$list['link'].'">'.$list['post_title'].'</a></li>';
+									echo '<li><a href="'.esc_url($list['link']).'">'.esc_html($list['post_title']).'</a></li>';
 								endforeach;
 							echo '</ul>';
 						echo '</div>';
@@ -903,8 +903,8 @@ class EE_Atoz_Listing extends Base_Widget {
 			$settings = $request['widget_settings'];
 		endif;
 
-		$name = $cat_data['name'];
-		$post_type = $cat_data['post_type'];
+		$name = sanitize_text_field($cat_data['name']);
+		$post_type = sanitize_text_field($cat_data['post_type']);
 
 		$args = array(
 			'post_type' => $post_type,
@@ -915,8 +915,8 @@ class EE_Atoz_Listing extends Base_Widget {
 		);
 
 		if($name !== 'All'):
-			$taxonomy = $cat_data['taxonomy'];
-			$slug = $cat_data['slug'];
+			$taxonomy = sanitize_text_field($cat_data['taxonomy']);
+			$slug = sanitize_text_field($cat_data['slug']);
 			
 			$args['tax_query'] =  array(
 				array(

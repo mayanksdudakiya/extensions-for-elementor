@@ -2759,12 +2759,12 @@ class EE_Events extends Base_Widget {
 	/*@ Check for the month whose have events */
 	public function checkEventExistInCurrentMonthSummaryList($atts){
 		
-		$hide_past_events = (!empty($atts['hide_past_events'])) ?  $atts['hide_past_events'] : '';	
+		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';	
 
 		$month_array = explode("-", $atts['month']);
 			
-		$month_yearstr = $month_array[0];
-		$month_monthstr = $month_array[1];
+		$month_yearstr = sanitize_text_field($month_array[0]);
+		$month_monthstr = sanitize_text_field($month_array[1]);
 		$month_startdate = date( "Y-m", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 		$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
@@ -2783,7 +2783,7 @@ class EE_Events extends Base_Widget {
 				'type' => 'DATETIME'
 			)
 		);
-	
+
 		$args = array(
 			'post_type' => 'ee_mb_event_slider',
 			'post_status' => 'publish',
@@ -2847,25 +2847,25 @@ class EE_Events extends Base_Widget {
 		global $post;
 		$output = '';
 
-		$event_date_layout = (!empty($atts['event_date_layout'])) ?  $atts['event_date_layout'] : '';
-		$event_limit = (!empty($atts['limit'])) ?  $atts['limit'] : '3';
-		$enable_event_detail = (!empty($atts['enable_event_detail'])) ?  $atts['enable_event_detail'] : '';
-		$disable_link = (!empty($atts['disable_link'])) ?  $atts['disable_link'] : '';
-		$hide_past_events = (!empty($atts['hide_past_events'])) ?  $atts['hide_past_events'] : '';
-		$future_events_only = (!empty($atts['show_future_events'])) ?  $atts['show_future_events'] : '';
-		$offset = (!empty($atts['offset'])) ?  $atts['offset'] : 1;
+		$event_date_layout = (!empty($atts['event_date_layout'])) ?  sanitize_text_field($atts['event_date_layout']) : '';
+		$event_limit = (!empty($atts['limit'])) ?  intval($atts['limit']) : '3';
+		$enable_event_detail = (!empty($atts['enable_event_detail'])) ?  sanitize_text_field($atts['enable_event_detail']) : '';
+		$disable_link = (!empty($atts['disable_link'])) ?  sanitize_text_field($atts['disable_link']) : '';
+		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';
+		$future_events_only = (!empty($atts['show_future_events'])) ?  sanitize_text_field($atts['show_future_events']) : '';
+		$offset = (!empty($atts['offset'])) ?  intval($atts['offset']) : 1;
 
 		if(!empty($atts['ajax_request'])):
-			$offset = $event_limit = $atts['offset'];
+			$offset = $event_limit = intval($atts['offset']);
 		endif;
 
 		$limit_offset = 3;
 		if(!empty($atts['limit']) && !empty($atts['offset'])):
-			$limit_offset = $atts['limit'] + $atts['offset'];
+			$limit_offset = intval($atts['limit']) + intval($atts['offset']);
 		elseif(!empty($atts['limit'])):
-			$limit_offset = $atts['limit'];
+			$limit_offset = intval($atts['limit']);
 		elseif(!empty($atts['offset'])):
-			$limit_offset = $atts['offset'];
+			$limit_offset = intval($atts['offset']);
 		endif;
 
 		$atts = shortcode_atts( apply_filters( 'ecs_shortcode_atts', array(
@@ -2968,8 +2968,8 @@ class EE_Events extends Base_Widget {
 		if ($atts['month']) {
 			$month_array = explode("-", $atts['month']);
 			
-			$month_yearstr = $month_array[0];
-			$month_monthstr = $month_array[1];
+			$month_yearstr = sanitize_text_field($month_array[0]);
+			$month_monthstr = sanitize_text_field($month_array[1]);
 			$month_startdate = date( "Y-m", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
@@ -3223,9 +3223,9 @@ class EE_Events extends Base_Widget {
 	public function getSummaryListAjax($request){
 	
 		if(isset($request['month_year']) && !empty($request)):
-			$month_year = $request['month_year'];
+			$month_year = sanitize_text_field($request['month_year']);
 		else:
-			$month_year = $request['year'].'-'.$request['month'];
+			$month_year = sanitize_text_field($request['year'].'-'.$request['month']);
 		endif;
 
 		$atts = array(
@@ -3233,27 +3233,27 @@ class EE_Events extends Base_Widget {
 		);
 
 		if(isset($request['limit']) && !empty($request)):
-			$atts['limit'] = $request['limit'];
+			$atts['limit'] = intval($request['limit']);
 		endif;
 		
 		if(isset($request['event_date_layout'])):
-			$atts['event_date_layout'] = $request['event_date_layout'];
+			$atts['event_date_layout'] = sanitize_text_field($request['event_date_layout']);
 		endif;
 
 		if(isset($request['enable_event_detail'])):
-			$atts['enable_event_detail'] = $request['enable_event_detail'];
+			$atts['enable_event_detail'] = sanitize_text_field($request['enable_event_detail']);
 		endif;
 
 		if(isset($request['disable_link'])):
-			$atts['disable_link'] = $request['disable_link'];
+			$atts['disable_link'] = sanitize_text_field($request['disable_link']);
 		endif;
 
 		if(isset($request['hide_past_events'])):
-			$atts['hide_past_events'] = $request['hide_past_events'];
+			$atts['hide_past_events'] = sanitize_text_field($request['hide_past_events']);
 		endif;
 
 		if(isset($request['show_future_events'])):
-			$atts['show_future_events'] = $request['show_future_events'];
+			$atts['show_future_events'] = sanitize_text_field($request['show_future_events']);
 		endif;
 
 		if(isset($request['action'])):
@@ -3261,7 +3261,7 @@ class EE_Events extends Base_Widget {
 		endif;
 
 		if(isset($request['offset'])):
-			$atts['offset'] = $request['offset'];
+			$atts['offset'] = intval($request['offset']);
 		endif;
 
 		$this->ee_mb_fetch_events($atts);
@@ -3301,7 +3301,7 @@ class EE_Events extends Base_Widget {
 				$event_data[$count]['title'] = esc_attr($event_title);
 				$event_data[$count]['start'] = $event_start_date;
 				$event_data[$count]['end'] = $event_end_date;
-				$event_data[$count]['url'] = ($enable_event_detail == 'yes' || (!empty($disable_link)  && $disable_link == 'yes')) ? 'javascript:void(0);' : $event_link;
+				$event_data[$count]['url'] = ($enable_event_detail == 'yes' || (!empty($disable_link)  && $disable_link == 'yes')) ? 'javascript:void(0);' : esc_url($event_link);
 				$count++;
 			endforeach;
 		endif;
