@@ -100,8 +100,8 @@ class EE_MB_Admin extends EE_MB_Setting_Common{
 		$prefix = self::$widget_name_prefix;
 
 		$integration = self::get_settings_key('ee_mb_integration_setting');
-		$checked_widget = json_decode(get_option('ee_mb_hide_show_widgets'));
-		$cookie = stripslashes_deep(json_decode(get_option('ee_mb_cookie_message')));
+		$checked_widget = get_option('ee_mb_hide_show_widgets');
+		$cookie = stripslashes_deep(get_option('ee_mb_cookie_message'));
     	$modules = $manager->get_modules();
 
 		require_once(ELEMENTOR_EXTENSIONS_PATH . 'admin/views/settings.php');
@@ -127,15 +127,13 @@ class EE_MB_Admin extends EE_MB_Setting_Common{
 
 					if( $key === 'ee_mb_import_template_url' ):
 						$new_req[$key] = esc_url($value);
-					elseif( $key === 'ee_mb_snazzy_map_endpoint' ):
-						$new_req[$key] = sanitize_text_field($value);
 					else:
-						$new_req[$key] = esc_attr($value);
+						$new_req[$key] = sanitize_text_field($value);
 					endif;
 				endforeach;
 			endif;
 
-			$integration = json_encode($new_req);
+			$integration = $new_req;
 			update_option( 'ee_mb_integration_setting', $integration );
 
 			$integration_tab_url = $_POST['_wp_http_referer']."&saved=1#integration";
@@ -150,7 +148,7 @@ class EE_MB_Admin extends EE_MB_Setting_Common{
         
 			$ee_mb_cpt_single = (!empty($_POST['ee_mb_cpt_single'])) ? EE_MB_Setting_Common::sanitize($_POST['ee_mb_cpt_single']) : '';
 
-			$ee_mb_enable_post_types = json_encode($ee_mb_cpt_single);
+			$ee_mb_enable_post_types = $ee_mb_cpt_single;
 			update_option('ee_mb_cpt_single',$ee_mb_enable_post_types);
 	
 			$section_tab_url = $_POST['_wp_http_referer']."&saved=1#section_settings";
@@ -164,7 +162,7 @@ class EE_MB_Admin extends EE_MB_Setting_Common{
 		if(isset($_POST['btn_update_widget_settings']) && $_SERVER['REQUEST_METHOD'] === 'POST' && wp_verify_nonce( $_POST['wp_widget_nounce'], 'update_widget_settings' )):
         
 			$ee_mb_hide_show_widgets = (!empty($_POST['ee_mb_hide_show_widgets'])) ? EE_MB_Setting_Common::sanitize($_POST['ee_mb_hide_show_widgets']) : '';
-			$post_types = json_encode($ee_mb_hide_show_widgets);
+			$post_types = $ee_mb_hide_show_widgets;
 			update_option('ee_mb_hide_show_widgets',$post_types);
 		
 			$widget_tab_url = $_POST['_wp_http_referer']."&saved=1#widget_settings";
@@ -180,7 +178,7 @@ class EE_MB_Admin extends EE_MB_Setting_Common{
         
 			$cookie_post = (!empty($_POST['cookie'])) ? EE_MB_Setting_Common::sanitize($_POST['cookie']) : '';
 			
-			$cookie = json_encode($cookie_post);
+			$cookie = $cookie_post;
 			update_option('ee_mb_cookie_message',$cookie);
 		
 			$widget_tab_url = $_POST['_wp_http_referer']."&saved=1#cookie_notice";

@@ -1290,7 +1290,7 @@ class EE_Properties extends Base_Widget {
 
 		$this->currency = $pro_general_setting->currency_symbol;
 
-		$paged = ($request['paged']) ? $request['paged'] : 1;
+		$paged = ($request['paged']) ? intval($request['paged']) : 1;
 		$property_args = [];
 		$property_args['post_type'] = 'property';
 		$property_args['posts_per_page'] = -1;
@@ -1592,7 +1592,7 @@ class EE_Properties extends Base_Widget {
 
 		$total_pages = $page = 1 ;
 		if($request['view'] !== 'map'):
-			$posts_per_page = (!empty($request['post_per_page']) ? $request['post_per_page'] : 8); 
+			$posts_per_page = (!empty($request['post_per_page']) ? intval($request['post_per_page']) : 8); 
 			$total_pages = ceil( $counter / $posts_per_page );
 			$page = max($paged, 1);
 			$page = min($page, $total_pages);
@@ -1654,9 +1654,9 @@ class EE_Properties extends Base_Widget {
 
 		$ee_mb_agent = EE_MB_Setting_Common::get_settings_key( 'ee_mb_agent' );
 
-		$name = $request['name'];
+		$name = sanitize_text_field($request['name']);
 		$email = (!empty($ee_mb_agent->sender_email)) ? sanitize_email($ee_mb_agent->sender_email) : sanitize_email($request['email']); 
-		$message = $request['message'];
+		$message = html_entity_decode($request['message']);
 		$telephone = sanitize_text_field($request['phone']);
 		$sendto = sanitize_email($request['sendto']);
 

@@ -13,9 +13,9 @@ class EE_MB_Setting_Common{
 		
 	    if( !empty($ee_get_key) ):
 	    	
-	    	$all_keys = json_decode($ee_get_key);
+	    	$all_keys = $ee_get_key;
 	    	if(!empty($child_key)):
-	    		return (isset($all_keys->{$child_key})) ? $all_keys->{$child_key} : '';
+	    		return (isset($all_keys[$child_key])) ? $all_keys[$child_key] : '';
 	    	endif;
 
 	    	return $all_keys;

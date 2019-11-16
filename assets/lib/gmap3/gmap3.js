@@ -1,12 +1,3 @@
-/*!
- *  GMAP3 Plugin for jQuery
- *  Version  : 7.2
- *  Date     : 2016/12/03
- *  Author   : DEMONTE Jean-Baptiste
- *  Contact  : jbdemonte@gmail.com
- *  Web site : http://gmap3.net
- *  Licence  : GPL-3.0+
- */
 (function($, window, document) {
 	"use strict";
 

@@ -31,7 +31,7 @@ class EE_Events extends Base_Widget {
 	public function get_script_depends() {
 		return [
 			'ee-mb-jquery-ui',
-			'ee-mb-moment',
+			'moment',
 			'ee-mb-fullcalendar'
 		];
 	}

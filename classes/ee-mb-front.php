@@ -18,7 +18,7 @@ class EE_MB_Front {
     }
 
 	public function eeMbaddCookieMessage(){
-		$cookie = stripslashes_deep(json_decode(get_option('ee_mb_cookie_message')));
+		$cookie = stripslashes_deep(get_option('ee_mb_cookie_message'));
 		require_once(ELEMENTOR_EXTENSIONS_PATH . 'admin/views/front/cookie.php');
 	}
 

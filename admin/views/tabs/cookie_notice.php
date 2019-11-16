@@ -4,15 +4,15 @@ $message = $button_text = $box_color = $font_color = $close_btn_color = $overlay
 if(!empty($cookie)):
 
     /*@ Sanitizing fields */
-    $message = html_entity_decode($cookie->message);
-    $box_color = esc_html($cookie->box_color);
-    $font_color = esc_html($cookie->font_color);
-    $close_btn_color = esc_html($cookie->close_btn_color);
+    $message = (!empty($cookie['message'])) ? html_entity_decode($cookie['message']) : '';
+    $box_color = (!empty($cookie['box_color'])) ? esc_html($cookie['box_color']) : '';
+    $font_color = (!empty($cookie['font_color'])) ? esc_html($cookie['font_color']) : '';
+    $close_btn_color = (!empty($cookie['close_btn_color'])) ? esc_html($cookie['close_btn_color']) : '';
 
-    $overlay = (!empty($cookie->overlay)) ? esc_html($cookie->overlay) : '';
-    $enable = (!empty($cookie->enable)) ? esc_html($cookie->enable) : '';
-    $vertical_position = esc_html($cookie->vertical_position);
-    $horizontal_position = esc_html($cookie->horizontal_position);
+    $overlay = (!empty($cookie['overlay'])) ? esc_html($cookie['overlay']) : '';
+    $enable = (!empty($cookie['enable'])) ? esc_html($cookie['enable']) : '';
+    $vertical_position = (!empty($cookie['vertical_position'])) ? esc_html($cookie['vertical_position']) : '';
+    $horizontal_position = (!empty($cookie['horizontal_position'])) ? esc_html($cookie['horizontal_position']) : '';
 endif;
 ?>
 <div id="cookie_notice" class="ee-mb-tabcontent">

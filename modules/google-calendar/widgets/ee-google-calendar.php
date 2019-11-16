@@ -31,7 +31,7 @@ class EE_Google_Calendar extends Base_Widget {
 
 	public function get_script_depends() {
 		return [
-			'ee-mb-moment',
+			'moment',
 			'ee-mb-fullcalendar',
 			'ee-mb-gcal'
 		];

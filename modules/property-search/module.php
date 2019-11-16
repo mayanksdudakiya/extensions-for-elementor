@@ -73,33 +73,6 @@ class Module extends Module_Base {
 		add_action('admin_menu',array($this, 'eeMbAddPropertyMenu'));
 		add_action('init', array($this, 'eeMbPropertyCptRegistration'));
 		add_action('init', array($this, 'eeMbAgentCptRegistration'));
-		
-		add_action('wp_ajax_eeMbPropertySearchAjax', [ $this, 'eeMbPropertySearchAjax' ]);
-		add_action('wp_ajax_nopriv_eeMbPropertySearchAjax', [ $this, 'eeMbPropertySearchAjax' ]);
-
-		add_action('wp_ajax_eeMbAgentMailSendAjax', [ $this, 'eeMbAgentMailSendAjax' ]);
-		add_action('wp_ajax_nopriv_eeMbAgentMailSendAjax', [ $this, 'eeMbAgentMailSendAjax' ]);
-	}
-
-	public function eeMbPropertySearchAjax(){
-
-		if(empty($_POST['action'])){
-			wp_send_json_error( new \WP_Error( 'Bad Request' ) );
-		}
-
-		$property_search = new EE_Property_Search();
-		$property_search->getPropertyCpt($_POST);
-		wp_die();
-	}
-
-	public function eeMbAgentMailSendAjax(){
-		if(empty($_POST['action'])){
-			wp_send_json_error( new \WP_Error( 'Bad Request' ) );
-		}
-
-		$property_search = new EE_Property_Search();
-		$property_search->sendAgentMail($_POST);
-		wp_die();
 	}
 
 	public function get_name() {

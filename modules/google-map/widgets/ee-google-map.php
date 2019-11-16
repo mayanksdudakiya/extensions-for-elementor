@@ -1794,7 +1794,7 @@ class EE_Google_Map extends Base_Widget {
 		
 		$gmapkey = EE_MB_Setting_Common::get_settings_key( 'ee_mb_integration_setting', 'ee_mb_google_map_key' );
 
-		if ( empty((array)$gmapkey )) {
+		if ( empty($gmapkey)) {
 		 	echo __( 'You have not set your Google Maps API key.', 'elementor-extensions' );
 			return;
 		}

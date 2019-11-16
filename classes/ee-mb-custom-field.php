@@ -35,23 +35,7 @@ abstract class EE_MB_Custom_Field{
 			}
 		}
 	}
-	
-	/*public function save_settings(){
 		
-	 	$this->posted_data = $_POST;
-	 	if( empty( $this->settings ) ) {
-	 		$this->init_settings();
-        }
-         
-	 	foreach ($this->fields as $tab => $tab_data ) {
-	 		foreach ($tab_data as $name => $field) {
-	 			$this->settings[ $name ] = $this->{ 'validate_' . $field['type'] }( $name );
-	 		}
-        }
-         
-	 	update_option( $this->settings_id, $this->settings );	
-	}*/
-	
 	/**
 	 * Gets and option from the settings API, using defaults if necessary to prevent undefined notices.
 	 *

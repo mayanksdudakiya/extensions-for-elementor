@@ -60,7 +60,7 @@ final class Modules_Manager {
 
 		$modules = $this->get_modules();
 
-		$checked_widget = json_decode(get_option('ee_mb_hide_show_widgets'));
+		$checked_widget = get_option('ee_mb_hide_show_widgets');
 
 		foreach ( $modules as $module_name ):
 			if( !empty($module_name) ):

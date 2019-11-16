@@ -1,18 +1,18 @@
 <?php
-    if(!empty($cookie) && !empty($cookie->message) && !empty($cookie->enable)):
+    if(!empty($cookie) && !empty($cookie['message']) && !empty($cookie['enable'])):
 
-        $message =  html_entity_decode($cookie->message);
-        /* $button_text = $cookie->button_text; */
-        $box_color = esc_html($cookie->box_color);
-        $font_color = esc_html($cookie->font_color);
-        $close_btn_color = esc_html($cookie->close_btn_color);
+        $message =  html_entity_decode($cookie['message']);
+        /* $button_text = $cookie['button_text; */
+        $box_color = esc_html($cookie['box_color']);
+        $font_color = esc_html($cookie['font_color']);
+        $close_btn_color = esc_html($cookie['close_btn_color']);
 
-		$overlay = (!empty($cookie->overlay)) ? esc_html($cookie->overlay) : '';
-        $vertical_position = esc_html($cookie->vertical_position);
-        $horizontal_position = esc_html($cookie->horizontal_position);
+		$overlay = (!empty($cookie['overlay'])) ? esc_html($cookie['overlay']) : '';
+        $vertical_position = esc_html($cookie['vertical_position']);
+        $horizontal_position = esc_html($cookie['horizontal_position']);
 
         $cookie_class = '';
-        if(!empty($cookie->overlay)){
+        if(!empty($cookie['overlay'])){
             $cookie_class = 'cookie_position '.$vertical_position.' '.$horizontal_position;
         }
 
