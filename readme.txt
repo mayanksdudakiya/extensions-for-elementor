@@ -1,10 +1,10 @@
-=== Elementor Extensions ===
+=== Extensions for Elementor ===
 Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
 Requires at least: 4.0
-Tested up to: 5.2
-Requires PHP: 5.4
+Tested up to: 5.3
+Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
@@ -70,14 +70,15 @@ Absolutely! It will work with any theme where Elementor works. We recommended "E
 Your existing elements/content will work with premium version. So you won't lose your developed contents.
 
 == Screenshots ==
-
+1. Plugin Settings
+2. Integration Settings
+3. Enable/Diabled the widget settings (Note : Disable if you are not using widget to improve website performance)
+4. Cookie Notice
+5. Megamenu Implementation-1
+6. Megamenu Implementation-2
 
 
 == Changelog ==
 
-= 1.0.0 - 18/09/2019 =
-
-Initial stable realese
-
-
-== Upgrade Notice ==
+= 1.0.0 - 23/11/2019 =
+* Initial stable realese

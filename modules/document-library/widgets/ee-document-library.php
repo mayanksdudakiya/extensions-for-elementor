@@ -61,6 +61,35 @@ class EE_Document_Library extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'is_header_sortable',
+			[
+				'label' => __( 'Is Header Sortable?', 'elementor-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-extensions' ),
+				'label_off' => __( 'No', 'elementor-extensions' ),
+				'return_value' => 'yes',
+				'default' => 'label_off',
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
+			'order_filename_asc',
+			[
+				'label' => __( 'Order A-Z by Filename', 'elementor-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-extensions' ),
+				'label_off' => __( 'No', 'elementor-extensions' ),
+				'return_value' => 'yes',
+				'default' => 'label_off',
+				'frontend_available' => true,
+				'condition' => [
+					'is_header_sortable!' => ''
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(

@@ -626,6 +626,26 @@
     box-shadow: none;
 }
 
+.document_library_wrapper table .header,
+.document_library_wrapper table .tablesorter-header {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
+  background-repeat: no-repeat;
+  background-position: center right;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.document_library_wrapper table .headerSortUp,
+.document_library_wrapper table .tablesorter-headerSortUp,
+.document_library_wrapper table .tablesorter-headerAsc {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
+}
+.document_library_wrapper table .headerSortDown,
+.document_library_wrapper table .tablesorter-headerSortDown,
+.document_library_wrapper table .tablesorter-headerDesc {
+  background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
+}
+
 /*@ Flipbox start*/
 .ee_mb_flipbox_container{
   display: block;
