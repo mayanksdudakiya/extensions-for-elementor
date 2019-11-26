@@ -225,7 +225,7 @@ class EE_Document_Library extends Base_Widget {
                 'label' => __( 'Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .document_library_wrapper table > thead > tr > th' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .document_library_wrapper table > thead > tr > th' => 'background-color: {{VALUE}};',
                 ],
             ]
 		);
@@ -295,7 +295,7 @@ class EE_Document_Library extends Base_Widget {
                 'label' => __( 'Odd Row Background', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:nth-child(odd)' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:nth-child(odd)' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -306,7 +306,7 @@ class EE_Document_Library extends Base_Widget {
                 'label' => __( 'Even Row Background', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:nth-child(even)' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:nth-child(even)' => 'background-color: {{VALUE}};',
                 ],
             ]
 		);
@@ -317,7 +317,7 @@ class EE_Document_Library extends Base_Widget {
                 'label' => __( 'Hover Background', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:hover' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .document_library_wrapper > table > tbody > tr:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
 		);
