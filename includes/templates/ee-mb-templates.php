@@ -20,7 +20,11 @@ class EE_MB_Templates{
 
     public function addSinglePageTemplate($single){
         global $post;
-        $checked_cpt = json_decode(get_option('ee_mb_cpt_single'));
+
+        $checked_cpt = [];
+        if(get_option('ee_mb_cpt_single')):
+            $checked_cpt = json_decode(get_option('ee_mb_cpt_single'));
+        endif;
 
         if(empty($checked_cpt) && !is_array($checked_cpt)):
             $checked_cpt = [];
