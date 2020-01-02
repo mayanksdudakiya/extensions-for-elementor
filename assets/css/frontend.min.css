@@ -2744,6 +2744,10 @@
     text-transform: none;
   }
 
+  .elementor-sticky--active {
+    z-index: 9999 !important;
+  }
+
   @media only screen and (min-width:1025px) {
     .ee-mb-nav-shortcode {
       left: 0;

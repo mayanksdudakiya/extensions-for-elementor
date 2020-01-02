@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.3.2
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,14 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.2 - 02/01/2020 =
+* Fix : Menu - Sticky menu z-index issue
+
+= 1.0.1 - 24/12/2019 =
+* Fix : Megamenu - Submenu inherit  text-transform automatically from the parent
+* Fix : Megamenu - Moves with the scroll issue
+* Fix : Property Search - Array decode warning resolved.
 
 = 1.0.0 - 23/11/2019 =
 * Initial stable realese
