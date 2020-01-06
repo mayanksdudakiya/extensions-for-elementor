@@ -71,7 +71,7 @@ final class Modules_Manager {
 				/*
 				 * Disable widget from setting page
 				 */
-				if( $module_name !== 'ee-mb-query-control' && !empty($checked_widget) && !in_array($module_name,$checked_widget) ):
+				if( $module_name !== 'ee-mb-query-control' && is_array($checked_widget) && !empty($checked_widget) && !in_array($module_name,$checked_widget) ):
 					continue;
 				endif;
 

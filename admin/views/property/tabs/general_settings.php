@@ -2,9 +2,9 @@
 
    $currency_symbol = $country_restriction = $sold_stc_label = '';
    if(!empty($general)):
-      $currency_symbol = esc_html($general->currency_symbol);
-      $country_restriction = esc_html($general->country_restriction);
-      $sold_stc_label = (!empty($general->sold_stc_label)) ? esc_html($general->sold_stc_label) : '';
+      $currency_symbol = (!empty($ee_mb_agent->currency_symbol)) ? $general->currency_symbol : '';
+      $country_restriction = (!empty($ee_mb_agent->country_restriction)) ? $general->country_restriction : '';
+      $sold_stc_label = (!empty($general->sold_stc_label)) ? $general->sold_stc_label : '';
    endif;
 ?>
 <div id="general" class="ee-mb-tabcontent">

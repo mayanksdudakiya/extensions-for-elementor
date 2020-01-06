@@ -2,8 +2,8 @@
 
    $color_scheme = $font_color_scheme = $school_checker = '';
    if(!empty($single_page)):
-      $color_scheme = $single_page->color_scheme;
-      $font_color_scheme = $single_page->font_color_scheme;
+      $color_scheme = (!empty($single_page->color_scheme)) ? $single_page->color_scheme : '';
+      $font_color_scheme = (!empty($single_page->font_color_scheme)) ? $single_page->font_color_scheme : '';
       $school_checker = (!empty($single_page->school_checker)) ? $single_page->school_checker : '';
    endif;
 ?>

@@ -17,7 +17,7 @@ use ElementorExtensions\Classes\Utils;
         <table class="form-table es-table-section-settings">
             <tbody>
                 <?php 
-                    $checked_cpt = json_decode(get_option('ee_mb_cpt_single'));
+                    $checked_cpt = get_option('ee_mb_cpt_single');
                     foreach($ee_mb_post_types as $key => $single_cpt):
 
                         if(in_array($key, $exclude_post_types)):

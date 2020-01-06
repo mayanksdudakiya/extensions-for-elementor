@@ -23,7 +23,7 @@ class EE_MB_Templates{
 
         $checked_cpt = [];
         if(get_option('ee_mb_cpt_single')):
-            $checked_cpt = json_decode(get_option('ee_mb_cpt_single'));
+            $checked_cpt = get_option('ee_mb_cpt_single');
         endif;
 
         if(empty($checked_cpt) && !is_array($checked_cpt)):

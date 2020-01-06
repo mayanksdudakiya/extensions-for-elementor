@@ -87,21 +87,24 @@ if(!function_exists('ee_mb_property_search_custom_style')):
 
     if(!empty($agent)):
 
-      $color_scheme = $agent->color_scheme;
+      echo '<style type="text/css">';
 
-      echo 
-      '<style type="text/css">
-      .single_property_page .bg-purple,.single_property_page .slick-prev,.single_property_page .slick-next{background:'.$color_scheme.';}
-      .single_property_page .price-info-wrap h2,.single_property_page .agent-info p a{color:'.$color_scheme.';}
-      .single_property_page .share-links li a{color:'.$color_scheme.';border-color:'.$color_scheme.';}
-      .single_property_page .share-links li a:hover{background-color: '.$color_scheme.';color:#FFF;}
-      .single_property_page .button.btn-submit{background:'.$color_scheme.';border-color:'.$color_scheme.';}
-      .single_property_page .button.btn-submit:focus,.single_property_page .button.btn-submit:hover,.single_property_page .button.btn-submit:active {color: '.$color_scheme.';background:#FFF;}
-      .single_property_page ul.tabs li.current,.single_property_page ul.tabs li:hover{border-color:'.$color_scheme.';}
-      .single_property_page .sold_stc{background-color:'.$color_scheme.';}';
+      if(!empty($agent->color_scheme)):
+        $color_scheme = $agent->color_scheme;
 
-      $lfc_s = $agent->font_color_scheme;
-      if(!empty($lfc_s)):
+        echo '.single_property_page .bg-purple,.single_property_page .slick-prev,.single_property_page .slick-next{background:'.$color_scheme.';}
+        .single_property_page .price-info-wrap h2,.single_property_page .agent-info p a{color:'.$color_scheme.';}
+        .single_property_page .share-links li a{color:'.$color_scheme.';border-color:'.$color_scheme.';}
+        .single_property_page .share-links li a:hover{background-color: '.$color_scheme.';color:#FFF;}
+        .single_property_page .button.btn-submit{background:'.$color_scheme.';border-color:'.$color_scheme.';}
+        .single_property_page .button.btn-submit:focus,.single_property_page .button.btn-submit:hover,.single_property_page .button.btn-submit:active {color: '.$color_scheme.';background:#FFF;}
+        .single_property_page ul.tabs li.current,.single_property_page ul.tabs li:hover{border-color:'.$color_scheme.';}
+        .single_property_page .sold_stc{background-color:'.$color_scheme.';}';
+      endif;
+
+      
+      if(!empty($agent->font_color_scheme)):
+        $lfc_s = $agent->font_color_scheme;
         echo '.single_property_page .f-left.banner-name h4,
         .single_property_page .search-sec h4,
         .single_property_page .slideCount,

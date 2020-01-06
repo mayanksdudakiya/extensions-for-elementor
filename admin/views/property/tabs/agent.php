@@ -2,11 +2,11 @@
 
    $mail_subject = $mail_success = $mail_template = $default_agent = $sender_email = '';
    if(!empty($ee_mb_agent)):
-      $mail_subject = esc_html($ee_mb_agent->mail_subject);
-      $mail_success = esc_html($ee_mb_agent->mail_success);
-      $mail_template = html_entity_decode($ee_mb_agent->mail_template);
-      $default_agent = esc_html($ee_mb_agent->default_agent);
-      $sender_email = esc_html($ee_mb_agent->sender_email);
+      $mail_subject = (!empty($ee_mb_agent->mail_subject)) ? $ee_mb_agent->mail_subject : '';
+      $mail_success = (!empty($ee_mb_agent->mail_success)) ? $ee_mb_agent->mail_success : '';
+      $mail_template = (!empty($ee_mb_agent->mail_template)) ? html_entity_decode($ee_mb_agent->mail_template) : '';
+      $default_agent = (!empty($ee_mb_agent->default_agent)) ? $ee_mb_agent->default_agent: ''; 
+      $sender_email = (!empty($ee_mb_agent->sender_email)) ? $ee_mb_agent->sender_email : '';
    endif;
 
    $agent_arg = [
