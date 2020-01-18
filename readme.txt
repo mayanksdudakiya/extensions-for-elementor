@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 4.0
 Tested up to: 5.3.2
 Requires PHP: 5.6
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,11 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.4 - 16/01/2020 =
+* Fix : Content support has added into Event single page template
+* Fix : Events Calendar & Google Calendar jqueris updated to the latest version.
+* Fix : Custom Field - widget's content editor not printing the `<p>` tag
 
 = 1.0.3 - 06/01/2020 =
 * Fix : Resolving different notices, warnings and bugs

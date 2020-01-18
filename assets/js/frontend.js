@@ -142,8 +142,8 @@
                         type: 'POST',
                         data: { 
                             'action': 'getPostsByCategory',
-                            cat_data,
-                            widget_settings
+                            'cat_data' : cat_data,
+                            'widget_settings' : widget_settings
                         },
                         success: function(data){
                             jQuery('#listings').html(data);
@@ -209,6 +209,34 @@
 
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-anchor-scroll.default', ee_anchor.anchor_scroll_fun);
+    });
+
+    /*@ Document Library */
+    var ee_document_library = {
+
+        document_library_fun : function( $scope, $ ) {
+            
+            var ee_dl_settings = ee_common.getElementSettings( $scope ),
+            $document_library = $scope.find('.document_library_wrapper '),
+            is_sortable = ee_dl_settings.is_header_sortable,
+            dl_tbl = $document_library.find('> table'),
+            order_filename_asc = ee_dl_settings.order_filename_asc;
+
+            ee_document_library.document_library_fun.init = function() {
+                if(is_sortable === 'yes'){
+
+                    var sort_list = (order_filename_asc === 'yes') ? [[0,0]] : '';
+                    dl_tbl.tablesorter({
+                        sortList : sort_list
+                    });
+                }
+            };
+            ee_document_library.document_library_fun.init();
+        }
+    }
+
+    $(window).on('elementor/frontend/init', function () {
+        elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-document-library.default', ee_document_library.document_library_fun);
     });
 
     /*@ Flipbox */
@@ -954,28 +982,26 @@
                   });
                 }
              
-                  /*@ If outside click then close the hamburger & sidebar */
-                  jQuery(document).click(function(e) {
+                /*@ If outside click then close the hamburger & sidebar */
+                jQuery(document).click(function(e) {
                     if (!jQuery(e.target).is('.hamburger')) {
                         jQuery(document).find('.sidebar').fadeOut('slow');
                         jQuery(document).find('.hamburger').removeClass('is-active');
-                      }
-                  });
+                    }
+                });
 
-                  jQuery(document).on('click', '.hamburger', function(e) {
-                      e.preventDefault();
-                      jQuery(this).siblings('.ee-mb-sidebar-menu-wrapper').find(".sidebar").toggle("slide");
-                      return false;
-                  });
+                jQuery(document).on('click', '.hamburger', function(e) {
+                    jQuery(this).siblings('.ee-mb-sidebar-menu-wrapper').find(".sidebar").toggle("slide");
+                    e.preventDefault();
+                    return false;
+                });
 
-                 if(jQuery(window).width() <= 1024){
-                    jQuery(document).on('click', '.ee-mb-megamenu-wrapper .menu-item', function(e) {
-                      e.preventDefault();
-                      jQuery(this).find('.ee-mb-nav-shortcode').slideToggle();
-                      jQuery(this).toggleClass('uparrow');
-                      return false;
+                if(jQuery(window).width() <= 1024){
+                    jQuery(document).on('click', '.ee-mb-megamenu-wrapper .menu-item', function() {
+                        jQuery(this).find('.ee-mb-nav-shortcode').slideToggle();
+                        jQuery(this).toggleClass('uparrow');
                     });
-                 }
+                }
             };
         
             ee_nav_menu.ee_navigation_menu_fun.init();
@@ -983,7 +1009,7 @@
     }
 
     $(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-navigation-menu.default', ee_nav_menu.ee_navigation_menu_fun);
+        elementorFrontend.hooks.addAction('frontend/element_ready/nav-menu.default', ee_nav_menu.ee_navigation_menu_fun);
     });
 
     /*@ Event Slider */
@@ -1246,8 +1272,11 @@
                 }
 
                 if(cal_layout == 'grid'){
-                    
-                    jQuery('#calendar-'+cal_uid+'').fullCalendar({
+
+                    var calendarEl = document.getElementById('calendar-'+cal_uid);
+
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list', 'googleCalendar' ],
                         header: {
                             left: 'prev,next today',
                             center: 'title',
@@ -1268,13 +1297,21 @@
                                     i++;
                                 }
                             }
-                            element.addClass("custom-event-"+eventsdata.indexOf(event.title));
+
+                            if(typeof element !== 'undefined'){
+                                element.addClass("custom-event-"+eventsdata.indexOf(event.title));
+                            }
                         },
                     });
 
+                    calendar.render();
+
                 }else{
                     
-                    jQuery('#calendar-'+cal_uid+'').fullCalendar({
+                    var calendarEl = document.getElementById('calendar-'+cal_uid);
+
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list', 'googleCalendar' ],
                         defaultView: 'listWeek',
                         views: {
                           listDay: { buttonText: 'list day' },
@@ -1291,6 +1328,8 @@
                             googleCalendarId: cal_id
                         }
                     }); 
+
+                    calendar.render();
                 }
             }
             ee_mb_gcal.ee_mb_gcal_fun.init();
@@ -1346,6 +1385,8 @@
 
                 var elementSettings = ee_common.getElementSettings( $scope ),
                 ajaxurl = ElementorExtensionsFrontendConfig.ajaxurl;
+
+                console.log(ajaxurl);
                     
                 jQuery(document).on('click','.myeventon_summary_eventlist_wrapper .summary_filter a',function(e){
                     e.preventDefault();
@@ -1508,14 +1549,27 @@
                         var calendar_id = jQuery(this).attr('data-id');
                         var event_list = jQuery(this).data('caldata');
                         var disable_link = jQuery(this).data('disable-link');
-                        jQuery('#calendar-'+calendar_id).fullCalendar({
+
+                        var calendarEl = document.getElementById('calendar-'+calendar_id);
+
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                            },
                             events: event_list,
                             eventRender: function(event, element) {
-                                element.addClass("custom-event");
+                                if(typeof element !== 'undefined'){
+                                    element.addClass("custom-event");
+                                }
                             },
-                            eventClick: function(calEvent, jsEvent, view) {
-                                var clicked_date = calEvent.start.format();
-                                var current = jQuery(this);
+                            eventClick: function(arg) {
+                                var clicked_date = arg.event.start;
+                                clicked_date = moment(clicked_date).format("YYYY-MM-DD");
+
+                                var current = jQuery(arg.el);
                                 jQuery.ajax({
                                     url:ajaxurl,
                                     data:{
@@ -1531,9 +1585,11 @@
                                     }
                                 }); 
                               },
-                            dayClick: function(date, jsEvent, view) {
-                                var clicked_date = date.format(); /*Y-m-d*/
-                                var current = jQuery(this);
+                            dayClick: function(arg) {
+                                var clicked_date = arg.event.start;
+                                clicked_date = moment(clicked_date).format("YYYY-MM-DD");
+
+                                var current = jQuery(arg.el);
                                 jQuery.ajax({
                                     url:ajaxurl,
                                     data:{
@@ -1550,12 +1606,15 @@
                                 }); 
                               }
                         });
+
+                        calendar.render();
                     });
                 }
 
                 /*@ Display - Hide summary description no click of event label */
-                jQuery(document).on('click','.myeventon_calendar_summaryview li,.summaryEventList li',function(){
+                jQuery(document).on('click','.myeventon_calendar_summaryview li,.summaryEventList li',function(e){
                     jQuery(this).next('.summary_cal_description').slideToggle();
+                    e.preventDefault();
                 });
             }
             ee_mb_events.ee_mb_events_fun.init();
@@ -1576,15 +1635,16 @@
                   function ee_mb_property_search_box_autocomplete() {
                     
                       var elementSettings = ee_common.getElementSettings( $scope ),
-                      input = document.getElementById('ee_mb_property_txt');
+                      input = document.getElementById('ee_mb_property_txt'),
+                      data_setting = $scope.find('.ee_mb_homepage_searchbox_form').data('settings');
 
                       if(input){
                         var options = {
                           types: ['geocode']
                         };
 
-                        if(elementSettings.country_restriction){
-                            options.componentRestrictions = {country: elementSettings.country_restriction};
+                        if(data_setting.country_restriction){
+                            options.componentRestrictions = {country: data_setting.country_restriction};
                         }
 
                         var autocomplete = new google.maps.places.Autocomplete(input, options);
@@ -1620,6 +1680,308 @@
 
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-property-search.default', ee_mb_property_search.ee_mb_property_search_fun);
+    });
+
+    var ee_mb_properties = {
+
+        fun: function ($scope, $) {
+
+            elementSettings = ee_common.getElementSettings($scope);
+
+            var $listing_wrapper = $scope.find('.ee_mb_property_listing_wrapper');
+            var $data_setting = $scope.find('.ee_mb_property_search_page_outer_wrapper').data('settings');
+
+            ee_mb_properties.fun.init = function () {
+                ee_mb_properties.fun.addPropertyPageClassInBody();
+                ee_mb_properties.fun.get();
+                ee_mb_properties.fun.getviews();
+                ee_mb_properties.fun.addPromiximityRangeSlider();
+                ee_mb_properties.fun.changeEvents();
+                if (typeof google === 'object' && typeof google.maps === 'object') {
+                    google.maps.event.addDomListener(window, 'load', ee_mb_properties.fun.addAutocompleteLocation());
+                }
+            };
+
+            ee_mb_properties.fun.get = function () {
+                ee_mb_properties.fun.showLoading();
+                var ajaxurl = ElementorExtensionsFrontendConfig.ajaxurl;
+                var view = ee_mb_properties.fun.getUrlParameter('view');
+
+                jQuery('#ee_mb_property_listing').html('');
+                jQuery('#property_pagination').html('');
+                jQuery('#search_result').text('');
+ 
+                jQuery.ajax({
+                    url: ajaxurl,
+                    data: {
+                        'action': 'eeMbPropertySearchAjax',
+                        'location': ee_mb_properties.fun.getUrlParameter('location'),
+                        'radius': ee_mb_properties.fun.getUrlParameter('radius'),
+                        'lat': ee_mb_properties.fun.getUrlParameter('lat'),
+                        'long': ee_mb_properties.fun.getUrlParameter('long'),
+                        'max': ee_mb_properties.fun.getUrlParameter('max'),
+                        'min': ee_mb_properties.fun.getUrlParameter('min'),
+                        'room': ee_mb_properties.fun.getUrlParameter('room'),
+                        'property_type': ee_mb_properties.fun.getUrlParameter('property_type'),
+                        'view': view,
+                        'price_sort': ee_mb_properties.fun.getUrlParameter('price_sort'),
+                        'paged': ee_mb_properties.fun.getUrlParameter('pagination'),
+                        'default_sort': elementSettings.default_sort,
+                        'post_per_page': elementSettings.post_per_page,
+                    },
+                    method: 'POST',
+                    success: function (data) {
+
+                        if (data.results || data.results == '0') {
+                            jQuery('#search_result').html(data.results);
+                        }
+
+                        if (data.results && data.results !== '0') {
+                            if (view == 'map') {
+
+                                jQuery('#ee_mb_property_listing').html('<div id="propertymap"></div>');
+
+                                var locations = data.map_properties;
+
+                                var map = new google.maps.Map(document.getElementById('propertymap'), {
+                                    zoom: 10,
+                                    center: new google.maps.LatLng(locations[0][1], locations[0][2]),
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                });
+
+                                var infowindow = new google.maps.InfoWindow();
+                                var marker, i, content = "";
+
+                                for (i = 0; i < locations.length; i++) {
+                                    var latlng = new google.maps.LatLng(locations[i][1], locations[i][2]);
+                                    marker = new google.maps.Marker({
+                                        position: latlng,
+                                        map: map,
+                                        icon: ElementorExtensionsFrontendConfig.ee_mb_path + "assets/img/map-pin.png"
+                                    });
+
+                                    var property_img = locations[i][6],
+                                        title = locations[i][0],
+                                        price = locations[i][3],
+                                        bedrooms = locations[i][4],
+                                        type = locations[i][5],
+                                        listed_on = locations[i][7],
+                                        prop_url = locations[i][8];
+
+                                    content = "<div class='map_info_wrapper'><a href=" + prop_url + "><div class='img_wrapper'><img src=" + property_img + "></div>" +
+                                        "<div class='property_content_wrap'>" +
+                                        "<div class='property_title'>" +
+                                        "<span>" + title + "</span>" +
+                                        "</div>" +
+
+                                        "<div class='property_price'>" +
+                                        "<span>" + price + "</span>" +
+                                        "</div>" +
+
+                                        "<div class='property_bed_type'>" +
+                                        "<span>" + bedrooms + " beds</span>" +
+                                        "<ul><li>" + type + "</li></ul>" +
+                                        "</div>" +
+
+                                        "<div class='property_listed_date'>" +
+                                        "<span>Listed on " + listed_on + "</span>" +
+                                        "</div>" +
+                                        "<div class='btn_visit_marker'><span>View more</span></div>"
+                                    "</div></a></div>";
+
+                                    google.maps.event.addListener(marker, 'click', (function (marker, content, i) {
+                                        return function () {
+                                            infowindow.setContent(content);
+                                            infowindow.open(map, marker);
+                                        }
+                                    })(marker, content, i));
+                                }
+
+                            } else {
+                                jQuery.each(data.property, function (index, value) {
+                                    jQuery('#ee_mb_property_listing').append(value);
+                                });
+                                jQuery('#property_pagination').html(data.next_pagination);
+                            }
+                        }
+
+                        ee_mb_properties.fun.hideLoading();
+                    },
+                    error: function (errorThrown) {}
+                });
+            };
+
+            ee_mb_properties.fun.addPropertyPageClassInBody = function () {
+                jQuery(document).find('body').addClass('property-search-page');
+            };
+
+            ee_mb_properties.fun.addPromiximityRangeSlider = function () {
+                var slider = document.getElementById("promiximity_range");
+
+                if(slider){
+                    var output = document.getElementById("txt_miles");
+                    output.innerHTML = slider.value + ' miles'; /* Display the default slider value */
+
+                    /* Update the current slider value (each time you drag the slider handle) */
+                    slider.oninput = function () {
+                        output.innerHTML = this.value + ' miles';
+                    }
+                }
+            };
+
+            ee_mb_properties.fun.addAutocompleteLocation = function () {
+
+                    var input = document.getElementById('ee_mb_property_txt');
+
+                    if (input) {
+                        var options = {
+                            types: ['geocode']
+                        };
+
+                        if($data_setting.country_restriction){
+                            options.componentRestrictions = {country: $data_setting.country_restriction};
+                        }
+
+                        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+                        /** 
+                         * Get lat long and add it into the hidden text boxes
+                         */
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            var place = autocomplete.getPlace();
+
+                            var current_add = jQuery('#ee_mb_property_txt').val();
+
+                            var lat = place.geometry.location.lat();
+                            var lng = place.geometry.location.lng();
+
+                            document.getElementById("ee_mb_property_lat").value = lat;
+                            document.getElementById("ee_mb_property_long").value = lng;
+
+                            var newurl = ee_mb_properties.fun.replaceUrlParam('location', encodeURIComponent(current_add));
+                            history.pushState(null, null, newurl);
+
+                            var newurl = ee_mb_properties.fun.replaceUrlParam('lat', lat);
+                            history.pushState(null, null, newurl);
+
+                            var newurl = ee_mb_properties.fun.replaceUrlParam('long', lng);
+                            history.pushState(null, null, newurl);
+                        });
+                    }
+                };
+
+            ee_mb_properties.fun.getUrlParameter = function (name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                var results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            };
+
+            ee_mb_properties.fun.changeEvents = function () {
+                jQuery("#drp_min_price").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('min', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#drp_max_price").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('max', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#drp_bedrooms").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('room', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#drp_property_type").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('property_type', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#promiximity_range").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('radius', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#price_sort").on('change', function () {
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('price_sort', jQuery(this).val());
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery("#btn_property_search").on('click', function () {
+                    ee_mb_properties.fun.get();
+                });
+
+                jQuery(document).on('click', '.page-numbers', function (e) {
+                    e.preventDefault();
+                    var pagination_link = jQuery(this).attr('href');
+                    paged = pagination_link.split('?');
+                    paged = paged[1].split('=');
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('pagination', paged[1]);
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+            };
+
+            ee_mb_properties.fun.replaceUrlParam = function (paramName, paramValue) {
+                var url = window.location.href;
+                if (paramValue == null) {
+                    paramValue = '';
+                }
+                var pattern = new RegExp('\\b(' + paramName + '=).*?(&|#|$)');
+                if (url.search(pattern) >= 0) {
+                    return url.replace(pattern, '$1' + paramValue + '$2');
+                }
+                url = url.replace(/[?#]$/, '');
+                return url + (url.indexOf('?') > 0 ? '&' : '?') + paramName + '=' + paramValue;
+            };
+
+            ee_mb_properties.fun.showLoading = function () {
+                jQuery(document).find('.elementor_ee_mb_loading_overlay.property_search').show();
+            };
+
+            ee_mb_properties.fun.hideLoading = function () {
+                jQuery(document).find('.elementor_ee_mb_loading_overlay.property_search').hide();
+            };
+
+            ee_mb_properties.fun.getviews = function () {
+                jQuery('#btn_view_group li').on('click', function () {
+                    var view = jQuery(this).data('view');
+
+                    if (view == 'list') {
+                        jQuery('#ee_mb_property_listing').removeClass('grid');
+                        jQuery('#ee_mb_property_listing').removeClass('map');
+                        jQuery('#ee_mb_property_listing').addClass('list');
+                    } else if (view == 'grid') {
+                        jQuery('#ee_mb_property_listing').addClass('grid');
+                        jQuery('#ee_mb_property_listing').removeClass('list');
+                        jQuery('#ee_mb_property_listing').removeClass('map');
+                    } else if (view == 'map') {
+                        jQuery('#ee_mb_property_listing').removeClass('grid');
+                        jQuery('#ee_mb_property_listing').removeClass('list');
+                        jQuery('#ee_mb_property_listing').addClass('map');
+                    }
+
+                    jQuery('#btn_view_group li').removeClass('active');
+                    jQuery(this).addClass('active');
+                    var newurl = ee_mb_properties.fun.replaceUrlParam('view', view);
+                    history.pushState(null, null, newurl);
+                    ee_mb_properties.fun.get();
+                });
+            };
+
+            ee_mb_properties.fun.init();
+        }
+    }
+
+    $(window).on('elementor/frontend/init', function () {
+        elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-properties.default', ee_mb_properties.fun);
     });
 
     /*@ Scroll navigation */

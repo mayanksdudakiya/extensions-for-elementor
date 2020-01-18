@@ -128,6 +128,27 @@ class Plugin {
 		);
 
 		wp_enqueue_style(
+			$prefix.'daygrid',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/daygrid/main' . $direction_suffix . $suffix . '.css',
+			[],
+			Plugin::instance()->get_version()
+		);
+
+		wp_enqueue_style(
+			$prefix.'list',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/list/main' . $direction_suffix . $suffix . '.css',
+			[],
+			Plugin::instance()->get_version()
+		);
+
+		wp_enqueue_style(
+			$prefix.'timegrid',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/timegrid/main' . $direction_suffix . $suffix . '.css',
+			[],
+			Plugin::instance()->get_version()
+		);
+
+		wp_enqueue_style(
 			$prefix.'hamburgers',
 			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/hamburger/hamburgers' . $direction_suffix . $suffix . '.css',
 			[],
@@ -248,8 +269,48 @@ class Plugin {
 		);
 
 		wp_enqueue_script(
+			$prefix.'daygrid',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/daygrid/main' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			Plugin::instance()->get_version(),
+			true
+		);
+
+		wp_enqueue_script(
+			$prefix.'list',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/list/main' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			Plugin::instance()->get_version(),
+			true
+		);
+
+		wp_enqueue_script(
+			$prefix.'interaction',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/interaction/main' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			Plugin::instance()->get_version(),
+			true
+		);
+
+		wp_enqueue_script(
+			$prefix.'timegrid',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/timegrid/main' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			Plugin::instance()->get_version(),
+			true
+		);
+
+		wp_enqueue_script(
 			$prefix.'gcal',
-			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/gcal' . $suffix . '.js',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fullcalendar/google-calendar/main' . $suffix . '.js',
 			[
 				'jquery',
 			],

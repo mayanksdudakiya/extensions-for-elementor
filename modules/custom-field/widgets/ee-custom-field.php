@@ -469,7 +469,7 @@ class EE_Custom_Field extends Base_Widget {
 				break;
 
 			case 'editor':
-					$html .= '<div class="ee_mb_editor_field ee_mb_custom_field">'.$field_val.'</div>';
+					$html .= '<div class="ee_mb_editor_field ee_mb_custom_field">'.wpautop($field_val).'</div>';
 				break;
 			
 			case 'link':

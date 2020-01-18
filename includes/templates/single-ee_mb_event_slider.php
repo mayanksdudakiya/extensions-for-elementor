@@ -61,15 +61,21 @@ get_header();
             <div class="title_wrapper">
                <h1><?php _e($title, 'elementor-extensions'); ?></h1>
             </div>
-            <?php endif; ?>
+            <?php endif; 
 
-            <?php if(!empty($desc)): ?>
-               <div class="desc_wrapper">
-                  <?php echo wpautop($desc); ?>
-               </div>
-            <?php endif; ?>
+            if ( have_posts() ) {
 
+               while ( have_posts() ) {
+                  the_post();
 
+                   if(!empty($desc)): ?>
+                     <div class="desc_wrapper">
+                        <?php the_content(); ?>
+                     </div>
+                  <?php endif; 
+               }
+            }
+            ?>
             <div class="page-meta-details">
                <h2 class="meta-title"><?php _e('Details', 'elementor-extensions'); ?> </h2>
 

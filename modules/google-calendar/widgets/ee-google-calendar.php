@@ -33,7 +33,11 @@ class EE_Google_Calendar extends Base_Widget {
 		return [
 			'moment',
 			'ee-mb-fullcalendar',
-			'ee-mb-gcal'
+			'ee-mb-gcal',
+			'ee-mb-daygrid',
+			'ee-mb-list',
+			'ee-mb-interaction',
+			'ee-mb-timegrid'
 		];
 	}
 

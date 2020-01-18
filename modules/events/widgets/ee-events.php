@@ -32,7 +32,11 @@ class EE_Events extends Base_Widget {
 		return [
 			'ee-mb-jquery-ui',
 			'moment',
-			'ee-mb-fullcalendar'
+			'ee-mb-fullcalendar',
+			'ee-mb-daygrid',
+			'ee-mb-list',
+			'ee-mb-interaction',
+			'ee-mb-timegrid'
 		];
 	}
 	
