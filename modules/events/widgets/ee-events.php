@@ -214,7 +214,6 @@ class EE_Events extends Base_Widget {
             ]
 		);
 
-
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
@@ -262,7 +261,7 @@ class EE_Events extends Base_Widget {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper, {{WRAPPER}} .ee_mb_events_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -274,7 +273,7 @@ class EE_Events extends Base_Widget {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper, {{WRAPPER}} .ee_mb_events_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -350,6 +349,25 @@ class EE_Events extends Base_Widget {
 				'condition' => ['event_view' => 'summary'],
 			]
 		);
+
+		$this->add_responsive_control(
+			'event_block_height',
+			[
+				'label' 	=> __( 'Block Height', 'elementor-extensions' ),
+				'type' 		=> Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' 	=> [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+					],
+				],
+				'condition' => ['event_view' => 'detail'],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'height: {{SIZE}}px;',
+				],
+			]
+		);
 	
 		$this->add_responsive_control(
 			'event_image_width',
@@ -399,6 +417,55 @@ class EE_Events extends Base_Widget {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+            'detail_view_content_style',
+            [
+                'label' => __( 'Content Styles', 'elementor-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+					'event_view' => 'detail'
+				],
+            ]
+		);
+
+		$this->add_control(
+            'detail_view_content_bg_color',
+            [
+                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_responsive_control(
+			'detail_view_content_padding',
+			[
+				'label' => __( 'Padding', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'detail_view_content_margin',
+			[
+				'label' => __( 'Margin', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 		/*@Image style*/
 		$this->start_controls_section(
             'event_image_style',
@@ -416,6 +483,14 @@ class EE_Events extends Base_Widget {
 				'label' => __( 'Padding', 'elementor-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
+				'default' => [
+					'top' => 10,
+					'right' => 10,
+					'bottom' => 10,
+					'left' => 10,
+					'unit' => 'px',
+					'isLinked' => true,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -2736,10 +2811,14 @@ class EE_Events extends Base_Widget {
 			endforeach;
 
 			if($settings['past_event_section'] == 'yes'):
-				echo '<div class="past_events_wrapper">';
-					echo '<h2>'.((!empty($settings['past_event_title'])) ? $settings['past_event_title'] :'Past Events').'</h2>';
-				echo '</div>';
+				
+					if(!empty($settings['past_event_title'])):
+						echo '<div class="past_events_wrapper">';
+							echo '<h2>'.$settings['past_event_title'].'</h2>';
+						echo '</div>';
+					endif;
 				echo $past_events;
+				
 			endif;
 
 			echo '</div>';

@@ -1138,6 +1138,7 @@
     float: left;
     width: 100%;
     margin-bottom: 5%;
+    overflow: hidden;
 }
 
 .ee_mb_events_wrapper .past_events_wrapper{
@@ -1158,12 +1159,7 @@
     float: left;
     width: 20%;
     max-width:50%;
-}
-
-.ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
-    width: 200px;
-    max-height: 300px;
-    max-width: 95%;
+    overflow: hidden;
 }
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper{
@@ -1171,6 +1167,7 @@
     float: left;
     width: auto;
     max-width: 50%;
+    height: 100%;
 }
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3,
@@ -1216,6 +1213,16 @@
     font-weight: 300;
 }
 
+.ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper{
+    height: 100%;
+}
+
+.ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 767px){
     .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper,
     .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper{
@@ -1226,7 +1233,7 @@
 }
 @media (min-width: 768px){
     .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
-        width: 90%!important;
+        width: 100%;
         max-width: 100%;
     }
 }
