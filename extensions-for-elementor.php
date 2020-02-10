@@ -25,17 +25,34 @@ define( 'ELEMENTOR_EXTENSIONS_MODULES_URL', ELEMENTOR_EXTENSIONS_URL . 'modules/
 define( 'EE_MB_CUSTOM_FIELD_PLUG_PATH', ELEMENTOR_EXTENSIONS_PATH.'includes/custom-fields/' );
 define( 'EE_MB_CUSTOM_FIELD_PLUG_URL', ELEMENTOR_EXTENSIONS_URL.'/includes/custom-fields/' );
 
-include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH . 'custom-fields.php' );
+
+/*@ Check ACF pro is active or not */
+if ( ! function_exists( 'is_acf_pro_active' ) ) {
+	function is_acf_pro_active() {
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		$plugin = 'advanced-custom-fields-pro/acf.php';
+
+		return is_plugin_active( $plugin );
+	}
+}
+
 include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH.'includes/custom-field-photo-gallery/custom-field-photo-gallery.php' );
 include_once( ELEMENTOR_EXTENSIONS_PATH.'includes/ee-mb-default-values.php' );
 
 
-if(!function_exists('ee_mb_customfield_settings_url')){
-	add_filter('acf/settings/url', 'ee_mb_customfield_settings_url');
-	function ee_mb_customfield_settings_url( $url ) {
-	    return EE_MB_CUSTOM_FIELD_PLUG_URL;
+if (!is_acf_pro_active()) :
+	include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH . 'custom-fields.php' );
+
+
+	if(!function_exists('ee_mb_customfield_settings_url')){
+		add_filter('acf/settings/url', 'ee_mb_customfield_settings_url');
+		function ee_mb_customfield_settings_url( $url ) {
+		    return EE_MB_CUSTOM_FIELD_PLUG_URL;
+		}
 	}
-}
+
+endif;
 
 //if(!function_exists('ee_mb_custom_field_settings_show_admin')){
 // add_filter('acf/settings/show_admin', 'ee_mb_custom_field_settings_show_admin');

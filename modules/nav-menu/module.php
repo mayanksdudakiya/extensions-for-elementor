@@ -81,7 +81,7 @@ class Module extends Module_Base {
 		            'default' => '',
 		            'separator' => 'before',
 		            'selectors' => [
-		                '{{WRAPPER}}' => 'position: absolute;width: 100%;display: block;z-index:1;'
+		                '{{WRAPPER}}' => 'position: absolute;width: 100%;display: block;z-index:9999;'
 		            ]
 		        ]
 		    );

@@ -458,6 +458,7 @@ class Nav_Menu extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout!' => 'dropdown',
+					'layout!' => 'slideout',
 				],
 
 			]
@@ -732,11 +733,10 @@ class Nav_Menu extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout!' => 'dropdown',
+					'layout!' => 'slideout',
 				],
 			]
 		);
-
-		
 
 		$this->start_controls_tabs( 'shrink_tabs_menu_item_style' );
 
@@ -1124,7 +1124,7 @@ class Nav_Menu extends Widget_Base {
 				'name' => 'dropdown_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'exclude' => [ 'line_height' ],
-				'selector' => '{{WRAPPER}} .elementor-nav-menu--dropdown',
+				'selector' => '{{WRAPPER}} .elementor-nav-menu--dropdown a',
 				'separator' => 'before',
 			]
 		);
@@ -1313,6 +1313,7 @@ class Nav_Menu extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'toggle!' => '',
+					'layout!' => 'slideout',
 				],
 			]
 		);
@@ -1584,6 +1585,107 @@ class Nav_Menu extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+
+		/*@Close button style start*/
+		$this->start_controls_section( 'slideout_close_button',
+			[
+				'label' => __( 'Close Button', 'elementor-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'layout' => 'slideout',
+				],
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_slideout_close_button' );
+
+		$this->start_controls_tab(
+			'tabs_slideout_close_button_normal',
+			[
+				'label' => __( 'Normal', 'elementor-extensions' ),
+			]
+		);
+
+		$this->add_control(
+			'close_button_color',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .btn_slideout_close i' => 'color: {{VALUE}}', 
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tabs_slideout_close_button_hover',
+			[
+				'label' => __( 'Hover', 'elementor-extensions' ),
+			]
+		);
+
+		$this->add_control(
+			'close_button_hover_color',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .btn_slideout_close:hover i' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_control(
+			'close_button_size',
+			[
+				'label' => __( 'Size', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'unit' => 'px',
+					'size' => 30,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .btn_slideout_close i' => 'font-size: {{SIZE}}{{UNIT}}',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'close_button_align',
+			[
+				'label' => __( 'Align', 'elementor-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'label_block' => false,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-extensions' ),
+						'icon' => 'eicon-h-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-extensions' ),
+						'icon' => 'eicon-h-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-extensions' ),
+						'icon' => 'eicon-h-align-right',
+					]
+				],
+				'selectors' => [
+					'{{WRAPPER}} .btn_slideout_close' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 	}
 
 	protected function render() {
@@ -1690,6 +1792,11 @@ class Nav_Menu extends Widget_Base {
 
   			<div class="ee-mb-sidebar-menu-wrapper">
 	  			<div class="elementor-nav-menu--dropdown elementor-nav-menu__container sidebar">
+
+	  				<div class="btn_slideout_close">
+						<i class="eicon-close"></i>
+		  			</div>
+
 	  				<?php echo $dropdown_menu_html; ?>
 	  			</div>
   			</div>

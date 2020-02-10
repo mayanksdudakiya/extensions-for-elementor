@@ -1215,12 +1215,14 @@
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper{
     height: 100%;
+    overflow: hidden;
 }
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
     overflow: hidden;
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 @media (max-width: 767px){
@@ -1230,11 +1232,24 @@
         text-align: center;
         max-width: 100%;
     }
+
+    .ee_mb_events_wrapper .myeventon_wrapper {
+      height: auto!important;
+    }
+
+    .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
+      width: auto;
+    }
 }
 @media (min-width: 768px){
     .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
         width: 100%;
         max-width: 100%;
+    }
+
+    .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
+      width: 100%;
+      height: 100%;
     }
 }
 
@@ -2582,6 +2597,7 @@
   /*Navigation Menu - Hamburger Menu*/
   .ee-mb-sidebar-menu-wrapper > .sidebar{
     display:none;
+    overflow-x: hidden;
   }
 
   .hamburger.siteset-menu-toggle-button{
@@ -2601,6 +2617,7 @@
       background: #333645;
       width: 275px;
       overflow: auto;
+      overflow-x: hidden;
       -webkit-overflow-scrolling: touch
   }
 
@@ -2630,20 +2647,13 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1)
   }
 
-  .ee-mb-sidebar-menu-wrapper > .sidebar > ul > li {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.25)
-  }
-
   .ee-mb-sidebar-menu-wrapper > .sidebar  ul > li > ul > li {
       border-top: 1px solid rgba(0, 0, 0, 0.45)
   }
 
   .ee-mb-sidebar-menu-wrapper > .sidebar  ul > li > a {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: block;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.25);
       padding: 15px 20px;
       text-transform: uppercase;
       font-size: 0.875rem;
@@ -2662,9 +2672,18 @@
     justify-content: initial;
   }
 
-  /*.ee-mb-sidebar-menu-wrapper > .sidebar  ul > li > a.elementor-sub-item.has-submenu::before {
-      content: "";
-  }*/
+  .ee-mb-sidebar-menu-wrapper .btn_slideout_close{
+    width: 100%;
+  }
+
+  .ee-mb-sidebar-menu-wrapper .btn_slideout_close .eicon-close {
+    font-size: 30px;
+    color: #FFF;
+  }
+
+  .ee-mb-sidebar-menu-wrapper .btn_slideout_close:hover{
+    cursor: pointer;
+  }
 
   .ee-mb-sidebar-menu-wrapper > .sidebar > ul > li > a {
       display: block;

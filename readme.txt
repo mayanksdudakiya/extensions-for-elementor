@@ -80,8 +80,11 @@ Your existing elements/content will work with premium version. So you won't lose
 
 == Changelog ==
 
-= 1.0.5 - 18/01/2020 =
+= 1.0.5 - 05/02/2020 =
 * Fix : Event detail view - Added more styling elements for content
+* Fix : Event detail view - Improve responsive view
+* Fix : Slideout Menu - Added close button for slideout
+* Fix : ACF - Fields button not working when ACF pro plugin exist on site.
 
 = 1.0.4 - 16/01/2020 =
 * Fix : Content support has added into Event single page template
