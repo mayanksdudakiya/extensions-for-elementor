@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
 Requires at least: 4.0
-Tested up to: 5.3.2
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,12 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.6 - 22/04/2020 =
+* Fix : Event Summary View - Bug fixes
+* Fix : Event Calendar View - Style control not working issue resolved
+* Fix : Property - Current proerpty link added in Agent Mail
+* Fix : Mega Menu  - Responsive view improvement
 
 = 1.0.5 - 05/02/2020 =
 * Fix : Event detail view - Added more styling elements for content
