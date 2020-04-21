@@ -418,6 +418,7 @@ if(!empty($post)):
                   <div class="form-group">
                     <textarea id="message" name="txt_message" placeholder="Message" rows="5" class="input-field input-field--textarea form-control" required=""></textarea>
                   </div>
+                  <input type="hidden" id="property_link" name="property_link" value="<?php echo get_the_permalink(); ?>"/>
                   <div class="form-actions">
                     <button type="submit" name="Submit" id="btn_send_agent" class="button button--full btn-submit">Send</button>
                   </div>

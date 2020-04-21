@@ -36,8 +36,9 @@ var getProperties = {
 						'email': document.getElementById('email').value,
 						'message': document.getElementById('message').value,
 						'phone': document.getElementById('telephone').value,
+						'property_link': document.getElementById('property_link').value,
 						'sendto': agent_email,
-					},
+					}, 
 					method: 'POST',
 					success: function (data) {
 						if (data.success) {

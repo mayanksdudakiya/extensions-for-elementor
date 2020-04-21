@@ -143,7 +143,9 @@ class EE_Events extends Base_Widget {
 				'default' => 3,
 				'separator' => 'before',
 				'description' => __( 'Limit events by default on page load', 'elementor-extensions' ),
-				'condition' => ['event_view' => 'summary'],
+				'condition' => [
+					'event_view!' => 'calendar'
+				],
 			]
 		);
 
@@ -1843,7 +1845,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Header Month Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar .fc-left h2' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar h2' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1853,7 +1855,7 @@ class EE_Events extends Base_Widget {
             [
 				'label' => __( 'Header Month Typo', 'elementor-extensions' ),
                 'name' => 'eb_day_month_list_typography',
-                'selector' => '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar .fc-left h2',
+                'selector' => '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar h2',
             ]
 		);
 	
@@ -1871,7 +1873,7 @@ class EE_Events extends Base_Widget {
             [
 				'label' => __( 'Typography', 'elementor-extensions' ),
                 'name' => 'eb_header_button_typo',
-                'selector' => '{{WRAPPER}} .myeventon_calendar .fc-right button',
+                'selector' => '{{WRAPPER}} .myeventon_calendar button',
             ]
 		);
 
@@ -1881,8 +1883,8 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Text Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-left button' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1893,8 +1895,8 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-left button' => 'background: {{VALUE}};',
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button' => 'background: {{VALUE}};',
                 ],
             ]
 		);
@@ -1905,7 +1907,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Active Text Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button:focus,{{WRAPPER}} .myeventon_calendar .fc-left button:focus,{{WRAPPER}} .myeventon_calendar .fc-right button:hover,{{WRAPPER}} .myeventon_calendar .fc-left button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} .myeventon_calendar button:hover' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -1916,7 +1918,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Active Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button:focus,{{WRAPPER}} .myeventon_calendar .fc-left button:focus,{{WRAPPER}} .myeventon_calendar .fc-right button:hover,{{WRAPPER}} .myeventon_calendar .fc-left button:hover' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} .myeventon_calendar button:hover' => 'background: {{VALUE}};',
                 ],
             ]
 		);
@@ -1927,7 +1929,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Hover Text Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button:hover,{{WRAPPER}} .fc-left button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} button:hover' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -1938,7 +1940,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Hover Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-right button:hover,{{WRAPPER}} .fc-left button:hover' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} button:hover' => 'background: {{VALUE}};',
                 ],
             ]
 		);
@@ -2163,7 +2165,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Text Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .custom-event' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -2174,7 +2176,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Hover Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .custom-event:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -2185,7 +2187,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .custom-event' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
                 ],
             ]
 		);
@@ -2196,7 +2198,7 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Hover Background Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .custom-event:hover' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event:hover' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
                 ],
             ]
 		);
@@ -2553,9 +2555,9 @@ class EE_Events extends Base_Widget {
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data > h3' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data h3' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .summaryEventList .summary_cal_description .time_icon > i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data > h3' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data h3' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -2565,7 +2567,7 @@ class EE_Events extends Base_Widget {
             [
 				'label' => __( 'Title Typo', 'elementor-extensions' ),
                 'name' => 'detail_event_dropdown_time_title_typography',
-                'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i,{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data > h3,{{WRAPPER}} .summaryEventList .summary_cal_description .time_icon > i,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data > h3',
+                'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i,{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data h3,{{WRAPPER}} .summaryEventList .summary_cal_description .time_icon > i,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data h3',
             ]
 		);
 		
@@ -2575,8 +2577,8 @@ class EE_Events extends Base_Widget {
                 'label' => __( 'Time Color', 'elementor-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data > p' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data > p' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data p' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data p' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -2586,7 +2588,7 @@ class EE_Events extends Base_Widget {
             [
 				'label' => __( 'Time Typo', 'elementor-extensions' ),
                 'name' => 'detail_event_dropdown_time_string_typography',
-                'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data > p,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data > p',
+                'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data p,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data p',
             ]
         );
 
@@ -2666,7 +2668,7 @@ class EE_Events extends Base_Widget {
 	/*@ Event View : Detail View */
 	public function ee_mb_detail_event_view($settings){
 		
-		$events = $this->eeMbGetEventList();
+		$events = $this->eeMbGetEventList($settings);
 
 		/*
 		 *@ If event present then show otherwise display not found message
@@ -2827,14 +2829,26 @@ class EE_Events extends Base_Widget {
 		endif;
 	}
 
-	public function eeMbGetEventList(){
+	public function eeMbGetEventList($settings=null){
 		/*@
 		 * Getting the events data
 		 */
+
+		$eventLimit = -1;
+		if (!empty($settings)) :
+
+			$eventView = $settings['event_view'];
+
+			if ($eventView === 'detail') :
+				$eventLimit = $settings['event_limit'];
+			endif;
+
+		endif;
+
 		$event_args = array(
 			'post_type' => 'ee_mb_event_slider',
 			'post_status' => 'publish',
-			'posts_per_page' => -1
+			'posts_per_page' => $eventLimit
 		);
 		return get_posts($event_args);
 	}
@@ -3088,7 +3102,7 @@ class EE_Events extends Base_Widget {
 		$args = array(
 			'post_type' => 'ee_mb_event_slider',
 			'post_status' => 'publish',
-			'posts_per_page' => $event_limit,
+			'posts_per_page' => -1,
 			'tax_query'=> $atts['event_tax'],
 			'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
 			'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'meta_value' ),
@@ -3098,8 +3112,7 @@ class EE_Events extends Base_Widget {
 		);
 		$posts = get_posts($args);
 
-		$args['posts_per_page'] = -1;
-		$total_events = count($args);
+		$total_events = count($posts);
 	
 		if($hide_past_events == 'yes'):
 			$posts = array_reverse($posts);
@@ -3122,68 +3135,99 @@ class EE_Events extends Base_Widget {
 		echo '</div>';
 
 		if (!empty($posts)):
-			
-			echo '<ul>';
-				foreach((array) $posts as $post_index => $post):
-					$id = $post->ID;
 
-					$start_date = get_post_meta($id,'_ee_mb_start_date');
-					$end_date = get_post_meta($id,'_ee_mb_end_date');
+			$allPosts = [];
+			$counter = 0;
 
-					/*@ Event start date */
-					if(!empty($start_date[0])):
-						$start_time = get_post_meta($id,'_ee_mb_start_time');
+			foreach((array) $posts as $post_index => $post):
+				$id = $post->ID;
 
-						$start_date = $start_date[0];
-						if(!empty($start_time[0])):
-							$start_time = $start_time[0];
-							$start_date = date('Y-m-d H:i:s', strtotime("$start_date $start_time"));
-						endif;
+				setup_postdata( $post );
+
+				$start_date = get_post_meta($id,'_ee_mb_start_date');
+				$end_date = get_post_meta($id,'_ee_mb_end_date');
+
+				/*@ Event start date */
+				if(!empty($start_date[0])):
+					$start_time = get_post_meta($id,'_ee_mb_start_time');
+
+					$start_date = $start_date[0];
+					if(!empty($start_time[0])):
+						$start_time = $start_time[0];
+						$start_date = date('Y-m-d H:i:s', strtotime("$start_date $start_time"));
 					endif;
+				endif;
 
-					/*@ Event end date */
-					if(!empty($end_date[0])):
-						$end_time = get_post_meta($id,'_ee_mb_end_time');
+				/*@ Event end date */
+				if(!empty($end_date[0])):
+					$end_time = get_post_meta($id,'_ee_mb_end_time');
 
-						$end_date = $end_date[0];
-						if(!empty($end_time[0])):
-							$end_time = $end_time[0];
-							$end_date = date('Y-m-d H:i:s', strtotime("$end_date $end_time"));
-						endif;
+					$end_date = $end_date[0];
+					if(!empty($end_time[0])):
+						$end_time = $end_time[0];
+						$end_date = date('Y-m-d H:i:s', strtotime("$end_date $end_time"));
 					endif;
+				endif;
 
-					$is_hide = '';
-					if(empty($end_date)):
-						$is_hide = strtotime($start_date);
+				$is_hide = '';
+				if(empty($end_date)):
+					$is_hide = strtotime($start_date);
+				else:
+					$is_hide = strtotime($end_date);
+				endif;
+
+				$hide_events = true;
+				if($is_hide <= time() && $hide_past_events == 'yes'):
+					$hide_events = false;
+				endif;
+
+				/*@ Event link start */
+				$event_meta = get_post_meta($id);
+				if(!empty($event_meta['_ee_mb_event_page_link'][0])):
+					$event_inner_page_link = $event_meta['_ee_mb_event_page_link'][0];
+				endif;
+
+				$event_link = 'javascript:void(0);';
+				if(empty($disable_link)):
+					if(!empty($event_meta['_ee_mb_event_external_link'][0])):
+						$event_link = $event_meta['_ee_mb_event_external_link'][0];	
+					elseif(!empty($event_inner_page_link)):
+						$event_link = get_the_permalink($event_inner_page_link);
 					else:
-						$is_hide = strtotime($end_date);
+						$event_link = get_the_permalink($id);
 					endif;
+				endif;
 
-					$hide_events = true;
-					if($is_hide <= time() && $hide_past_events == 'yes'):
-						$hide_events = false;
-					endif;
+				if($hide_events):
 
-					/*@ Event link start */
-					$event_meta = get_post_meta($id);
-					if(!empty($event_meta['_ee_mb_event_page_link'][0])):
-						$event_inner_page_link = $event_meta['_ee_mb_event_page_link'][0];
-					endif;
+					$allPosts[$counter]['hide_events'] = $hide_events;
+					$allPosts[$counter]['start_date'] = $start_date;
+					$allPosts[$counter]['end_date'] = $end_date;
+					$allPosts[$counter]['event_link'] = $event_link;
+					$allPosts[$counter]['event_inner_page_link'] = $event_inner_page_link;
+					$allPosts[$counter]['title'] = get_the_title();
+					$allPosts[$counter]['title'] = get_the_title();
 
-					$event_link = 'javascript:void(0);';
-					if(empty($disable_link)):
-						if(!empty($event_meta['_ee_mb_event_external_link'][0])):
-							$event_link = $event_meta['_ee_mb_event_external_link'][0];	
-						elseif(!empty($event_inner_page_link)):
-							$event_link = get_the_permalink($event_inner_page_link);
-						else:
-							$event_link = get_the_permalink($id);
-						endif;
-					endif;
+					$counter++;
 
-					if($hide_events):
-					
-						setup_postdata( $post );
+				endif;
+
+			endforeach;
+
+			$allPosts = array_slice($allPosts, 0, $event_limit, true);
+
+			if (!empty($allPosts)):
+			
+				echo '<ul>';
+					foreach((array) $allPosts as $post_index => $post):
+						
+						$hide_events = $post['hide_events'];
+						$start_date = $post['start_date'];
+						$end_date = $post['end_date'];
+						$event_link = $post['event_link'];
+						$event_inner_page_link = $post['event_inner_page_link'];
+						$title = $post['title'];
+
 						echo '<li>';
 							$eventlink = ($atts['enable_event_detail'] == 'yes' || (!empty($disable_link)  && $disable_link == 'yes')) ? 'javascript:void(0);' : $event_link;
 							
@@ -3200,7 +3244,7 @@ class EE_Events extends Base_Widget {
 
 								echo '<div class="event_title">';
 									echo '<h4>';
-										echo get_the_title();
+										echo $title;
 									echo '</h4>';
 								echo '</div>';
 							echo '</a>';
@@ -3240,24 +3284,26 @@ class EE_Events extends Base_Widget {
 
 						echo  '<div class="between_line_wrapper"><span class="between_lines"></span></div>';
 
-					endif;
+					endforeach;
+				echo '</ul>';
 
-				endforeach;
-			echo '</ul>';
+				$limit = true;
+				if($event_limit >= $total_events):
+					$limit = false;
+				endif;
+				
+				if(isset($atts['hide_show_more']) && empty($atts['hide_show_more']) && $limit):
+					echo '<p class="show_more_events">Show More Events</p>';
+				else:
+					echo '<p class="no_events">No more events found</p>';
+				endif;
 
-			$limit = true;
-			if($event_limit >= $total_events):
-				$limit = false;
-			endif;
-			
-			if(isset($atts['hide_show_more']) && empty($atts['hide_show_more']) && $limit):
-				echo '<p class="show_more_events">Show More Events</p>';
-			else:
+				echo '<input type="hidden" name="hd_limit_offset" id="hd_limit_offset" value="'.$limit_offset.'" autocomplete="off"/>';
+				echo '<input type="hidden" name="hd_offset" id="hd_offset" value="'.$offset.'" autocomplete="off"/>';
+			else:	
 				echo '<p class="no_events">No more events found</p>';
 			endif;
 
-			echo '<input type="hidden" name="hd_limit_offset" id="hd_limit_offset" value="'.$limit_offset.'" autocomplete="off"/>';
-			echo '<input type="hidden" name="hd_offset" id="hd_offset" value="'.$offset.'" autocomplete="off"/>';
 		else:	
 			echo '<p class="no_events">No more events found</p>';
 		endif;

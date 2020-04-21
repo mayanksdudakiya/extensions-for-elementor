@@ -1215,14 +1215,12 @@
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper{
     height: 100%;
-    overflow: hidden;
 }
 
 .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img{
     overflow: hidden;
     height: 100%;
     width: 100%;
-    object-fit: cover;
 }
 
 @media (max-width: 767px){
@@ -2790,20 +2788,20 @@
         opacity: 1;
       } 
   }
-
+  
   @media only screen and (max-width: 1024px) {
     .ee-mb-megamenu-wrapper .menu-item a + .ee-mb-nav-shortcode {
       left: 0;
       width: 100%;
       right:0;
       visibility: visible;
-      position: relative;
+      position: absolute;
       opacity: 1;
       display: none;
     }
 
     .ee-mb-megamenu-wrapper .elementor-nav-menu li {
-      position: relative;
+      position: static;
     }
 
     .elementor-nav-menu--dropdown.ee-mb-megamenu-wrapper li:after {
@@ -2833,6 +2831,18 @@
         border-top-color: transparent;
     }
   } 
+
+  @media only screen and (max-width: 768px) {
+    .ee-mb-megamenu-wrapper .menu-item a + .ee-mb-nav-shortcode {
+      left: 0;
+      width: 100%;
+      right:0;
+      visibility: visible;
+      position: relative;
+      opacity: 1;
+      display: none;
+    }
+  }
 
   .ee-mb-megamenu-wrapper .elementor-nav-menu {
     width: 100%;
