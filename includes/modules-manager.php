@@ -50,7 +50,8 @@ final class Modules_Manager {
 			'property-search',
 			'table',
 			'testimonial-swiper',
-			'scroll-navigation'
+			'scroll-navigation',
+			'the-events-calendar',
 		];
 
 		return $modules;

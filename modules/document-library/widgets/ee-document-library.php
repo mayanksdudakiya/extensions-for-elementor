@@ -579,16 +579,16 @@ class EE_Document_Library extends Base_Widget {
 			endif;
 
 			if(!empty($settings['add_documents'])):
+
 	            foreach ($settings['add_documents'] as $key => $document):
 					
 					$url = wp_get_attachment_url($document);
 
 	              	$basename = basename($url);
 	                $explodes = explode('.',$basename);
-	                $name = $explodes[0];
+	                $name = get_the_title($document);
 	                $type = $explodes[1];
 	                
-
 	                $bytes = filesize( get_attached_file( $document ) );
 					$size = size_format($bytes);
 					
