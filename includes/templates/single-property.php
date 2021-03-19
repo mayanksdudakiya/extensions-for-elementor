@@ -121,9 +121,9 @@ if(!function_exists('ee_mb_property_search_custom_style')):
   add_action('wp_head','ee_mb_property_search_custom_style');
 endif;
 
-if(!function_exists('siteset_property_search_custom_meta')):
-  add_action('wp_head','siteset_property_search_custom_meta');
-  function siteset_property_search_custom_meta(){
+if(!function_exists('ee_mb_property_search_custom_meta')):
+  add_action('wp_head','ee_mb_property_search_custom_meta');
+  function ee_mb_property_search_custom_meta(){
     $post_id = get_the_ID();
     $post_meta = get_post_meta($post_id);
 
@@ -357,7 +357,7 @@ if(!empty($post)):
                 if(empty($school_checker_tab)):
                   ?>
                   <div id="tab-4" class="tab-content">
-                    <div id="map" style="width:900px; height:600px;"></div>
+                    <div id="ee-mb-map" style="width:900px; height:600px;"></div>
                   </div>
                 <?php  endif; ?>
               </div>

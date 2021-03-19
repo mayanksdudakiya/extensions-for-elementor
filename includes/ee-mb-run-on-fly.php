@@ -25,7 +25,9 @@ class EE_MB_Run_On_Fly{
 
 	public function ee_mb_add_action(){
 
-		if(is_admin()):
+		$checked_widget = get_option('ee_mb_hide_show_widgets');
+			
+		if(is_admin() && is_array($checked_widget) && !empty($checked_widget) && in_array('property-search',$checked_widget)):
 			$this->ee_mb_add_cookies_default_values();
 
 			if(empty(get_page_by_title('property search'))):
@@ -34,6 +36,13 @@ class EE_MB_Run_On_Fly{
 			
 			add_filter('acf/fields/google_map/api', [ $this, 'ee_mb_acf_free_google_map_api' ], 10, 1 );
 			add_action('acf/init', [ $this, 'ee_mb_pro_acf_init' ] );
+		else:
+
+			$page = get_page_by_path( 'property-search' );
+
+			if (!empty($page) && isset($page->ID)):
+				wp_delete_post($page->ID, true); 
+			endif;
 		endif;
 	}
 

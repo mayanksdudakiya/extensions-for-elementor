@@ -134,6 +134,56 @@ class EE_Properties extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'default_property_type',
+			[
+				'label' => __( 'Property Type', 'elementor-extensions' ),
+				'type' => Controls_Manager::SELECT2,
+				'multiple' => true,
+				'options' => [
+					'House'  => __( 'House', 'elementor-extensions' ),
+					'Bungalow' => __( 'Bungalow', 'elementor-extensions' ),
+					'Flat / Apartment' => __( 'Flat / Apartment', 'elementor-extensions' ),
+					'Land' => __( 'Land', 'elementor-extensions' ),
+					'Commercial' => __( 'Commercial', 'elementor-extensions' ),
+					'Other' => __( 'Other', 'elementor-extensions' ),
+				],
+				'description' => __('Enter exact property type text that you have added in property page in dropdown. This will default filter out properties for you', 'elementor-extensions' ),
+				'label_block' => true,
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
+			'hide_area_filter',
+			[
+				'label' => __( 'Area Filter', 'elementor-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'elementor-extensions' ),
+				'label_off' => __( 'Hide', 'elementor-extensions' ),
+				'return_value' => 'none',
+				'default' => 'label_off',
+				'selectors' => [
+					'{{WRAPPER}} .area_filter' => 'display:{{VALUE}};',
+                ],
+			]
+		);
+
+		$this->add_control(
+			'hide_sqft_filter',
+			[
+				'label' => __( 'Sq Ft Filter', 'elementor-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'elementor-extensions' ),
+				'label_off' => __( 'Hide', 'elementor-extensions' ),
+				'return_value' => 'none',
+				'default' => 'label_off',
+				'selectors' => [
+					'{{WRAPPER}} .sqft_filter' => 'display:{{VALUE}};',
+                ],
+			]
+		);
+
 		$this->end_controls_section();
 		
 		$this->start_controls_section(
@@ -157,7 +207,7 @@ class EE_Properties extends Base_Widget {
 		);
 
 		$this->add_control(
-			'searchbox_sub_title',
+			'searchbox_sub_title_label',
 			[
 				'label'       => __( 'Sub Title', 'elementor-extensions' ),
 				'type'        => Controls_Manager::TEXT,
@@ -359,6 +409,7 @@ class EE_Properties extends Base_Widget {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .ee_mb_property_search_page_inner_wrapper label' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #txt_miles' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -381,6 +432,41 @@ class EE_Properties extends Base_Widget {
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .ee_mb_property_search_page_inner_wrapper label',
+			]
+		);
+
+		$this->add_control(
+			'search_form_slider',
+			[
+				'label' => __( 'Slider', 'elementor-extensions' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'slider_color',
+			[
+				'label' => __( 'Knob Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .slider::-moz-range-thumb' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .slider::-webkit-slider-thumb' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .slider::-ms-thumb' => 'background: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'slider_background',
+			[
+				'label' => __( 'Track Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper input[type="range"]::-moz-range-track' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper input[type="range"]::-webkit-slider-runnable-track' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper input[type="range"]::-ms-track' => 'background: {{VALUE}};',
+				],
 			]
 		);
 
@@ -528,6 +614,65 @@ class EE_Properties extends Base_Widget {
 
 		$this->end_controls_tabs();
 
+		$this->add_control(
+			'searchbox_title_label',
+			[
+				'label' => __( 'Title', 'elementor-extensions' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'searchbox_title_color',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > h4' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'searchbox_title_typo',
+				'label' => __( 'Typographpy', 'elementor-extensions' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > h4',
+			]
+		);
+
+		$this->add_control(
+			'searchbox_sub_title',
+			[
+				'label' => __( 'Sub Title', 'elementor-extensions' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'searchbox_sub_title_color',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > span' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'searchbox_sub_title_typo',
+				'label' => __( 'Typographpy', 'elementor-extensions' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > span',
+			]
+		);
 
 		$this->add_control(
 			'filter_bar_labels',
@@ -579,6 +724,30 @@ class EE_Properties extends Base_Widget {
 			]
 		);
 
+		$this->add_responsive_control(
+			'filter_bar_margin',
+			[
+				'label' => __( 'Margin', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filter_bar_padding',
+			[
+				'label' => __( 'Padding', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -598,18 +767,6 @@ class EE_Properties extends Base_Widget {
 				'types' => [ 'classic', 'gradient'],
 				'separator' => 'after',
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing',
-			]
-		);
-
-		$this->add_responsive_control(
-			'properties_padding',
-			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
-				'selectors' => [
-					'{{WRAPPER}} .ee_mb_property_listing' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
 			]
 		);
 
@@ -645,6 +802,30 @@ class EE_Properties extends Base_Widget {
 					'{{WRAPPER}} .ee_mb_property_listing' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'properties_margin',
+			[
+				'label' => __( 'Margin', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'properties_padding',
+			[
+				'label' => __( 'Padding', 'elementor-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -1062,9 +1243,13 @@ class EE_Properties extends Base_Widget {
 
 		$pro_general_setting = EE_MB_Setting_Common::get_settings_key( 'ee_mb_property_setting' );
 
-		$this->currency = (isset($pro_general_setting->currency_symbol)) ? $pro_general_setting->currency_symbol : '';
+		$this->currency = (!empty($pro_general_setting) && isset($pro_general_setting->currency_symbol)) ? $pro_general_setting->currency_symbol : '$';
 
-		$data_location = $data_min = $data_max = $data_bedrooms = $data_type = $data_radius = $data_lat = $data_long = $sort = $view = '';
+		$data_location = $data_min = $data_max = $data_bedrooms = $data_radius = $data_lat = $data_long = $sort = $view = '';
+
+		$default_property_type = $data_type = (isset($settings['default_property_type'])) ? $settings['default_property_type'] : [];
+
+		$area = $sqft = '';
 		if(isset($_GET) && !empty($_GET)):
 		    $data_location =  (isset($_GET['location'])) ? sanitize_text_field($_GET['location']) : '';
 		    $data_min = (isset($_GET['min'])) ? intval($_GET['min']) : '';
@@ -1076,8 +1261,27 @@ class EE_Properties extends Base_Widget {
 		    $data_long = (isset($_GET['long'])) ? sanitize_text_field($_GET['long']) : '';
 		    $sort = (isset($_GET['price_sort'])) ? sanitize_text_field($_GET['price_sort']) : '';
 		    $view = (isset($_GET['view'])) ? sanitize_text_field($_GET['view']) : '';
+		    $area = (isset($_GET['area'])) ? sanitize_text_field($_GET['area']) : '';
+		    $sqft = (isset($_GET['sqft'])) ? sanitize_text_field($_GET['sqft']) : '';
 		endif;
 
+		$property_type_options = [
+			'House',
+			'Bungalow',
+			'Flat / Apartment',
+			'Land',
+			'Commercial',
+			'Other'
+		];
+
+		if (!empty($default_property_type)) :
+
+			if (is_array($default_property_type)) :
+				$property_type_options = array_intersect($default_property_type, $property_type_options);
+			else:
+				$property_type_options = array($default_property_type);
+			endif;
+		endif;
 		?>
 		<!-- Loading start -->
 		<div class="elementor_ee_mb_loading_overlay property_search">
@@ -1205,12 +1409,14 @@ class EE_Properties extends Base_Widget {
 
 			                        <select name="property_type" id="drp_property_type">
 			                            <option value="">Select</option>
-			                            <option value="House" <?php echo ($data_type == 'House') ? 'selected=""' : '' ; ?>>House</option>
-			                            <option value="Bungalow" <?php echo ($data_type == 'Bungalow') ? 'selected=""' : '' ; ?>>Bungalow</option>
-			                            <option value="Flat / Apartment" <?php echo ($data_type == "Flat / Apartment") ? 'selected=""' : '' ; ?>>Flat / Apartment</option>
-			                            <option value="Land" <?php echo ($data_type == 'Land') ? 'selected=""' : '' ; ?>>Land</option>
-			                            <option value="Commercial" <?php echo ($data_type == 'Commercial') ? 'selected=""' : '' ; ?>>Commercial</option>
-			                            <option value="Other" <?php echo ($data_type == 'Other') ? 'selected=""' : '' ; ?>>Other</option>
+
+			                            <?php 
+			                            foreach ($property_type_options as $key => $type) 
+			                            {
+			                            	$selected = ($data_type == type) ? 'selected=""' : '';
+			                            	echo '<option value="'.$type.'" '.$selected.'>'.$type.'</option>';
+			                            } 
+			                            ?>
 			                        </select>
 			                    </div>
 			                </div>
@@ -1223,7 +1429,40 @@ class EE_Properties extends Base_Widget {
 			                    	echo '<button type="button" id="btn_property_search">'.$button_label.'</button>';
 		                    	?>
 			                </div>
-			            </div>    
+			            </div> 
+
+			             <div class="ee_mb_property_search_page_inner_wrapper">
+			                <div class="ee_mb_property_search_page_col search_btn_desk">
+			                    &nbsp;	
+			                </div>
+
+			                <div class="ee_mb_property_search_page_col price-wrap">
+			                    <div class="property_search_textbox area_filter">
+			                        <div class="label_wrapper">
+			                            <label>Area:</label>
+			                        </div>
+			                        
+			                        <input type="text" name="area" id="area" value="<?php echo $area; ?>">
+			                    </div>
+			                </div>
+
+			                <div class="ee_mb_property_search_page_col">
+			                    <div class="property_search_textbox sqft_filter">
+			                        <div class="label_wrapper">
+			                            <label>Sq Ft:</label>
+			                        </div>
+			                        
+			                        <input type="text" name="sqft" id="sqft" value="<?php echo $sqft; ?>">
+			                    </div>
+			                </div>
+			                
+			                <div class="ee_mb_property_search_page_col search_btn_mob">
+			                	<?php 
+			                		$button_label = ( !empty($settings['searchbox_button_label']) ) ? $settings['searchbox_button_label'] : 'Search';
+			                    	echo '<button type="button" id="btn_property_search">'.$button_label.'</button>';
+		                    	?>
+			                </div>
+			            </div>   
 			        </div>
 			    </div>  
 			</div>
@@ -1285,6 +1524,7 @@ class EE_Properties extends Base_Widget {
 	public function getPropertyCpt($request){
 		global $post;
 
+		
 		$pro_general_setting = EE_MB_Setting_Common::get_settings_key( 'ee_mb_property_setting' );
 		$ee_mb_agent = EE_MB_Setting_Common::get_settings_key( 'ee_mb_agent' );
 
@@ -1316,17 +1556,19 @@ class EE_Properties extends Base_Widget {
 		$price_max = intval($request['max']);
 		$price_min = intval($request['min']);
 		$bedrooms = intval($request['room']);
-		$property_type = sanitize_text_field($request['property_type']);
+		$area = intval($request['area']);
+		$sqft = intval($request['sqft']);
+		$property_type = $request['property_type'];
 
 		if(!empty($property_type) || !empty($bedrooms) || !empty($price_min) || !empty($price_max)):
 			$meta_query = array( 'relation' => 'AND' );
 		endif;
-		
+
 		if(!empty($property_type)):
             $meta_query[] = array(
                 'key'     => 'type',
                 'value'   => $property_type,
-                'compare' => '='
+                'compare' => (is_array($property_type)) ? 'IN' : '=',
             );
 		endif;
 
@@ -1355,6 +1597,34 @@ class EE_Properties extends Base_Widget {
                 'compare' => '<='
             );
         endif;
+
+        if(!empty($area)):
+            $meta_query[] = array(
+                'key'     => 'area',
+				'value'   => $area,				
+                'compare' => '<='
+            );
+
+            $meta_query[] = array(
+                'key'     => 'area',
+				'value'   => 0,				
+                'compare' => '>='
+            );
+		endif;
+
+		if(!empty($sqft)):
+            $meta_query[] = array(
+                'key'     => 'square_footage',
+				'value'   => $sqft,				
+                'compare' => '<='
+            );
+
+             $meta_query[] = array(
+                'key'     => 'square_footage',
+				'value'   => 0,				
+                'compare' => '>='
+            );
+		endif;
 		
 		$get_all = false;
 		if(!empty($meta_query)):	

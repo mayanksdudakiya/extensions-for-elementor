@@ -2,7 +2,7 @@
 use ElementorExtensions\Classes\Utils;
 
     $ee_mb_post_types = Utils::get_post_types();
-    $exclude_post_types = [ 'post', 'page', 'product', 'agent', 'ee_mb_member' ];
+    $exclude_post_types = [ 'post', 'page', 'product', 'agent', 'tribe_events' ,'ee_mb_member' ];
 ?>
 <div id="section_settings" class="ee-mb-tabcontent">
     <form method="post" name="form_section_settings" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">

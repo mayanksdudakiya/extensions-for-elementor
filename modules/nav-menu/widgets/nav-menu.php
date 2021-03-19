@@ -328,7 +328,7 @@ class Nav_Menu extends Widget_Base {
 					'right' => 'margin-left: auto',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button' => '{{VALUE}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button' => '{{VALUE}}',
 				],
 				'condition' => [
 					'layout' => 'slideout',
@@ -369,6 +369,7 @@ class Nav_Menu extends Widget_Base {
 				'condition' => [
 					'layout!' => 'dropdown',
 				],
+				'frontend_available' => true
 			]
 		);
 
@@ -1433,7 +1434,7 @@ class Nav_Menu extends Widget_Base {
 
 
 		/*@Hamburger Toggle Menu Style start*/
-		$this->start_controls_section( 'style_toggle_siteset',
+		$this->start_controls_section( 'style_toggle_ee_mb',
 			[
 				'label' => __( 'Hamburger Button', 'elementor-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -1446,31 +1447,31 @@ class Nav_Menu extends Widget_Base {
 		$this->start_controls_tabs( 'tabs_toggle_style_style' );
 
 		$this->start_controls_tab(
-			'tab_toggle_style_normal_siteset',
+			'tab_toggle_style_normal_ee_mb',
 			[
 				'label' => __( 'Normal', 'elementor-extensions' ),
 			]
 		);
 
 		$this->add_control(
-			'toggle_color_siteset',
+			'toggle_color_ee_mb',
 			[
 				'label' => __( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.siteset-menu-toggle-button .hamburger-inner,{{WRAPPER}} div.siteset-menu-toggle-button .hamburger-inner::before,{{WRAPPER}} div.siteset-menu-toggle-button .hamburger-inner::after' => 'background: {{VALUE}}', 
-					'{{WRAPPER}} div.siteset-menu-toggle-button span' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::before,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::after' => 'background: {{VALUE}}', 
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button span' => 'color: {{VALUE}}', 
 				],
 			]
 		);
 
 		$this->add_control(
-			'toggle_background_color_siteset',
+			'toggle_background_color_ee_mb',
 			[
 				'label' => __( 'Background Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1478,30 +1479,30 @@ class Nav_Menu extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
-			'tab_toggle_style_hover_siteset',
+			'tab_toggle_style_hover_ee_mb',
 			[
 				'label' => __( 'Hover', 'elementor-extensions' ),
 			]
 		);
 
 		$this->add_control(
-			'toggle_color_hover_siteset',
+			'toggle_color_hover_ee_mb',
 			[
 				'label' => __( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.siteset-menu-toggle-button:hover' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button:hover' => 'color: {{VALUE}}', 
 				],
 			]
 		);
 
 		$this->add_control(
-			'toggle_background_color_hover_siteset',
+			'toggle_background_color_hover_ee_mb',
 			[
 				'label' => __( 'Background Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1511,7 +1512,7 @@ class Nav_Menu extends Widget_Base {
 		$this->end_controls_tabs();
 
 		$this->add_control(
-			'toggle_size_siteset',
+			'toggle_size_ee_mb',
 			[
 				'label' => __( 'Size', 'elementor-extensions' ),
 				'type' => Controls_Manager::SLIDER,
@@ -1521,14 +1522,14 @@ class Nav_Menu extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'separator' => 'before',
 			]
 		);
 
 		$this->add_control(
-			'toggle_border_width_siteset',
+			'toggle_border_width_ee_mb',
 			[
 				'label' => __( 'Border Width', 'elementor-extensions' ),
 				'type' => Controls_Manager::SLIDER,
@@ -1538,19 +1539,19 @@ class Nav_Menu extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button' => 'border-width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button' => 'border-width: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
 
 		$this->add_control(
-			'toggle_border_radius_siteset',
+			'toggle_border_radius_ee_mb',
 			[
 				'label' => __( 'Border Radius', 'elementor-extensions' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .siteset-menu-toggle-button' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .ee-mb-menu-toggle-button' => 'border-radius: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -1582,10 +1583,30 @@ class Nav_Menu extends Widget_Base {
 					'{{WRAPPER}} .elementor-nav-menu .menu-item .ee-mb-nav-shortcode' => 'padding-top: {{SIZE}}{{UNIT}};',
 				],
 			]
+		);  
+
+		$this->add_control(
+			'mobile_megamenu_style',
+			[
+				'label' => __( 'Mobile Slide-Out', 'elementor-extensions' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'mobile_megamenu_backgound',
+			[
+				'label' => __( 'Background Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'.ee-mb-megamenu-submenu.tablet' => 'background-color: {{VALUE}}!important',
+					'.ee-mb-megamenu-submenu.mobile' => 'background-color: {{VALUE}}!important',
+				],
+			]
 		);
 
 		$this->end_controls_section();
-
 
 		/*@Close button style start*/
 		$this->start_controls_section( 'slideout_close_button',
@@ -1742,10 +1763,22 @@ class Nav_Menu extends Widget_Base {
 			] );
 		}
 
-		$settings['mega_menu'] = '';
+		$settings['mega_menu'] = $megamenuHtml = '';
 		if ( 'mega_menu' == $settings['layout']) :
+			
 			$settings['layout'] = 'horizontal';
 			$settings['mega_menu'] = 'ee-mb-megamenu-wrapper';
+
+			/*@ Mega-submenu*/
+			$megaMenuItems = wp_get_nav_menu_items($settings['menu']);
+
+			$megamenuHtml = '<div class="ee-mb-megamenu-submenu '.$settings['dropdown'].'" id="templateMainNav" style="display:none;">';
+
+			foreach ($megaMenuItems as $key => $item) {
+				$desc = do_shortcode($item->post_content);
+				$megamenuHtml .= '<div class="ee-mb-nav-shortcode">' . $desc . '</div>';
+			}
+			$megamenuHtml .= '</div>';
 		endif;
 
 		if ( 'dropdown' !== $settings['layout'] && 'slideout' !== $settings['layout']) :
@@ -1781,7 +1814,7 @@ class Nav_Menu extends Widget_Base {
 		endif;
 
 		if ('slideout' === $settings['layout']): ?>
-			<div class="hamburger hamburger--3dx siteset-menu-toggle-button">
+			<div class="hamburger hamburger--3dx ee-mb-menu-toggle-button">
 			    <div class="hamburger-box">
 			      <div class="hamburger-inner"></div>
 			    </div>
@@ -1808,6 +1841,7 @@ class Nav_Menu extends Widget_Base {
 		</div>
 		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container <?php echo $settings['mega_menu']; ?>"><?php echo $dropdown_menu_html; ?></nav>
 		<?php
+		echo $megamenuHtml;
 		endif;
 	}
 

@@ -16,8 +16,10 @@ class Module extends Module_Base {
 	
 	protected function add_actions() {
 
-		add_filter( 'walker_nav_menu_start_el', [$this, 'ee_mb_nav_menu_megamenu_shortcode' ], 10, 4 );
+		//add_filter( 'walker_nav_menu_start_el', [$this, 'ee_mb_nav_menu_megamenu_shortcode' ], 10, 4 );
 
+		add_action('wp_footer', [$this, 'ee_mb_megamenu_html']);
+		
 		add_action( 'elementor/element/section/section_effects/before_section_end', function( $element, $args ) {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header',
@@ -198,6 +200,11 @@ class Module extends Module_Base {
 		    );
 		    
 		}, 10, 2 );
+	}
+
+	public function ee_mb_megamenu_html(){
+		echo '<div class="ee-mb-megamenu-submenu" id="mainNavigation">
+		</div>';
 	}
 	
 	public function ee_mb_nav_menu_megamenu_shortcode( $item_output, $item, $depth, $args ) {

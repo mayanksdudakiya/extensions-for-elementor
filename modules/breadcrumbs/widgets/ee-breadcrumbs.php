@@ -813,9 +813,9 @@ class EE_Breadcrumbs extends Base_Widget {
 				
 				$post_type = get_post_type();
 				
-				if ( $post_type !== 'post' ) {
+				$counter = 1;
 
-					$counter = 1;
+				if ( $post_type !== 'post' ) {
 
 					if ( '' === $settings['cpt_crumbs'] || 'both' === $settings['cpt_crumbs'] ) {
 
@@ -823,7 +823,7 @@ class EE_Breadcrumbs extends Base_Widget {
 						$item_content = $post_type_object->labels->name;
 
 						$this->render_item( 'post-type-archive', [
-							'index'		=> 1,
+							'index'		=> $counter,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'post-type-archive',
@@ -841,7 +841,7 @@ class EE_Breadcrumbs extends Base_Widget {
 						$terms = Utils::get_parent_terms_highest( $post->ID );
 
 						if ( $terms ) {
-							$counter = 1;
+							
 							foreach( $terms as $term ) {
 								$this->render_item( 'post-type-terms', [
 									'index'		=> $counter,
@@ -889,8 +889,6 @@ class EE_Breadcrumbs extends Base_Widget {
 							
 						if ( ! isset( $parents ) ) $parents = null;
 	
-						$counter = 1;
-	
 						foreach ( $anc as $ancestor ) {
 	
 							$this->render_item( 'ancestor', [
@@ -906,8 +904,6 @@ class EE_Breadcrumbs extends Base_Widget {
 							$counter++;
 						}
 					}
-	
-					$counter = 1;
 	
 					$page_id = $settings['cpt_page'];
 
@@ -973,8 +969,7 @@ class EE_Breadcrumbs extends Base_Widget {
 					}
 
 					if( ! empty( $last_category ) ) {
-						$counter = 1;
-
+						
 						foreach ( $cat_parents as $parent ) {
 							$_parent = get_term( $parent );
 
@@ -995,7 +990,7 @@ class EE_Breadcrumbs extends Base_Widget {
 						}
 
 						$this->render_item( 'category', [
-							'index'		=> $counter,
+							'index'		=> $counter++,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'category' . $last_category->term_id,
@@ -1016,7 +1011,7 @@ class EE_Breadcrumbs extends Base_Widget {
 					} else if ( ! empty( $cat_id ) ) {
 
 						$this->render_item( 'category', [
-							'index'		=> 1,
+							'index'		=> $counter++,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'category',
@@ -1026,7 +1021,7 @@ class EE_Breadcrumbs extends Base_Widget {
 						] );
 
 						$this->render_item( 'single', [
-							'index'		=> 2,
+							'index'		=> $counter++,
 							'current' 	=> true,
 							'separator'	=> false,
 							'key' 		=> 'single',
@@ -1037,19 +1032,15 @@ class EE_Breadcrumbs extends Base_Widget {
 					} else {
 
 						$this->render_item( 'single', [
-							'index'		=> 1,
+							'index'		=> $counter++,
 							'current' 	=> true,
 							'separator'	=> false,
 							'key' 		=> 'single',
 							'ids' 		=> [ $post->ID ],
 							'content' 	=> get_the_title(),
 						] );
-
 					}
 				}
-
-				
-				
 			} else if ( $query->is_category() ) {
 
 				$cat_id = get_query_var( 'cat' );
@@ -1074,7 +1065,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				}
 
 				$this->render_item( 'category', [
-					'index'		=> $counter,
+					'index'		=> $counter++,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'category',
@@ -1084,14 +1075,14 @@ class EE_Breadcrumbs extends Base_Widget {
 				
 			} else if ( $query->is_page() ) {
 				
+				$counter = 1;
+
 				if ( $post->post_parent && 'yes' !== $settings['hide_parent']) {
 						
 					$anc = get_post_ancestors( $post->ID );
 					$anc = array_reverse($anc);
 						
 					if ( ! isset( $parents ) ) $parents = null;
-
-					$counter = 1;
 
 					foreach ( $anc as $ancestor ) {
 
@@ -1108,8 +1099,6 @@ class EE_Breadcrumbs extends Base_Widget {
 						$counter++;
 					}
 				}
-
-				$counter = 1;
 
 				if ( 'page' === $settings['cpt_crumbs']) {
 
@@ -1133,7 +1122,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				}
 
 				$this->render_item( 'page', [
-					'index'		=> $counter,
+					'index'		=> $counter++,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'page',
@@ -1152,7 +1141,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				$get_term_name 	= $terms[0]->name;
 
 				$this->render_item( 'tag', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'tag',
@@ -1163,7 +1152,7 @@ class EE_Breadcrumbs extends Base_Widget {
 			} else if ( $query->is_day() ) {
 
 				$this->render_item( 'year', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'year',
@@ -1173,7 +1162,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				] );
 
 				$this->render_item( 'month', [
-					'index'		=> 2,
+					'index'		=> $counter++,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'month',
@@ -1183,7 +1172,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				] );
 
 				$this->render_item( 'day', [
-					'index'		=> 3,
+					'index'		=> $counter++,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'day',
@@ -1194,7 +1183,7 @@ class EE_Breadcrumbs extends Base_Widget {
 			} else if ( $query->is_month() ) {
 
 				$this->render_item( 'year', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'year',
@@ -1204,7 +1193,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				] );
 
 				$this->render_item( 'month', [
-					'index'		=> 2,
+					'index'		=> $counter++,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'month',
@@ -1215,7 +1204,7 @@ class EE_Breadcrumbs extends Base_Widget {
 			} else if ( $query->is_year() ) {
 
 				$this->render_item( 'year', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'year',
@@ -1230,7 +1219,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				$userdata = get_userdata( $author );
 
 				$this->render_item( 'author', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'author',
@@ -1241,7 +1230,7 @@ class EE_Breadcrumbs extends Base_Widget {
 			} else if ( $query->is_search() ) {
 
 				$this->render_item( 'search', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'search',
@@ -1251,7 +1240,7 @@ class EE_Breadcrumbs extends Base_Widget {
 			} elseif ( $query->is_404() ) {
 
 				$this->render_item( '404', [
-					'index'		=> 1,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> '404',

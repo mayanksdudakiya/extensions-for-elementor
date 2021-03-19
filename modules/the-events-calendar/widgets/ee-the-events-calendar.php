@@ -45,29 +45,25 @@ class EE_The_Events_Calendar extends Base_Widget {
 		return [ 'the', 'events', 'calendar', 'tec', 'th' ];
 	}
 
-	public function get_categories() {
-		return [ 'elementor-for-extensions'];
-	}
-	
 	protected function _register_controls() {
 
 		$this->start_controls_section(
 			'event_content',
 			[
-				'label' => __( 'Events', 'elementor-extensions' ),
+				'label' => __( 'Events', 'elementor-for-extensions' ),
 			]
 		);
 
 		$this->add_control(
 			'event_view',
 			[
-				'label' => __( 'Event View', 'elementor-extensions' ),
+				'label' => __( 'Event View', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'detail',
 				'options' => [
-					'detail' => __( 'Detail View', 'elementor-extensions' ),
-					'summary' => __( 'Summary View', 'elementor-extensions' ),
-					'calendar' => __( 'Calendar View', 'elementor-extensions' ),
+					'detail' => __( 'Detail View', 'elementor-for-extensions' ),
+					'summary' => __( 'Summary View', 'elementor-for-extensions' ),
+					'calendar' => __( 'Calendar View', 'elementor-for-extensions' ),
 				],
 				'frontend_available' => true,
 			]
@@ -76,10 +72,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'disable_link',
 			[
-				'label' => __( 'Disable Event Page Link', 'elementor-extensions' ),
+				'label' => __( 'Disable Event Page Link', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => 'label_on',
 				'condition' => [
@@ -91,10 +87,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'enable_event_detail',
 			[
-				'label' => __( 'Enable Event Detail', 'elementor-extensions' ),
+				'label' => __( 'Enable Event Detail', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => 'label_on',
 				'condition' => [
@@ -106,10 +102,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'show_future_events',
 			[
-				'label' => __( 'Show Future Events', 'elementor-extensions' ),
+				'label' => __( 'Show Future Events', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => '',
 				'frontend_available' => true,
@@ -120,10 +116,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'hide_past_events',
 			[
-				'label' => __( 'Hide Past Events', 'elementor-extensions' ),
+				'label' => __( 'Hide Past Events', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => '',
 				'condition' => ['event_view' => 'summary'],
@@ -133,10 +129,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'default_to_next_event',
 			[
-				'label' => __( 'Default to Next Available Event', 'elementor-extensions' ),
+				'label' => __( 'Default to Next Available Event', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => '',
 				'condition' => ['event_view' => 'summary'],
@@ -146,16 +142,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_columns',
 			[
-				'label' => __( 'Columns', 'elementor-extensions' ),
+				'label' => __( 'Columns', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'myeventon_wrapper-4',
 				'options' => [
-					'myeventon_wrapper-12' => __( '1', 'elementor-extensions' ),
-					'myeventon_wrapper-6' => __( '2', 'elementor-extensions' ),
-					'myeventon_wrapper-4' => __( '3', 'elementor-extensions' ),
-					'myeventon_wrapper-3' => __( '4', 'elementor-extensions' ),
-					'myeventon_wrapper-24' => __( '5', 'elementor-extensions' ),
-					'myeventon_wrapper-2' => __( '6', 'elementor-extensions' ),
+					'myeventon_wrapper-12' => __( '1', 'elementor-for-extensions' ),
+					'myeventon_wrapper-6' => __( '2', 'elementor-for-extensions' ),
+					'myeventon_wrapper-4' => __( '3', 'elementor-for-extensions' ),
+					'myeventon_wrapper-3' => __( '4', 'elementor-for-extensions' ),
+					'myeventon_wrapper-24' => __( '5', 'elementor-for-extensions' ),
+					'myeventon_wrapper-2' => __( '6', 'elementor-for-extensions' ),
 				],
 				// 'devices' => [ 'desktop', 'tablet', 'mobile' ],
 				'desktop_default' => [
@@ -172,7 +168,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				],
 				'frontend_available' => true,
 				// 'selectors' => [
-				// 	'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'width: {{SIZE}}%;',
+				// 	'{{WRAPPER}} .tec_ee_mb_events_wrapper .myeventon_wrapper' => 'width: {{SIZE}}%;',
 				// ],
 			]
 		);
@@ -180,14 +176,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'column_gap',
 			[
-				'label' => __( 'Column Gap', 'elementor-extensions' ),
+				'label' => __( 'Column Gap', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'medium',
 				'options' => [
-					'small' => __( 'Small', 'elementor-extensions' ),
-					'medium' => __( 'Medium', 'elementor-extensions' ),
-					'large' => __( 'Large', 'elementor-extensions' ),
-					'collapsed' => __( 'Collapsed', 'elementor-extensions' ),
+					'small' => __( 'Small', 'elementor-for-extensions' ),
+					'medium' => __( 'Medium', 'elementor-for-extensions' ),
+					'large' => __( 'Large', 'elementor-for-extensions' ),
+					'collapsed' => __( 'Collapsed', 'elementor-for-extensions' ),
 				],
 				'condition' => [
 					'event_view' => 'detail'
@@ -199,7 +195,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'row_gap',
 			[
-				'label' => __( 'Row Gap', 'elementor-extensions' ),
+				'label' => __( 'Row Gap', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -210,9 +206,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'condition' => [
 					'event_view' => 'detail'
 				],
-				
+				'default' => [
+					'size' =>20
+				],				
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'margin-bottom: {{SIZE}}px'
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper' => 'margin-bottom: {{SIZE}}px'
 				],
 			]
 		);
@@ -220,10 +218,58 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'show_image',
 			[
-				'label' => __( 'Show Image', 'elementor-extensions' ),
+				'label' => __( 'Show Image', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'auto_height',
+			[
+				'label' => __( 'Equal Height', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'show_time',
+			[
+				'label' => __( 'Show Time', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'show_filter',
+			[
+				'label' => __( 'Show Filter', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'default' => 'yes',
@@ -236,10 +282,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'show_title',
 			[
-				'label' => __( 'Show Title', 'elementor-extensions' ),
+				'label' => __( 'Show Title', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'default' => 'yes',
@@ -252,10 +298,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'show_date',
 			[
-				'label' => __( 'Show Date', 'elementor-extensions' ),
+				'label' => __( 'Show Date', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'default' => 'yes',
@@ -268,10 +314,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'show_excerpt',
 			[
-				'label' => __( 'Show Excerpt', 'elementor-extensions' ),
+				'label' => __( 'Show Excerpt', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'default' => 'yes',
@@ -284,9 +330,56 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'excerpt_length',
 			[
-				'label' => __( 'Excerpt Length', 'elementor-extensions' ),
+				'label' => __( 'Excerpt Length', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => 15,
+				'frontend_available' => true,
+				'condition' => [
+					'event_view' => 'detail',
+					'show_excerpt' => 'yes'
+				],
+			]
+		);
+
+		// $this->add_control(
+		// 	'show_meta',
+		// 	[
+		// 		'label' => __( 'Show Meta', 'elementor-for-extensions' ),
+		// 		'type' => Controls_Manager::SWITCHER,
+		// 		'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+		// 		'label_off' => __( 'No', 'elementor-for-extensions' ),
+		// 		'return_value' => 'yes',
+		// 		'frontend_available' => true,
+		// 		'default' => 'yes',
+		// 		'condition' => [
+		// 			'event_view' => 'detail'
+		// 		],
+		// 	]
+		// );
+		$this->add_control(
+			'show_cost',
+			[
+				'label' => __( 'Show Cost', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'show_website',
+			[
+				'label' => __( 'Show Website', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
 				'frontend_available' => true,
 				'condition' => [
 					'event_view' => 'detail'
@@ -295,61 +388,55 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
-			'show_meta',
+			'event_website_text_icon',
 			[
-				'label' => __( 'Show Meta', 'elementor-extensions' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
-				'return_value' => 'yes',
-				'frontend_available' => true,
-				'default' => 'yes',
+				'label' => __( 'Website Icon', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::ICONS,
 				'condition' => [
-					'event_view' => 'detail'
+					'event_view' => 'detail',
+					'show_website' => 'yes'
 				],
 			]
 		);
+
 		$this->add_control(
-			'show_cost',
+			'event_website_text',
 			[
-				'label' => __( 'Show Cost', 'elementor-extensions' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
-				'return_value' => 'yes',
-				'frontend_available' => true,
-				'default' => 'yes',
+				'label' => __( 'Website Text', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => false,
 				'condition' => [
-					'event_view' => 'detail'
+					'event_view' => 'detail',
+					'show_website' => 'yes'
 				],
-			]
-		);
-		$this->add_control(
-			'show_website',
-			[
-				'label' => __( 'Show Website', 'elementor-extensions' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
-				'return_value' => 'yes',
 				'frontend_available' => true,
-				'default' => 'yes',
-				'condition' => [
-					'event_view' => 'detail'
-				],
 			]
 		);
 
 		$this->add_control(
 			'show_location',
 			[
-				'label' => __( 'Show Location', 'elementor-extensions' ),
+				'label' => __( 'Show Location', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
-				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'show_seperator',
+			[
+				'label' => __( 'Add Meta Seperator', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
 				'condition' => [
 					'event_view' => 'detail'
 				],
@@ -359,10 +446,25 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'anchor_link',
 			[
-				'label' => __( 'Anchor Link', 'elementor-extensions' ),
+				'label' => __( 'Anchor Link', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'read_more_text',
+			[
+				'label' => __( 'Read More', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'frontend_available' => true,
 				'default' => 'yes',
@@ -373,9 +475,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'event_read_more_text',
+			[
+				'label' => __( 'Link Text', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'condition' => ['event_view' => 'detail'],
+				'default' => __( 'Read more', 'elementor-for-extensions' ),
+				'placeholder' => __( 'Enter read more link text here', 'elementor-for-extensions' ),
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
 			'event_limit',
 			[
-				'label' => __( 'Event Limit', 'elementor-extensions' ),
+				'label' => __( 'Event Limit', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::NUMBER,
 				'label_block' => false,
 				'min' => -1,
@@ -383,7 +498,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'step' => 1,
 				'default' => 3,
 				'separator' => 'before',
-				'description' => __( 'Limit events by default on page load', 'elementor-extensions' ),
+				'description' => __( 'Limit events by default on page load', 'elementor-for-extensions' ),
 				'condition' => [
 					'event_view' => 'summary'
 				],
@@ -393,53 +508,60 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_offset',
 			[
-				'label' => __( 'Event Offset', 'elementor-extensions' ),
+				'label' => __( 'Event Offset', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::NUMBER,
 				'label_block' => false,
 				'min' => -1,
 				'max' => 100,
 				'step' => 1,
 				'default' => 3,
-				'description' => __( 'Limit events when you click on "Show more button"', 'elementor-extensions' ),
+				'description' => __( 'Limit events when you click on "Show more button"', 'elementor-for-extensions' ),
 				'condition' => ['event_view' => 'summary'],
 			]
 		);
 
 		$this->add_control(
-			'event_read_more',
+			'event_date_formate',
 			[
-				'label' => __( 'Link Text', 'elementor-extensions' ),
-				'type' => Controls_Manager::TEXT,
-				'label_block' => true,
-				'condition' => ['event_view' => 'detail'],
-				'default' => __( 'Read more', 'elementor-extensions' ),
-				'placeholder' => __( 'Enter read more link text here', 'elementor-extensions' ),
+				'label' => __( 'Date Format', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'l dS F Y',
+				'options' => [
+					'l dS F Y' => __( 'Monday 30th June 2008', 'elementor-for-extensions' ),
+					'd-m-Y' => __( '30-06-2008', 'elementor-for-extensions' ),
+					'Y-m-d' => __( '2008-06-30', 'elementor-for-extensions' ),
+					'd M Y' => __( '30 June 2008', 'elementor-for-extensions' ),
+					'M dS, Y' => __( 'July 1st, 2008', 'elementor-for-extensions' ),
+				],
 				'frontend_available' => true,
+				'condition' => ['event_view' => 'detail'],
 			]
 		);
 
 		$this->add_control(
 			'past_event_section',
 			[
-				'label' => __( 'Show Past Event Section', 'elementor-extensions' ),
+				'label' => __( 'Show Past Event Section', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'elementor-extensions' ),
-				'label_off' => __( 'Hide', 'elementor-extensions' ),
+				'label_on' => __( 'Show', 'elementor-for-extensions' ),
+				'label_off' => __( 'Hide', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 				'condition' => ['event_view' => 'detail'],
+				'frontend_available' => true
 			]
 		);
 
 		$this->add_control(
 			'past_event_title',
 			[
-				'label' => __( 'Past Event Title', 'elementor-extensions' ),
+				'label' => __( 'Past Event Title', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 				'condition' => ['past_event_section' => 'yes','event_view' => 'detail'],
-				'default' => __( 'Past Events', 'elementor-extensions' ),
-				'placeholder' => __( 'Enter past event title from here', 'elementor-extensions' ),
+				'default' => __( 'Past Events', 'elementor-for-extensions' ),
+				'placeholder' => __( 'Enter past event title from here', 'elementor-for-extensions' ),
+				'frontend_available' => true
 			]
 		);
 
@@ -448,7 +570,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'image',
 			[
-				'label' => __( 'Image', 'elementor-extensions' ),
+				'label' => __( 'Image', 'elementor-for-extensions' ),
 				'condition' => ['event_view' => 'detail'],
 			]
 		);
@@ -456,17 +578,17 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'thumbnail_size',
 			[
-				'label' => __( 'Image Size', 'elementor-extensions' ),
+				'label' => __( 'Image Size', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'thumbnail',
 				'options' => [
-					'thumbnail' => __( 'Thumbnail - 150 x 150', 'elementor-extensions' ),
-					'medium' => __( 'Medium - 300 x 300', 'elementor-extensions' ),
-					'medium_large' => __( 'Medium Large - 768 x 0', 'elementor-extensions' ),
-					'large' => __( 'Large - 1024 x 1024', 'elementor-extensions' ),
-					'1536x1536' => __( '1536x1536 - 1536 x 1536', 'elementor-extensions' ),
-					'2048x2048' => __( '2048x2048 - 2048 x 2048', 'elementor-extensions' ),
-					'full' => __( 'Full', 'elementor-extensions' ),
+					'thumbnail' => __( 'Thumbnail - 150 x 150', 'elementor-for-extensions' ),
+					'medium' => __( 'Medium - 300 x 300', 'elementor-for-extensions' ),
+					'medium_large' => __( 'Medium Large - 768 x 0', 'elementor-for-extensions' ),
+					'large' => __( 'Large - 1024 x 1024', 'elementor-for-extensions' ),
+					'1536x1536' => __( '1536x1536 - 1536 x 1536', 'elementor-for-extensions' ),
+					'2048x2048' => __( '2048x2048 - 2048 x 2048', 'elementor-for-extensions' ),
+					'full' => __( 'Full', 'elementor-for-extensions' ),
 				],
 				'frontend_available' => true,
 			]
@@ -488,7 +610,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'image_width',
 			[
-				'label' => __( 'Image Width', 'elementor-extensions' ),
+				'label' => __( 'Image Width', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -500,7 +622,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'event_view' => 'detail'
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper' => 'width: {{SIZE}}%'
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper > a > .myeventon_img_wrapper' => 'width: {{SIZE}}%'
 				],
 				'frontend_available' => true,
 			]
@@ -511,7 +633,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'query',
 			[
-				'label' => __( 'Query', 'elementor-extensions' ),
+				'label' => __( 'Query', 'elementor-for-extensions' ),
 				'condition' => ['event_view' => 'detail'],
 			]
 		);
@@ -651,7 +773,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_global_style',
             [
-                'label' => __( 'Global Styles', 'elementor-extensions' ),
+                'label' => __( 'Global Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -664,9 +786,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'event_background',
-				'label' => __( 'Background', 'elementor-extensions' ),
+				'label' => __( 'Background', 'elementor-for-extensions' ),
 				'types' => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .ee_mb_events_wrapper,{{WRAPPER}} .myeventon_summary_eventlist_wrapper',
+				'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper,{{WRAPPER}} .myeventon_summary_eventlist_wrapper',
 			]
 		);
 
@@ -675,7 +797,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'name' => 'event_border',
 				'placeholder' => '1px',
 				'default' => '1px',
-				'selector' => '{{WRAPPER}} .ee_mb_events_wrapper',
+				'selector' => '{{WRAPPER}} .tec-wrapper',
 				'separator' => 'before',
 				'condition' => ['event_view' => 'detail'],
 			]
@@ -684,7 +806,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_summary_list_box_border_message',
 			[
-				'label' => __( 'Full Event Box Border', 'elementor-extensions' ),
+				'label' => __( 'Full Event Box Border', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => ['event_view' => 'summary'],
@@ -703,11 +825,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_list_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper, {{WRAPPER}} .ee_mb_events_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper, {{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -715,11 +837,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_list_margin',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper, {{WRAPPER}} .ee_mb_events_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'event_view!' => 'detail'
 				],
 			]
 		);
@@ -735,7 +860,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'individual_event_summary_style',
 			[
-				'label' => __( 'Individual Event Style', 'elementor-extensions' ),
+				'label' => __( 'Individual Event Style', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::HEADING,
 				'condition' => ['event_view' => 'summary'],
 			]
@@ -744,7 +869,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'individual_event_image_height',
 			[
-				'label' 	=> __( 'Event Height', 'elementor-extensions' ),
+				'label' 	=> __( 'Event Height', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' 	=> [
@@ -767,7 +892,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'individual_event_gap',
 			[
-				'label' 	=> __( 'Event Gap', 'elementor-extensions' ),
+				'label' 	=> __( 'Event Gap', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' 	=> [
@@ -799,7 +924,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_block_height',
 			[
-				'label' 	=> __( 'Block Height', 'elementor-extensions' ),
+				'label' 	=> __( 'Block Height', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' 	=> [
@@ -808,9 +933,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 						'max' => 1000,
 					],
 				],
-				'condition' => ['event_view' => 'detail'],
+				'condition' => ['event_view!' => 'detail'],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'height: {{SIZE}}px;',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper' => 'height: {{SIZE}}px;',
 				],
 			]
 		);
@@ -818,7 +943,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_image_width',
 			[
-				'label' 	=> __( 'Image Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Image Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'range' 	=> [
@@ -827,13 +952,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 						'max' => 100,
 					],
 				],
-				'condition' => ['event_view' => 'detail'],
+				'condition' => ['event_view!' => 'detail'],
 				'default' => [
 					'unit' => '%',
-					'size' => 20,
+					'size' => 100,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper' => 'width: {{SIZE}}%;',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper > a > .myeventon_img_wrapper' => 'width: {{SIZE}}%;',
 				],
 			]
 		);
@@ -841,7 +966,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_content_width',
 			[
-				'label' 	=> __( 'Content Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Content Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ '%' ],
 				'range' 	=> [
@@ -850,13 +975,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 						'max' => 100,
 					],
 				],
-				'condition' => ['event_view' => 'detail'],
+				'condition' => ['event_view!' => 'detail'],
 				'default' => [
 					'unit' => '%',
 					'size' => 80,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper' => 'width: {{SIZE}}%;',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'width: {{SIZE}}%;',
 				],
 			]
 		);
@@ -866,7 +991,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_view_content_style',
             [
-                'label' => __( 'Content Styles', 'elementor-extensions' ),
+                'label' => __( 'Content Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -878,10 +1003,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_view_content_bg_color',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -889,26 +1014,38 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_view_content_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 
 		$this->add_responsive_control(
-			'detail_view_content_margin',
+			'detail_view_content_radius',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Radius', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
+
+		// $this->add_responsive_control(
+		// 	'detail_view_content_margin',
+		// 	[
+		// 		'label' => __( 'Margin', 'elementor-for-extensions' ),
+		// 		'type' => Controls_Manager::DIMENSIONS,
+		// 		'size_units' => [ 'px', '%', 'em' ],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
 
 		$this->end_controls_section();
 
@@ -916,7 +1053,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_image_style',
             [
-                'label' => __( 'Image Styles', 'elementor-extensions' ),
+                'label' => __( 'Image Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -926,7 +1063,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_image_inner_spacing',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'default' => [
@@ -938,7 +1075,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'isLinked' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > .img_link > img' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -946,11 +1083,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_image_outer_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'event_image_radius',
+			[
+				'label' => __( 'Radius', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper > .myeventon_img_wrapper > .img_link > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -961,7 +1110,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_filter_styles',
             [
-                'label' => __( 'Filter Styles', 'elementor-extensions' ),
+                'label' => __( 'Filter Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -971,10 +1120,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'hide_filters',
 			[
-				'label' => __( 'Hide', 'elementor-extensions' ),
+				'label' => __( 'Hide', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'none',
 				'default' => 'label_on',
 				'condition' => ['event_view' => 'summary'],
@@ -995,7 +1144,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_font_color',
             [
-                'label' => __( 'Normal Color', 'elementor-extensions' ),
+                'label' => __( 'Normal Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a' => 'color: {{VALUE}};',
@@ -1006,7 +1155,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_font_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a:hover' => 'color: {{VALUE}};',
@@ -1017,7 +1166,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_active_color',
             [
-                'label' => __( 'Active Color', 'elementor-extensions' ),
+                'label' => __( 'Active Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a.current' => 'color: {{VALUE}};',
@@ -1028,7 +1177,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_active_bg_color',
             [
-                'label' => __( 'Active Background', 'elementor-extensions' ),
+                'label' => __( 'Active Background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a.current' => 'background: {{VALUE}};',
@@ -1039,7 +1188,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_normal_bg_color',
             [
-                'label' => __( 'Normal Background', 'elementor-extensions' ),
+                'label' => __( 'Normal Background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div' => 'background: {{VALUE}};',
@@ -1050,7 +1199,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_filter_hover_bg_color',
             [
-                'label' => __( 'Hover Background', 'elementor-extensions' ),
+                'label' => __( 'Hover Background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a:hover' => 'background: {{VALUE}};',
@@ -1063,7 +1212,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_filter_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1078,7 +1227,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_date_main_title_style',
             [
-                'label' => __( 'Month Heading Styles', 'elementor-extensions' ),
+                'label' => __( 'Month Heading Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1088,10 +1237,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'hide_month_heading',
 			[
-				'label' => __( 'Hide', 'elementor-extensions' ),
+				'label' => __( 'Hide', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'none',
 				'default' => 'label_on',
 				'selectors' => [
@@ -1103,7 +1252,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_date_main_title_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList .summary_title_wrapper > .summary_month_title' => 'color: {{VALUE}};',
@@ -1122,7 +1271,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_date_main_title_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1134,7 +1283,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_date_main_title_wrapper_spacing',
 			[
-				'label' 	=> __( 'Spacing', 'elementor-extensions' ),
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em' ],
 				'range' 	=> [
@@ -1167,7 +1316,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_next_prev_button_style',
             [
-                'label' => __( 'Next Prev Button Styles', 'elementor-extensions' ),
+                'label' => __( 'Next Prev Button Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1177,7 +1326,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_next_prev_button_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList .summary_title_wrapper > .summary_nextprev_buttons' => 'color: {{VALUE}};',
@@ -1196,7 +1345,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_next_prev_button_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1208,7 +1357,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_next_prev_button_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1223,7 +1372,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'left_handbar_style',
             [
-                'label' => __( 'Left Border Styles', 'elementor-extensions' ),
+                'label' => __( 'Left Border Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1233,7 +1382,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'left_border_normal_width',
 			[
-				'label' 	=> __( 'Normal Border Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Normal Border Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'range' 	=> [
 					'px' 	=> [
@@ -1249,7 +1398,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'left_border_hover_width',
 			[
-				'label' 	=> __( 'Hover Border Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Hover Border Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'range' 	=> [
 					'px' 	=> [
@@ -1265,7 +1414,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_list_left_border_color',
             [
-                'label' => __( 'Border Color', 'elementor-extensions' ),
+                'label' => __( 'Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li' => 'border-left-color: {{VALUE}};',
@@ -1277,7 +1426,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_list_left_hover_border_color',
             [
-                'label' => __( 'Hover Border Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li:hover' => 'border-left-color: {{VALUE}};',
@@ -1289,7 +1438,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_list_seperator_border_color',
             [
-                'label' => __( 'List Seperator Border Color', 'elementor-extensions' ),
+                'label' => __( 'List Seperator Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li::after' => 'background-color: {{VALUE}};',
@@ -1304,7 +1453,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_date_style',
             [
-                'label' => __( 'Event Date Styles', 'elementor-extensions' ),
+                'label' => __( 'Event Date Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1316,12 +1465,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_date_layout',
 			[
-				'label' => __( 'Layout', 'elementor-extensions' ),
+				'label' => __( 'Layout', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'side',
 				'options' => [
-					'above' => __( 'Above', 'elementor-extensions' ),
-					'side' => __( 'Side', 'elementor-extensions' ),
+					'above' => __( 'Above', 'elementor-for-extensions' ),
+					'side' => __( 'Side', 'elementor-for-extensions' ),
 				],
 				'condition' => ['event_view' => 'summary'],
 				'frontend_available' => true,
@@ -1331,10 +1480,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_date_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_date' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above' => 'color: {{VALUE}};',
 					
@@ -1345,7 +1494,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_date_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
                 'selectors' => [
@@ -1359,7 +1508,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_date_background',
             [
-                'label' => __( 'Background', 'elementor-extensions' ),
+                'label' => __( 'Background', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
                 'selectors' => [
@@ -1372,7 +1521,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_date_hover_background',
             [
-                'label' => __( 'Hover Background', 'elementor-extensions' ),
+                'label' => __( 'Hover Background', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
                 'selectors' => [
@@ -1386,37 +1535,38 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_date_typography',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above',
             ]
         );
 				
 		$this->add_responsive_control(
 			'event_date_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'condition' => ['event_view' => 'detail'],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_date > .day' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date > .day' => 'text-align: {{VALUE}};',  // old
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date' => 'text-align: {{VALUE}};', // new
 				],
 			]
 		);
@@ -1424,7 +1574,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_date_spacing',
 			[
-				'label' 	=> __( 'Spacing', 'elementor-extensions' ),
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px','%' ],
 				'range' 	=> [
@@ -1442,7 +1592,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'size' => 0,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
 			]
@@ -1451,11 +1601,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_date_margin',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1463,7 +1613,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_date_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'condition' => ['event_date_layout' => 'above','event_view' => 'summary'],
@@ -1480,7 +1630,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_month_style',
             [
-                'label' => __( 'Event Month Styles', 'elementor-extensions' ),
+                'label' => __( 'Event Month Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1493,7 +1643,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_month_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .month' => 'color: {{VALUE}};',
@@ -1512,7 +1662,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_month_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1527,7 +1677,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_title_style',
             [
-                'label' => __( 'Event Title Styles', 'elementor-extensions' ),
+                'label' => __( 'Event Title Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1539,10 +1689,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_title_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper a h3' => 'color: {{VALUE}};', // add new
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList.above > ul > li > a > div.event_title > h4' => 'color: {{VALUE}}!important;',
                 ],
@@ -1552,10 +1703,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_title_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper a h3:hover' => 'color: {{VALUE}};', // add new
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3:hover' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4:hover' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList.above > ul > li > a > div.event_title > h4:hover' => 'color: {{VALUE}}!important;',
                 ],
@@ -1566,37 +1718,37 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_title_typography',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper a h3,{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4',
             ]
         );
 				
 		$this->add_responsive_control(
 			'event_title_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'condition' => ['event_view' => 'detail'],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3,{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -1604,7 +1756,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_title_spacing',
 			[
-				'label' 	=> __( 'Spacing', 'elementor-extensions' ),
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px','%' ],
 				'range' 	=> [
@@ -1631,11 +1783,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_title_margin',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};', /* add new */
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
@@ -1644,11 +1797,140 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_title_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};', /* add new */
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		/*@ Excerpt styles*/
+		$this->start_controls_section(
+            'event_excerpt_style',
+            [
+                'label' => __( 'Excerpt Styles', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+					'event_view!' => 'calendar'
+				],
+            ]
+		);
+
+		$this->add_control(
+            'event_excerpt_color',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'color: {{VALUE}};', // add new
+                ],
+            ]
+		);
+		
+		$this->add_control(
+            'event_excerpt_hover_color',
+            [
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt:hover' => 'color: {{VALUE}};', // add new
+                ],
+            ]
+        );
+		
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'event_excerpt_typography',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt',
+            ]
+        );
+				
+		$this->add_responsive_control(
+			'event_excerpt_align',
+			[
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-right',
+					],
+					'justify' => [
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-justify',
+					],
+				],
+				'condition' => ['event_view' => 'detail'],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'text-align: {{VALUE}}!important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'event_excerpt_spacing',
+			[
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
+				'type' 		=> Controls_Manager::SLIDER,
+				'size_units' => [ 'px','%' ],
+				'range' 	=> [
+					'px' 	=> [
+						'min' => 0,
+						'max' => 1000,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
+			]
+		);
+
+		$this->add_responsive_control(
+			'event_excerpt_margin',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'event_excerpt_padding',
+			[
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};', /* add new */
 				],
 			]
 		);
@@ -1659,7 +1941,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'line_between_events_style',
             [
-                'label' => __( 'Line Between Events Styles', 'elementor-extensions' ),
+                'label' => __( 'Line Between Events Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary','event_date_layout' => 'above'],
@@ -1669,10 +1951,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'toggle_line_between_event',
 			[
-				'label' => __( 'Show Line', 'elementor-extensions' ),
+				'label' => __( 'Show Line', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'elementor-extensions' ),
-				'label_off' => __( 'Hide', 'elementor-extensions' ),
+				'label_on' => __( 'Show', 'elementor-for-extensions' ),
+				'label_off' => __( 'Hide', 'elementor-for-extensions' ),
 				'return_value' => 'block',
 				'default' => 'label_off',
 				'selectors' => [
@@ -1684,7 +1966,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'thickness_of_line',
 			[
-				'label' 	=> __( 'Tickness', 'elementor-extensions' ),
+				'label' 	=> __( 'Tickness', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px','%' ],
 				'range' 	=> [
@@ -1711,7 +1993,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'width_of_line',
 			[
-				'label' 	=> __( 'Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px','%' ],
 				'range' 	=> [
@@ -1737,7 +2019,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'spacing_of_line',
 			[
-				'label' 	=> __( 'Spacing', 'elementor-extensions' ),
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'size_units' => [ 'px','%' ],
 				'range' 	=> [
@@ -1763,19 +2045,19 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'line_alignment',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -1789,7 +2071,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'line_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > div.between_line_wrapper > span.between_lines' => 'background: {{VALUE}};',
@@ -1803,7 +2085,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_show_more_style',
             [
-                'label' => __( 'Show More Button Styles', 'elementor-extensions' ),
+                'label' => __( 'Show More Button Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1813,10 +2095,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'hide_show_more_button',
 			[
-				'label' => __( 'Hide', 'elementor-extensions' ),
+				'label' => __( 'Hide', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-extensions' ),
-				'label_off' => __( 'No', 'elementor-extensions' ),
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'none',
 				'default' => 'label_on',
 				'selectors' => [
@@ -1828,7 +2110,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_show_more_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList > .show_more_events' => 'color: {{VALUE}};',
@@ -1839,7 +2121,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_summary_show_more_bg_color',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList > .show_more_events' => 'background-color: {{VALUE}};',
@@ -1858,7 +2140,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_show_more_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1870,7 +2152,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_summary_show_more_padding_spacing',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -1885,7 +2167,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_time_style',
             [
-                'label' => __( 'Time Styles', 'elementor-extensions' ),
+                'label' => __( 'Time Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -1895,10 +2177,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_time_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_time' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_time' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1907,36 +2189,36 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_time_typography',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_time',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_time',
             ]
         );
 				
 		$this->add_responsive_control(
 			'event_time_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
-				'default' => '',
+				'default' => 'left',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_time' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_time' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -1944,22 +2226,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_time_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_time' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_time' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 
 		$this->end_controls_section();
 
-		/*@ Venue styles*/
+		/*@ Cost styles*/
 		$this->start_controls_section(
-            'event_venue_style',
+            'event_cost_style',
             [
-                'label' => __( 'Venue Styles', 'elementor-extensions' ),
+                'label' => __( 'Cost Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -1967,12 +2249,44 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
-            'event_venue_color',
+            'event_cost_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_venue' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .meta_data > .myeventon_cost_data .myeventon_cost' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+		
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'event_cost_typography',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .meta_data > .myeventon_cost_data .myeventon_cost',
+            ]
+        );
+
+		$this->end_controls_section();
+
+		/*@ Venue styles*/
+		$this->start_controls_section(
+            'event_venue_style',
+            [
+                'label' => __( 'Venue Styles', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['event_view' => 'detail_'],
+            ]
+		);
+
+		$this->add_control(
+            'event_venue_color',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_venue' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1981,36 +2295,36 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_venue_typography',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_venue',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_venue',
             ]
         );
 				
 		$this->add_responsive_control(
 			'event_venue_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_venue' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_venue' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -2018,11 +2332,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_venue_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > span.myeventon_venue' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_venue' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -2034,7 +2348,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_link_style',
             [
-                'label' => __( 'Link Styles', 'elementor-extensions' ),
+                'label' => __( 'Link Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -2044,10 +2358,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_link_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -2055,10 +2369,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_link_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -2067,48 +2381,76 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_link_typography',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link',
             ]
         );
 				
 		$this->add_responsive_control(
 			'event_link_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper' => 'text-align: {{VALUE}};',
 				],
+				'condition' => [ 'auto_height!' => 'yes' ],
 			]
 		);
+
+		// $this->add_responsive_control(
+		// 	'event_link_align_for_auto_height',
+		// 	[
+		// 		'label' => __( 'Alignment', 'elementor-for-extensions' ),
+		// 		'type' => Controls_Manager::CHOOSE,
+		// 		'options' => [
+		// 			'left' => [
+		// 				'title' => __( 'Left', 'elementor-for-extensions' ),
+		// 				'icon' => 'fa fa-align-left',
+		// 			],
+		// 			'center' => [
+		// 				'title' => __( 'Center', 'elementor-for-extensions' ),
+		// 				'icon' => 'fa fa-align-center',
+		// 			],
+		// 			'right' => [
+		// 				'title' => __( 'Right', 'elementor-for-extensions' ),
+		// 				'icon' => 'fa fa-align-right',
+		// 			],
+		// 		],
+		// 		'default' => '',
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper' => '{{VALUE}}:0;',
+		// 		],
+		// 		'condition' => [ 'auto_height' => 'yes' ],
+		// 	]
+		// );
 
 		$this->add_responsive_control(
 			'event_link_inner_spacing',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -2116,11 +2458,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'event_link_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -2136,7 +2478,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'selected_icon',
 			[
-				'label' => __( 'Icon', 'elementor-extensions' ),
+				'label' => __( 'Icon', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::ICONS,
 				'label_block' => true,
 			]
@@ -2145,12 +2487,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'icon_align',
 			[
-				'label' 	=> __( 'Icon Position', 'elementor-extensions' ),
+				'label' 	=> __( 'Icon Position', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SELECT,
 				'default' 	=> 'right',
 				'options' 	=> [
-					'left' 		=> __( 'Before', 'elementor-extensions' ),
-					'right' 	=> __( 'After', 'elementor-extensions' ),
+					'left' 		=> __( 'Before', 'elementor-for-extensions' ),
+					'right' 	=> __( 'After', 'elementor-for-extensions' ),
 				],
 				'condition' => [
 					'selected_icon!' => '',
@@ -2161,7 +2503,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'icon_indent',
 			[
-				'label' 	=> __( 'Icon Spacing', 'elementor-extensions' ),
+				'label' 	=> __( 'Icon Spacing', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'range' 	=> [
 					'px' 	=> [
@@ -2172,8 +2514,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'selected_icon!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper .read_more_icon.right' => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper .read_more_icon.left' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper .read_more_icon.right' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper .read_more_icon.left' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -2183,7 +2525,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'name' => 'link_border',
 				'placeholder' => '1px',
 				'default' => '1px',
-				'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link',
+				'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link',
 				'separator' => 'before',
 			]
 		);
@@ -2191,10 +2533,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'event_link_hover_border_color',
             [
-                'label' => __( 'Hover Border Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Border Color', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .myeventon_wrapper > .myeventon_content_wrapper > .link_wrapper > a.myeventon_link:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -2206,7 +2548,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'past_events_style',
             [
-                'label' => __( 'Past Event Heading Styles', 'elementor-extensions' ),
+                'label' => __( 'Past Event Heading Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['past_event_section' => 'yes','event_view' => 'detail'],
@@ -2216,10 +2558,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'past_event_header_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ee_mb_events_wrapper .past_events_wrapper h2' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .past_events_wrapper.tec-wrapper h2' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -2228,32 +2570,32 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'past_event_header_typo',
-                'selector' => '{{WRAPPER}} .ee_mb_events_wrapper .past_events_wrapper h2',
+                'selector' => '{{WRAPPER}} .past_events_wrapper.tec-wrapper h2',
             ]
         );
 				
 		$this->add_responsive_control(
 			'past_event_header_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
 				'default' => 'center',
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .past_events_wrapper' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .past_events_wrapper.tec-wrapper h2' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -2261,11 +2603,68 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'past_event_header_margin',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .ee_mb_events_wrapper .past_events_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .past_events_wrapper.tec-wrapper h2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		/*@ Past events section */
+		$this->start_controls_section(
+            'website_text',
+            [
+                'label' => __( 'Website Text', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['show_website' => 'yes','event_view' => 'detail'],
+            ]
+		);
+
+		$this->add_control(
+            'website_text_color',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_link.event_website_text_icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+		
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'website_text_typo',
+                'selector' => '{{WRAPPER}} .myeventon_link.event_website_text_icon',
+            ]
+        );
+
+		$this->add_responsive_control(
+			'website_text_margin',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .myeventon_link.event_website_text_icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'website_text_padding',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .myeventon_link.event_website_text_icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -2276,7 +2675,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_style',
             [
-                'label' => __( 'Main Header Styles', 'elementor-extensions' ),
+                'label' => __( 'Main Header Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2286,7 +2685,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_month_list_color',
             [
-                'label' => __( 'Header Month Color', 'elementor-extensions' ),
+                'label' => __( 'Header Month Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar h2' => 'color: {{VALUE}};',
@@ -2297,7 +2696,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label' => __( 'Header Month Typo', 'elementor-extensions' ),
+				'label' => __( 'Header Month Typo', 'elementor-for-extensions' ),
                 'name' => 'eb_day_month_list_typography',
                 'selector' => '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar h2',
             ]
@@ -2306,7 +2705,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'button_styles_seperator_heading',
 			[
-				'label' => __( 'Button Styles', 'elementor-extensions' ),
+				'label' => __( 'Button Styles', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -2315,7 +2714,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label' => __( 'Typography', 'elementor-extensions' ),
+				'label' => __( 'Typography', 'elementor-for-extensions' ),
                 'name' => 'eb_header_button_typo',
                 'selector' => '{{WRAPPER}} .myeventon_calendar button',
             ]
@@ -2324,7 +2723,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_button_color',
             [
-                'label' => __( 'Text Color', 'elementor-extensions' ),
+                'label' => __( 'Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button' => 'color: {{VALUE}};',
@@ -2336,7 +2735,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_button_background',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button' => 'background: {{VALUE}};',
@@ -2348,7 +2747,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_active_button_text_color',
             [
-                'label' => __( 'Active Text Color', 'elementor-extensions' ),
+                'label' => __( 'Active Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} .myeventon_calendar button:hover' => 'color: {{VALUE}};',
@@ -2359,7 +2758,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_active_button_background',
             [
-                'label' => __( 'Active Background Color', 'elementor-extensions' ),
+                'label' => __( 'Active Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:focus,{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} .myeventon_calendar button:hover' => 'background: {{VALUE}};',
@@ -2370,7 +2769,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_hover_button_text_color',
             [
-                'label' => __( 'Hover Text Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} button:hover' => 'color: {{VALUE}};',
@@ -2381,7 +2780,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_header_hover_button_background',
             [
-                'label' => __( 'Hover Background Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar button:hover,{{WRAPPER}} button:hover' => 'background: {{VALUE}};',
@@ -2403,7 +2802,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_day_header_style',
             [
-                'label' => __( 'Day Header Styles', 'elementor-extensions' ),
+                'label' => __( 'Day Header Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2421,7 +2820,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_day_month_color',
             [
-                'label' => __( 'Text Color', 'elementor-extensions' ),
+                'label' => __( 'Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'color: {{VALUE}};',
@@ -2432,7 +2831,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_day_month_background_color',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'background-color: {{VALUE}};',
@@ -2463,7 +2862,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_date_style',
             [
-                'label' => __( 'Date Styles', 'elementor-extensions' ),
+                'label' => __( 'Date Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2481,7 +2880,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_day_month_date_color',
             [
-                'label' => __( 'Text Color', 'elementor-extensions' ),
+                'label' => __( 'Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-day-number' => 'color: {{VALUE}};',
@@ -2492,7 +2891,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_date_month_background_color',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-day-top' => 'background-color: {{VALUE}};',
@@ -2515,7 +2914,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_grid_cell_styles',
 			[
-				'label' => __( 'Grid Cell Styles', 'elementor-extensions' ),
+				'label' => __( 'Grid Cell Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2542,7 +2941,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_hover_background_color',
             [
-                'label' => __( 'Cell Hover Background Color', 'elementor-extensions' ),
+                'label' => __( 'Cell Hover Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar div.fc-row td.fc-day:hover' => 'background-color: {{VALUE}};',
@@ -2553,7 +2952,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_today_color',
             [
-                'label' => __( 'Today`s Background Color', 'elementor-extensions' ),
+                'label' => __( 'Today`s Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar div.fc-row td.fc-today' => 'background-color: {{VALUE}};',
@@ -2564,7 +2963,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_cal_oddrow_color',
             [
-                'label' => __( 'Odd Row Background Color', 'elementor-extensions' ),
+                'label' => __( 'Odd Row Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar div.fc-row.fc-week:nth-child(odd)' => 'background-color: {{VALUE}};',
@@ -2575,7 +2974,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_cal_evenrow_color',
             [
-                'label' => __( 'Even Row Background Color', 'elementor-extensions' ),
+                'label' => __( 'Even Row Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar div.fc-row.fc-week:nth-child(even)' => 'background-color: {{VALUE}};',
@@ -2588,7 +2987,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_event_content',
 			[
-				'label' => __( 'Event Label Styles', 'elementor-extensions' ),
+				'label' => __( 'Event Label Styles', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2606,7 +3005,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_event_label_text_color',
             [
-                'label' => __( 'Text Color', 'elementor-extensions' ),
+                'label' => __( 'Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event' => 'color: {{VALUE}};',
@@ -2617,7 +3016,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_event_label_text_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
@@ -2628,7 +3027,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_event_label_background',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
@@ -2639,7 +3038,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_event_label_hover_background',
             [
-                'label' => __( 'Hover Background Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-event-container .fc-event:hover' => 'background-color: {{VALUE}}; border-color:{{VALUE}};',
@@ -2654,7 +3053,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_left_handbar_style',
             [
-                'label' => __( 'Detail Left Border Styles', 'elementor-extensions' ),
+                'label' => __( 'Detail Left Border Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2664,7 +3063,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'detail_left_border_normal_width',
 			[
-				'label' 	=> __( 'Normal Border Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Normal Border Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'range' 	=> [
 					'px' 	=> [
@@ -2680,7 +3079,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'detail_left_border_hover_width',
 			[
-				'label' 	=> __( 'Hover Border Width', 'elementor-extensions' ),
+				'label' 	=> __( 'Hover Border Width', 'elementor-for-extensions' ),
 				'type' 		=> Controls_Manager::SLIDER,
 				'range' 	=> [
 					'px' 	=> [
@@ -2696,7 +3095,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_summary_list_left_border_color',
             [
-                'label' => __( 'Border Color', 'elementor-extensions' ),
+                'label' => __( 'Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar_summaryview ul > li' => 'border-left-color: {{VALUE}};',
@@ -2707,7 +3106,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_summary_list_left_hover_border_color',
             [
-                'label' => __( 'Hover Border Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar_summaryview ul > li:hover' => 'border-left-color: {{VALUE}};',
@@ -2718,7 +3117,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_summary_list_seperator_border_color',
             [
-                'label' => __( 'List Seperator Border Color', 'elementor-extensions' ),
+                'label' => __( 'List Seperator Border Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar_summaryview ul > li::after' => 'background-color: {{VALUE}};',
@@ -2731,7 +3130,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_date_style',
             [
-                'label' => __( 'Detail Event Date Styles', 'elementor-extensions' ),
+                'label' => __( 'Detail Event Date Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2741,7 +3140,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_date_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.date_wrapper > .day' => 'color: {{VALUE}};',
@@ -2752,7 +3151,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_date_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li:hover > a > div.date_wrapper > .day' => 'color: {{VALUE}};',
@@ -2771,7 +3170,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_date_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2783,7 +3182,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_date_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2797,7 +3196,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_summary_month_style',
             [
-                'label' => __( 'Detail Event Month Styles', 'elementor-extensions' ),
+                'label' => __( 'Detail Event Month Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2807,7 +3206,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_summary_month_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.date_wrapper > .month' => 'color: {{VALUE}};',
@@ -2818,7 +3217,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_summary_month_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li:hover > a > div.date_wrapper > .month' => 'color: {{VALUE}};',
@@ -2837,7 +3236,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_summary_month_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2849,7 +3248,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_month_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2864,7 +3263,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_title_style',
             [
-                'label' => __( 'Detail Event Title Styles', 'elementor-extensions' ),
+                'label' => __( 'Detail Event Title Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -2874,7 +3273,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_title_color',
             [
-                'label' => __( 'Color', 'elementor-extensions' ),
+                'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.event_title > h4' => 'color: {{VALUE}};',
@@ -2885,7 +3284,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_title_hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor-extensions' ),
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview ul > li:hover > a > div.event_title > h4' => 'color: {{VALUE}};',
@@ -2904,23 +3303,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_title_align',
 			[
-				'label' => __( 'Alignment', 'elementor-extensions' ),
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor-extensions' ),
+						'title' => __( 'Left', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor-extensions' ),
+						'title' => __( 'Center', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor-extensions' ),
+						'title' => __( 'Right', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor-extensions' ),
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
@@ -2934,7 +3333,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_title_spacing',
 			[
-				'label' => __( 'Margin', 'elementor-extensions' ),
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2946,7 +3345,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_title_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2960,7 +3359,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_dropdown_style',
             [
-                'label' => __( 'Detail Event Dropdown Styles', 'elementor-extensions' ),
+                'label' => __( 'Detail Event Dropdown Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view!' => 'detail'],
@@ -2970,7 +3369,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_responsive_control(
 			'detail_event_dropdown_padding',
 			[
-				'label' => __( 'Padding', 'elementor-extensions' ),
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
@@ -2983,7 +3382,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_dropdown_bg',
             [
-                'label' => __( 'Background Color', 'elementor-extensions' ),
+                'label' => __( 'Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description' => 'background: {{VALUE}};',
@@ -2995,7 +3394,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_dropdown_time_title_color',
             [
-                'label' => __( 'Title Color', 'elementor-extensions' ),
+                'label' => __( 'Title Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i' => 'color: {{VALUE}};',
@@ -3009,7 +3408,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label' => __( 'Title Typo', 'elementor-extensions' ),
+				'label' => __( 'Title Typo', 'elementor-for-extensions' ),
                 'name' => 'detail_event_dropdown_time_title_typography',
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i,{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data h3,{{WRAPPER}} .summaryEventList .summary_cal_description .time_icon > i,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data h3',
             ]
@@ -3018,7 +3417,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'detail_event_dropdown_time_string_color',
             [
-                'label' => __( 'Time Color', 'elementor-extensions' ),
+                'label' => __( 'Time Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data p' => 'color: {{VALUE}};',
@@ -3030,7 +3429,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-				'label' => __( 'Time Typo', 'elementor-extensions' ),
+				'label' => __( 'Time Typo', 'elementor-for-extensions' ),
                 'name' => 'detail_event_dropdown_time_string_typography',
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data p,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data p',
             ]
@@ -3041,30 +3440,50 @@ class EE_The_Events_Calendar extends Base_Widget {
 		/*@ Calendar view style ends here*/
 	}
 	protected function getEventCalendarCategories(){
-		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
+
 		$list = array();
-		$args_tribe = wp_parse_args( $args_tribe, $defaults );
-		$categories_tribe = get_terms( $args_tribe );
+
+		if ($this->is_tac_installed_activated()) {
+			return $list;
+		}
+
+		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
+		
+		$categories_tribe = get_terms( $defaults );
 		foreach ($categories_tribe as $category_tribe){
 			$name =  $category_tribe->name;
-			$list[$category_tribe->slug] = __( $name, 'elementor-extensions' );
+			$list[$category_tribe->slug] = __( $name, 'elementor-for-extensions' );
 		}
 		return $list;
 	}
+
 	protected function render() {
+
+		if ( $this->is_tac_installed_activated() ) {
+			echo $this->is_tac_installed_activated();
+			return;
+		}
+
 		$settings = $this->get_settings_for_display();
 		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
-		$args_tribe = wp_parse_args( $args_tribe, $defaults );
-		$categories_tribe = get_terms( $args_tribe );
+		$categories_tribe = get_terms( $defaults );
 		?>
-		<select class="categories_tribe_filter">
-			<?php
-			echo '<option value="">Select..</option>';
-			foreach($categories_tribe as $categories) {
-				 echo '<option value="'.$categories->slug.'">'.$categories->name.'</option>';
-			} 
-			?>
-		</select>
+		<?php 
+		if($settings['event_view'] == 'detail'):
+			if($settings['show_filter'] == 'yes'):
+		?>
+			<select class="categories_tribe_filter">
+				<?php
+				echo '<option value="">All</option>';
+				foreach($categories_tribe as $categories) {
+					echo '<option value="'.$categories->slug.'">'.$categories->name.'</option>';
+				} 
+				?>
+			</select>
+		<?php 
+			endif;
+		endif;
+		?>
 		<?php
 		if($settings['event_view'] == 'detail'):
 			$this->ee_mb_detail_event_view($settings);
@@ -3133,20 +3552,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 	/*@ Event View : Detail View */
 	public function ee_mb_detail_event_view($settings){
 		
-		if($settings['setting']){
-			// echo 'in';
+		if(!empty($settings['setting'])){
 			$settings = $settings['setting'];
 		}
 
 		$events = $this->eeMbGetEventList($settings);
+		$column_gap = (is_array($settings['column_gap']) == 1) ? $settings['column_gap']['default'] : $settings['column_gap'];
+
+		$auto_height = ($settings['auto_height'] === 'yes') ? 'auto_height' : '';
 		/*
 		 *@ If event present then show otherwise display not found message
 		 */
 		if(!empty($events)):
 			
 			$past_events = '';
-			echo '<div id="filter">';
-			echo '<div class="ee_mb_events_wrapper">';
+			echo '<div id="filter" class="tec-wrapper '.$auto_height.'">';
+			echo '<div class="tec_ee_mb_events_wrapper parent-'.$column_gap.'">';
 			
 			foreach($events as $event_key => $event):
 				
@@ -3167,9 +3588,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 					$start_time = date('H:i:s', strtotime($event_start_date));
 
-					$event_start_time = date('ga',strtotime($event_start_date));	
-
-					$event_start_date = date('l dS F Y',strtotime($event_start_date));
+					$event_start_time = date('g:i a',strtotime($event_start_date));	
+					$event_date_formate = $settings['event_date_formate'];
+					// if(!empty($event_date_formate)){
+					// 	$event_date_formate = 'l dS F Y';
+					// }
+					$event_start_date = date($event_date_formate,strtotime($event_start_date));
 				endif;
 
 				/*@ Event end date */
@@ -3178,7 +3602,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 					$end_time = date('H:i:s', strtotime($event_end_date));
 
-					$event_end_time = date('ga',strtotime($event_end_date));
+					$event_end_time = date('g:i a',strtotime($event_end_date));
 				endif;
 
 				/*@ Use compare date for past event */
@@ -3208,12 +3632,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$venue = $this->build_venue($event_id);
 				
 				/*@ Read more button with or without icon*/
-				if(!empty($settings['event_read_more'])):
-					$link_icon = $settings['event_read_more'];
+				if(!empty($settings['event_read_more_text'])):
+					$link_icon = $settings['event_read_more_text'];
 
 					if ( ! empty( $settings['selected_icon']['value'] ) ) :
 						if($settings['icon_align'] == 'right'):
-							$link_icon = $settings['event_read_more'].' <span class="read_more_icon right">';
+							$link_icon = $settings['event_read_more_text'].' <span class="read_more_icon right">';
 							
 							if ( !empty($settings['selected_icon']) ) :
 								ob_start();
@@ -3231,10 +3655,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 								$link_icon .= ob_get_clean();
 						   	endif;
 								
-							$link_icon .= '</span> '.$settings['event_read_more'];
+							$link_icon .= '</span> '.$settings['event_read_more_text'];
 						endif;
 					else:
-						$link_icon = $settings['event_read_more'];
+						$link_icon = $settings['event_read_more_text'];
 					endif;
 				endif;
 
@@ -3244,75 +3668,105 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'grid-col-tablet-' . ((is_array($settings['event_columns_tablet']) == 1) ? $settings['event_columns_tablet']['default'] : $settings['event_columns_tablet']),
 					'grid-col-mobile-' . ((is_array($settings['event_columns_mobile']) == 1) ? $settings['event_columns_mobile']['default'] : $settings['event_columns_mobile']),
 				);
-				$column_gap = (is_array($settings['column_gap']) == 1) ? $settings['column_gap']['default'] : $settings['column_gap'];
 				$classes = sprintf( ' %s', implode( ' ', $classes ) );
-				$event_html.='<div class="myeventon_wrapper '.$classes.' row-gap-'.$column_gap.'">';  // style="width: '.(100/$settings['event_columns']).'%"
+				$event_html.='<div class="myeventon_wrapper'.$classes.' row-gap-'.$column_gap.'">';  // style="width: '.(100/$settings['event_columns']).'%"
+						
 						if($settings['show_image'] == 'yes'):
 							if(!empty($event_image[0])):
-								$event_html.='<div class="myeventon_img_wrapper">
+								if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):		
+									$event_html.='<div class="myeventon_img_wrapper"><a href="'.$event_link.'" class="img_link">
 									<img src="'.$event_image[0].'" alt="'.basename($event_image[0]).'"/>
-								</div>';
+									</a></div>';
+								else :
+									$event_html.='<div class="myeventon_img_wrapper"><a href="javascript:void(0)" class="img_link">
+									<img src="'.$event_image[0].'" alt="'.basename($event_image[0]).'"/>
+									</a></div>';
+								endif;
 							endif;
 						endif;
 
 						$event_html.='<div class="myeventon_content_wrapper">';
+						$event_html.='<div class="inner_content_wrapper" data-match-height="groupName">';
+						
 						if($settings['show_title'] == 'yes'):	
-							if($settings['anchor_link'] == 'yes'):
-								if(!empty($link_icon)):
+							if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
+								if(!empty($event_title)):
 									$event_html.='<div class="link_wrapper">';
-										// $event_html.='<a href="'.$event_link.'" class="myeventon_link">'.$link_icon.'</a>';
-										$event_html.='<a href="'.$event_link.'" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</a></h3>';
+										$event_html.='<a href="'.$event_link.'" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></a>';
 									$event_html.='</div>';
 								endif;
 							else :
-								if(!empty($link_icon)):
+								if(!empty($event_title)):
 									$event_html.='<div class="link_wrapper">';
-										// $event_html.='<a href="'.$event_link.'" class="myeventon_link">'.$link_icon.'</a>';
-										$event_html.='<a href="javascript:void(0)" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</a></h3>';
+										$event_html.='<a href="javascript:void(0)" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></a>';
 									$event_html.='</div>';
 								endif;	
 							endif;
 							
 						endif;
+
 						if($settings['show_date'] == 'yes'):	
 							$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
 						endif;
+
+						if($settings['show_time'] == 'yes'):	
+						$event_html.='<span class="myeventon_time">'.$event_start_time.' - '.$event_end_time.'</span>';
+						endif;
+
 						if($settings['show_excerpt'] == 'yes' && !empty($event_excerpt)):	
 							$event_html.='<span class="myeventon_excerpt">'.(($settings['excerpt_length']) ? substr($event_excerpt, 0, $settings['excerpt_length']) : substr($event_excerpt, 0, 50)).'</span>';
 						endif;
 						
-						$event_html.='<span class="myeventon_time">'.$event_start_time.' - '.$event_end_time.'</span>';
+						$event_html.='</div>';
 						
+						if(!empty($link_icon)):
+							if($settings['read_more_text'] == 'yes'):
+								$event_html.='<div class="link_read_wrapper">';
+									$event_html.='<a href="'.$event_link.'" class="myeventon_link">'.$link_icon.'</a>';
+								$event_html.='</div>';
+							endif;
+						endif;
 						
-						if($settings['show_meta'] == 'yes') :
-							if(!empty($event_meta['_EventCurrencySymbol'][0]) || !empty($event_meta['_EventCost'][0]) || array_filter($venue)):
-								$event_html.="<div class='meta_data'>";
+						if(!empty($event_meta['_EventCurrencySymbol'][0]) || !empty($event_meta['_EventCost'][0]) || array_filter($venue) || !empty($event_meta['_EventURL'][0])):
+
+							$seperator = (!empty($settings['show_seperator'])) ? 'seperator' : '';
+
+							$event_html.="<div class='meta_data ".$seperator."'>";
+								$event_html.='<div class="myeventon_cost_data">';
 								if($settings['show_cost'] == 'yes') :
-									if(!empty($event_meta['_EventCost'][0])):		
-									$event_html.='<span class="myeventon_url">'.(($event_meta['_EventCurrencyPosition'][0] == 'prefix') ? $event_meta['_EventCurrencySymbol'][0].''.$event_meta['_EventCost'][0] : $event_meta['_EventCost'][0].''.$event_meta['_EventCurrencySymbol'][0]).'</span>';
+									if(!empty($event_meta['_EventCost'][0])):	
+										$event_html.='<span class="myeventon_cost">Cost:  '.(($event_meta['_EventCurrencyPosition'][0] == 'prefix') ? $event_meta['_EventCurrencySymbol'][0].''.$event_meta['_EventCost'][0] : $event_meta['_EventCost'][0].''.$event_meta['_EventCurrencySymbol'][0]).'</span>';
 									endif;
 								endif;
+								$event_html.="</div>";
+
+							$event_html.="<div class='meta_data_url'>";
 
 								if($settings['show_website'] == 'yes'):
-									if(!empty($event_meta['_EventURL'][0])):		
-									$event_html.='<a href="'.$event_meta['_EventURL'][0].'" target="_blank" class="myeventon_link"><i class="fas fa-globe"></i></a>';
-									endif;
+									if(!empty($event_meta['_EventURL'][0])):
+
+										if(!empty($settings['event_website_text_icon']['value'])):
+											$event_html.='<a href="'.$event_meta['_EventURL'][0].'" target="_blank" class="myeventon_link event_website_text_icon"><i class="'.$settings['event_website_text_icon']['value'].'" aria-hidden="true"></i> '.$settings['event_website_text'].'</a>';
+										else:
+											$event_html.='<a href="'.$event_meta['_EventURL'][0].'" target="_blank" class="myeventon_link event_website_text_icon">'.$settings['event_website_text'].'</a>';
+										endif;
+									endif;		
 								endif;
 
 								if($settings['show_location'] == 'yes'):
 									if(!empty($venue)):
 										if(array_filter($venue)) :
-										// $event_html.='<span class="myeventon_venue">'.implode(',', $venue).'</span>';
 										
 										$event_html.=' <a href="https://maps.google.com/?q='.implode(',', $venue).'" class="myeventon_link" target="_blank"><i class="fas fa-map-marker-alt"></i></a>';
 										endif;
 									endif;
 								endif;
-								$event_html.="</div>";
-							endif;
+							$event_html.="</div>";
+							$event_html.="</div>";
 						endif;
-							
+						
 						$event_html.='</div>';
+
 					$event_html.='</div>';
 				
 				if(($settings['past_event_section'] == 'yes') && ($compare_date < time())):
@@ -3326,17 +3780,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 			echo '</div>';
 			if($settings['past_event_section'] == 'yes'):
 				echo '</div>';
-				echo '<div class="ee_mb_events_wrapper">';
-				if(!empty($settings['past_event_title'])):
-					echo '<div class="past_events_wrapper">';
-						echo '<h2>'.$settings['past_event_title'].'</h2>';
-					echo '</div>';
-				endif;
 
-				// echo '<div class="past_events_posts_wrapper">';
+				echo '<div class="past_events_wrapper tec-wrapper '.$auto_height.'">';
+					if(!empty($settings['past_event_title'])):
+						echo '<h2>'.$settings['past_event_title'].'</h2>';
+					endif;
+				echo '<div class="tec_ee_mb_events_wrapper parent-'.$column_gap.'">';
 					echo $past_events;
-				// echo '</div>';
-				
+				echo '</div>';
 			endif;
 
 			echo '</div>';
@@ -3350,51 +3801,59 @@ class EE_The_Events_Calendar extends Base_Widget {
 		/*@
 		 * Getting the events data
 		 */
-
-
-		
+		if ($this->is_tac_installed_activated()) {
+			return [];
+		}
 
 		$eventLimit = -1;
 		if (!empty($settings)) :
 
 			$eventView = $settings['event_view'];
-
 			if ($eventView === 'detail') :
 				$eventLimit = $settings['event_limit'];
 				$atts['event_tax'] = '';
 				$start_date = ( 'custom' == $settings['start_date'] ) ? $settings['custom_start_date'] : $settings['start_date'];
-		$end_date   = ( 'custom' == $settings['end_date'] ) ? $settings['custom_end_date'] : $settings['end_date'];
+				$end_date   = ( 'custom' == $settings['end_date'] ) ? $settings['custom_end_date'] : $settings['end_date'];
 
-		$query_args = array_filter( [
-			'start_date'     => $start_date,
-			'end_date'       => $end_date,
-			'orderby'        => $settings['orderby'],
-			'order'          => $settings['order'],
-			'eventDisplay' 	 => ( 'custom' == $settings['start_date'] or 'custom' == $settings['end_date'] ) ? 'custom' : 'all',
-			'posts_per_page' => $settings['limit'],
-			//'tag'          => 'donor-program', // or whatever the tag name is
-		] );
+				$query_args = array_filter( [
+					'start_date'     => $start_date,
+					'end_date'       => $end_date,
+					'orderby'        => $settings['orderby'],
+					'order'          => $settings['order'],
+					'eventDisplay' 	 => ( 'custom' == $settings['start_date'] or 'custom' == $settings['end_date'] ) ? 'custom' : 'all',
+					'posts_per_page' => $settings['limit'],
+					//'tag'          => 'donor-program', // or whatever the tag name is
+				] );
 
+				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
+					if(isset($settings['slug']) && !empty($settings['slug'])){
+						$query_args['tax_query'][] =  [
+								'taxonomy' => 'tribe_events_cat',
+								'terms' => $settings['slug'],
+								'field' => 'slug',
+								'include_children' => true,
+								'operator' => 'IN'
+						];
+					}else{
+						$query_args['tax_query'][] = [
+							'taxonomy' => 'tribe_events_cat',
+							'field'    => 'slug',
+							'terms'    => $settings['event_categories'],
+						];
+					}
+				}else{
+					if(isset($settings['slug']) && !empty($settings['slug'])){
+						$query_args['tax_query'][] =  [
+								'taxonomy' => 'tribe_events_cat',
+								'terms' => $settings['slug'],
+								'field' => 'slug',
+								'include_children' => true,
+								'operator' => 'IN'
+						];
+					}
+				}
 
-		if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
-			if(isset($settings['slug']) && !empty($settings['slug'])){
-				$query_args['tax_query'][] =  [
-						'taxonomy' => 'tribe_events_cat',
-						'terms' => $settings['slug'],
-						'field' => 'slug',
-						'include_children' => true,
-						'operator' => 'IN'
-				];
-			}else{
-				$query_args['tax_query'][] = [
-					'taxonomy' => 'tribe_events_cat',
-					'field'    => 'slug',
-					'terms'    => $settings['event_categories'],
-				];
-			}
-		}
-
-		$query_args = tribe_get_events( $query_args ); 
+				$query_args = tribe_get_events( $query_args ); 
 			endif;
 
 		endif;
@@ -3498,7 +3957,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		global $post;
 		$output = '';
-
 		$event_date_layout = (!empty($atts['event_date_layout'])) ?  sanitize_text_field($atts['event_date_layout']) : '';
 		$event_limit = (!empty($atts['limit'])) ?  intval($atts['limit']) : '3';
 		$enable_event_detail = (!empty($atts['enable_event_detail'])) ?  sanitize_text_field($atts['enable_event_detail']) : '';
@@ -3618,13 +4076,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$atts['month'] = date( 'Y-m', strtotime( '+1 months', current_time( 'timestamp' ) ) );
 		}
 		if ($atts['month']) {
+		// $atts['month'] = sprintf("%02d", $atts['month']);
 			$month_array = explode("-", $atts['month']);
-			
+			$month_array[1] = sprintf("%02d", $month_array[1]);
 			$month_yearstr = sanitize_text_field($month_array[0]);
 			$month_monthstr = sanitize_text_field($month_array[1]);
-			$month_startdate = date( "Y-m", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
+			$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
-
+			
 			if(!empty($future_events_only)):
 				$atts['meta_date'] = array(
 					'relation' => 'AND',
@@ -3665,14 +4124,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'order' => $atts['order'],
 			'meta_query' => array( $atts['meta_date'] ),
 		);
+		
 		$posts = get_posts($args);
-
+		
 		$total_events = count($posts);
 	
 		if($hide_past_events == 'yes'):
 			$posts = array_reverse($posts);
 		endif;
-
 		$next_month = date('Y-n', strtotime("+1 months", strtotime($atts['month'])));
 		$prev_month = date('Y-n', strtotime("-1 months", strtotime($atts['month'])));
 
@@ -3871,15 +4330,15 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 	public function getAllMonths(){
 		$all_months = array(
-			'1' => 'January',
-			'2' => 'February',
-			'3' => 'March',
-			'4' => 'April',
-			'5' => 'May',
-			'6' => 'June',
-			'7' => 'July',
-			'8' => 'August',
-			'9' => 'September',
+			'01' => 'January',
+			'02' => 'February',
+			'03' => 'March',
+			'04' => 'April',
+			'05' => 'May',
+			'06' => 'June',
+			'07' => 'July',
+			'08' => 'August',
+			'09' => 'September',
 			'10' => 'October',
 			'11' => 'November',
 			'12' => 'December',
@@ -4121,5 +4580,37 @@ class EE_The_Events_Calendar extends Base_Widget {
 		
 	}
 
+	public function is_tac_installed_activated() {
+		
+		$plugin = 'the-events-calendar/the-events-calendar.php';
+		$installed_plugins = get_plugins();
+		$admin_url = get_admin_url();
+		
+		if ( isset( $installed_plugins[ $plugin ] ) && !is_plugin_active( $plugin )) {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
+				return;
+			}
 
+			$activation_url = wp_nonce_url( $admin_url.'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
+
+			$message = '<p>' . __( 'Please activate The Event Calendar plugin.', 'elementor-extensions' ) . '</p>';
+			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary" target="_blank">%s</a>', $activation_url, __( 'Activate The Event Calendar Now', 'elementor-extensions' ) ) . '</p>';
+
+			return '<div class="error"><p>' . $message . '</p></div>';
+
+		} else if ( !isset( $installed_plugins[ $plugin ] ) ) {
+			if ( ! current_user_can( 'install_plugins' ) ) {
+				return;
+			}
+
+			$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=the-events-calendar' ), 'install-plugin_the_events_calendar' );
+
+			$message = '<p>' . __( 'Please install The Event Calendar plugin', 'elementor-extensions' ) . '</p>';
+			$message .= '<p>' . sprintf( '<a href="%s" class="button-primary">%s</a>', $install_url, __( 'Install The Event Calendar Now', 'elementor-extensions' ) ) . '</p>';
+
+			return '<div class="error"><p>' . $message . '</p></div>';
+		}
+
+		return false;
+	}
 }

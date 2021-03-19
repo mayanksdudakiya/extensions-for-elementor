@@ -26,6 +26,7 @@
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	width: 100%;
 }
 
 .single_property_page .slick-list:focus{
@@ -311,24 +312,7 @@
 
 /*====================font css End====================*/ 
 
-html{-webkit-font-smoothing:antialiased;}
-body{margin:0;padding:0;font-style:normal;font-weight:normal;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-moz-font-feature-settings:'liga','kern';line-height:normal;
-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;
-font-family: 'Montserrat', sans-serif;font-size: 14px;font-weight:400;}
-html,address,blockquote,div,dl,form,h1,h2,h3,h4,h5,h6,ol,p,pre,table,ul,dd,dt,li,tbody,td,tfoot,th,thead,tr,button,del,ins,map,object,a,abbr,acronym,b,bdo,big,br,cite,code,dfn,em,i,img,kbd,q,samp,small,span,strong,sub,sup,tt,var,legend,fieldset,p,hr,iframe{margin:0;padding:0;border:none;list-style:none;}
-a,input,select,textarea{outline:none;margin:0;padding:0;}
-h1,h2,h3,h4,h5,h6{font-weight:normal;line-height:1.4;margin: 0px;padding: 0px;}
-a{text-decoration:none;color:#000;transition: 0.4s;-webkit-transition: 0.4s;-moz-transition: 0.4s;-o-transition: 0.4s;}
-a:hover{text-decoration:none;}
-a:focus,input:focus,textarea:focus,select:focus,button:focus{outline:none;text-decoration:none;color:#000;}
-img{max-width:100%;vertical-align:middle;border:none;outline:none;border-radius:0;}
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;margin:0;padding:0;}
-input{resize:none;border:0;-webkit-border-radius:0;border-radius:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;}
-select::-ms-expand{display:none;}
-input[type="checkbox"]{-webkit-appearance:none;-moz-appearance:none;}
-select,input[type="submit"]{cursor:pointer}
-p{margin: 0px;padding: 0px;line-height: 1.4;}
-select{-webkit-appearance:none;-moz-appearance:none;} 
+body{margin:0;padding:0;font-style:normal;font-weight:400;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-moz-font-feature-settings:"liga","kern";line-height:normal;text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:Montserrat,sans-serif;font-size:14px;font-weight:400}.single_property_page a,.single_property_page abbr,.single_property_page acronym,.single_property_page address,.single_property_page b,.single_property_page bdo,.single_property_page big,.single_property_page blockquote,.single_property_page br,.single_property_page button,.single_property_page cite,.single_property_page code,.single_property_page dd,.single_property_page del,.single_property_page dfn,.single_property_page div,.single_property_page dl,.single_property_page dt,.single_property_page em,.single_property_page fieldset,.single_property_page form,.single_property_page h1,.single_property_page h2,.single_property_page h3,.single_property_page h4,.single_property_page h5,.single_property_page h6,.single_property_page hr,.single_property_page i,.single_property_page iframe,.single_property_page img,.single_property_page ins,.single_property_page kbd,.single_property_page legend,.single_property_page li,.single_property_page map,.single_property_page object,.single_property_page ol,.single_property_page p,.single_property_page pre,.single_property_page q,.single_property_page samp,.single_property_page small,.single_property_page span,.single_property_page strong,.single_property_page sub,.single_property_page sup,.single_property_page table,.single_property_page tbody,.single_property_page td,.single_property_page tfoot,.single_property_page th,.single_property_page thead,.single_property_page tr,.single_property_page tt,.single_property_page ul,.single_property_page var,html{margin:0;padding:0;border:none;list-style:none}.single_property_page a,.single_property_page input,.single_property_page select,.single_property_page textarea{outline:0;margin:0;padding:0}.single_property_page h1,.single_property_page h2,.single_property_page h3,.single_property_page h4,.single_property_page h5,.single_property_page h6{font-weight:400;line-height:1.4;margin:0;padding:0}.single_property_page a{text-decoration:none;color:#000;transition:.4s;-webkit-transition:.4s;-moz-transition:.4s;-o-transition:.4s}.single_property_page a:hover{text-decoration:none}.single_property_page a:focus,.single_property_page button:focus,.single_property_page input:focus,.single_property_page select:focus,.single_property_page textarea:focus{outline:0;text-decoration:none;color:#000}.single_property_page img{max-width:100%;vertical-align:middle;border:none;outline:0;border-radius:0}.single_property_page article,.single_property_page aside,.single_property_page details,.single_property_page figcaption,.single_property_page figure,.single_property_page footer,.single_property_page header,.single_property_page hgroup,.single_property_page menu,.single_property_page nav,.single_property_page section{display:block;margin:0;padding:0}.single_property_page input{resize:none;border:0;-webkit-border-radius:0;border-radius:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}.single_property_page select::-ms-expand{display:none}.single_property_page input[type=checkbox]{-webkit-appearance:none;-moz-appearance:none}.single_property_page input[type=submit],.single_property_page select{cursor:pointer}.single_property_page p{margin:0;padding:0;line-height:1.4}.single_property_page select{-webkit-appearance:none;-moz-appearance:none}
 
 .single_property_page .section {
 	width: 100%;
@@ -514,12 +498,12 @@ select{-webkit-appearance:none;-moz-appearance:none;}
 	top: auto;
 }
 .single_property_page .slider-for .slick-next {
-	left: 53%;
+	left: 56%;
 	right: auto;
 }
 .single_property_page .slider-for .slick-prev{
 	left: auto;
-	right:  53%;
+	right: 56%;
 }
 .single_property_page .slick-prev:hover,
 .single_property_page .slick-prev:focus,
@@ -550,7 +534,7 @@ select{-webkit-appearance:none;-moz-appearance:none;}
 .single_property_page .slideCount {
 	font-family: 'Open Sans','sans-serif';
 	left: auto;
-	right: 49%;
+	right: 48%;
 	position: absolute;
 	color: #FFF;
 	z-index: 3;

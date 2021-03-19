@@ -2,10 +2,10 @@
 Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
-Requires at least: 4.0
-Tested up to: 5.4
+Requires at least: 5.0
+Tested up to: 5.5.1
 Requires PHP: 5.6
-Stable tag: 1.0.5
+Stable tag: 1.0.14
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,38 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.14 - 13/01/2020 =
+* Fix : The Event Calendar Widget - Time format issue corrected
+* Fix : BreadCrumb - Google search console index issue resolved
+* Fix : Nav Menu - Megamenu fixed for both desktop and mobile
+* New : Nav Menu - New slideout mobile menu added
+
+= 1.0.13 - 01/12/2020 =
+* Fix : The Event Calendar Widget - Equal height issue
+
+= 1.0.12 - 27/11/2020 =
+* New : The Event Calendar Widget - New widget with list view capability has added
+
+= 1.0.11 - 09/11/2020 =
+* Fix : Property single style conflicts with other styles
+
+= 1.0.10 - 28/10/2020 =
+* Fix : Style Fix - Property single css override the other style
+
+= 1.0.9 - 28/10/2020 =
+* New : Property Single - Property agent widget added
+* New : Property Single - Property location map widget added
+* New : Property Single - Property school checker widget added
+* New : Property Single - Property slider widget added
+* Fix : Megamenu - Mobile view menu not working properly
+
+= 1.0.8 - 08/10/2020 =
+* Fix : Megamenu - Inner Nav Menu styling fixed
+
+= 1.0.7 - 16/09/2020 =
+* New : Property - Property search page will be removed if you diabled the widget
+* Fix : ACF - Dependency updated to latest ACF version
 
 = 1.0.6 - 22/04/2020 =
 * Fix : Event Summary View - Bug fixes

@@ -15,6 +15,7 @@ use ElementorExtensions\Includes\Modules_Manager;
 use ElementorExtensions\Includes\EE_MB_Controls_Manager;
 use ElementorExtensions\Includes\Templates\EE_MB_Templates;
 use ElementorExtensions\Includes\EE_MB_Run_On_Fly;
+use ElementorExtensions\Includes\EE_MB_Single_Property_Shortcode;
 
 class Plugin {
 
@@ -70,6 +71,12 @@ class Plugin {
 		EE_MB_Front::instance();
 		EE_MB_Templates::instance();
 		EE_MB_Property_Single::instance();
+
+		//$checked_widget = get_option('ee_mb_hide_show_widgets');
+
+		// if(!empty($checked_widget) && is_array($checked_widget) && in_array('properties',$checked_widget)):
+		// 	EE_MB_Single_Property_Shortcode::instance();
+		// endif;
 	}
 
 	public function autoload( $class ) {
@@ -154,6 +161,15 @@ class Plugin {
 			[],
 			Plugin::instance()->get_version()
 		);
+
+		if ( is_single() && 'property' == get_post_type() ) {
+			wp_enqueue_style(
+	            $prefix.'property-single',
+	            ELEMENTOR_EXTENSIONS_URL . 'assets/css/property-single'.$direction_suffix . $suffix . '.css',
+	            [],
+	            Plugin::instance()->get_version()
+	        );
+	    }
 
 		wp_enqueue_style(
             $prefix.'property-page',
@@ -307,6 +323,26 @@ class Plugin {
 			Plugin::instance()->get_version(),
 			true
 		);
+
+		wp_enqueue_script(
+            'ee-mb-fancybox-jquery',
+            ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fancybox/jquery.fancybox.min.js',
+            [ 
+                'jquery', 
+            ],
+            Plugin::instance()->get_version(),
+            true 
+        );
+
+        wp_enqueue_script(
+            'ee-mb-slick',
+            ELEMENTOR_EXTENSIONS_URL . 'assets/lib/slick/slick.min.js',
+            [ 
+                'jquery', 
+            ],
+            Plugin::instance()->get_version(),
+            true 
+        );
 
 		wp_enqueue_script(
 			$prefix.'gcal',

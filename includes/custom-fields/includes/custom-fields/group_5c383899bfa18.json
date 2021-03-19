@@ -78,7 +78,7 @@
                 "4": "4",
                 "5": "5+"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -132,7 +132,7 @@
             "key": "field_5c384722c5e26",
             "label": "Area",
             "name": "area",
-            "type": "text",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -145,7 +145,30 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": ""
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5f84b5d57c2f8",
+            "label": "Square Footage",
+            "name": "square_footage",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         },
         {
             "key": "field_5c385d150783d",
@@ -215,7 +238,7 @@
                 "Commercial": "Commercial",
                 "Other": "Other"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -283,6 +306,7 @@
                 "Land (Residential)": "Land (Residential)",
                 "Ranch-Style": "Ranch-Style",
                 "Mobile Home": "Mobile Home",
+                "Square Footage \/ Acreage": "Square Footage \/ Acreage",
                 "Town Home": "Town Home",
                 "Tiny Home": "Tiny Home",
                 "Container Home": "Container Home",
@@ -294,7 +318,7 @@
                 "Villa": "Villa",
                 "Yurt": "Yurt"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -518,7 +542,7 @@
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1566409797
+    "modified": 1602532873
 }

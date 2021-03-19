@@ -6,7 +6,7 @@ var selectedTypes = [];
 var getProperties = {
 
 	init: function () {
-		var scope = jQuery(document).find('.single_property_page');
+		var scope = jQuery(document).find('.single_property_page:first');
 
 		getProperties.addContactFromAjax(scope);
 		getProperties.addClassOnResize();
@@ -17,14 +17,14 @@ var getProperties = {
 	addContactFromAjax: function (scope) {
 
 		var settings = scope.data('settings');
-
+		
 		if(settings){
 			var agent_email = '';
 			if(settings['agent_email']){
 				agent_email = settings['agent_email'];
 			}
 
-			jQuery('#btn_send_agent').on('click', function (e) {
+			jQuery(document).on('click','#btn_send_agent', function (e) {
 				e.preventDefault();
 				getProperties.showLoading();
 				var ajaxurl = ElementorExtensionsFrontendConfig.ajaxurl;
@@ -166,21 +166,23 @@ var getProperties = {
 		}
 	},
 	schoolChecker: function(scope){
-		var settings = scope.data('settings');
-		
-		var address = school_checker = '';
-		if(settings['addresses']){
-			address = settings['addresses']['address'];
-		}
+		var settings = scope.data('settings'),
+			address = 'Bridgend Court, Main Street, Bridgend, Perth, UK',
+			school_checker = 'no';
 
-		if(settings['school_checker_tab']){
-			school_checker = settings['school_checker_tab'];
-		}
+
+		if (settings) {
+			if(settings['addresses']){
+				address = settings['addresses']['address'];
+			} 
+
+			if(settings['school_checker_tab']){
+				school_checker = settings['school_checker_tab'];
+			} 
+		} 
 
 		if(address && school_checker !== 'yes'){
-			scope.find('.school_checker_tab').on('click', function(){
-				getProperties.renderMap(address);
-			});
+			getProperties.renderMap(address);
 		}
 	},
 	renderMap: function(data_address) {
@@ -198,7 +200,7 @@ var getProperties = {
 		geocoder.geocode({
 			'address': address
 		}, function (results, status) {
-
+			console.log(status);
 			if (status === 'OK') {
 
 				selLocLat = results[0].geometry.location.lat();
@@ -206,7 +208,7 @@ var getProperties = {
 
 				var pyrmont = new google.maps.LatLng(selLocLat, selLocLng);
 
-				map = new google.maps.Map(document.getElementById('map'), {
+				map = new google.maps.Map(document.getElementById('ee-mb-map'), {
 					center: pyrmont,
 					zoom: 14
 				});
