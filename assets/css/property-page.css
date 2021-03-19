@@ -955,6 +955,37 @@ label.to-lable {
     position: relative;
 }
 
+/*@ Agent Form */
+
+.elementor_siteset_loading_overlay.property_search{   
+    position: fixed;
+    top: 0;                
+    background-color: white;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    height: 100%;
+    width: 100%;
+    min-height:100%;
+}
+
+.elementor_siteset_loading_overlay.property_search .elementor_siteset_loader {
+    height: 100%;
+    z-index: 999999;
+    background: url("../img/loader1.gif") center center no-repeat;
+    position: relative;
+    background-size: 100px 100px;
+    background-color: lightgray;
+}
+
+.single_property_page.agent_form .form_error {
+    display: inline-block;
+}
+
+.single_property_page .contact-from-wrap fieldset {
+	border: 0px;
+}
+
 @media only screen and (max-width:1199px) {
     .ee_mb_property_listing.list .property_descpr {
         min-height: auto;

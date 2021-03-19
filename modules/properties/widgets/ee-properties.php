@@ -1928,7 +1928,10 @@ class EE_Properties extends Base_Widget {
 		$email = (!empty($ee_mb_agent->sender_email)) ? sanitize_email($ee_mb_agent->sender_email) : sanitize_email($request['email']); 
 		$message = html_entity_decode($request['message']);
 		$telephone = sanitize_text_field($request['phone']);
+		$property_link = $request['property_link'];
 		$sendto = sanitize_email($request['sendto']);
+
+		$actual_sender_email = (!empty($request['email'])) ? sanitize_email($request['email']) : $email;
 
 		/*@Validation start*/
 		$validate_input = [];
@@ -1960,13 +1963,14 @@ class EE_Properties extends Base_Widget {
 			$mail_template = $ee_mb_agent->mail_template;
 
 			$headers[] = 'From: '. $email . "\r\n";
-			$headers[] ='Reply-To: ' . $email . "\r\n";
+			$headers[] ='Reply-To: ' . $actual_sender_email . "\r\n";
 			$headers[] = 'Content-Type: text/html; charset=UTF-8';
 
 			$mail_template = str_replace('[contact_name]',$name,$mail_template);
 			$mail_template = str_replace('[contact_email]',sanitize_email($request['email']),$mail_template);
 			$mail_template = str_replace('[contact_number]',$telephone,$mail_template);
 			$mail_template = str_replace('[contact_message]',$message,$mail_template);
+			$mail_template = str_replace('[property_link]',$property_link,$mail_template);
 
 			$mail_template = html_entity_decode(stripslashes($mail_template));
 		

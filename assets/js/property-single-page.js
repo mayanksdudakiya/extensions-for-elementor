@@ -43,7 +43,7 @@ var getProperties = {
 					success: function (data) {
 						if (data.success) {
 							jQuery(document).find('.form_error').text('');
-							jQuery('#btn_send_agent').after('<span class="form_success"><?php echo (get_field("mail_success","option")) ? get_field("mail_success","option") : "You message has been sent."; ?></span>');
+							jQuery(document).find('#btn_send_agent').after('<span class="form_success">You message has been sent.</span>');
 							jQuery('#agent_contact_form').trigger("reset");
 						} else {
 							jQuery(document).find('.form_error').remove();

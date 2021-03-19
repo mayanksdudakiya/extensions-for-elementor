@@ -1,6 +1,7 @@
 <?php
    /*@ Integration tab data store */
    $gmap_key = $snazzy_key = $snazzy_endpoint = $gcal_key = $eventbrite_token = $insta_token = $import_template_url = $template_password = '';
+   
    if(!empty($integration)):
         $gmap_key = (!empty($integration['ee_mb_google_map_key'])) ? stripslashes_deep(esc_attr($integration['ee_mb_google_map_key'])) : '';
         $snazzy_key = (!empty($integration['ee_mb_snazzy_map_key'])) ? stripslashes_deep(esc_attr($integration['ee_mb_snazzy_map_key'])) : '';

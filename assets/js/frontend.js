@@ -3075,34 +3075,32 @@
         event_calendar_fun : function( $scope, $ ) {
           
             var elementSettings = ee_common.getElementSettings( $scope );
-            console.log('in');
             
             event_calendar.event_calendar_fun.init = function() {
-                console.log('a')
+
+                jQuery('.categories_tribe_filter').change(function(){
+                    var slug = this.value;
+                    elementSettings['slug'] = slug;
+                    jQuery.ajax({
+                        url : ElementorExtensionsFrontendConfig.ajaxurl, 
+                        data:{
+                            'action': 'getEventFilterAjax',
+                            'setting' : elementSettings,
+                        },
+                        method:'POST',
+                        success:function(data) {
+                            jQuery('.past_events_wrapper.tec-wrapper').remove();
+                            jQuery('#filter').replaceWith(data).append('<div class="elementor_extensions_loading_overlay"><div class="elementor_extensions_loader"></div></div>');
+                            ee_common.hideLoading($scope);
+                        },
+                        error: function(errorThrown){
+                            console.log(errorThrown);
+                            ee_common.hideLoading($scope);
+                        }
+                    });  
+                });
            };
 
-            jQuery('.categories_tribe_filter').change(function(){
-                var slug = this.value;
-                elementSettings['slug'] = slug;
-                jQuery.ajax({
-                    url : ElementorExtensionsFrontendConfig.ajaxurl, 
-                    data:{
-                        'action': 'getEventFilterAjax',
-                        'setting' : elementSettings,
-                    },
-                    method:'POST',
-                    success:function(data) {
-                        // jQuery('#filter').html('');
-                        jQuery('#filter').replaceWith(data).append('<div class="elementor_extensions_loading_overlay"><div class="elementor_extensions_loader"></div></div>');
-                        ee_common.hideLoading($scope);
-                    },
-                    error: function(errorThrown){
-                        console.log(errorThrown);
-                        ee_common.hideLoading($scope);
-                    }
-                });  
-            });
-        
             event_calendar.event_calendar_fun.init();
         }
     }
@@ -3119,6 +3117,10 @@ jQuery( document ).ready(function() {
       jQuery('#ee_mb_cookie_msg').slideUp();
       /* Set cookie */
       cookieHelper.create('accepted', true);
+  });
+
+  jQuery('#ee_mb_cookie_accept').click(function() {
+    alert(1);
   });
 });
 

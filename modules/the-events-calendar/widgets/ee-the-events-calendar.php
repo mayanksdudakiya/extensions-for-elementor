@@ -139,6 +139,43 @@ class EE_The_Events_Calendar extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'default_to_show_time',
+			[
+				'label' => __( 'Show Time', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'default' => '',
+				'condition' => ['event_view' => 'summary'],
+				// 'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'default_to_show_time_formate',
+			[
+				'label' => __( 'Time Formate', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::TEXT,
+				'label_block' => true,
+				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
+				'default' => __( 'h:i A', 'elementor-for-extensions'),
+				'placeholder' => __( 'Enter time formate', 'elementor-for-extensions' ),
+				'description' => __( 'h:i a => 05:00 pm, <br>
+				H:i a => 17:00 pm, <br>
+				h:i A => 05:00 PM <br> 
+				H - 24-hour format of an hour (00 to 23) <br>
+				h - 12-hour format of an hour with leading zeros (01 to 12) <br>
+				i - Minutes with leading zeros (00 to 59) <br>
+				s - Seconds with leading zeros (00 to 59) <br>
+				a - Lowercase Ante meridiem and Post meridiem (am or pm) <br>
+				', 'elementor-for-extensions' ),
+				'frontend_available' => true
+				// 'frontend_available' => true,
+			]
+		);
+		
+
 		$this->add_responsive_control(
 			'event_columns',
 			[
@@ -634,7 +671,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'query',
 			[
 				'label' => __( 'Query', 'elementor-for-extensions' ),
-				'condition' => ['event_view' => 'detail'],
+				// 'condition' => ['event_view' => 'detail'],
 			]
 		);
 
@@ -734,6 +771,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 6,
 				'frontend_available' => true,
+				'condition' => ['event_view' => 'detail'],
 			]
 		);
 
@@ -749,6 +787,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'category'   => esc_html__( 'Category', 'bdthemes-element-pack' ),
 					'rand'       => esc_html__( 'Random', 'bdthemes-element-pack' ),
 				],
+				'condition' => ['event_view' => ['detail', 'summary']],
 				'frontend_available' => true,
 			]
 		);
@@ -763,6 +802,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'DESC' => esc_html__( 'Descending', 'bdthemes-element-pack' ),
 					'ASC'  => esc_html__( 'Ascending', 'bdthemes-element-pack' ),
 				],
+				'condition' => ['event_view' => ['detail', 'summary']],
 				'frontend_available' => true,
 			]
 		);
@@ -3437,6 +3477,39 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+            'default_to_show_time_style',
+            [
+                'label' => __( 'Time Styles', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
+            ]
+		);
+		
+		$this->add_control(
+            'default_to_show_time_background',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
+                'selectors' => [
+					'{{WRAPPER}} .default_to_show_time_formate' => 'color: {{VALUE}};',
+                ],
+            ]
+		);
+
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'default_to_show_time_typography',
+                'selector' => '{{WRAPPER}} .default_to_show_time_formate',
+            ]
+        );
+
+		$this->end_controls_section();
+
+
 		/*@ Calendar view style ends here*/
 	}
 	protected function getEventCalendarCategories(){
@@ -3488,17 +3561,24 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if($settings['event_view'] == 'detail'):
 			$this->ee_mb_detail_event_view($settings);
 		elseif($settings['event_view'] == 'summary'):
-			
-			$atts = array(
-				'month' => date('Y-m'),
-				'limit' => $settings['event_limit'],
-				'event_date_layout' => $settings['event_date_layout'],
-				'enable_event_detail' => $settings['enable_event_detail'],
-				'disable_link' => $settings['disable_link'],
-				'hide_past_events' => $settings['hide_past_events'],
-				'offset' => $settings['event_offset'],
-			);
+			// before
 
+			// $atts = array(
+			// 	'month' => date('Y-m'),
+			// 	'limit' => $settings['event_limit'],
+			// 	'event_date_layout' => $settings['event_date_layout'],
+			// 	'enable_event_detail' => $settings['enable_event_detail'],
+			// 	'default_to_show_time' => $settings['default_to_show_time'],
+			// 	'default_to_show_time_formate' => $settings['default_to_show_time_formate'],
+			// 	'disable_link' => $settings['disable_link'],
+			// 	'hide_past_events' => $settings['hide_past_events'],
+			// 	'offset' => $settings['event_offset'],
+			// );
+			
+			// after
+			$atts = $settings;
+
+			$atts['month'] = date('Y-m');
 			$current_month = date('m');
 			/*@ If current month have no any events then enable next the month who have events */
 			if(!empty($settings['default_to_next_event'])):
@@ -3555,7 +3635,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if(!empty($settings['setting'])){
 			$settings = $settings['setting'];
 		}
-
+		
 		$events = $this->eeMbGetEventList($settings);
 		$column_gap = (is_array($settings['column_gap']) == 1) ? $settings['column_gap']['default'] : $settings['column_gap'];
 
@@ -3805,11 +3885,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 			return [];
 		}
 
+		// echo '<pre>---------------';
+		// 	print_r($settings);
+		// echo '</pre>';
+		// die();
+		
 		$eventLimit = -1;
 		if (!empty($settings)) :
 
 			$eventView = $settings['event_view'];
-			if ($eventView === 'detail') :
+			// if ($eventView === 'detail') :
 				$eventLimit = $settings['event_limit'];
 				$atts['event_tax'] = '';
 				$start_date = ( 'custom' == $settings['start_date'] ) ? $settings['custom_start_date'] : $settings['start_date'];
@@ -3854,24 +3939,29 @@ class EE_The_Events_Calendar extends Base_Widget {
 				}
 
 				$query_args = tribe_get_events( $query_args ); 
-			endif;
+			// endif;
+
+			return $query_args;
 
 		endif;
 		
-		$event_args = array(
-			'post_type' => 'tribe_events',
-			'post_status' => 'publish',
-			'posts_per_page' => $eventLimit,
-			'tax_query'=> $atts['event_tax'],
-		);
-		return $query_args;
+		// $event_args = array(
+		// 	'post_type' => 'tribe_events',
+		// 	'post_status' => 'publish',
+		// 	'posts_per_page' => $eventLimit,
+		// 	'tax_query'=> $atts['event_tax'],
+		// );
+		
+		return [];
 	}
 
 	/*@ Check for the month whose have events */
 	public function checkEventExistInCurrentMonthSummaryList($atts){
 		
 		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';	
-
+		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';	
+		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';	
+		$event_categories = (!empty($atts['event_categories'])) ?  sanitize_text_field($atts['event_categories']) : '';	
 		$month_array = explode("-", $atts['month']);
 			
 		$month_yearstr = sanitize_text_field($month_array[0]);
@@ -3957,13 +4047,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		global $post;
 		$output = '';
+		
 		$event_date_layout = (!empty($atts['event_date_layout'])) ?  sanitize_text_field($atts['event_date_layout']) : '';
 		$event_limit = (!empty($atts['limit'])) ?  intval($atts['limit']) : '3';
 		$enable_event_detail = (!empty($atts['enable_event_detail'])) ?  sanitize_text_field($atts['enable_event_detail']) : '';
 		$disable_link = (!empty($atts['disable_link'])) ?  sanitize_text_field($atts['disable_link']) : '';
 		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';
+		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';
+		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';
 		$future_events_only = (!empty($atts['show_future_events'])) ?  sanitize_text_field($atts['show_future_events']) : '';
 		$offset = (!empty($atts['offset'])) ?  intval($atts['offset']) : 1;
+		$start_date = ( 'custom' == $atts['start_date'] ) ? $atts['custom_start_date'] : $atts['start_date'];
+		$end_date   = ( 'custom' == $atts['end_date'] ) ? $atts['custom_end_date'] : $atts['end_date'];
+		$eventDisplay = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
+		$order = $atts['order'];
+		$posts_per_page = $atts['limit']; 
+		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';
+		
 
 		if(!empty($atts['ajax_request'])):
 			$offset = $event_limit = intval($atts['offset']);
@@ -4002,6 +4102,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'event_tax' => '',
 			'hide_show_more' => '',
 			'enable_event_detail' => $enable_event_detail,
+			'default_to_show_time' => $default_to_show_time,
+			'default_to_show_time_formate' => $default_to_show_time_formate,
+			'event_categories' => $event_categories,
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'order' => $order,
+			'eventDisplay' => $eventDisplay,
+			'posts_per_page' => $posts_per_page,
 			'disable_link' => $disable_link,
 			'hide_past_events' => $hide_past_events,
 			'show_future_events' => $future_events_only,
@@ -4117,15 +4225,39 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'post_type' => 'tribe_events',
 			'post_status' => 'publish',
 			'posts_per_page' => -1,
-			'tax_query'=> $atts['event_tax'],
+			// 'tax_query'=> $atts['event_tax'], // removed
 			'meta_key' => ( ( trim( $atts['orderby'] ) and 'title' != $atts['orderby'] ) ? $atts['orderby'] : $atts['key'] ),
 			'orderby' => ( $atts['orderby'] == 'title' ? 'title' : 'meta_value' ),
 			'author' => $atts['author'],
 			'order' => $atts['order'],
 			'meta_query' => array( $atts['meta_date'] ),
 		);
+		// new code
+		// echo "<pre>";
+		// print_r($atts);
+		$args['start_date']     = $start_date;
+		$args['end_date']       = $end_date;
+		$args['order']          = $atts['order'];
+		$args['eventDisplay'] 	 = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
+		$args['posts_per_page'] = $atts['limit'];
+
+		// category
+		if(!empty($event_categories)) {
+			$args['tax_query'][] = [
+				'taxonomy' => 'tribe_events_cat',
+				'terms' => $event_categories, 
+				'field' => 'slug',
+				'include_children' => true,
+				'operator' => 'IN'
+			];
+		}
+		//'tag'          => 'donor-program', // or whatever the tag name is
 		
-		$posts = get_posts($args);
+		// new code end
+		
+		// $posts = get_posts($args); //old
+
+		$posts = tribe_get_events($args);
 		
 		$total_events = count($posts);
 	
@@ -4138,11 +4270,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		echo '<div class="summary_title_wrapper">';
 			echo '<p class="summary_month_title">'.date('F, Y',strtotime($atts['month'])).'</p>';
 			echo '<p class="summary_nextprev_buttons">
-					<span id="summary_prev" class="summary_btn_prev" data-date="'.$prev_month.'" data-date-layout="'.$event_date_layout.'" data-event-detail="'.$enable_event_detail.'" data-disable-link="'.$disable_link.'" data-hide-past-events="'.$hide_past_events.'">
+					<span id="summary_prev" class="summary_btn_prev"  data-start_date="'.$start_date.'" data-end_date="'.$end_date.'" data-order="'.$atts['order'].'" data-eventDisplay="'.$eventDisplay.'" data-posts_per_page="'.$atts['limit'].'" data-event_categories='.json_encode($event_categories).' data-default_to_show_time_formate="'.$default_to_show_time_formate.'" data-default_to_show_time="'.$default_to_show_time.'" data-date="'.$prev_month.'" data-date-layout="'.$event_date_layout.'" data-event-detail="'.$enable_event_detail.'" data-disable-link="'.$disable_link.'" data-hide-past-events="'.$hide_past_events.'">
 						<i class="fa fa-angle-left"></i>
 					</span>
 
-					<span id="summary_next" class="summary_btn_next" data-date="'.$next_month.'" data-date-layout="'.$event_date_layout.'" data-event-detail="'.$enable_event_detail.'" data-disable-link="'.$disable_link.'" data-hide-past-events="'.$hide_past_events.'">
+					<span id="summary_next" class="summary_btn_next"  data-start_date="'.$start_date.'" data-end_date="'.$end_date.'" data-order="'.$atts['order'].'" data-eventDisplay="'.$eventDisplay.'" data-posts_per_page="'.$atts['limit'].'" data-event_categories='.json_encode($event_categories).' data-default_to_show_time_formate="'.$default_to_show_time_formate.'" data-default_to_show_time="'.$default_to_show_time.'" data-date="'.$next_month.'" data-date-layout="'.$event_date_layout.'" data-event-detail="'.$enable_event_detail.'" data-disable-link="'.$disable_link.'" data-hide-past-events="'.$hide_past_events.'">
 						<i class="fa fa-angle-right"></i>
 					</span>
 				</p>';
@@ -4245,6 +4377,20 @@ class EE_The_Events_Calendar extends Base_Widget {
 									echo '<h4>';
 										echo $title;
 									echo '</h4>';
+									if($default_to_show_time == 'yes'):
+										echo '<p class="default_to_show_time_formate">';
+										if(!empty($start_date)):
+											$startdate = date('dS', strtotime($start_date));
+											echo date($default_to_show_time_formate, strtotime($start_date));
+										endif;
+										
+										if(!empty($end_date)):
+											$enddate = date('dS', strtotime($end_date));
+											echo ' - ';
+											echo date($default_to_show_time_formate, strtotime($end_date));
+										endif;
+										echo '</p>';
+									endif;
 								echo '</div>';
 							echo '</a>';
 						echo '</li>';
@@ -4349,6 +4495,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 	}
 
 	public function getSummaryListAjax($request){
+		// echo "<pre>";
+		// print_r($request);
 		if(isset($request['month_year']) && !empty($request)):
 			$month_year = sanitize_text_field($request['month_year']);
 		else:
@@ -4391,6 +4539,45 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$atts['offset'] = intval($request['offset']);
 		endif;
 
+		if(isset($request['default_to_show_time'])):
+			$atts['default_to_show_time'] = sanitize_text_field($request['default_to_show_time']);
+		endif;
+
+		if(isset($request['default_to_show_time_formate'])):
+			$atts['default_to_show_time_formate'] = sanitize_text_field($request['default_to_show_time_formate']);
+		endif;
+
+
+		if(isset($request['start_date'])):
+			$atts['start_date'] = sanitize_text_field($request['start_date']);
+		endif;
+
+		if(isset($request['end_date'])):
+			$atts['end_date'] = sanitize_text_field($request['end_date']);
+		endif;
+
+		if(isset($request['order'])):
+			$atts['order'] = sanitize_text_field($request['order']);
+		endif;
+
+		if(isset($request['eventDisplay'])):
+			$atts['eventDisplay'] = sanitize_text_field($request['eventDisplay']);
+		endif;
+
+		if(isset($request['posts_per_page'])):
+			$atts['posts_per_page'] = sanitize_text_field($request['posts_per_page']);
+		endif;
+
+		if(isset($request['event_categories'])):
+			$atts['event_categories'] = $request['event_categories'];
+		endif;
+
+		// $args['start_date']     = $start_date; event_categories
+		// $args['end_date']       = $end_date;
+		// $args['order']          = $atts['order'];
+		// $args['eventDisplay'] 	 = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
+		// $args['posts_per_page'] = $atts['limit'];
+
 		$this->ee_mb_fetch_events($atts);
 	}
 
@@ -4398,9 +4585,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 	public function getCalendarView($settings){
 
 		$enable_event_detail = $settings['enable_event_detail'];
+		$default_to_show_time = $settings['default_to_show_time'];
 		$disable_link = $settings['disable_link'];
 
-		$events = $this->eeMbGetEventList();
+		$events = $this->eeMbGetEventList($settings);
 
 		/*
 		 *@ If event present then show otherwise display not found message

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Extensions For Elementor
  * Description: Extend your elementor capability by adding elementor extension.
- * Version: 1.0.14
+ * Version: 1.0.15
  * Text Domain: elementor-extensions
  * Author: mayanksdudakiya
  * Author URI: https://www.linkedin.com/in/mayanksdudakiya/
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ELEMENTOR_EXTENSIONS_VERSION', '1.0.14' );
+define( 'ELEMENTOR_EXTENSIONS_VERSION', '1.0.15' );
 
 define( 'ELEMENTOR_EXTENSIONS__FILE__', __FILE__ );
 define( 'ELEMENTOR_EXTENSIONS_PLUGIN_BASE', plugin_basename( ELEMENTOR_EXTENSIONS__FILE__ ) );

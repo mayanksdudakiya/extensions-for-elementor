@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.5.1
 Requires PHP: 5.6
-Stable tag: 1.0.14
+Stable tag: 1.0.15
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,13 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.15 - 19/03/21 =
+* New : The Event Calendar Widget - Query controls added for all the views
+* Fix : Nav Menu - Megamenu fixed for all the views
+* New : Cookie - Cookies settings added to accept and deny with overlay cookie information
+* Fix : Property - Fixed issues
+* New : Property - Agent Styling options added
 
 = 1.0.14 - 13/01/2020 =
 * Fix : The Event Calendar Widget - Time format issue corrected

@@ -1574,14 +1574,18 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Top Spacing', 'elementor-extensions' ),
 				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 1000,
+						'step' => 1,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-nav-menu .menu-item .ee-mb-nav-shortcode' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'#mainNavigation > .ee-mb-nav-shortcode' => 'top: {{SIZE}}{{UNIT}};',
 				],
+				'frontend_available' => true
 			]
 		);  
 

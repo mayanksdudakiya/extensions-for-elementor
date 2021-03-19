@@ -2,6 +2,7 @@
 
    $mail_subject = $mail_success = $mail_template = $default_agent = $sender_email = '';
    if(!empty($ee_mb_agent)):
+      //$ee_mb_agent = json_decode($ee_mb_agent);
       $mail_subject = (!empty($ee_mb_agent->mail_subject)) ? $ee_mb_agent->mail_subject : '';
       $mail_success = (!empty($ee_mb_agent->mail_success)) ? $ee_mb_agent->mail_success : '';
       $mail_template = (!empty($ee_mb_agent->mail_template)) ? html_entity_decode($ee_mb_agent->mail_template) : '';

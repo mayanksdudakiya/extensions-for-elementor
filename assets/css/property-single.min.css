@@ -556,6 +556,8 @@ body{margin:0;padding:0;font-style:normal;font-weight:400;font-synthesis:none;te
 }
 .single_property_page .f-left{
 	float: left;
+	display: block;
+	width: 100%;
 }
 .single_property_page .f-right{
 	float: right;
@@ -697,6 +699,11 @@ body{margin:0;padding:0;font-style:normal;font-weight:400;font-synthesis:none;te
 .single_property_page .agent-info {
 	padding: 15px;
 }
+
+.single_property_page.agent_form .form_error {
+    display: inline-block;
+}
+
 .single_property_page .agent-info p{
 	color: #515151;
 	font-size: 14px;
@@ -715,6 +722,7 @@ body{margin:0;padding:0;font-style:normal;font-weight:400;font-synthesis:none;te
 }
 .single_property_page .contact-from-wrap fieldset {
 	padding: 0 15px 100px;
+	border: 0px;
 }
 .single_property_page .contact-from-wrap .input-field {	
 	-webkit-appearance: none;
@@ -725,7 +733,8 @@ body{margin:0;padding:0;font-style:normal;font-weight:400;font-synthesis:none;te
 	resize: none;	
 	padding:8px 10px;
 	height: 38px;
-	width: 90%;
+	width: 100%;
+	max-width: 100%;
 	font-size: 13px;
 	font-family: 'Open Sans', sans-serif;
 }

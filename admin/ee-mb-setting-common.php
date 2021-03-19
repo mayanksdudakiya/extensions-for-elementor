@@ -16,9 +16,13 @@ class EE_MB_Setting_Common{
 	    	$all_keys = $ee_get_key;
 	    	if(!empty($child_key)):
 	    		return (isset($all_keys[$child_key])) ? $all_keys[$child_key] : '';
-	    	endif;
+			endif;
 
-	    	return $all_keys;
+			if ( !is_array($all_keys)) :
+				$all_keys = json_decode($all_keys);
+			endif;
+
+	    	return (array)$all_keys;
 	    endif;
 	    
 	    return new \stdClass();
@@ -31,7 +35,7 @@ class EE_MB_Setting_Common{
 		// Loop through the input and sanitize each of the values
 		foreach ( $input as $key => $val ) :
 
-			if( $key === 'message' || $key === 'mail_template' ):
+			if( $key === 'message' || $key === 'mail_template' || $key === 'overlay_message' || $key === 'script'):
 				$new_input[ $key ] = sanitize_text_field( htmlentities($val) );
 			elseif( $key === 'sender_email' ):
 				$new_input[ $key ] = sanitize_email($val);
