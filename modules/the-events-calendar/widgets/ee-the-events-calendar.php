@@ -378,6 +378,36 @@ class EE_The_Events_Calendar extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'show_content',
+			[
+				'label' => __( 'Show Content', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => 'detail'
+				],
+			]
+		);
+
+		$this->add_control(
+			'content_length',
+			[
+				'label' => __( 'Content Length', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::NUMBER,
+				'default' => 15,
+				'frontend_available' => true,
+				'condition' => [
+					'event_view' => 'detail',
+					'show_content' => 'yes'
+				],
+			]
+		);
+
 		// $this->add_control(
 		// 	'show_meta',
 		// 	[
@@ -1971,6 +2001,133 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};', /* add new */
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		/*@ Content styles*/
+		$this->start_controls_section(
+            'event_content_style',
+            [
+                'label' => __( 'Content Styles', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+					'event_view!' => 'calendar'
+				],
+            ]
+		);
+
+		$this->add_control(
+            'event_content_color',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content' => 'color: {{VALUE}};', // add new
+                ],
+            ]
+		);
+		
+		$this->add_control(
+            'event_content_hover_color',
+            [
+                'label' => __( 'Hover Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content:hover' => 'color: {{VALUE}};', // add new
+                ],
+            ]
+        );
+		
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'event_content_typography',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content',
+            ]
+        );
+				
+		$this->add_responsive_control(
+			'event_content_align',
+			[
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-right',
+					],
+					'justify' => [
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-justify',
+					],
+				],
+				'condition' => ['event_view' => 'detail'],
+				'default' => 'left',
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content' => 'text-align: {{VALUE}}!important;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'event_content_spacing',
+			[
+				'label' 	=> __( 'Spacing', 'elementor-for-extensions' ),
+				'type' 		=> Controls_Manager::SLIDER,
+				'size_units' => [ 'px','%' ],
+				'range' 	=> [
+					'px' 	=> [
+						'min' => 0,
+						'max' => 1000,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
+			]
+		);
+
+		$this->add_responsive_control(
+			'event_content_margin',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'event_content_padding',
+			[
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};', /* add new */
 				],
 			]
 		);
@@ -3654,6 +3811,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$event_id = $event->ID;
 				$event_title = $event->post_title;
 				$event_excerpt = $event->post_excerpt;
+				$event_content = $event->post_content;
 				
 				$image_size = $settings['thumbnail_size'];
 				$event_image = wp_get_attachment_image_src(get_post_thumbnail_id($event_id),$image_size);
@@ -3791,6 +3949,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						if($settings['show_time'] == 'yes'):	
 						$event_html.='<span class="myeventon_time">'.$event_start_time.' - '.$event_end_time.'</span>';
+						endif;
+
+						if($settings['show_content'] == 'yes' && !empty($event_content)):	
+							$event_html.='<div class="myeventon_content">'.(($settings['content_length']) ? substr(strip_tags($event_content), 0, $settings['content_length']) : strip_tags($event_content) ).'</div>';
 						endif;
 
 						if($settings['show_excerpt'] == 'yes' && !empty($event_excerpt)):	
