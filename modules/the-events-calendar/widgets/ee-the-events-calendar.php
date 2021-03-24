@@ -3797,6 +3797,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$column_gap = (is_array($settings['column_gap']) == 1) ? $settings['column_gap']['default'] : $settings['column_gap'];
 
 		$auto_height = ($settings['auto_height'] === 'yes') ? 'auto_height' : '';
+		$match_height = '';
+		if($settings['auto_height'] === 'yes') :
+			$match_height = 'data-match-height="groupName"';
+		endif;	
 		/*
 		 *@ If event present then show otherwise display not found message
 		 */
@@ -3924,7 +3928,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endif;
 
 						$event_html.='<div class="myeventon_content_wrapper">';
-						$event_html.='<div class="inner_content_wrapper" data-match-height="groupName">';
+						$event_html.='<div class="inner_content_wrapper" '.$match_height.'>';
 						
 						if($settings['show_title'] == 'yes'):	
 							if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
@@ -3952,7 +3956,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endif;
 
 						if($settings['show_content'] == 'yes' && !empty($event_content)):	
-							$event_html.='<div class="myeventon_content">'.(($settings['content_length']) ? substr(strip_tags($event_content), 0, $settings['content_length']) : strip_tags($event_content) ).'</div>';
+							$event_html.='<span class="myeventon_content">'.(($settings['content_length']) ? substr(strip_tags($event_content), 0, $settings['content_length']) : strip_tags($event_content) ).'</span>';
 						endif;
 
 						if($settings['show_excerpt'] == 'yes' && !empty($event_excerpt)):	
