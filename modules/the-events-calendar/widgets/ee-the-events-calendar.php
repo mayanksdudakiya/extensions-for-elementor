@@ -349,18 +349,19 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
-			'show_excerpt',
+			'show_option_excerpt_content',
 			[
-				'label' => __( 'Show Excerpt', 'elementor-for-extensions' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
-				'label_off' => __( 'No', 'elementor-for-extensions' ),
-				'return_value' => 'yes',
-				'frontend_available' => true,
-				'default' => 'yes',
+				'label' => __( 'Show Excerpt / Content', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'excerpt',
+				'options' => [
+					'excerpt' => __( 'Excerpt', 'elementor-for-extensions' ),
+					'content' => __( 'Content', 'elementor-for-extensions' ),
+				],
 				'condition' => [
 					'event_view' => 'detail'
 				],
+				'frontend_available' => true,
 			]
 		);
 
@@ -373,37 +374,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'frontend_available' => true,
 				'condition' => [
 					'event_view' => 'detail',
-					'show_excerpt' => 'yes'
-				],
-			]
-		);
-
-		$this->add_control(
-			'show_content',
-			[
-				'label' => __( 'Show Content', 'elementor-for-extensions' ),
-				'type' => Controls_Manager::SWITCHER,
-				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
-				'label_off' => __( 'No', 'elementor-for-extensions' ),
-				'return_value' => 'yes',
-				'frontend_available' => true,
-				'default' => 'yes',
-				'condition' => [
-					'event_view' => 'detail'
-				],
-			]
-		);
-
-		$this->add_control(
-			'content_length',
-			[
-				'label' => __( 'Content Length', 'elementor-for-extensions' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => 15,
-				'frontend_available' => true,
-				'condition' => [
-					'event_view' => 'detail',
-					'show_content' => 'yes'
+					'show_option_excerpt_content' => 'excerpt'
 				],
 			]
 		);
@@ -3955,11 +3926,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 						$event_html.='<span class="myeventon_time">'.$event_start_time.' - '.$event_end_time.'</span>';
 						endif;
 
-						if($settings['show_content'] == 'yes' && !empty($event_content)):	
-							$event_html.='<span class="myeventon_content">'.(($settings['content_length']) ? substr(strip_tags($event_content), 0, $settings['content_length']) : strip_tags($event_content) ).'</span>';
+						if($settings['show_option_excerpt_content'] == 'content' && !empty($event_content)):	
+							$event_html.='<span class="myeventon_content">'. $event_content .'</span>';
 						endif;
 
-						if($settings['show_excerpt'] == 'yes' && !empty($event_excerpt)):	
+						if($settings['show_option_excerpt_content'] == 'excerpt' && !empty($event_excerpt)):	
 							$event_html.='<span class="myeventon_excerpt">'.(($settings['excerpt_length']) ? substr($event_excerpt, 0, $settings['excerpt_length']) : substr($event_excerpt, 0, 50)).'</span>';
 						endif;
 						
