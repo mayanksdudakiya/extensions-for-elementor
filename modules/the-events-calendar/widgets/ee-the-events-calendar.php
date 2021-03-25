@@ -4050,11 +4050,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if ($this->is_tac_installed_activated()) {
 			return [];
 		}
-
-		// echo '<pre>---------------';
-		// 	print_r($settings);
-		// echo '</pre>';
-		// die();
 		
 		$eventLimit = -1;
 		if (!empty($settings)) :
@@ -4127,7 +4122,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';	
 		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';	
 		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';	
-		$event_categories = (!empty($atts['event_categories'])) ?  sanitize_text_field($atts['event_categories']) : '';	
+		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';	
 		$month_array = explode("-", $atts['month']);
 			
 		$month_yearstr = sanitize_text_field($month_array[0]);
@@ -4159,6 +4154,18 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'orderby' => 'meta_value',
 			'order' => 'ASC',
 		);
+
+		// Query category filter
+
+		if(!empty($event_categories)) {
+			$args['tax_query'][] = [
+				'taxonomy' => 'tribe_events_cat',
+				'terms' => $event_categories, 
+				'field' => 'slug',
+				'include_children' => true,
+				'operator' => 'IN'
+			];
+		}
 
 		$posts = get_posts($args);
 
@@ -4399,8 +4406,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 			'meta_query' => array( $atts['meta_date'] ),
 		);
 		// new code
-		// echo "<pre>";
-		// print_r($atts);
 		$args['start_date']     = $start_date;
 		$args['end_date']       = $end_date;
 		$args['order']          = $atts['order'];
@@ -4661,8 +4666,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 	}
 
 	public function getSummaryListAjax($request){
-		// echo "<pre>";
-		// print_r($request);
 		if(isset($request['month_year']) && !empty($request)):
 			$month_year = sanitize_text_field($request['month_year']);
 		else:
