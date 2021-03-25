@@ -4031,6 +4031,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$atts['event_tax'] = '';
 				$start_date = ( 'custom' == $settings['start_date'] ) ? $settings['custom_start_date'] : $settings['start_date'];
 				$end_date   = ( 'custom' == $settings['end_date'] ) ? $settings['custom_end_date'] : $settings['end_date'];
+				$hide_past_events = (!empty($settings['past_event_section'])) ?  sanitize_text_field($settings['past_event_section']) : '';	
 
 				$query_args = array_filter( [
 					'start_date'     => $start_date,
@@ -4042,6 +4043,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 					//'tag'          => 'donor-program', // or whatever the tag name is
 				] );
 
+				if($hide_past_events != 'yes'):
+					$query_args['eventDisplay'] = 'list';
+					$query_args['start_date'] = date( 'Y-m-d H:i:s', strtotime( 'today' ) );
+				endif;
+				
 				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
 					if(isset($settings['slug']) && !empty($settings['slug'])){
 						$query_args['tax_query'][] =  [
