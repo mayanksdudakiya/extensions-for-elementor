@@ -168,6 +168,23 @@ class Nav_Menu extends Widget_Base {
 		);
 
 		$this->add_control(
+			'icon_align',
+			[
+				'label' => __( 'Icon Align', 'elementor-extensions' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'left',
+				'options' => [
+					'left' => __( 'Left', 'elementor-extensions' ),
+					'right' => __( 'Right', 'elementor-extensions' ),
+					'top' => __( 'Top', 'elementor-extensions' ),
+					'bottom' => __( 'Bottom', 'elementor-extensions' ),
+				],
+				'prefix_class' => 'elementor-nav-menu__icon-align-',
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
 			'pointer',
 			[
 				'label' => __( 'Pointer', 'elementor-extensions' ),
@@ -1432,6 +1449,47 @@ class Nav_Menu extends Widget_Base {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section( 'menu_icon_style_toggle',
+			[
+				'label' => __( 'Menu Icon', 'elementor-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'toggle!' => '',
+					'layout!' => 'slideout',
+				],
+			]
+		);
+
+		$this->add_control(
+			'menu_icon_color',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'color: {{VALUE}}', 
+				],
+			]
+		);
+
+		$this->add_control(
+			'menu_icon_size',
+			[
+				'label' => __( 'Size', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 15,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'font-size: {{SIZE}}{{UNIT}}',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->end_controls_section();
+
 
 		/*@Hamburger Toggle Menu Style start*/
 		$this->start_controls_section( 'style_toggle_ee_mb',
@@ -1800,6 +1858,7 @@ class Nav_Menu extends Widget_Base {
 				'elementor-nav-menu--layout-' . $settings['layout'],
 				$settings['scroll_hamburger'],
 				$settings['mega_menu'],
+				'elementor-nav-menu__icon-align-' . $settings['icon_align'],
 			] );
 
 			if ( $settings['pointer'] ) :

@@ -6347,6 +6347,19 @@ line-height: 30px;
       content: "\00BB";
       padding-right: 15px;
   }
+  
+  .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before{
+    float: left;
+  }
+  .elementor-widget-container .elementor-nav-menu__icon-align-right .elementor-nav-menu > li::before{
+    float: right;
+  }
+  .elementor-widget-container .elementor-nav-menu__icon-align-top .elementor-nav-menu > li::before{
+    text-align: center;
+  }
+  .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before{
+    text-align: center;
+  }
 
   .ee-mb-sidebar-menu-wrapper .elementor-nav-menu--dropdown a{
     -webkit-box-pack: initial;
