@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
 Requires at least: 5.0
-Tested up to: 5.5.1
+Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.15
+Stable tag: 1.0.16
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,12 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.16 - 26/03/21 =
+*Fix : Megamenu - Top spacing issue
+*Fix : The Event Calendar - Query control limit with sorting issue
+*New : The Event Calendar - Content support added in Detail view
+*Fix : The Event Calendar - Next available month issue
 
 = 1.0.15 - 19/03/21 =
 * New : The Event Calendar Widget - Query controls added for all the views

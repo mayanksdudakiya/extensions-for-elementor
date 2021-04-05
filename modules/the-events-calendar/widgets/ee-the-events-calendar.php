@@ -3927,7 +3927,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endif;
 
 						if($settings['show_option_excerpt_content'] == 'content' && !empty($event_content)):	
-							$event_html.='<span class="myeventon_content">'. $event_content .'</span>';
+							$event_html.='<span class="myeventon_content">'. wpautop($event_content) .'</span>';
 						endif;
 
 						if($settings['show_option_excerpt_content'] == 'excerpt' && !empty($event_excerpt)):	
