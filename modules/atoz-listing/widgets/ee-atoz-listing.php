@@ -755,7 +755,13 @@ class EE_Atoz_Listing extends Base_Widget {
 					foreach($categories as $key => $category):
 						$name = $category['name'];
 						$taxonomy_data = json_encode($category, JSON_PRETTY_PRINT);
-						$cat_name_load = strtolower(str_replace(' ','',$name));
+
+						$cat_name_load = str_replace('&amp;','',$name);
+						$cat_name_load = str_replace('&','',$cat_name_load);
+						$cat_name_load = strtolower(str_replace(' ','',$cat_name_load));
+						$cat_name_load = preg_replace('/[^a-z0-9]+/', '', $cat_name_load);
+						
+
 						echo "<li><a href='javascript:void(0);' id='".esc_html($cat_name_load)."' data-setting='".$taxonomy_data."'>".esc_html($name)."</a></li>";
 					endforeach;
 					echo '</ul>';
