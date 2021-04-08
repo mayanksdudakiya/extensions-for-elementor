@@ -36,7 +36,7 @@ class EE_MB_Setting_Common{
 		foreach ( $input as $key => $val ) :
 
 			if( $key === 'message' || $key === 'mail_template' || $key === 'overlay_message' || $key === 'script'):
-				$new_input[ $key ] = sanitize_text_field( htmlentities($val) );
+				$new_input[ $key ] = htmlentities($val);
 			elseif( $key === 'sender_email' ):
 				$new_input[ $key ] = sanitize_email($val);
 			else:
