@@ -180,7 +180,17 @@ class Nav_Menu extends Widget_Base {
 					'bottom' => __( 'Bottom', 'elementor-extensions' ),
 				],
 				'prefix_class' => 'elementor-nav-menu__icon-align-',
-				'frontend_available' => true,
+				'style_transfer' => true,
+				'condition' => [
+					'layout!' => 'dropdown',
+					'layout!' => 'slideout',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before' => 'position: absolute; top: 50%; transform: translateY(-50%);',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-right .elementor-nav-menu > li::before' => 'position: absolute; top: 50%; transform: translateY(-50%); right: 0;',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-top .elementor-nav-menu > li::before' => 'position: absolute; top:0; left: 50%;',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'position: absolute; bottom:0; left: 50%;',
+				],
 			]
 		);
 
@@ -1466,7 +1476,7 @@ class Nav_Menu extends Widget_Base {
 				'label' => __( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li::before' => 'color: {{VALUE}}', 
 				],
 			]
 		);
@@ -1482,9 +1492,29 @@ class Nav_Menu extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li::before' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_padding_menu_item',
+			[
+				'label' => __( 'Spacing', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'devices' => [ 'desktop', 'tablet' ],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before' => 'left: -{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-right .elementor-nav-menu > li::before' => 'right: -{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-top .elementor-nav-menu > li::before' => 'top: -{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'bottom: -{{SIZE}}{{UNIT}}',
+				],
 			]
 		);
 
