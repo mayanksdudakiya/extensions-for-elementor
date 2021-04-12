@@ -1463,6 +1463,16 @@ class Nav_Menu extends Widget_Base {
 			]
 		);
 
+		/* Tab  */
+		$this->start_controls_tabs( 'menu_icon_toggle_style' );
+
+		$this->start_controls_tab(
+			'menu_icon_style_normal',
+			[
+				'label' => __( 'Normal', 'elementor-extensions' ),
+			]
+		);
+
 		$this->add_control(
 			'menu_icon_color',
 			[
@@ -1473,6 +1483,31 @@ class Nav_Menu extends Widget_Base {
 				],
 			]
 		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'menu_icon_style_hover',
+			[
+				'label' => __( 'Hover', 'elementor-extensions' ),
+			]
+		);
+
+		$this->add_control(
+			'menu_icon_color_hover',
+			[
+				'label' => __( 'Color', 'elementor-extensions' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li:hover::before' => 'color: {{VALUE}}', 
+				],
+			]
+		);		
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+		/* Tab End */
 
 		$this->add_control(
 			'menu_icon_size',
