@@ -179,17 +179,10 @@ class Nav_Menu extends Widget_Base {
 					'top' => __( 'Top', 'elementor-extensions' ),
 					'bottom' => __( 'Bottom', 'elementor-extensions' ),
 				],
-				'prefix_class' => 'elementor-nav-menu__icon-align-',
 				'style_transfer' => true,
 				'condition' => [
 					'layout!' => 'dropdown',
 					'layout!' => 'slideout',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before' => 'position: absolute; top: 50%; transform: translateY(-50%);',
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-right .elementor-nav-menu > li::before' => 'position: absolute; top: 50%; transform: translateY(-50%); right: 0;',
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-top .elementor-nav-menu > li::before' => 'position: absolute; top:0; left: 50%;',
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'position: absolute; bottom:0; left: 50%;',
 				],
 			]
 		);
