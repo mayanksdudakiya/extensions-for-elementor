@@ -6363,11 +6363,13 @@ line-height: 30px;
     position: absolute;
     top:0;
     left: 50%;
+    transform: translateX(-50%);
   }
   .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before{
     position: absolute;
     bottom: 0;
     left: 50%;
+    transform: translateX(-50%);
   }
 
   .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li > a {
