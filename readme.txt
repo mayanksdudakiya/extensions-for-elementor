@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.18
+Stable tag: 1.0.19
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,10 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.19 - 19/04/21 =
+*New : Nav Menu - Menu icon functionality has been added  
+*Fix : Megamenu - Blank space in footer has resolved
 
 = 1.0.18 - 07/04/21 =
 *Fix : Cookie - Cookie bar not working due to jQuery error
