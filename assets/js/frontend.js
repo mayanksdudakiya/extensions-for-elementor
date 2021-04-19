@@ -32,7 +32,7 @@ var cookieHelper = {
 
 jQuery( document ).ready(function() {
     jQuery('#cookie-law-info-again').click(function () {
-        jQuery('#ee_mb_cookie_msg').slideDown();
+        jQuery('#mbr-myModal').css('display', 'block');
         jQuery('#cookie-law-info-again').css('display', 'none');
     });
     jQuery('#ee_mb_cookie_close_btn').click(function () {
@@ -49,10 +49,12 @@ jQuery( document ).ready(function() {
 
     jQuery('#ee_mb_settings_button').click(function () {
         jQuery('#mbr-myModal').css('display', 'block');
+        jQuery('#cookie-law-info-again').css('display', 'none');
     });
 
     jQuery('.mbr-myModal-close').click(function () {
         jQuery('#mbr-myModal').css('display', 'none');
+        jQuery('#cookie-law-info-again').css('display', 'block');
     });
 
     jQuery('#ee_mb_cookie_accept_btn').click(function () {
@@ -1310,12 +1312,15 @@ jQuery(function () {
 
                 $(document).find('#mainNavigation').html($('#templateMainNav').html());
                 
-                if ( $(document).find('.ee-mb-megamenu-wrapper').length > 0 ) {
-                        
-                    
+                $(document).find('#mainNavigation').hide();
 
+                if ( $(document).find('.ee-mb-megamenu-wrapper').length > 0 ) {
+                                            
+                    
                      jQuery(document).find('.ee-mb-megamenu-wrapper .menu-item').mouseenter(function() { 
                         let liIndex = jQuery(this).index();
+
+                        $(document).find('#mainNavigation').show();
 
                         jQuery(document).find('#mainNavigation .ee-mb-nav-shortcode').css({ 'opacity': 0, 'visibility': 'hidden' });
 
@@ -1325,6 +1330,8 @@ jQuery(function () {
                      });
 
                      jQuery(document).find('#mainNavigation').mouseleave(function() { 
+
+                        $(document).find('#mainNavigation').hide();
 
                         jQuery(document).find('#mainNavigation .ee-mb-nav-shortcode').css({ 'opacity': 0, 'visibility': 'hidden' });
                         
