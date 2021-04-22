@@ -4104,7 +4104,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			
 		$month_yearstr = sanitize_text_field($month_array[0]);
 		$month_monthstr = sanitize_text_field($month_array[1]);
-		$month_startdate = date( "Y-m", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
+		$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 		$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
 		$atts['meta_date'] = array(
@@ -4166,7 +4166,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				endif;
 
 				$hide_events = true;
-				if($is_hide <= time() && $hide_past_events == 'yes'):
+				if($is_hide >= time() && $hide_past_events == 'yes'):
 					$hide_events = false;
 				endif;
 
