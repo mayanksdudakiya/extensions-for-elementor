@@ -750,7 +750,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				],
 				'label_block' => true,
 				'frontend_available' => true,
-			],
+			]
 		);
 
 		$this->add_control(
