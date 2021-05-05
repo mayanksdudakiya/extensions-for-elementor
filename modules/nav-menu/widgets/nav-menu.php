@@ -490,7 +490,7 @@ class Nav_Menu extends Widget_Base {
 			[
 				'name' => 'menu_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .elementor-nav-menu--main',
+				'selector' => '{{WRAPPER}} .elementor-nav-menu--main ul li a.elementor-item, {{WRAPPER}} .elementor-nav-menu--main ul li ul li a.elementor-sub-item',
 			]
 		);
 
