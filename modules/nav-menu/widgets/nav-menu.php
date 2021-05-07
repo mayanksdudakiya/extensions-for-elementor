@@ -1563,6 +1563,23 @@ class Nav_Menu extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'icon_mobile_spacing_menu_item',
+			[
+				'label' => __( 'Mobile Spacing', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'devices' => [ 'desktop', 'tablet', 'mobile'],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu--dropdown.elementor-nav-menu__icon-align-left .elementor-nav-menu > li:before' => 'top: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 
