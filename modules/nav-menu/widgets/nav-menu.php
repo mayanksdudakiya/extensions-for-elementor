@@ -1536,12 +1536,29 @@ class Nav_Menu extends Widget_Base {
 						'max' => 50,
 					],
 				],
-				'devices' => [ 'desktop', 'tablet' ],
+				'devices' => [ 'desktop', 'tablet', 'mobile' ],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before' => 'left: -{{SIZE}}{{UNIT}}',
 					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-right .elementor-nav-menu > li::before' => 'right: -{{SIZE}}{{UNIT}}',
 					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-top .elementor-nav-menu > li::before' => 'top: -{{SIZE}}{{UNIT}}',
 					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-bottom .elementor-nav-menu > li::before' => 'bottom: -{{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_paddings_menu_item',
+			[
+				'label' => __( 'Padding', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
+				'devices' => [ 'desktop', 'tablet', 'mobile'],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu__icon-align-left .elementor-nav-menu > li::before' => 'padding: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -1960,7 +1977,7 @@ class Nav_Menu extends Widget_Base {
 		<div <?php echo $this->get_render_attribute_string( 'menu-toggle' ); ?>>
 			<i class="eicon-menu-bar" aria-hidden="true"></i>
 		</div>
-		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container <?php echo $settings['mega_menu']; ?>"><?php echo $dropdown_menu_html; ?></nav>
+		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container elementor-nav-menu__icon-align-left <?php echo $settings['mega_menu']; ?>"><?php echo $dropdown_menu_html; ?></nav>
 		<?php
 		echo $megamenuHtml;
 		endif;
