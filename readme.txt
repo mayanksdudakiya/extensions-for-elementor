@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.19
+Stable tag: 1.0.20
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,9 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.20 - 03/05/21 =
+*Fix : The Event Calendar - Comma issue has been fixed
 
 = 1.0.19 - 19/04/21 =
 *New : Nav Menu - Menu icon functionality has been added  

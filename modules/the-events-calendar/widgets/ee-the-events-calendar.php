@@ -4770,7 +4770,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		endif;
 
 		$calendar_id = uniqid();
-		echo "<div class='myeventon_calendar' data-id='".$calendar_id."' data-caldata='".json_encode($event_data, JSON_PRETTY_PRINT)."' data-event-detail='".$enable_event_detail."' data-disable-link='".$disable_link."' data-date-border='".$settings['eb_date_border_border']."'>";
+		echo "<div class='tec myeventon_calendar' data-id='".$calendar_id."' data-caldata='".json_encode($event_data, JSON_PRETTY_PRINT)."' data-event-detail='".$enable_event_detail."' data-disable-link='".$disable_link."' data-date-border='".$settings['eb_date_border_border']."'>";
 			echo "<div id='calendar-".$calendar_id."'></div>";
 		echo '</div>';
 

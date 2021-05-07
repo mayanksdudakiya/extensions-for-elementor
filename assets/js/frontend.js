@@ -2948,13 +2948,14 @@ jQuery(function () {
     /*@ The Event Calendar */
     var ee_mb_the_event_calendar = {
 
-        ee_mb_events_fun : function( $scope, $ ) {
+        ee_mb_the_events_cal_fun : function( $scope, $ ) {
 
-            ee_mb_events.ee_mb_events_fun.init = function() {
+            ee_mb_the_event_calendar.ee_mb_the_events_cal_fun.init = function() {
 
                 var elementSettings = ee_common.getElementSettings( $scope ),
                 ajaxurl = ElementorExtensionsFrontendConfig.ajaxurl;
-    
+        
+        
                 jQuery(document).on('click','.myeventon_summary_eventlist_wrapper .summary_filter a',function(e){
                     e.preventDefault();
                     var current = jQuery(this);
@@ -3012,7 +3013,7 @@ jQuery(function () {
                         }
                     });    
                 });
-                
+           
                 /*@Next Prev button click*/
                 jQuery(document).on('click','#summary_prev,#summary_next',function(){
                     var current = jQuery(this);
@@ -3122,12 +3123,13 @@ jQuery(function () {
                         }
                     }); 
                 });
-
+  
                 /*@ Calendar view*/
-                var calendar_wrapper_div = jQuery( "div.myeventon_calendar" );
+                var calendar_wrapper_div = $scope.find( "div.tec.myeventon_calendar" );
                 if(calendar_wrapper_div.length > 0)
                 {
                     calendar_wrapper_div.each(function () {
+
                         var calendar_id = jQuery(this).attr('data-id');
                         var event_list = jQuery(this).data('caldata');
                         var disable_link = jQuery(this).data('disable-link');
@@ -3198,12 +3200,13 @@ jQuery(function () {
                     jQuery(this).next('.summary_cal_description').slideToggle();
                     e.preventDefault();
                 });
-            }
-            ee_mb_events.ee_mb_events_fun.init();
+            };
+
+            ee_mb_the_event_calendar.ee_mb_the_events_cal_fun.init();
         }
     }
     $(window).on('elementor/frontend/init', function () {
-        elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-the-events-calendar.default', ee_mb_the_event_calendar.ee_mb_events_fun);
+        elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-the-events-calendar.default', ee_mb_the_event_calendar.ee_mb_the_events_cal_fun);
     });
 
     // Event calendar
