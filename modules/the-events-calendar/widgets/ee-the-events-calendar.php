@@ -4051,18 +4051,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
 					if(isset($settings['slug']) && !empty($settings['slug'])){
 						$query_args['tax_query'][] =  [
-								'taxonomy' => 'tribe_events_cat',
-								'terms' => $settings['slug'],
-								'field' => 'slug',
-								'include_children' => true,
-								'operator' => 'IN'
+							'taxonomy' => 'tribe_events_cat',
+							'terms' => $settings['slug'],
+							'field' => 'slug',
+							'include_children' => true,
+							'operator' => 'IN'
 						];
 					}else{
-						$query_args['tax_query'][] = [
-							'taxonomy' => 'tribe_events_cat',
-							'field'    => 'slug',
-							'terms'    => $settings['event_categories'],
-						];
+						$query_args['tax_query'] = array(
+							'relation' => 'AND',
+						);
+						foreach($settings['event_categories'] as $cat){
+							$query_args['tax_query'][] = [
+								'taxonomy' => 'tribe_events_cat',
+								'field'    => 'slug',
+								'terms'    => $cat,
+							];
+						}
 					}
 				}else{
 					if(isset($settings['slug']) && !empty($settings['slug'])){
@@ -4075,7 +4080,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 						];
 					}
 				}
-
 				$query_args = tribe_get_events( $query_args ); 
 			// endif;
 
@@ -4135,15 +4139,19 @@ class EE_The_Events_Calendar extends Base_Widget {
 		// Query category filter
 
 		if(!empty($event_categories)) {
-			$args['tax_query'][] = [
-				'taxonomy' => 'tribe_events_cat',
-				'terms' => $event_categories, 
-				'field' => 'slug',
-				'include_children' => true,
-				'operator' => 'IN'
-			];
+			$args['tax_query'] = array(
+				'relation' => 'AND',
+			);
+			foreach($event_categories as $cat){
+				$args['tax_query'][] = [
+					'taxonomy' => 'tribe_events_cat',
+					'terms' => $cat, 
+					'field' => 'slug',
+					// 'include_children' => true,
+					// 'operator' => 'IN'
+				];
+			}
 		}
-
 		$posts = get_posts($args);
 
 		if($hide_past_events == 'yes'):
@@ -4391,13 +4399,18 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		// category
 		if(!empty($event_categories)) {
-			$args['tax_query'][] = [
-				'taxonomy' => 'tribe_events_cat',
-				'terms' => $event_categories, 
-				'field' => 'slug',
-				'include_children' => true,
-				'operator' => 'IN'
-			];
+			$args['tax_query'] = array(
+				'relation' => 'AND',
+			);
+			foreach($event_categories as $cat){
+				$args['tax_query'][] = [
+					'taxonomy' => 'tribe_events_cat',
+					'terms' => $cat, 
+					'field' => 'slug',
+					// 'include_children' => true,
+					// 'operator' => 'IN'
+				];
+			}
 		}
 		//'tag'          => 'donor-program', // or whatever the tag name is
 		
