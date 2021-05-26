@@ -100,6 +100,25 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'default_calendar_view',
+			[
+				'label' => __( 'Calendar Default View', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'dayGridMonth',
+				'options' => [
+					'dayGridMonth' => __( 'Month View', 'elementor-for-extensions' ),
+					'timeGridWeek' => __( 'Week View', 'elementor-for-extensions' ),
+					'timeGridDay' => __( 'Day View', 'elementor-for-extensions' ),
+					'listMonth' => __( 'List View', 'elementor-for-extensions' ),
+				],
+				'condition' => [
+					'event_view' => 'calendar'
+				],
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
 			'show_future_events',
 			[
 				'label' => __( 'Show Future Events', 'elementor-for-extensions' ),
@@ -4046,6 +4065,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				if($hide_past_events != 'yes'):
 					$query_args['eventDisplay'] = 'list';
 					$query_args['start_date'] = date( 'Y-m-d H:i:s', strtotime( 'today' ) );
+					$query_args['posts_per_page'] = $settings['limit'] ?? -1;
 				endif;
 				
 				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
@@ -4765,12 +4785,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$event_meta = get_post_meta($event_id);
 				if(!empty($event_meta['_EventStartDate'][0])):
 					$event_start_date = $event_meta['_EventStartDate'][0];
-					$event_start_date = date('Y-m-d',strtotime($event_start_date));
+					// $event_start_date = date('Y-m-d',strtotime($event_start_date));
 				endif;
 
 				if(!empty($event_meta['_EventEndDate'][0])):
 					$event_end_date = $event_meta['_EventEndDate'][0];
-					$event_end_date = date('Y-m-d',strtotime($event_end_date));
+					// $event_end_date = date('Y-m-d',strtotime($event_end_date));
 				endif;
 
 				$event_data[$count]['title'] = esc_attr($event_title);
@@ -4783,7 +4803,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		endif;
 
 		$calendar_id = uniqid();
-		echo "<div class='tec myeventon_calendar' data-id='".$calendar_id."' data-caldata='".json_encode($event_data, JSON_PRETTY_PRINT)."' data-event-detail='".$enable_event_detail."' data-disable-link='".$disable_link."' data-date-border='".$settings['eb_date_border_border']."'>";
+		echo "<div class='tec myeventon_calendar' data-id='".$calendar_id."' data-caldata='".json_encode(@$event_data, JSON_PRETTY_PRINT)."' data-event-detail='".$enable_event_detail."' data-disable-link='".$disable_link."' data-date-border='".$settings['eb_date_border_border']."'>";
 			echo "<div id='calendar-".$calendar_id."'></div>";
 		echo '</div>';
 
