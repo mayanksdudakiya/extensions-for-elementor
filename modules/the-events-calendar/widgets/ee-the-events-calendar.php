@@ -3168,6 +3168,39 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
+
+		$this->add_control(
+            'eb_cal_headrow_color',
+            [
+                'label' => __( 'Heading Row Background Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-heading td' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_cal_row_hover_background_color',
+            [
+                'label' => __( 'Row Hover Background Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_cal_row_hover_color',
+            [
+                'label' => __( 'Row Hover Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 		
 		$this->end_controls_section();
 				
