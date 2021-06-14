@@ -3168,11 +3168,36 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
+		
+		$this->end_controls_section();
+
+		// Add new option in Tec 
+		
+		$this->start_controls_section(
+			'eb_list_view_content',
+			[
+				'label' => __( 'List View Styles', 'elementor-for-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['default_calendar_view' => 'listMonth'],
+			]
+		);
+
+		$this->add_control(
+            'eb_event_date_background_color',
+            [
+                'label' => __( 'Date background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-heading td' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->add_control(
             'eb_cal_headrow_color',
             [
-                'label' => __( 'Heading Row Background Color', 'elementor-for-extensions' ),
+                'label' => __( 'Event Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-heading td' => 'background-color: {{VALUE}};',
@@ -3183,7 +3208,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_cal_row_hover_background_color',
             [
-                'label' => __( 'Row Hover Background Color', 'elementor-for-extensions' ),
+                'label' => __( 'Event Hover Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'background-color: {{VALUE}};',
@@ -3192,9 +3217,20 @@ class EE_The_Events_Calendar extends Base_Widget {
         );
 
 		$this->add_control(
+            'eb_cal_row_color',
+            [
+                'label' => __( 'Event Text Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item td' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
             'eb_cal_row_hover_color',
             [
-                'label' => __( 'Row Hover Color', 'elementor-for-extensions' ),
+                'label' => __( 'Event Text Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'color: {{VALUE}};',
@@ -3203,7 +3239,409 @@ class EE_The_Events_Calendar extends Base_Widget {
         );
 		
 		$this->end_controls_section();
-				
+		
+		$this->start_controls_section(
+			'eb_month_view_content',
+			[
+				'label' => __( 'Month View Styles', 'elementor-for-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['default_calendar_view' => 'dayGridMonth'],
+			]
+		);		
+
+		$this->add_control(
+            'eb_month_bg_color',
+            [
+                'label' => __( 'Day background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_text_color',
+            [
+                'label' => __( 'Day text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_date_bg_color',
+            [
+                'label' => __( 'Date background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-day' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_today_date_bg_color',
+            [
+                'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-today' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_date_text_color',
+            [
+                'label' => __( 'Date text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-day' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_date_hover_text_color',
+            [
+                'label' => __( 'Date hover text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-day:hover .fc-day-top .fc-day-number' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_date_hover_bg_color',
+            [
+                'label' => __( 'Date hover background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed div.fc-row td.fc-day:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_event_bg_color',
+            [
+                'label' => __( 'Event background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_event_text_color',
+            [
+                'label' => __( 'Event text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_event_bg_hover_color',
+            [
+                'label' => __( 'Event background hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_month_event_text_hover_color',
+            [
+                'label' => __( 'Event text hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+		
+		$this->end_controls_section();
+		
+		$this->start_controls_section(
+			'eb_week_view_content',
+			[
+				'label' => __( 'Week View Styles', 'elementor-for-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['default_calendar_view' => 'timeGridWeek'],
+			]
+		);
+
+		$this->add_control(
+            'eb_week_title_color',
+            [
+                'label' => __( 'Time title colors', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-list-heading td' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_background_color',
+            [
+                'label' => __( 'Day background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day-header' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_day_text_color',
+            [
+                'label' => __( 'Day text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day-header' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_timeslot_background_color',
+            [
+                'label' => __( 'Timeslot background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day' => 'background-color: {{VALUE}};',
+                    // '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-widget-content' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_timeslot_background_hover_color',
+            [
+                'label' => __( 'Timeslot background hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day:hover' => 'background-color: {{VALUE}};',
+                    // '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-widget-content:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_today_date_bg_color',
+            [
+                'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-today' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_today_grid_color',
+            [
+                'label' => __( 'Today`s date grid color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-today' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_event_bg_color',
+            [
+                'label' => __( 'Event background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_event_text_color',
+            [
+                'label' => __( 'Event text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_event_bg_hover_color',
+            [
+                'label' => __( 'Event background hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_week_event_text_hover_color',
+            [
+                'label' => __( 'Event text hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+		
+		$this->end_controls_section();
+		
+		$this->start_controls_section(
+			'eb_day_view_content',
+			[
+				'label' => __( 'Day View Styles', 'elementor-for-extensions' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['default_calendar_view' => 'timeGridDay'],
+			]
+		);
+
+		$this->add_control(
+            'eb_day_title_color',
+            [
+                'label' => __( 'Time title colors', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-list-heading td' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_bg_color',
+            [
+                'label' => __( 'Day background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_text_color',
+            [
+                'label' => __( 'Day text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_timeslot_background_color',
+            [
+                'label' => __( 'Timeslot background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_timeslot_background_hover_color',
+            [
+                'label' => __( 'Timeslot background hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_today_date_bg_color',
+            [
+                'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-today' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_today_grid_color',
+            [
+                'label' => __( 'Today`s date grid color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-today' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_event_bg_color',
+            [
+                'label' => __( 'Event background color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_event_text_color',
+            [
+                'label' => __( 'Event text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_event_bg_hover_color',
+            [
+                'label' => __( 'Event background hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_event_text_hover_color',
+            [
+                'label' => __( 'Event text hover color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+		
+		$this->end_controls_section();
+	
+		// Add new option in Tec
 		$this->start_controls_section(
 			'eb_event_content',
 			[
