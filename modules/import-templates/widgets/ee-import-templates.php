@@ -49,7 +49,7 @@ class EE_Import_Templates extends Base_Widget {
 		$this->add_control(
 			'templates',
 			[
-				'label' 		=> __( 'Templates', 'elementor-siteset' ),
+				'label' 		=> __( 'Templates', 'elementor-extensions' ),
 				'type' 			=> Controls_Manager::SELECT,
 				'default' 		=> '0',
 				'options'		=> $templates['templates']

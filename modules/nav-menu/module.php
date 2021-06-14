@@ -24,7 +24,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header',
 		        [
-		            'label' => __( 'Shrink Header', 'elementor-siteset' ),
+		            'label' => __( 'Shrink Header', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SWITCHER,
 		            'separator' => 'before',
 		            'selectors' => [
@@ -38,7 +38,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header_height',
 		        [
-		            'label' => __( 'Height', 'elementor-siteset' ),
+		            'label' => __( 'Height', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SLIDER,
 		            'default' => [
 		                'size' => 70,
@@ -64,7 +64,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header_background_color',
 		        [
-		            'label' => __( 'Background Color', 'elementor-siteset' ),
+		            'label' => __( 'Background Color', 'elementor-extensions' ),
 		            'type' => Controls_Manager::COLOR,
 		            'selectors' => [
 		                '{{WRAPPER}}.elementor-sticky--effects' => 'background-color: {{VALUE}}!important;',
@@ -78,7 +78,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_header_over_content',
 		        [
-		            'label' => __( 'Layer Header Over Content', 'elementor-siteset' ),
+		            'label' => __( 'Layer Header Over Content', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SWITCHER,
 		            'default' => '',
 		            'separator' => 'before',
@@ -90,11 +90,11 @@ class Module extends Module_Base {
 		    $element->add_control(
 		        'ee_mb_shrink_header_logo',
 		        [
-		            'label' => __( 'Logo', 'elementor-siteset' ),
+		            'label' => __( 'Logo', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SWITCHER,				
 		            'return_value' => 'yes',
 		            'separator' => 'before',
-		            'description' => __( 'Choose logo height after scrolling', 'elementor-siteset' ),
+		            'description' => __( 'Choose logo height after scrolling', 'elementor-extensions' ),
 		            'condition' => [
 		                'ee_mb_shrink_header' => 'yes',
 		                'sticky!' => ''
@@ -104,7 +104,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header_logo_height',
 		        [
-		            'label' => __( 'Height', 'elementor-siteset' ),
+		            'label' => __( 'Height', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SLIDER,
 		            'default' => [
 		                'size' => '',
@@ -130,10 +130,10 @@ class Module extends Module_Base {
 		    $element->add_control(
 		        'ee_mb_shrink_bottom_border',
 		        [
-		            'label' => __( 'Bottom Border', 'elementor-siteset' ),
+		            'label' => __( 'Bottom Border', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SWITCHER,
 		            'separator' => 'before',
-		            'description' => __( 'Choose bottom border size and color', 'elementor-siteset' ),
+		            'description' => __( 'Choose bottom border size and color', 'elementor-extensions' ),
 		            'condition' => [
 		                'ee_mb_shrink_header' => 'yes',
 		                'sticky!' => ''
@@ -147,7 +147,7 @@ class Module extends Module_Base {
 		    $element->add_control(
 		        'ee_mb_shrink_bottom_border_color',
 		        [
-		            'label' => __( 'Color', 'elementor-siteset' ),
+		            'label' => __( 'Color', 'elementor-extensions' ),
 		            'type' => Controls_Manager::COLOR,
 		            'condition' => [
 		                'ee_mb_shrink_header' => 'yes',
@@ -163,7 +163,7 @@ class Module extends Module_Base {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_bottom_border_size',
 		        [
-		            'label' => __( 'Size', 'elementor-siteset' ),
+		            'label' => __( 'Size', 'elementor-extensions' ),
 		            'type' => Controls_Manager::SLIDER,
 		            'default' => [
 		                'size' => 0,
@@ -190,7 +190,7 @@ class Module extends Module_Base {
 		        Group_Control_Box_Shadow::get_type(),
 		        [
 		            'name' => 'ee_mb_shrink_header_shadow',
-		            'label' => __( 'Box Shadow', 'elementor-siteset' ),            
+		            'label' => __( 'Box Shadow', 'elementor-extensions' ),            
 		            'selector' => '{{WRAPPER}}.elementor-sticky--effects',
 		            'condition' => [
 		                'ee_mb_shrink_header' => 'yes',
