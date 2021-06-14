@@ -5,11 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use ElementorExtensions\Base\Base_Widget;
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Typography;
-use ElementorExtensions\Admin\EE_MB_Setting_Common;
-use ElementorExtensions\Classes\Utils;
  
 class EE_Property_Slider extends Base_Widget {
 

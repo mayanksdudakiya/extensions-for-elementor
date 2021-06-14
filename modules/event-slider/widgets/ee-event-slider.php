@@ -8,7 +8,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Box_Shadow;
 
 class EE_Event_Slider extends Base_Widget {
@@ -798,7 +797,6 @@ class EE_Event_Slider extends Base_Widget {
 			[
 				'name' => 'datetime_typography',
 				'label' => __( 'Typography', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .event_date_time span',
 			]
 		);
@@ -911,7 +909,6 @@ class EE_Event_Slider extends Base_Widget {
 			[
 				'name' => 'caption_typography',
 				'label' => __( 'Typography', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .elementor-image-carousel-wrapper .slick-slide.ee_mb_event_slider .elementor-image-carousel-caption .imagebox-repeater-title-inner-wrapper',
 			]
 		);
@@ -1005,7 +1002,6 @@ class EE_Event_Slider extends Base_Widget {
 			[
 				'name' => 'description_typography',
 				'label' => __( 'Typography', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .elementor-image-carousel-wrapper .slick-slide.ee_mb_event_slider .elementor-image-carousel-caption.slide_desc .imagebox-repeater-desc-inner-wrapper',
 			]
 		);

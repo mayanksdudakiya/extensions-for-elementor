@@ -6,10 +6,9 @@ use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 use Elementor\Plugin;
+use Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
 
@@ -305,20 +304,30 @@ class Nav_Menu extends Widget_Base {
 			]
 		);
 
+		$icon_prefix = Icons_Manager::is_migration_allowed() ? 'fas ' : 'fa ';
+
 		$this->add_control(
-			'indicator',
+			'submenu_icon',
 			[
-				'label' => __( 'Submenu Indicator', 'elementor-extensions' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'classic',
-				'options' => [
-					'none' => __( 'None', 'elementor-extensions' ),
-					'classic' => __( 'Classic', 'elementor-extensions' ),
-					'chevron' => __( 'Chevron', 'elementor-extensions' ),
-					'angle' => __( 'Angle', 'elementor-extensions' ),
-					'plus' => __( 'Plus', 'elementor-extensions' ),
+				'label' => __( 'Submenu Indicator', 'elementor-pro' ),
+				'type' => Controls_Manager::ICONS,
+				'separator' => 'before',
+				'default' => [
+					'value' => $icon_prefix . 'fa-caret-down',
+					'library' => 'fa-solid',
 				],
-				'prefix_class' => 'elementor-nav-menu--indicator-',
+				'recommended' => [
+					'fa-solid' => [
+						'chevron-down',
+						'angle-down',
+						'caret-down',
+						'plus',
+					],
+				],
+				'label_block' => false,
+				'skin' => 'inline',
+				'exclude_inline_options' => [ 'svg' ],
+				'frontend_available' => true,
 			]
 		);
 
@@ -489,7 +498,6 @@ class Nav_Menu extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'menu_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .elementor-nav-menu--main ul li a.elementor-item, {{WRAPPER}} .elementor-nav-menu--main ul li ul li a.elementor-sub-item',
 			]
 		);
@@ -508,10 +516,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--main .elementor-item' => 'color: {{VALUE}}',
@@ -534,10 +538,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--main .elementor-item:hover,
 					{{WRAPPER}} .elementor-nav-menu--main .elementor-item.elementor-item-active,
@@ -575,10 +575,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Pointer Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item:before,
@@ -773,10 +769,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item' => 'color: {{VALUE}}!important',
@@ -798,10 +790,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
-				],
 				'selectors' => [
 					'.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item:hover,
 					.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item.elementor-item-active,
@@ -837,10 +825,6 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => __( 'Pointer Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
-				],
 				'default' => '',
 				'selectors' => [
 					'.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main:not(.e--pointer-framed) .elementor-item:before,
@@ -1143,7 +1127,6 @@ class Nav_Menu extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'dropdown_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'exclude' => [ 'line_height' ],
 				'selector' => '{{WRAPPER}} .elementor-nav-menu--dropdown a',
 				'separator' => 'before',

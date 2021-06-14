@@ -8,7 +8,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use ElementorExtensions\Admin\EE_MB_Setting_Common;
 
 class EE_Properties extends Base_Widget {
@@ -342,7 +341,6 @@ class EE_Properties extends Base_Widget {
 					[
 						'name' => 'search_form_button_typo',
 						'label' => __( 'Typographpy', 'elementor-extensions' ),
-						'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 						'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper button#btn_property_search',
 					]
 				);
@@ -383,7 +381,6 @@ class EE_Properties extends Base_Widget {
 					[
 						'name' => 'search_form_button_typo_hover',
 						'label' => __( 'Typographpy', 'elementor-extensions' ),
-						'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 						'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper button#btn_property_search:hover',
 					]
 				);
@@ -430,7 +427,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'search_form_label_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .ee_mb_property_search_page_inner_wrapper label',
 			]
 		);
@@ -639,7 +635,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'searchbox_title_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > h4',
 			]
 		);
@@ -669,7 +664,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'searchbox_sub_title_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_search_page_outer_wrapper .property_search_desc > span',
 			]
 		);
@@ -699,7 +693,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'filter_bar_label_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_sort_bar .listing_sort_view_wrap label',
 			]
 		);
@@ -990,7 +983,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'sold_stc_label_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_wrapper .sold_stc',
 			]
 		);
@@ -1032,7 +1024,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'title_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_title, {{WRAPPER}} .ee_mb_property_listing_wrapper #propertymap .gm-style-iw .property_title',
 			]
 		);
@@ -1074,7 +1065,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'price_label_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_price .property_price_note',
 			]
 		);
@@ -1123,7 +1113,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'price_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_price span:nth-child(2)',
 			]
 		);
@@ -1172,7 +1161,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'property_type_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_bed_type, {{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_bed_type ul li',
 			]
 		);
@@ -1214,7 +1202,6 @@ class EE_Properties extends Base_Widget {
 			[
 				'name' => 'property_date_typo',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_property_listing_wrapper .ee_mb_property_listing .property_listed_date',
 			]
 		);

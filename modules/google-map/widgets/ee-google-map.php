@@ -11,8 +11,6 @@ use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Box_Shadow;
 
@@ -102,10 +100,6 @@ class EE_Google_Map extends Base_Widget {
 						'label' => __( 'Pin Text Color', 'elementor-extensions' ),
 						'type' => Controls_Manager::COLOR,
 						'dynamic'	=> [ 'active' => true ],
-						'scheme' => [
-							'type' => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_1,
-						]
 					]
 				);
 				
@@ -1446,10 +1440,6 @@ class EE_Google_Map extends Base_Widget {
 				[
 					'label' 	=> __( 'Background', 'elementor-extensions' ),
 					'type' 		=> Controls_Manager::COLOR,
-					'scheme' 	=> [
-					    'type' 	=> Scheme_Color::get_type(),
-					    'value' => Scheme_Color::COLOR_1,
-					],
 					'default'	=> '',
 					'selectors' => [
 						'{{WRAPPER}} .ee-mb-google-map__navigation' => 'background-color: {{VALUE}};',
@@ -1586,7 +1576,6 @@ class EE_Google_Map extends Base_Widget {
 				[
 					'name' 		=> 'navigation_links_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_3,
 					'selector' 	=> '{{WRAPPER}} .ee-mb-google-map__navigation',
 					'condition' => [
 						'navigation!' => '',

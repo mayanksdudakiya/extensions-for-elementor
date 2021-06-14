@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 use ElementorExtensions\Base\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Scheme_Color;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use ElementorExtensions\Admin\EE_MB_Setting_Common;
 
@@ -71,10 +70,6 @@ class EE_Map extends Base_Widget {
 			[
 				'label' => __( 'Pin Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'frontend_available' => true
 			]
 		);

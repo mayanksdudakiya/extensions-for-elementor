@@ -7,7 +7,6 @@ use ElementorExtensions\Base\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
 use ElementorExtensions\Admin\EE_MB_Setting_Common;
 
 class EE_Import_Templates extends Base_Widget {
@@ -457,7 +456,6 @@ class EE_Import_Templates extends Base_Widget {
 						[
 							'name' => 'link_typo',
 							'label' => __( 'Typographpy', 'elementor-extensions' ),
-							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 							'selector' => '{{WRAPPER}} a',
 						]
 					);
@@ -498,7 +496,6 @@ class EE_Import_Templates extends Base_Widget {
 						[
 							'name' => 'link_typo_hover',
 							'label' => __( 'Typographpy', 'elementor-extensions' ),
-							'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 							'selector' => '{{WRAPPER}} a:hover',
 						]
 					);

@@ -10,8 +10,6 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
 
@@ -417,7 +415,6 @@ class EE_Scroll_Navigation extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'hint_label_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} ' . $css_scheme['label'],
 			)
 		);
@@ -495,10 +492,10 @@ class EE_Scroll_Navigation extends Base_Widget {
 					'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . ' ' . $css_scheme['dots'],
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_2,
-							),
+							// 'scheme' => array(
+							// 	'type'  => Scheme_Color::get_type(),
+							// 	'value' => Scheme_Color::COLOR_2,
+							// ),
 						),
 					),
 				)
@@ -521,10 +518,10 @@ class EE_Scroll_Navigation extends Base_Widget {
 					'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . '.invert ' . $css_scheme['dots'],
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_3,
-							),
+							// 'scheme' => array(
+							// 	'type'  => Scheme_Color::get_type(),
+							// 	'value' => Scheme_Color::COLOR_3,
+							// ),
 						),
 					),
 				)
@@ -547,10 +544,10 @@ class EE_Scroll_Navigation extends Base_Widget {
 					'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . ':hover ' . $css_scheme['dots'],
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
-							),
+							// 'scheme' => array(
+							// 	'type'  => Scheme_Color::get_type(),
+							// 	'value' => Scheme_Color::COLOR_4,
+							// ),
 						),
 					),
 				)
@@ -573,10 +570,10 @@ class EE_Scroll_Navigation extends Base_Widget {
 					'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . '.active ' . $css_scheme['dots'],
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_1,
-							),
+							// 'scheme' => array(
+							// 	'type'  => Scheme_Color::get_type(),
+							// 	'value' => Scheme_Color::COLOR_1,
+							// ),
 						),
 					),
 				)

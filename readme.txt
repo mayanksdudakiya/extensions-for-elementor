@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: 1.0.20
+Stable tag: 1.0.21
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -79,6 +79,10 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 1.0.21 - 02/06/21 =
+*Fix : The Event Calendar - Limit issue has been fixed
+*Fix : The Event Calendar - Changed Or to And condition 
 
 = 1.0.20 - 03/05/21 =
 *Fix : The Event Calendar - Comma issue has been fixed

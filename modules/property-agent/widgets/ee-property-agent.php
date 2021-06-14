@@ -8,7 +8,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use ElementorExtensions\Admin\EE_MB_Setting_Common;
 use ElementorExtensions\Classes\Utils;
 
@@ -205,7 +204,6 @@ class EE_Property_Agent extends Base_Widget {
 			[
 				'name' => 'field_typography',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .single_property_page.agent_form input, {{WRAPPER}} .single_property_page.agent_form textarea',
 			]
 		);
@@ -293,7 +291,6 @@ class EE_Property_Agent extends Base_Widget {
 			[
 				'name' => 'button_typography',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .single_property_page.agent_form button',
 			]
 		);
@@ -412,7 +409,6 @@ class EE_Property_Agent extends Base_Widget {
 			[
 				'name' => 'error_message_typography',
 				'label' => __( 'Typographpy', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .single_property_page.agent_form .form_error',
 			]
 		);
