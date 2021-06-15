@@ -3389,7 +3389,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Time title colors', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-list-heading td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-time-grid' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3524,7 +3524,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Time title colors', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-list-heading td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-time-grid' => 'color: {{VALUE}};',
                 ],
             ]
         );
