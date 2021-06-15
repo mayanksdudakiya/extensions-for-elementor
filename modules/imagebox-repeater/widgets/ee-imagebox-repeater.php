@@ -8,7 +8,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Control_Media;
@@ -614,7 +613,6 @@ class EE_Imagebox_Repeater extends Base_Widget {
 			[
 				'name' => 'caption_typography',
 				'label' => __( 'Typography', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .elementor-image-carousel-caption.slide_title',
 			]
 		);
@@ -715,7 +713,6 @@ class EE_Imagebox_Repeater extends Base_Widget {
 			[
 				'name' => 'description_typography',
 				'label' => __( 'Typography', 'elementor-extensions' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .elementor-image-carousel-caption.slide_desc',
 			]
 		);

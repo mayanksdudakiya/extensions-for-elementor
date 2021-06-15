@@ -8,7 +8,6 @@ use ElementorExtensions\Classes\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Modules\DynamicTags\Module as TagsModule;	
 use Elementor\Icons_Manager;
 
@@ -324,7 +323,6 @@ class EE_Breadcrumbs extends Base_Widget {
 				[
 					'name' 		=> 'item_typography',
 					'label' 	=> __( 'Typography', 'elementor-extras' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 					'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__text',
 				]
 			);
@@ -362,7 +360,6 @@ class EE_Breadcrumbs extends Base_Widget {
 					[
 						'name' 		=> 'item_typo',
 						'label' 	=> __( 'Typography', 'elementor-extensions' ),
-						'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 						'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__item',
 					]
 				);
@@ -400,7 +397,6 @@ class EE_Breadcrumbs extends Base_Widget {
 					[
 						'name' 		=> 'item_typo_hover',
 						'label' 	=> __( 'Typography', 'elementor-extensions' ),
-						'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 						'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__item:hover',
 					]
 				);
@@ -481,7 +477,6 @@ class EE_Breadcrumbs extends Base_Widget {
 				[
 					'name' 		=> 'separator_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 					'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__separator',
 				]
 			);
@@ -545,7 +540,6 @@ class EE_Breadcrumbs extends Base_Widget {
 				[
 					'name' 		=> 'current_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 					'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__item--current .ee-mb-breadcrumbs__text',
 				]
 			);

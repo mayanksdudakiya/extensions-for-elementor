@@ -7,7 +7,6 @@ use ElementorExtensions\Base\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
 use Elementor\Repeater;
 use Elementor\Utils;
 
@@ -810,7 +809,6 @@ class EE_Flipbox extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'front_heading_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_flipbox_container .ee_mb_flipbox_front ul li .ee_mb_flipbox_title h3',
 			]
 		);
@@ -1022,7 +1020,6 @@ class EE_Flipbox extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'section_title_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ee_mb_flipbox_container .flipbox_title h2',
 			]
 		);
@@ -1109,7 +1106,6 @@ class EE_Flipbox extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'heading_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .elementor-slide-heading',
 			]
 		);
@@ -1157,7 +1153,6 @@ class EE_Flipbox extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'description_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .elementor-slide-description',
 			]
 		);
@@ -1210,7 +1205,6 @@ class EE_Flipbox extends Base_Widget {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .elementor-slide-button',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 			]
 		);
 

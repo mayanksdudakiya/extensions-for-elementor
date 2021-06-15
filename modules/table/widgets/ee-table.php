@@ -9,8 +9,6 @@ use Elementor\Repeater;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Icons_Manager;
 
 class EE_Table extends Base_Widget {
 
@@ -690,7 +688,6 @@ class EE_Table extends Base_Widget {
 				[
 					'name' 		=> 'cell_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 					'selector' 	=> '{{WRAPPER}} td.ele-site-table__cell',
 				]
 			);
@@ -999,7 +996,6 @@ class EE_Table extends Base_Widget {
 				[
 					'name' 		=> 'header_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
-					'scheme' 	=> Scheme_Typography::TYPOGRAPHY_4,
 					'selector' 	=> '{{WRAPPER}} th.ele-site-table__cell',
 				]
 			);

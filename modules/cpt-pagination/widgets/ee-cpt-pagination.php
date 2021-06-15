@@ -4,8 +4,6 @@ namespace ElementorExtensions\Modules\CptPagination\Widgets;
 use ElementorExtensions\Base\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use ElementorExtensions\Classes\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -180,10 +178,6 @@ class EE_Cpt_Pagination extends Base_Widget {
 			[
 				'label' => __( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'selectors' => [
 					'{{WRAPPER}} span.post-navigation__prev--label' => 'color: {{VALUE}};',
 					'{{WRAPPER}} span.post-navigation__next--label' => 'color: {{VALUE}};',
@@ -220,7 +214,6 @@ class EE_Cpt_Pagination extends Base_Widget {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'label_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} span.post-navigation__prev--label, {{WRAPPER}} span.post-navigation__next--label',
 				'exclude' => [ 'line_height' ],
 			]

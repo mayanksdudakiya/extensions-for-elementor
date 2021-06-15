@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
 use Elementor\Utils;
 use ElementorExtensions\Modules\TestimonialSwiper\Widgets\Base;
 
@@ -258,10 +256,6 @@ class EE_Testimonial_Swiper extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial__text' => 'color: {{VALUE}}',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 			]
 		);
 
@@ -270,7 +264,6 @@ class EE_Testimonial_Swiper extends Base {
 			[
 				'name' => 'content_typography',
 				'selector' => '{{WRAPPER}} .elementor-testimonial__text',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -291,10 +284,6 @@ class EE_Testimonial_Swiper extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial__name' => 'color: {{VALUE}}',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 			]
 		);
 
@@ -303,7 +292,6 @@ class EE_Testimonial_Swiper extends Base {
 			[
 				'name' => 'name_typography',
 				'selector' => '{{WRAPPER}} .elementor-testimonial__name',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
 
@@ -324,10 +312,6 @@ class EE_Testimonial_Swiper extends Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial__title' => 'color: {{VALUE}}',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 			]
 		);
 
@@ -336,7 +320,6 @@ class EE_Testimonial_Swiper extends Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .elementor-testimonial__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
 			]
 		);
 
