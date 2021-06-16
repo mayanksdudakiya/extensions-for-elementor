@@ -3199,7 +3199,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-heading td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item td' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3421,7 +3421,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Timeslot background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-time-grid .fc-axis.fc-time.fc-widget-content' => 'background-color: {{VALUE}};',
                     // '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-widget-content' => 'background-color: {{VALUE}};',
                 ],
             ]
@@ -3433,7 +3433,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Timeslot background hover color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-day:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-time-grid .fc-axis.fc-time.fc-widget-content:hover' => 'background-color: {{VALUE}};',
                     // '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-widget-content:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
@@ -3523,7 +3523,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Time title colors', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-time-grid' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-time-grid' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3556,7 +3556,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Timeslot background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-time-grid .fc-axis.fc-time.fc-widget-content' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3567,7 +3567,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Timeslot background hover color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-time-grid .fc-axis.fc-time.fc-widget-content:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
