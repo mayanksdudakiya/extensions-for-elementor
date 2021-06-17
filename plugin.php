@@ -16,6 +16,7 @@ use ElementorExtensions\Includes\EE_MB_Controls_Manager;
 use ElementorExtensions\Includes\Templates\EE_MB_Templates;
 use ElementorExtensions\Includes\EE_MB_Run_On_Fly;
 use ElementorExtensions\Includes\EE_MB_Single_Property_Shortcode;
+use ElementorExtensions\Includes\EE_MB_Extensions_Manager;
 
 class Plugin {
 
@@ -24,6 +25,7 @@ class Plugin {
 	private $_control_manager;
 	private $_localize_settings = [];
 	private $prefix = 'ee-mb-';
+	private $_extensions_manager;
 
 	public function get_version() {
 		return ELEMENTOR_EXTENSIONS_VERSION;
@@ -71,6 +73,7 @@ class Plugin {
 		EE_MB_Front::instance();
 		EE_MB_Templates::instance();
 		EE_MB_Property_Single::instance();
+		//EE_MB_Extensions_Manager::instance();
 
 		//$checked_widget = get_option('ee_mb_hide_show_widgets');
 
@@ -355,6 +358,16 @@ class Plugin {
 		);
 
 		wp_enqueue_script(
+			$prefix.'extension-js',
+			ELEMENTOR_EXTENSIONS_URL . 'assets/js/extension' . $suffix . '.js',
+			[
+				'jquery',
+			],
+			Plugin::instance()->get_version(),
+			true
+		);
+
+		wp_enqueue_script(
 			'elementor-extensions-js',
 			ELEMENTOR_EXTENSIONS_URL . 'assets/js/frontend' . $suffix . '.js',
 			[
@@ -409,6 +422,7 @@ class Plugin {
 
 	public function elementor_init() {
 		$this->_modules_manager = new Modules_Manager();
+		$this->_extensions_manager = new EE_MB_Extensions_Manager();
 
 		\Elementor\Plugin::instance()->elements_manager->add_category(
 			'elementor-extensions', /* This is the name of your addon's category and will be used to group your widgets/elements in the Edit sidebar pane! */

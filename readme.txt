@@ -1,11 +1,11 @@
 === Extensions for Elementor ===
 Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
-Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, 'hello'
+Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, elementor megamenu, elementor stretch column, elementor clickable column, 'hello'
 Requires at least: 5.0
 Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: 1.0.22
+Stable tag: 2.0.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -44,6 +44,10 @@ Extensions Works with Elementor Pro Plugin:
 1. Nav Menu - Add "Megamenu" into elementor by using "Description" field of Menus.
 2. Nav Menu - Add "Hamburger Scroll" after scroll menu converted into the hamburger.
 
+New Extensions:
+
+1. Elementor Clickable Column
+2. Elementor Stretch Column 
 
 == Installation ==
 
@@ -79,6 +83,12 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.0 - 17/06/21 =
+*New : Clickable column extension added
+*New : Stretch column extension added
+*Fix : ACF & ACF photo dependency updated
+*New : The Event Calendar - New calendar styling options added
 
 = 1.0.22 - 14/06/21 =
 *Fix : Compatibilty issue resolved with Elementor Pro

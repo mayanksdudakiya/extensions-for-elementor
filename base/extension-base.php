@@ -71,6 +71,29 @@ class Extension_Base {
 		);	
 
 		$element->end_controls_section();
+
+
+		/*@ Register Stretch Column */
+		$stretch_section_name = 'section_column_stretch_elementor_controls';
+
+		// Check if this section exists
+		$section_exists = Plugin::instance()->controls_manager->get_control_from_stack( $element->get_unique_name(), $stretch_section_name );
+
+		if ( ! is_wp_error( $section_exists ) ) {
+			// We can't and should try to add this section to the stack
+			return false;
+		}
+
+		$element->start_controls_section(
+			$stretch_section_name,
+			[
+				'tab' 	=> Controls_Manager::TAB_ADVANCED,
+				'label' => __( 'Stretch Column', 'elementor-extensions' ),
+			]
+		);	
+
+		$element->end_controls_section();
+
 	}
 
 	protected function add_common_sections_actions() {}

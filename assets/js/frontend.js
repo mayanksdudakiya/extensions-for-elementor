@@ -3190,7 +3190,7 @@ jQuery(function () {
                                 }); 
                               }
                         });
-
+                        calendar.changeView(elementSettings.default_calendar_view);
                         calendar.render();
                     });
                 }
@@ -3247,5 +3247,53 @@ jQuery(function () {
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/ee-mb-the-events-calendar.default', event_calendar.event_calendar_fun);
     });
+
+    /*@ Column Stretch */
+    function elementor_strecth_column() {
+        var $column, $container;
+        if (jQuery('.elementor-stretch-column-left').length > 0) {
+
+            console.log('test');
+            
+            jQuery('.elementor-stretch-column-left').each(function () {
+
+                $column = jQuery(this);
+                $container = $column.parents('.elementor-container');
+
+                if ($container.length === 0) {
+                    return;
+                }
+
+                $container = Math.ceil($container.offset().left);
+                var tempUpdated = $container;
+                $column.find('.elementor-column-wrap:first-child').css({'margin-left': -tempUpdated + "px", 'width': 'calc( 100% + ' + tempUpdated + 'px )'});
+
+            });
+            
+        }
+        
+        if (jQuery('.elementor-stretch-column-right').length > 0) {
+            
+            jQuery('.elementor-stretch-column-right').each(function () {
+
+                $column = jQuery(this);
+                $container = $column.parents('.elementor-container');
+
+                if ($container.length === 0) {
+                    return;
+                }
+
+                $container = Math.ceil($container.offset().left);
+                var tempUpdated = $container;
+                $column.find('.elementor-column-wrap:first-child').css({'margin-right': -tempUpdated + "px", 'width': 'calc( 100% + ' + tempUpdated + 'px )'});
+
+            });
+
+        }
+    }
+
+    
+    $(document).ready(elementor_strecth_column);
+    $(window).resize(elementor_strecth_column);
      
 } )( jQuery );
