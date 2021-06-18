@@ -603,7 +603,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label_off' => __( 'Hide', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
-				'condition' => ['event_view' => 'detail'],
+				'condition' => ['event_view' => 'detail', 'event_view' => 'calendar'],
 				'frontend_available' => true
 			]
 		);
@@ -3245,7 +3245,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label' => __( 'Month View Styles', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
-				'condition' => ['default_calendar_view' => 'dayGridMonth'],
 			]
 		);		
 
@@ -3378,7 +3377,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label' => __( 'Week View Styles', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
-				'condition' => ['default_calendar_view' => 'timeGridWeek'],
 			]
 		);
 
@@ -3513,7 +3511,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label' => __( 'Day View Styles', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
-				'condition' => ['default_calendar_view' => 'timeGridDay'],
 			]
 		);
 
