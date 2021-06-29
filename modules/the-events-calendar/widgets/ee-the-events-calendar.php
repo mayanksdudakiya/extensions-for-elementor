@@ -3178,7 +3178,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label' => __( 'List View Styles', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
-				'condition' => ['default_calendar_view' => 'listMonth'],
 			]
 		);
 
@@ -3188,7 +3187,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Date background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-heading td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-listMonth-view.fc-list-view .fc-list-heading td' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3199,7 +3198,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-listMonth-view.fc-list-view .fc-list-item td' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3210,7 +3209,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event Hover Background Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-listMonth-view.fc-list-view .fc-list-item:hover td' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3221,7 +3220,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event Text Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-listMonth-view.fc-list-view .fc-list-item td' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3232,7 +3231,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event Text Hover Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-list-item:hover td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-listMonth-view.fc-list-view .fc-list-item:hover td' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3254,7 +3253,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Day background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-day-header' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3265,7 +3264,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Day text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-day-header' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-day-header' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3276,7 +3275,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Date background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-day' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-day' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3287,7 +3286,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-today' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-today' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3298,7 +3297,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Date text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-day' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-day-number' => 'color: {{VALUE}}!important;',
                 ],
             ]
         );
@@ -3309,7 +3308,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Date hover text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-day:hover .fc-day-top .fc-day-number' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-day:hover .fc-day-top .fc-day-number' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3320,7 +3319,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Date hover background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed div.fc-row td.fc-day:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed div.fc-row td.fc-day:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3331,7 +3330,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-event-container .fc-day-grid-event' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3342,7 +3341,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-event-container .fc-day-grid-event' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3353,7 +3352,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event background hover color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3364,7 +3363,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event text hover color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-dayGridMonth-view.fc-dayGrid-view .fc-unthemed .fc-event-container .fc-day-grid-event:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3386,7 +3385,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Time title colors', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-time-grid' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-time-grid' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3440,7 +3439,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_week_today_date_bg_color',
             [
-                'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
+                'label' => __( 'Today`s date background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-today' => 'background-color: {{VALUE}};',
@@ -3451,7 +3450,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
             'eb_week_today_grid_color',
             [
-                'label' => __( 'Today`s date grid color', 'elementor-for-extensions' ),
+                'label' => __( 'Today`s date text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-today' => 'color: {{VALUE}};',
@@ -3515,34 +3514,34 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+            'eb_day_today_date_bg_color',
+            [
+                'label' => __( 'Header day background', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header' => 'background-color: {{VALUE}}!important;',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'eb_day_today_grid_color',
+            [
+                'label' => __( 'Header day text color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header span' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+		$this->add_control(
             'eb_day_title_color',
             [
                 'label' => __( 'Time title colors', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-time-grid' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-		$this->add_control(
-            'eb_day_bg_color',
-            [
-                'label' => __( 'Day background color', 'elementor-for-extensions' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-		$this->add_control(
-            'eb_day_text_color',
-            [
-                'label' => __( 'Day text color', 'elementor-for-extensions' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-day-header' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3570,23 +3569,25 @@ class EE_The_Events_Calendar extends Base_Widget {
         );
 
 		$this->add_control(
-            'eb_day_today_date_bg_color',
+            'eb_day_odd_row_bg_color',
             [
-                'label' => __( 'Today`s date background color', 'elementor-for-extensions' ),
+                'label' => __( 'Odd row background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-today' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-event-container .fc-event' => 'background-color: transparent!important; border:0px;',
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-slats tr:nth-child(odd) .fc-widget-content' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
 		$this->add_control(
-            'eb_day_today_grid_color',
+            'eb_day_even_row_bg_color',
             [
-                'label' => __( 'Today`s date grid color', 'elementor-for-extensions' ),
+                'label' => __( 'Even row background', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-today' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-event-container .fc-event' => 'background-color: transparent!important; border:0px;',
+					'{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-slats tr:nth-child(even) .fc-widget-content' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -3596,8 +3597,9 @@ class EE_The_Events_Calendar extends Base_Widget {
             [
                 'label' => __( 'Event background color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
+				'description' => __( 'This will override the even and odd row background', 'elementor-for-extensions' ),
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-event-container .fc-event .fc-content' => 'background-color: {{VALUE}}!important;padding:5px;',
                 ],
             ]
         );
@@ -3608,18 +3610,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event text color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-		$this->add_control(
-            'eb_day_event_bg_hover_color',
-            [
-                'label' => __( 'Event background hover color', 'elementor-for-extensions' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-event-container .fc-event' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -3630,7 +3621,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Event text hover color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridWeek-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .myeventon_calendar .fc-view.fc-timeGridDay-view.fc-timeGrid-view .fc-event-container .fc-event:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -4531,7 +4522,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 				if($hide_past_events != 'yes'):
 					$query_args['eventDisplay'] = 'list';
-					$query_args['start_date'] = date( 'Y-m-d H:i:s', strtotime( 'today' ) );
+					$query_args['start_date'] = 'now';
 					$query_args['posts_per_page'] = $settings['limit'] ?? -1;
 				endif;
 				
@@ -4567,6 +4558,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 						];
 					}
 				}
+
+				if (!empty($settings) && $settings['event_view'] === 'calendar'){
+					$query_args['posts_per_page'] = -1;
+				}
+
 				$query_args = tribe_get_events( $query_args ); 
 			// endif;
 
@@ -5237,8 +5233,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$events = $this->eeMbGetEventList($settings);
 
 		/*
-		 *@ If event present then show otherwise display not found message
-		 */
+		*@ If event present then show otherwise display not found message
+		*/
 		if(!empty($events)):
 			$count = 0;
 			foreach($events as $event_key => $event):
