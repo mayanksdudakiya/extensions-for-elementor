@@ -5,10 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use ElementorExtensions\Base\Base_Widget;
 use ElementorExtensions\Controls\EE_MB_Group_Control_Transition;
+
 use Elementor\Repeater;
+use Elementor\Icons_Manager;
 use Elementor\Controls_Manager;
+use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 class EE_Table extends Base_Widget {
 
@@ -68,7 +75,8 @@ class EE_Table extends Base_Widget {
 			[
 				'label' => __( 'Icon', 'elementor-extensions' ),
 				'type' => Controls_Manager::ICONS,
-				'label_block' => true,
+				'fa4compatibility' => 'cell_icon',
+				'label_block' 	=> true,
 				'condition'		=> array_merge(
 					$condition, [
 						'cell_content' 	=> 'text',
@@ -90,7 +98,7 @@ class EE_Table extends Base_Widget {
 				'condition'		=> array_merge(
 					$condition, [
 						'cell_content' 	=> 'text',
-						'selected_cell_icon!' 	=> '',
+						'selected_cell_icon[value]!' 	=> '',
 					]
 				),
 			]
@@ -109,7 +117,7 @@ class EE_Table extends Base_Widget {
 				'condition'		=> array_merge(
 					$condition, [
 						'cell_content' 	=> 'text',
-						'selected_cell_icon!' 	=> '',
+						'selected_cell_icon[value]!' 	=> '',
 					]
 				),
 				'selectors' => [
@@ -308,7 +316,7 @@ class EE_Table extends Base_Widget {
 						],
 					],
 					'prevent_empty'		=> true,
-					'fields' 			=> array_values( $repeater_header->get_controls() ),
+					'fields' 			=>  $repeater_header->get_controls(),
 					'title_field' 		=> '{{{ cell_text }}}',
 				]
 			);
@@ -424,7 +432,7 @@ class EE_Table extends Base_Widget {
 							'cell_text' 	=> __( 'Third column', 'elementor-extensions' ),
 						],
 					],
-					'fields' 			=> array_values( $repeater_elements->get_controls() ),
+					'fields' 			=>  $repeater_elements->get_controls(),
 					'title_field' 		=> 'Start {{ type }}: {{{ cell_text }}}',
 				]
 			);
@@ -554,6 +562,9 @@ class EE_Table extends Base_Widget {
 					[
 						'label' 	=> __( 'Color', 'elementor-extensions' ),
 						'type' 		=> Controls_Manager::COLOR,
+						'global' => [
+							'default' => Global_Colors::COLOR_TEXT,
+						],
 						'selectors' => [
 							'{{WRAPPER}} .ele-site-table__row .ele-site-table__text' => 'color: {{VALUE}};',
 						],
@@ -688,6 +699,9 @@ class EE_Table extends Base_Widget {
 				[
 					'name' 		=> 'cell_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					],
 					'selector' 	=> '{{WRAPPER}} td.ele-site-table__cell',
 				]
 			);
@@ -701,6 +715,9 @@ class EE_Table extends Base_Widget {
 					[
 						'label' 	=> __( 'Color', 'elementor-extensions' ),
 						'type' 		=> Controls_Manager::COLOR,
+						'global' => [
+							'default' => Global_Colors::COLOR_TEXT,
+						],
 						'selectors' => [
 							'{{WRAPPER}} .ele-site-table__cell .ele-site-table__text' => 'color: {{VALUE}};',
 						],
@@ -996,6 +1013,9 @@ class EE_Table extends Base_Widget {
 				[
 					'name' 		=> 'header_typography',
 					'label' 	=> __( 'Typography', 'elementor-extensions' ),
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					],
 					'selector' 	=> '{{WRAPPER}} th.ele-site-table__cell',
 				]
 			);
@@ -1073,6 +1093,9 @@ class EE_Table extends Base_Widget {
 					[
 						'label' 	=> __( 'Background Color', 'elementor-extensions' ),
 						'type' 		=> Controls_Manager::COLOR,
+						'global' => [
+							'default' => Global_Colors::COLOR_PRIMARY,
+						],
 						'selectors' => [
 							'{{WRAPPER}} th.ele-site-table__cell' => 'background-color: {{VALUE}};',
 							'{{WRAPPER}} .ele-site-table__cell[data-title]:before' => 'background-color: {{VALUE}};',
@@ -1267,7 +1290,7 @@ class EE_Table extends Base_Widget {
 				[
 					'label' 			=> __( 'Column Rules', 'elementor-extensions' ),
 					'type' 				=> Controls_Manager::REPEATER,
-					'fields' 			=> array_values( $repeater_columns->get_controls() ),
+					'fields' 			=> $repeater_columns->get_controls(),
 					'prevent_empty'		=> true,
 					'title_field' 		=> 'Column',
 					'default'			=> [
@@ -1279,6 +1302,60 @@ class EE_Table extends Base_Widget {
 			);
 
 		$this->end_controls_section();
+	}
+
+	protected function render() {
+		$settings = $this->get_settings_for_display();
+
+		if ( empty( $settings['rows'] ) )
+				return;
+
+		$this->add_render_attribute( [
+			'table' => [
+				'class' => [
+					'ele-site-table',
+					'ele-site-table--' . $settings['row_alternate'],
+					'ele-site-table--' . $settings['scrollable'],
+				],
+			],
+			'body-row' => [
+				'class' => 'ele-site-table__row',
+			],
+			'body-cell-text-inner' => [
+				'class' => 'ele-site-table__text__inner',
+			],
+		] );
+
+		if ( $settings['sortable'] ) {
+			$this->add_render_attribute( 'table', 'class', 'ele-site-table--sortable' );
+		}
+
+		if ( $settings['rules'] ) {
+			$this->add_render_attribute( 'table', 'class', 'ele-site-table--rules' );
+		} ?>
+		
+		<table <?php echo $this->get_render_attribute_string( 'table' ); ?>>
+
+			<?php
+
+			$this->render_rules();
+			$this->render_header();
+
+			?><tbody><?php
+
+				if ( $this->is_invalid_first_row() ) {
+					?><tr <?php echo $this->get_render_attribute_string( 'body-row' ); ?>><?php
+				}
+
+				foreach ( $settings['rows'] as $index => $row ) {
+					call_user_func( [ $this, 'render_' . $row['type'] ], $row, $index );
+				}
+
+				?></tr>
+			</tbody>
+		</table>
+
+		<?php
 	}
 
 	protected function is_invalid_first_row() {
@@ -1351,6 +1428,8 @@ class EE_Table extends Base_Widget {
 			<?php foreach ( $settings['header_cells'] as $index => $item ) {
 
 				$header_cell_key 				= $this->get_repeater_setting_key( 'cell', 'header_cells', $index );
+				$header_cell_text_key 		= $this->get_repeater_setting_key( 'cell-text', 'header_cells', $index );
+				$header_cell_inner_text_key = $this->get_repeater_setting_key( 'cell-text-inner', 'header_cells', $index );
 				$header_cell_icon_wrapper_key 	= $this->get_repeater_setting_key( 'cell-icon-wrapper', 'header_cells', $index );
 				$header_cell_icon_key 			= $this->get_repeater_setting_key( 'cell-icon', 'header_cells', $index );
 
@@ -1362,6 +1441,12 @@ class EE_Table extends Base_Widget {
 							'ele-site-table__cell',
 							'elementor-repeater-item-' .$item_id
 						],
+					],
+					$header_cell_text_key => [
+						'class' => 'ele-site-table__text',
+					],
+					$header_cell_inner_text_key => [
+						'class' => 'ele-site-table__text__inner',
 					],
 				] );
 
@@ -1377,9 +1462,10 @@ class EE_Table extends Base_Widget {
 				if ( $item['cell_row_span'] > 1 )
 					$this->add_render_attribute( $header_cell_key, 'rowspan', $item['cell_row_span'] );
 
+				$this->add_inline_editing_attributes( $header_cell_inner_text_key, 'basic' );
 				/* Output header contents */
 				?><th <?php echo $this->get_render_attribute_string( $header_cell_key ); ?>>
-					<span <?php echo $this->get_render_attribute_string( 'header-cell-text' ); ?>>
+					<span <?php echo $this->get_render_attribute_string( $header_cell_text_key ); ?>>
 
 					<?php 
 					$header_cell_icon_key_class = '';
@@ -1418,60 +1504,6 @@ class EE_Table extends Base_Widget {
 			<?php } /* foreach */ ?>
 			</tr>
 		</thead><?php
-	}
-
-	protected function render() {
-		$settings = $this->get_settings_for_display();
-
-		if ( empty( $settings['rows'] ) )
-				return;
-
-		$this->add_render_attribute( [
-			'table' => [
-				'class' => [
-					'ele-site-table',
-					'ele-site-table--' . $settings['row_alternate'],
-					'ele-site-table--' . $settings['scrollable'],
-				],
-			],
-			'body-row' => [
-				'class' => 'ele-site-table__row',
-			],
-			'body-cell-text-inner' => [
-				'class' => 'ele-site-table__text__inner',
-			],
-		] );
-
-		if ( $settings['sortable'] ) {
-			$this->add_render_attribute( 'table', 'class', 'ele-site-table--sortable' );
-		}
-
-		if ( $settings['rules'] ) {
-			$this->add_render_attribute( 'table', 'class', 'ele-site-table--rules' );
-		} ?>
-		
-		<table <?php echo $this->get_render_attribute_string( 'table' ); ?>>
-
-			<?php
-
-			$this->render_rules();
-			$this->render_header();
-
-			?><tbody><?php
-
-				if ( $this->is_invalid_first_row() ) {
-					?><tr <?php echo $this->get_render_attribute_string( 'body-row' ); ?>><?php
-				}
-
-				foreach ( $settings['rows'] as $index => $row ) {
-					call_user_func( [ $this, 'render_' . $row['type'] ], $row, $index );
-				}
-
-				?></tr>
-			</tbody>
-		</table>
-
-		<?php
 	}
 
 	protected function render_cell( $row, $index ) {
@@ -1528,6 +1560,9 @@ class EE_Table extends Base_Widget {
 				'class' => [
 					'ele-site-table__text',
 				],
+			],
+			$cell_text_inner_key => [
+				'class' => 'ele-site-table__text__inner',
 			],
 		] );
 
@@ -1614,5 +1649,42 @@ class EE_Table extends Base_Widget {
 		<?php }
 
 		$this->cell_counter = 0;
+	}
+
+	protected function render_cell_icon( $index, $item, $type = 'cell' ) {
+		if ( 'text' === $item['cell_content'] && ( ! empty( $item['cell_icon'] ) || ! empty( $item['selected_cell_icon']['value'] ) ) ) {
+			$icon_wrapper_key 	= $this->get_repeater_setting_key( 'icon-wrapper', $type, $index );
+			$icon_key 			= $this->get_repeater_setting_key( 'icon', $type, $index );
+
+			$migrated = isset( $item['__fa4_migrated']['selected_cell_icon'] );
+			$is_new = empty( $item['cell_icon'] ) && Icons_Manager::is_migration_allowed();
+
+			$this->add_render_attribute( [
+				$icon_wrapper_key => [
+					'class' => [
+						'ee-icon',
+						'ee-icon-support--svg',
+						'ee-icon--' . $item['cell_icon_align'],
+					],
+				],
+			] );
+
+			if ( ! empty( $item['cell_icon'] ) ) {
+				$this->add_render_attribute( [
+					$icon_key => [
+						'class' => esc_attr( $item['cell_icon'] ),
+						'aria-hidden' => 'true',
+					],
+				] );
+			}
+
+			?><span <?php echo $this->get_render_attribute_string( $icon_wrapper_key ); ?>><?php
+				if ( $is_new || $migrated ) {
+					Icons_Manager::render_icon( $item['selected_cell_icon'], [ 'aria-hidden' => 'true' ] );
+				} else {
+					?><i <?php echo $this->get_render_attribute_string( $icon_key ); ?>></i><?php
+				}
+			?></span><?php
+		}
 	}
 }
