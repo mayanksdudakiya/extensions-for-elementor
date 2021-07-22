@@ -109,7 +109,7 @@
  * @author Christian Bach/christian.bach@polyester.se
  */
 
-(function ($) {
+ (function ($) {
 	$.extend({
 		tablesorter: new
 		function () {
