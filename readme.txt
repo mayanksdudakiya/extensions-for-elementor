@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, elementor megamenu, elementor stretch column, elementor clickable column, 'hello'
 Requires at least: 5.0
-Tested up to: 5.7.2
+Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -83,6 +83,13 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.1 - 22/07/21 =
+*Fix : Table widget bugs
+*Fix : Stretch column not working in Megamenu
+*Fix : Megamenu with sticky menu
+*Fix : The Event Calendar - Some styling not working
+*Fix : Document Library filename change with title
 
 = 2.0.0 - 17/06/21 =
 *New : Clickable column extension added
