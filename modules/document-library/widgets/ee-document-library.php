@@ -579,26 +579,43 @@ class EE_Document_Library extends Base_Widget {
 			endif;
 
 			if(!empty($settings['add_documents'])):
+				$allDocuments = [];
 	            foreach ($settings['add_documents'] as $key => $document):
-					
+					$meta = wp_get_attachment_metadata( $document );
+					$imageTitle = get_the_title($document);
 					$url = wp_get_attachment_url($document);
 
 	              	$basename = basename($url);
 	                $explodes = explode('.',$basename);
-	                $name = $explodes[0];
+	                $name = (!empty($imageTitle)) ? $imageTitle : $explodes[0];
 	                $type = $explodes[1];
 	                
 
 	                $bytes = filesize( get_attached_file( $document ) );
 					$size = size_format($bytes);
+
+					$allDocuments[$key]['name'] = $name;
+					$allDocuments[$key]['size'] = $size;
+					$allDocuments[$key]['type'] = $type;
+					$allDocuments[$key]['url'] = $url;
+				endforeach;
+
+				if ($settings['order_filename_asc'] === 'yes'):
+					// Case insensitive : SORT_NATURAL|SORT_FLAG_CASE
+					$nameKeys = array_column($allDocuments, 'name');
+					
+					array_multisort($nameKeys, SORT_ASC, SORT_NATURAL|SORT_FLAG_CASE, $allDocuments);
+				endif;
+
+	            foreach ($allDocuments as $key => $document):
 					
 	                echo '<tr>';
-	                    echo '<td>'.$name.'</td>';
-	                    echo '<td>'.$size.'</td>';
-	                    echo '<td>'.$type.'</td>';
-	                    echo '<td><a href="'.$url.'" '.$link_download.' data-elementor-open-lightbox="no">Download<a></td>';
+	                    echo '<td>'.$document['name'].'</td>';
+	                    echo '<td>'.$document['size'].'</td>';
+	                    echo '<td>'.$document['type'].'</td>';
+						echo '<td><a href="'.$document['url'].'" '.$link_download.' data-elementor-open-lightbox="no">Download<a></td>';
+					echo '</tr>';
 				endforeach;
-                echo '</tr>';
 			endif;
 			?>
 				</tbody>
