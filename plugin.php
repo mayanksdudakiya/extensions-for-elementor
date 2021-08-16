@@ -13,6 +13,7 @@ use ElementorExtensions\Admin\EE_MB_Property_Single;
 use ElementorExtensions\Admin\EE_MB_Setting_Common;
 use ElementorExtensions\Includes\Modules_Manager;
 use ElementorExtensions\Includes\EE_MB_Controls_Manager;
+use ElementorExtensions\Includes\EE_MB_Custom_Form;
 use ElementorExtensions\Includes\Templates\EE_MB_Templates;
 use ElementorExtensions\Includes\EE_MB_Run_On_Fly;
 use ElementorExtensions\Includes\EE_MB_Single_Property_Shortcode;
@@ -73,6 +74,7 @@ class Plugin {
 		EE_MB_Front::instance();
 		EE_MB_Templates::instance();
 		EE_MB_Property_Single::instance();
+		EE_MB_Custom_Form::instance();
 		//EE_MB_Extensions_Manager::instance();
 
 		//$checked_widget = get_option('ee_mb_hide_show_widgets');
@@ -224,26 +226,31 @@ class Plugin {
 		if(!empty((array)$gmap_key)):
 			$map_url = 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key.'&libraries=places';
 		endif;
-		
-		wp_enqueue_script(
-			$prefix.'googlemap-api',
-			$map_url,
-			[ 
-				'jquery', 
-			],
-			Plugin::instance()->get_version(),
-			true 
-		);
-		
-		wp_enqueue_script(
-			$prefix.'gmap3',
-			ELEMENTOR_EXTENSIONS_URL . 'assets/lib/gmap3/gmap3' . $suffix . '.js',
-			[ 
-				'jquery',
-			],
-			Plugin::instance()->get_version(),
-			true 
-		);
+
+		$isEnabledWidget = EE_MB_Setting_Common::get_settings_key('ee_mb_hide_show_widgets');
+
+		if ( empty((array)$isEnabledWidget) || (!empty((array)$isEnabledWidget) && (in_array('map', $isEnabledWidget) || in_array('google-map', $isEnabledWidget)) ) ):
+
+			wp_enqueue_script(
+				$prefix.'googlemap-api',
+				$map_url,
+				[ 
+					'jquery', 
+				],
+				Plugin::instance()->get_version(),
+				true 
+			);
+			
+			wp_enqueue_script(
+				$prefix.'gmap3',
+				ELEMENTOR_EXTENSIONS_URL . 'assets/lib/gmap3/gmap3' . $suffix . '.js',
+				[ 
+					'jquery',
+				],
+				Plugin::instance()->get_version(),
+				true 
+			);
+		endif;
 
 		wp_enqueue_script(
 			$prefix.'jquery-resize',

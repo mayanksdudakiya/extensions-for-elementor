@@ -6763,3 +6763,19 @@ line-height: 30px;
         width: 100%;
     }
 }
+
+/*@ Start: Form above error */
+
+#form-above-validation .elementor-form-fields-wrapper > .elementor-field-type-hidden {
+	display: block!important;
+}
+#form-above-validation .elementor-form-fields-wrapper > .elementor-field-type-hidden #form-field-validation + span {
+	display: block!important;
+}
+
+#form-above-validation .elementor-message.elementor-message-danger::before {
+	content: ' '!important;
+	margin: 0px!important;
+}
+
+/*@ End: Form above error */
