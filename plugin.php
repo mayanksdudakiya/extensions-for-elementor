@@ -228,9 +228,8 @@ class Plugin {
 		endif;
 
 		$isEnabledWidget = EE_MB_Setting_Common::get_settings_key('ee_mb_hide_show_widgets');
-
+		
 		if ( empty((array)$isEnabledWidget) || (!empty((array)$isEnabledWidget) && (in_array('map', $isEnabledWidget) || in_array('google-map', $isEnabledWidget)) ) ):
-
 			wp_enqueue_script(
 				$prefix.'googlemap-api',
 				$map_url,

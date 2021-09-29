@@ -76,7 +76,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
 				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
-				'default' => 'label_on',
+				'default' => 'label_off',
+				'frontend_available' => true,
 				'condition' => [
 					'event_view' => 'summary'
 				],
@@ -91,7 +92,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
 				'label_off' => __( 'No', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
-				'default' => 'label_on',
+				'default' => 'label_off',
+				'frontend_available' => true,
 				'condition' => [
 					'event_view!' => 'detail'
 				],

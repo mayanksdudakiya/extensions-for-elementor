@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -83,6 +83,10 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.3 - 29/09/21 =
+*Fix : Click glitches in The Event Calendar widget
+*Fix : Load map api script only Map or Google map widget enabled
 
 = 2.0.2 - 26/07/21 =
 *Fix : Table widget A-Z sorting
