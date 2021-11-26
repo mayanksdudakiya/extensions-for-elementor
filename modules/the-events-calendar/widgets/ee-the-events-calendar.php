@@ -557,6 +557,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'default' => 3,
 				'separator' => 'before',
 				'description' => __( 'Limit events by default on page load', 'elementor-for-extensions' ),
+				'frontend_available' => true,
 				'condition' => [
 					'event_view' => 'summary'
 				],
@@ -574,6 +575,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'step' => 1,
 				'default' => 3,
 				'description' => __( 'Limit events when you click on "Show more button"', 'elementor-for-extensions' ),
+				'frontend_available' => true,
 				'condition' => ['event_view' => 'summary'],
 			]
 		);
@@ -699,11 +701,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'source',
 			[
-				'label'   => _x( 'Source', 'Posts Query Control', 'bdthemes-element-pack' ),
+				'label'   => _x( 'Source', 'Posts Query Control', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					''        => esc_html__( 'Show All', 'bdthemes-element-pack' ),
-					'by_name' => esc_html__( 'Manual Selection', 'bdthemes-element-pack' ),
+					''        => esc_html__( 'Show All', 'elementor-for-extensions' ),
+					'by_name' => esc_html__( 'Manual Selection', 'elementor-for-extensions' ),
 				],
 				'label_block' => true,
 				'frontend_available' => true,
@@ -713,7 +715,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'event_categories',
 			[
-				'label'       => esc_html__( 'Categories', 'bdthemes-element-pack' ),
+				'label'       => esc_html__( 'Categories', 'elementor-for-extensions' ),
 				'type'        => Controls_Manager::SELECT2,
 				'options'     => $this->getEventCalendarCategories(),
 				'default'     => [],
@@ -730,14 +732,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'start_date',
 			[
-				'label'   => esc_html__( 'Start Date', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Start Date', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					''           => esc_html__( 'Any Time', 'bdthemes-element-pack' ),
-					'now'        => esc_html__( 'Now', 'bdthemes-element-pack' ),
-					'today'      => esc_html__( 'Today', 'bdthemes-element-pack' ),
-					'last month' => esc_html__( 'Last Month', 'bdthemes-element-pack' ),
-					'custom'     => esc_html__( 'Custom', 'bdthemes-element-pack' ),
+					''           => esc_html__( 'Any Time', 'elementor-for-extensions' ),
+					'now'        => esc_html__( 'Now', 'elementor-for-extensions' ),
+					'today'      => esc_html__( 'Today', 'elementor-for-extensions' ),
+					'last month' => esc_html__( 'Last Month', 'elementor-for-extensions' ),
+					'custom'     => esc_html__( 'Custom', 'elementor-for-extensions' ),
 				],
 				'label_block' => true,
 				'frontend_available' => true,
@@ -747,7 +749,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'custom_start_date',
 			[
-				'label'   => esc_html__( 'Custom Start Date', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Custom Start Date', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::DATE_TIME,
 				'condition' => [
 					'start_date' => 'custom'
@@ -759,14 +761,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'end_date',
 			[
-				'label'   => esc_html__( 'End Date', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'End Date', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					''           => esc_html__( 'Any Time', 'bdthemes-element-pack' ),
-					'now'        => esc_html__( 'Now', 'bdthemes-element-pack' ),
-					'today'      => esc_html__( 'Today', 'bdthemes-element-pack' ),
-					'next month' => esc_html__( 'Last Month', 'bdthemes-element-pack' ),
-					'custom'     => esc_html__( 'Custom', 'bdthemes-element-pack' ),
+					''           => esc_html__( 'Any Time', 'elementor-for-extensions' ),
+					'now'        => esc_html__( 'Now', 'elementor-for-extensions' ),
+					'today'      => esc_html__( 'Today', 'elementor-for-extensions' ),
+					'next month' => esc_html__( 'Last Month', 'elementor-for-extensions' ),
+					'custom'     => esc_html__( 'Custom', 'elementor-for-extensions' ),
 				],
 				'label_block' => true,
 				'frontend_available' => true,
@@ -776,7 +778,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'custom_end_date',
 			[
-				'label'   => esc_html__( 'Custom End Date', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Custom End Date', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::DATE_TIME,
 				'condition' => [
 					'end_date' => 'custom'
@@ -786,9 +788,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
-			'limit',
+			'query_limit',
 			[
-				'label'   => esc_html__( 'Limit', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Limit', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 6,
 				'frontend_available' => true,
@@ -799,14 +801,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'orderby',
 			[
-				'label'   => esc_html__( 'Order by', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Order by', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'event_date',
 				'options' => [
-					'event_date' => esc_html__( 'Event Date', 'bdthemes-element-pack' ),
-					'title'      => esc_html__( 'Title', 'bdthemes-element-pack' ),
-					'category'   => esc_html__( 'Category', 'bdthemes-element-pack' ),
-					'rand'       => esc_html__( 'Random', 'bdthemes-element-pack' ),
+					'event_date' => esc_html__( 'Event Date', 'elementor-for-extensions' ),
+					'title'      => esc_html__( 'Title', 'elementor-for-extensions' ),
+					'category'   => esc_html__( 'Category', 'elementor-for-extensions' ),
+					'rand'       => esc_html__( 'Random', 'elementor-for-extensions' ),
 				],
 				'condition' => ['event_view' => ['detail', 'summary']],
 				'frontend_available' => true,
@@ -816,12 +818,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'order',
 			[
-				'label'   => esc_html__( 'Order', 'bdthemes-element-pack' ),
+				'label'   => esc_html__( 'Order', 'elementor-for-extensions' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'DESC',
 				'options' => [
-					'DESC' => esc_html__( 'Descending', 'bdthemes-element-pack' ),
-					'ASC'  => esc_html__( 'Ascending', 'bdthemes-element-pack' ),
+					'DESC' => esc_html__( 'Descending', 'elementor-for-extensions' ),
+					'ASC'  => esc_html__( 'Ascending', 'elementor-for-extensions' ),
 				],
 				'condition' => ['event_view' => ['detail', 'summary']],
 				'frontend_available' => true,
@@ -4690,16 +4692,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		global $post;
 		$output = '';
-		
+
 		$event_date_layout = (!empty($atts['event_date_layout'])) ?  sanitize_text_field($atts['event_date_layout']) : '';
-		$event_limit = (!empty($atts['limit'])) ?  intval($atts['limit']) : '3';
+		$event_limit = (!empty($atts['event_limit'])) ?  intval($atts['event_limit']) : '3';
 		$enable_event_detail = (!empty($atts['enable_event_detail'])) ?  sanitize_text_field($atts['enable_event_detail']) : '';
 		$disable_link = (!empty($atts['disable_link'])) ?  sanitize_text_field($atts['disable_link']) : '';
 		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';
 		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';
 		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';
 		$future_events_only = (!empty($atts['show_future_events'])) ?  sanitize_text_field($atts['show_future_events']) : '';
-		$offset = (!empty($atts['offset'])) ?  intval($atts['offset']) : 1;
+		$offset = (!empty($atts['offset'])) ?  intval($atts['offset']) : intval($atts['event_offset']);
 		$start_date = ( 'custom' == $atts['start_date'] ) ? $atts['custom_start_date'] : $atts['start_date'];
 		$end_date   = ( 'custom' == $atts['end_date'] ) ? $atts['custom_end_date'] : $atts['end_date'];
 		$eventDisplay = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
@@ -4707,7 +4709,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$posts_per_page = $atts['limit']; 
 		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';
 		
-
+		// Check if summary view's show more button clicked
 		if(!empty($atts['ajax_request'])):
 			$offset = $event_limit = intval($atts['offset']);
 		endif;
@@ -4880,7 +4882,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$args['end_date']       = $end_date;
 		$args['order']          = $atts['order'];
 		$args['eventDisplay'] 	 = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
-		$args['posts_per_page'] = $atts['limit'];
+
+		if(!empty($atts['query_limit'])):
+			$args['posts_per_page'] = $atts['query_limit'];
+		endif;
 
 		// category
 		if(!empty($event_categories)) {
@@ -4892,24 +4897,18 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'taxonomy' => 'tribe_events_cat',
 					'terms' => $cat, 
 					'field' => 'slug',
-					// 'include_children' => true,
-					// 'operator' => 'IN'
 				];
 			}
 		}
-		//'tag'          => 'donor-program', // or whatever the tag name is
-		
-		// new code end
-		
-		// $posts = get_posts($args); //old
 
 		$posts = tribe_get_events($args);
 		
 		$total_events = count($posts);
 	
-		if($hide_past_events == 'yes'):
-			$posts = array_reverse($posts);
-		endif;
+		// if($hide_past_events == 'yes'):
+		// 	$posts = array_reverse($posts);
+		// endif;
+
 		$next_month = date('Y-n', strtotime("+1 months", strtotime($atts['month'])));
 		$prev_month = date('Y-n', strtotime("-1 months", strtotime($atts['month'])));
 
