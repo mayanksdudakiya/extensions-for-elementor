@@ -32,7 +32,7 @@ class EE_MB_Controls_Manager{
         foreach ( $single_control as $control_id => $class_name ) {  
             if ( $this->include_control( $class_name, true ) ) {
                 $class_name = 'ElementorExtensions\Controls\\'.$class_name;
-                $controls_manager->register_control( $control_id, new $class_name() );
+                $controls_manager->register( new $class_name() );
             }
         }
 

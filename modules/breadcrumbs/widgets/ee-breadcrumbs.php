@@ -1350,7 +1350,7 @@ class EE_Breadcrumbs extends Base_Widget {
 		return $options;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 }

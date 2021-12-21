@@ -852,7 +852,7 @@ class EE_Import_Templates extends Base_Widget {
 		return $api_response;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 }

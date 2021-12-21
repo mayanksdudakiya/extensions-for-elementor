@@ -1605,7 +1605,7 @@ class EE_Flipbox extends Base_Widget {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<#
 			var isRtl           = <?php echo is_rtl() ? 'true' : 'false'; ?>,

@@ -352,7 +352,7 @@ class EE_Copyright_Year extends Base_Widget{
         echo '</div>';
     }
 
-    protected function _content_template(){
+    protected function content_template(){
 
     }
 }

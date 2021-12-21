@@ -3557,7 +3557,7 @@ class EE_Events extends Base_Widget {
 		wp_die();
 	}
 	
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

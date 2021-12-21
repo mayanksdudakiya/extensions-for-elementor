@@ -1325,7 +1325,7 @@ class EE_Member extends Base_Widget {
 		return get_posts($member_args);
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

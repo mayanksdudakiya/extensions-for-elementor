@@ -169,7 +169,7 @@ class EE_Property_School_Checker_Map extends Base_Widget {
     	<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

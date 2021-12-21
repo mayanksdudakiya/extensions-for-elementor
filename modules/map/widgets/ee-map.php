@@ -428,5 +428,5 @@ class EE_Map extends Base_Widget {
 		echo '<div id="map" class="es-google-map" style="width:100%; height:300px;"></div>';
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }

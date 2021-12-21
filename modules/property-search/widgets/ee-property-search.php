@@ -380,7 +380,7 @@ class EE_Property_Search extends Base_Widget {
 		echo $html;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

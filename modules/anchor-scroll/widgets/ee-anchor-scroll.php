@@ -461,7 +461,7 @@ class EE_Anchor_Scroll extends Base_Widget{
         <?php
     }
 
-	protected function _content_template() {
+	protected function content_template() {
         ?>
 		<# var iconTag = 'div'; #>
 		<div class="elementor-icon-wrapper">

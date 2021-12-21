@@ -74,7 +74,8 @@ abstract class Module_Base {
 	public function __construct() {
 		$this->reflection = new \ReflectionClass( $this );
 
-		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ], 99 );
+		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ]);
+		add_action( 'elementor/widgets/register', [ $this, 'init_widgets' ]);
 	}
 
 	public function init_widgets() {
@@ -87,7 +88,7 @@ abstract class Module_Base {
 			endif;
 			
 			$class_name = $this->reflection->getNamespaceName() . '\Widgets\\' . $widget;
-			$widget_manager->register_widget_type( new $class_name() );
+			$widget_manager->register( new $class_name() );
 		}
 	}
 

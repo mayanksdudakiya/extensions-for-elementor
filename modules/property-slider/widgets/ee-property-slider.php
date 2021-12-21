@@ -266,7 +266,7 @@ class EE_Property_Slider extends Base_Widget {
 		endif;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

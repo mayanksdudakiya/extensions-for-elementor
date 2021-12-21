@@ -84,8 +84,10 @@ Your existing elements/content will work with premium version. So you won't lose
 
 == Changelog ==
 
-= 2.0.4 - 26/11/21 =
+= 2.0.4 - 21/12/21 =
 *Fix : Click glitches in The Event Calendar widget
+*Fix : Megamenu - Removed deprecated methods to support new Elementor version
+*Fix : Updated lastest dependencies
 
 = 2.0.3 - 29/09/21 =
 *Fix : Click glitches in The Event Calendar widget

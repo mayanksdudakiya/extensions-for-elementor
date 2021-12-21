@@ -963,7 +963,7 @@ class EE_Atoz_Listing extends Base_Widget {
 		endif;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 }

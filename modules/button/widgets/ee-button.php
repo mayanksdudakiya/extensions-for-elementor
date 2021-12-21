@@ -418,7 +418,7 @@ class EE_Button extends Base_Widget {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<#
 		view.addRenderAttribute( 'text', 'class', 'elementor-button-text' );

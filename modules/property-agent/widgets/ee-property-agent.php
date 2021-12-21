@@ -536,7 +536,7 @@ class EE_Property_Agent extends Base_Widget {
 	    <?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}	
 }

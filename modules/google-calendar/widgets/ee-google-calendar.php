@@ -698,7 +698,7 @@ class EE_Google_Calendar extends Base_Widget {
 		endif;
 	}
 
-    protected function _content_template() {
+    protected function content_template() {
     }
 
 }

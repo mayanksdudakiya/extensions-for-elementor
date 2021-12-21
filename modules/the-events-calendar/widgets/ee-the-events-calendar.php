@@ -5407,7 +5407,7 @@ class EE_The_Events_Calendar extends Base_Widget {
         return $properties;
     }
 	
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 

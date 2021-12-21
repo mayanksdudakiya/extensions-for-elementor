@@ -1985,5 +1985,5 @@ class EE_Google_Map extends Base_Widget {
 			</li><?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }

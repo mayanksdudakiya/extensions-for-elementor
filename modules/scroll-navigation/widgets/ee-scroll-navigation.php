@@ -670,7 +670,7 @@ class EE_Scroll_Navigation extends Base_Widget {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 

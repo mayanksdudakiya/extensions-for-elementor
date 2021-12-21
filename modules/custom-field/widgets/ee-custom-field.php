@@ -566,7 +566,7 @@ class EE_Custom_Field extends Base_Widget {
 		return $list;
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		
 	}
 }
