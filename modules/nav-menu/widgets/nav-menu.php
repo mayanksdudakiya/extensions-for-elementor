@@ -933,6 +933,7 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => esc_html__( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
+				'default' => '',
 				'selectors' => [
 					'.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item:hover,
 					.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item.elementor-item-active,
@@ -950,7 +951,7 @@ class Nav_Menu extends Widget_Base {
 			[
 				'label' => esc_html__( 'Text Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
-				'default' => '#fff',
+				'default' => '',
 				'selectors' => [
 					'.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item:hover,
 					.elementor-sticky--effects > .elementor-container .elementor-nav-menu--main .elementor-item.elementor-item-active,

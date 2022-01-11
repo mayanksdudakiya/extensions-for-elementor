@@ -4520,7 +4520,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'orderby'        => $settings['orderby'],
 					'order'          => $settings['order'],
 					'eventDisplay' 	 => ( 'custom' == $settings['start_date'] or 'custom' == $settings['end_date'] ) ? 'custom' : 'all',
-					'posts_per_page' => $settings['limit'],
+					'posts_per_page' => $settings['limit'] ?? -1,
 					//'tag'          => 'donor-program', // or whatever the tag name is
 				] );
 
@@ -4706,7 +4706,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$end_date   = ( 'custom' == $atts['end_date'] ) ? $atts['custom_end_date'] : $atts['end_date'];
 		$eventDisplay = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
 		$order = $atts['order'];
-		$posts_per_page = $atts['limit']; 
+		$posts_per_page = (!empty($atts['limit'])) ? intval($atts['limit']) : 3; 
 		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';
 		
 		// Check if summary view's show more button clicked
@@ -4909,9 +4909,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 		// 	$posts = array_reverse($posts);
 		// endif;
 
-		$next_month = date('Y-n', strtotime("+1 months", strtotime($atts['month'])));
-		$prev_month = date('Y-n', strtotime("-1 months", strtotime($atts['month'])));
-
+		$next_month = date('Y-m', strtotime("+1 months", strtotime($atts['month'])));
+		$prev_month = date('Y-m', strtotime("-1 months", strtotime($atts['month'])));
+			
 		echo '<div class="summary_title_wrapper">';
 			echo '<p class="summary_month_title">'.date('F, Y',strtotime($atts['month'])).'</p>';
 			echo '<p class="summary_nextprev_buttons">
