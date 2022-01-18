@@ -625,6 +625,18 @@ class EE_The_Events_Calendar extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'no_events_message',
+			[
+				'label' => esc_html__( 'No Events Message', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'rows' => 3,
+				'label_block' => true,
+				'default' => esc_html__( 'There are no events available, please add new event.', 'elementor-for-extensions' ),
+				'condition' => ['event_view' => 'detail'],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -4491,7 +4503,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			echo '</div>';
 
 		else:
-			echo 'There are no any events available, please add new event.';
+			echo (!empty($settings['no_events_message'])) ? $settings['no_events_message'] : 'There are no events available, please add new event.';
 		endif;
 	}
 

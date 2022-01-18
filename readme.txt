@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -83,6 +83,11 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.5 - 18/01/21 =
+*Fix : Hover color glitche in shrink menu
+*Fix : TEC - Removed time text shown in calendar events
+*Fix : TEC - Added support to add no event message
 
 = 2.0.4 - 21/12/21 =
 *Fix : Click glitches in The Event Calendar widget
