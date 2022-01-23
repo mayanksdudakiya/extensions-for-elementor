@@ -369,6 +369,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'show_end_date',
+			[
+				'label' => __( 'Show End Date', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'label_off',
+				'condition' => [
+					'event_view' => 'detail',
+					'show_date' => 'yes'
+				],
+			]
+		);
+
+		$this->add_control(
 			'show_option_excerpt_content',
 			[
 				'label' => __( 'Show Excerpt / Content', 'elementor-for-extensions' ),
@@ -4309,6 +4326,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 					$end_time = date('H:i:s', strtotime($event_end_date));
 
 					$event_end_time = date('g:i a',strtotime($event_end_date));
+
+					$event_end_date = date($event_date_formate,strtotime($event_end_date));
 				endif;
 
 				/*@ Use compare date for past event */
@@ -4412,7 +4431,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endif;
 
 						if($settings['show_date'] == 'yes'):	
-							$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
+							if($settings['show_end_date'] == 'yes'):	
+								$event_html.='<span class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</span>';
+							else:
+								$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
+							endif;
 						endif;
 
 						if($settings['show_time'] == 'yes'):	
@@ -4520,11 +4543,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 			$eventView = $settings['event_view'];
 			// if ($eventView === 'detail') :
-				$eventLimit = $settings['event_limit'];
 				$atts['event_tax'] = '';
 				$start_date = ( 'custom' == $settings['start_date'] ) ? $settings['custom_start_date'] : $settings['start_date'];
 				$end_date   = ( 'custom' == $settings['end_date'] ) ? $settings['custom_end_date'] : $settings['end_date'];
 				$hide_past_events = (!empty($settings['past_event_section'])) ?  sanitize_text_field($settings['past_event_section']) : '';	
+
+				if (!empty($settings['limit'])) :
+					$eventLimit = $settings['limit'];
+				elseif (!empty($settings['query_limit'])) :
+					$eventLimit = $settings['query_limit'];
+				endif;
 
 				$query_args = array_filter( [
 					'start_date'     => $start_date,
@@ -4532,14 +4560,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'orderby'        => $settings['orderby'],
 					'order'          => $settings['order'],
 					'eventDisplay' 	 => ( 'custom' == $settings['start_date'] or 'custom' == $settings['end_date'] ) ? 'custom' : 'all',
-					'posts_per_page' => $settings['limit'] ?? -1,
+					'posts_per_page' => $eventLimit,
 					//'tag'          => 'donor-program', // or whatever the tag name is
 				] );
 
 				if($hide_past_events != 'yes'):
 					$query_args['eventDisplay'] = 'list';
 					$query_args['start_date'] = 'now';
-					$query_args['posts_per_page'] = $settings['limit'] ?? -1;
+					$query_args['posts_per_page'] = $eventLimit;
 				endif;
 				
 				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
@@ -4575,6 +4603,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					}
 				}
 
+				// Show all events for calendar
 				if (!empty($settings) && $settings['event_view'] === 'calendar'){
 					$query_args['posts_per_page'] = -1;
 				}
