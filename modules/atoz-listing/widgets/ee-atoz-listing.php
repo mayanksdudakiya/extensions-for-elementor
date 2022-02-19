@@ -38,13 +38,13 @@ class EE_Atoz_Listing extends Base_Widget {
                 'tab' => Controls_Manager::TAB_CONTENT,
              ]
 		);
-		
+
 		$post_types = Utils::get_post_types();
 
 		$this->add_control(
 			'post_type',
 			[
-				'label' 		=> __( 'Post Type', 'elementor-extensions' ),
+				'label' 		=> __( 'Post type', 'elementor-extensions' ),
 				'type' 			=> Controls_Manager::SELECT,
 				'default' 		=> 'post',
 				'options'		=> $post_types
@@ -63,8 +63,101 @@ class EE_Atoz_Listing extends Base_Widget {
 			]
 		);
 
+		$this->add_control(
+			'show_feature_image',
+			[
+				'label' => __( 'Show feature image', 'elementor-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-extensions' ),
+				'label_off' => __( 'No', 'elementor-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true
+			]
+		);
+
+		$this->add_control(
+			'brand_logo_width',
+			[
+				'label' => esc_html__( 'Logo max width', 'elementor-extensions' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 50,
+				],
+				'condition' => ['show_feature_image' => 'yes'],
+				'selectors' => [
+					'{{WRAPPER}} .az-listing-container .posts ul li .brand-logo img' => 'max-width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'brand_logo_align',
+			[
+				'label' => __( 'Logo alignment', 'elementor-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-right',
+					],
+				],
+				'default' => 'center',
+				'condition' => ['show_feature_image' => 'yes'],
+				'selectors' => [
+					'{{WRAPPER}} .az-listing-container .posts ul li .brand-logo' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'brand_title_align',
+			[
+				'label' => __( 'Title alignment', 'elementor-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-extensions' ),
+						'icon' => 'fa fa-align-right',
+					],
+				],
+				'default' => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .az-listing-container .posts ul li .brand-title' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
             'section_general_style',
             [
@@ -208,7 +301,7 @@ class EE_Atoz_Listing extends Base_Widget {
 							],
 						]
 					);
-			
+
 					$this->add_group_control(
 						Group_Control_Border::get_type(),
 						[
@@ -312,7 +405,7 @@ class EE_Atoz_Listing extends Base_Widget {
 				$this->end_controls_tab();
 
 				$this->start_controls_tab( 'container_alphabet', [ 'label' => __( 'Container', 'elementor-extensions' ) ] );
-		
+
 					$this->add_control(
 						'alphabet_container_background',
 						[
@@ -357,7 +450,7 @@ class EE_Atoz_Listing extends Base_Widget {
 							'separator' => 'before'
 						]
 					);
-				
+
 				$this->end_controls_tab();
 
 			$this->end_controls_tabs();
@@ -445,7 +538,7 @@ class EE_Atoz_Listing extends Base_Widget {
 							],
 						]
 					);
-			
+
 					$this->add_group_control(
 						Group_Control_Border::get_type(),
 						[
@@ -640,7 +733,7 @@ class EE_Atoz_Listing extends Base_Widget {
 							],
 						]
 					);
-			
+
 					$this->add_group_control(
 						Group_Control_Border::get_type(),
 						[
@@ -674,7 +767,7 @@ class EE_Atoz_Listing extends Base_Widget {
 						]
 					);
 
-				
+
 				$this->end_controls_tab();
 
 				$this->start_controls_tab( 'hover_listing_link', [ 'label' => __( 'Hover Link', 'elementor-extensions' ) ] );
@@ -708,7 +801,7 @@ class EE_Atoz_Listing extends Base_Widget {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
-		
+
 		$posts = $this->getPostByPostType($settings);
 
 		if(empty($posts)):
@@ -733,7 +826,7 @@ class EE_Atoz_Listing extends Base_Widget {
 					else:
 						echo '<li><a href="javascript:void(0);">'.esc_html($alphabet).'</a></li>';
 					endif;
-					
+
 				endforeach;
 				echo '</ul>';
 			endif;
@@ -750,7 +843,7 @@ class EE_Atoz_Listing extends Base_Widget {
 							"name" => "All",
 						];
 						$all_cat = json_encode($all_cat, JSON_PRETTY_PRINT);
-						
+
 						echo "<li class='active'><a href='javascript:void(0);' id='all' data-setting='".$all_cat."'>All</a></li>";
 					foreach($categories as $key => $category):
 						$name = $category['name'];
@@ -760,7 +853,7 @@ class EE_Atoz_Listing extends Base_Widget {
 						$cat_name_load = str_replace('&','',$cat_name_load);
 						$cat_name_load = strtolower(str_replace(' ','',$cat_name_load));
 						$cat_name_load = preg_replace('/[^a-z0-9]+/', '', $cat_name_load);
-						
+
 
 						echo "<li><a href='javascript:void(0);' id='".esc_html($cat_name_load)."' data-setting='".$taxonomy_data."'>".esc_html($name)."</a></li>";
 					endforeach;
@@ -784,8 +877,8 @@ class EE_Atoz_Listing extends Base_Widget {
 		$post_alphabets = $alphabets_listing['alphabets'];
 
 		if(!empty($post_alphabets)):
-				
-			foreach($post_alphabets as $key => $alphabet):
+
+			foreach($post_alphabets as $alphabet):
 				echo '<div class="posts_listing" id="'.esc_html($alphabet).'">';
 
 					echo '<div class="letter">';
@@ -794,17 +887,23 @@ class EE_Atoz_Listing extends Base_Widget {
 
 					if(!empty($alphabets_listing['listings']) && !empty($alphabets_listing['listings'][$alphabet])):
 						echo '<div class="posts">';
-							echo '<ul>';	
-								foreach($alphabets_listing['listings'][$alphabet] as $key => $list):
-									echo '<li><a href="'.esc_url($list['link']).'">'.esc_html($list['post_title']).'</a></li>';
+							echo '<ul>';
+								foreach($alphabets_listing['listings'][$alphabet] as $list):
+
+									$img = '';
+									if ($list['image']) {
+										$img = '<span class="brand-logo"><img src="'.$list['image'].'"/></span>';
+									}
+
+									echo '<li><a href="'.esc_url($list['link']).'">'.$img.'<span class="brand-title">'.esc_html($list['post_title']).'</span></a></li>';
 								endforeach;
 							echo '</ul>';
 						echo '</div>';
 					endif;
-					
+
 				echo '</div>';
 			endforeach;
-			
+
 		else:
 			echo '<span class="not_found">There is no posts available at the moment, Please add some.</span>';
 		endif;
@@ -814,25 +913,33 @@ class EE_Atoz_Listing extends Base_Widget {
 	protected function getPostsWithAlphabets($posts, $settings=null){
 
 		$response = $alphabets = $num_alphabets = $listings = $numeric_arr = [];
-		
+
 		$is_list_number = (!empty($settings['list_number_after_letter']) && $settings['list_number_after_letter'] === 'yes');
 		foreach($posts as $key => $post):
-			
+
 			$title = $post->post_title;
-			
+
 			$alpha_title = str_replace(' ', '-', $title); /* Replaces all spaces with hyphens. */
 			$alpha_title = preg_replace('/[^A-Za-z0-9\-]/', '', $alpha_title); /* Removes special chars. */
 
 			$alphabet = strtoupper(substr($alpha_title, 0, 1));
 
+			/* grab the url for the full size featured image */
+			$featured_img = '';
+			if (!empty($settings['show_feature_image']) && $settings['show_feature_image'] === 'yes') {
+				$featured_img = get_the_post_thumbnail_url($post->ID,'full');
+			}
+
 			if(is_numeric($alphabet) && $is_list_number):
 				$num_alphabets[] = $alphabet;
 				$numeric_arr[$alphabet][$key]['link'] = get_the_permalink($post->ID);
-				$numeric_arr[$alphabet][$key]['post_title'] = $title;	
+				$numeric_arr[$alphabet][$key]['post_title'] = $title;
+				$numeric_arr[$alphabet][$key]['image'] = $featured_img;
 			else:
-				$alphabets[] = $alphabet;	
+				$alphabets[] = $alphabet;
 				$listings[$alphabet][$key]['link'] = get_the_permalink($post->ID);
-				$listings[$alphabet][$key]['post_title'] = $title;	
+				$listings[$alphabet][$key]['post_title'] = $title;
+				$listings[$alphabet][$key]['image'] = $featured_img;
 			endif;
 		endforeach;
 
@@ -847,7 +954,7 @@ class EE_Atoz_Listing extends Base_Widget {
 		$alphabets = array_unique($alphabets);
 		$response['alphabets'] = $alphabets;
 		$response['listings'] = $listings;
-	
+
 		return $response;
 	}
 
@@ -868,7 +975,7 @@ class EE_Atoz_Listing extends Base_Widget {
 		if(!empty($taxonomy_objects)):
 			$count = 0;
 			foreach($taxonomy_objects as $tax_key => $taxonomy):
-			
+
 				$args = array(
 					'taxonomy'     => $tax_key,
 					'orderby'      => 'name',
@@ -876,21 +983,21 @@ class EE_Atoz_Listing extends Base_Widget {
 					'order'        => 'ASC',
 					'hide_empty'   => true
 				);
-		
+
 				$cats = get_categories($args);
 
 				if(!empty($cats)):
-					
+
 					foreach($cats as $key => $cat):
 						$slug = $cat->slug;
 						$categories[$slug]['taxonomy'] = $tax_key;
 						$categories[$slug]['slug'] = $slug;
 						$categories[$slug]['name'] = $cat->name;
 						$categories[$slug]['post_type'] = $settings['post_type'];
-						$count++;		
+						$count++;
 					endforeach;
 				endif;
-				
+
 			endforeach;
 		endif;
 
@@ -923,7 +1030,7 @@ class EE_Atoz_Listing extends Base_Widget {
 		if($name !== 'All'):
 			$taxonomy = sanitize_text_field($cat_data['taxonomy']);
 			$slug = sanitize_text_field($cat_data['slug']);
-			
+
 			$args['tax_query'] =  array(
 				array(
 					'taxonomy' => $taxonomy,
@@ -932,7 +1039,7 @@ class EE_Atoz_Listing extends Base_Widget {
 				)
 			);
 		endif;
-		
+
 		$posts = get_posts( $args );
 
 		if(!empty($posts)):
@@ -964,6 +1071,6 @@ class EE_Atoz_Listing extends Base_Widget {
 	}
 
 	protected function content_template() {
-		
+
 	}
 }

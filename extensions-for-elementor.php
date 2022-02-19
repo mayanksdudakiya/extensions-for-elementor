@@ -2,18 +2,18 @@
 /*
  * Plugin Name: Extensions For Elementor
  * Description: Extend your elementor capability by adding elementor extension.
- * Version: 2.0.5
+ * Version: 2.0.6
  * Text Domain: elementor-extensions
  * Author: mayanksdudakiya
  * Author URI: https://www.linkedin.com/in/mayanksdudakiya/
- * Plugin URI: 
+ * Plugin URI:
  * License: GPL 3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.5' );
+define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.6' );
 
 define( 'ELEMENTOR_EXTENSIONS__FILE__', __FILE__ );
 define( 'ELEMENTOR_EXTENSIONS_PLUGIN_BASE', plugin_basename( ELEMENTOR_EXTENSIONS__FILE__ ) );

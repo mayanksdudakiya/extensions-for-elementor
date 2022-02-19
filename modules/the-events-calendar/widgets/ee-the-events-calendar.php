@@ -4570,7 +4570,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					$query_args['posts_per_page'] = $eventLimit;
 				endif;
 				
-				if ( 'by_name' === $settings['source'] and !empty($settings['event_categories']) ) {
+				if ( 'by_name' === $settings['source'] && !empty($settings['event_categories']) ) {
 					if(isset($settings['slug']) && !empty($settings['slug'])){
 						$query_args['tax_query'][] =  [
 							'taxonomy' => 'tribe_events_cat',
@@ -4579,7 +4579,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 							'include_children' => true,
 							'operator' => 'IN'
 						];
-					}else{
+					} else{
 						$query_args['tax_query'] = array(
 							'relation' => 'AND',
 						);
@@ -4665,7 +4665,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		// Query category filter
-
 		if(!empty($event_categories)) {
 			$args['tax_query'] = array(
 				'relation' => 'AND',
