@@ -12,7 +12,8 @@ class EE_MB_Extensions_Manager {
 
 	public function __construct() {
 		$this->require_files();
-        add_action( 'elementor/controls/controls_registered', array( $this, 'register_extensions' ), 10 );
+		$this->register_extensions();
+        //add_action( 'elementor/controls/controls_registered', array( $this, 'register_extensions' ), 10 );
     }
 
 
@@ -33,14 +34,12 @@ class EE_MB_Extensions_Manager {
             'ee-mb-clickable-column' => 'EE_MB_Clickable_Column',
         );
 
-        foreach ( $extensionsList as $control_id => $class_name ) {  
-        	if ( $this->include_extensions( $class_name ) ) {  
+        foreach ( $extensionsList as $control_id => $class_name ) {
+        	if ( $this->include_extensions( $class_name ) ) {
 	            $class_name = 'ElementorExtensions\Extensions\\'.$class_name;
 	            $this->register_extension( $control_id, new $class_name() );
 	        }
         }
-		
-		//do_action( 'column_stretch_elementor/extensions/extensions_registered', $this );
 	}
 
 	public function include_extensions( $class_name ) {
@@ -66,7 +65,7 @@ class EE_MB_Extensions_Manager {
 	public function register_extension( $extension_id, Extension_Base $extension_instance ) {
 		$this->_extensions[ $extension_id ] = $extension_instance;
 	}
- 
+
 	/**
 	 * @since 0.1.0
 	 *

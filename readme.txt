@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -13,7 +13,7 @@ The World's Leading WordPress page builder just got more powerful with useful 20
 
 == Description ==
 
-Add more power to your [Elementor](https://wordpress.org/plugins/elementor/) page building experience with 20+ useful & creative elements. 
+Add more power to your [Elementor](https://wordpress.org/plugins/elementor/) page building experience with 20+ useful & creative elements.
 
 ### 20+ FREE WIDGETS AND COUNTING
 
@@ -39,7 +39,7 @@ Add more power to your [Elementor](https://wordpress.org/plugins/elementor/) pag
 20. Table - Insert visually attractive data table anywhere you want
 21. Testimonial Swiper - Add testimonial with slider and different layout options
 
-Extensions Works with Elementor Pro Plugin: 
+Extensions Works with Elementor Pro Plugin:
 
 1. Nav Menu - Add "Megamenu" into elementor by using "Description" field of Menus.
 2. Nav Menu - Add "Hamburger Scroll" after scroll menu converted into the hamburger.
@@ -47,7 +47,7 @@ Extensions Works with Elementor Pro Plugin:
 New Extensions:
 
 1. Elementor Clickable Column
-2. Elementor Stretch Column 
+2. Elementor Stretch Column
 
 == Installation ==
 
@@ -83,6 +83,10 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.6 - 24/02/22 =
+*Fix : Stretch column extension glitch
+*Fix : Clickable column extension glitch
 
 = 2.0.5 - 18/01/21 =
 *Fix : Hover color glitche in shrink menu
@@ -121,23 +125,23 @@ Your existing elements/content will work with premium version. So you won't lose
 
 = 1.0.21 - 02/06/21 =
 *Fix : The Event Calendar - Limit issue has been fixed
-*Fix : The Event Calendar - Changed Or to And condition 
+*Fix : The Event Calendar - Changed Or to And condition
 
 = 1.0.20 - 03/05/21 =
 *Fix : The Event Calendar - Comma issue has been fixed
 
 = 1.0.19 - 19/04/21 =
-*New : Nav Menu - Menu icon functionality has been added  
+*New : Nav Menu - Menu icon functionality has been added
 *Fix : Megamenu - Blank space in footer has resolved
 
 = 1.0.18 - 07/04/21 =
 *Fix : Cookie - Cookie bar not working due to jQuery error
-*Fix : Megamenu - Megamenu top spacing issue with cookie bar, admin bar and other sections 
+*Fix : Megamenu - Megamenu top spacing issue with cookie bar, admin bar and other sections
 
 
 = 1.0.17 - 06/04/21 =
 *Fix : A To Z widget - Removed special characters from slug
-*Fix : The Event Calendar Widget - Summary detail view content line break issue 
+*Fix : The Event Calendar Widget - Summary detail view content line break issue
 
 = 1.0.16 - 26/03/21 =
 *Fix : Megamenu - Top spacing issue
