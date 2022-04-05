@@ -32,7 +32,7 @@ class EE_Custom_Field extends Base_Widget {
 	public function get_keywords() {
 		return [ 'custom', 'field', 'cf', 'custom field', 'customfield', 'c' ];
 	}
-	
+
 	protected function _register_controls() {
 
 		$this->start_controls_section(
@@ -89,14 +89,28 @@ class EE_Custom_Field extends Base_Widget {
 			[
 				'label' 		=> __( 'Date Format', 'elementor-extensions' ),
 				'type' 			=> Controls_Manager::SELECT,
-				'default'       => 'd-m-Y',				
+				'default'       => 'd-m-Y',
 				'options'		=> [
 					'd-m-Y'   => 'dd-mm-yyyy',
 					'j M Y'   => '23 Jan 2019',
-					'jS F Y'   => '23rd January 2019'
+					'jS F Y'   => '23rd January 2019',
+					'custom' => 'Custom'
 				],
 				'condition' => [
 					'field_type' => ['date']
+				]
+			]
+		);
+
+		$this->add_control(
+			'custom_date_format',
+			[
+				'label' => esc_html__( 'Custom Format', 'elementor-extensions' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => esc_html__( 'd/m/Y', 'elementor-extensions' ),
+				'placeholder' => esc_html__( 'Type date format here', 'elementor-extensions' ),
+				'condition' => [
+					'date_format' => ['custom']
 				]
 			]
 		);
@@ -426,7 +440,7 @@ class EE_Custom_Field extends Base_Widget {
 
 		$field_type = (!empty($settings['field_type'])) ? $settings['field_type'] : '';
 		$custom_field = (!empty($settings['custom_fields'])) ? $settings['custom_fields'] : '';
-		
+
 		$get_field_values = $this->get_custom_fields();
 
 		$field_val = '';
@@ -451,7 +465,7 @@ class EE_Custom_Field extends Base_Widget {
 			case 'text':
 					$html .= '<div class="ee_mb_text_field ee_mb_custom_field">'.$field_val.'</div>';
 				break;
-			
+
 			case 'image':
 
 					$image_size = $settings['feature_size'];
@@ -471,7 +485,7 @@ class EE_Custom_Field extends Base_Widget {
 			case 'editor':
 					$html .= '<div class="ee_mb_editor_field ee_mb_custom_field">'.wpautop($field_val).'</div>';
 				break;
-			
+
 			case 'link':
 					$link_label = $settings['link_label'];
 
@@ -492,12 +506,12 @@ class EE_Custom_Field extends Base_Widget {
 
 				$date = $field_val;
 				if(!empty($settings['date_format'])):
-					$format = $settings['date_format'];
+					$format = ($settings['custom_date_format']) ? $settings['custom_date_format'] : $settings['date_format'];
 					$date = date($format, strtotime($date));
 				endif;
-			
+
 				$html .= '<div class="ee_mb_date_field ee_mb_custom_field">'.$date.'</div>';
-					
+
 				break;
 			case 'default':
 				break;
@@ -510,7 +524,7 @@ class EE_Custom_Field extends Base_Widget {
 
 	/*@ Build a custom field */
 	public function get_custom_fields(){
-	
+
 		$custom_fields = get_post_custom();
 
 		$exclude_fields = [
@@ -558,7 +572,7 @@ class EE_Custom_Field extends Base_Widget {
 
 					$list['fields'][$field_key] = __( $field_name, 'elementor-extensions' );
 					$list['value'][$field_key] = (!empty($field[0])) ? $field[0] : '';
-				
+
 				endif;
 			endforeach;
 		endif;
@@ -567,6 +581,6 @@ class EE_Custom_Field extends Base_Widget {
 	}
 
 	protected function content_template() {
-		
+
 	}
 }
