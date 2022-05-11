@@ -183,7 +183,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'placeholder' => __( 'Enter time formate', 'elementor-for-extensions' ),
 				'description' => __( 'h:i a => 05:00 pm, <br>
 				H:i a => 17:00 pm, <br>
-				h:i A => 05:00 PM <br> 
+				h:i A => 05:00 PM <br>
 				H - 24-hour format of an hour (00 to 23) <br>
 				h - 12-hour format of an hour with leading zeros (01 to 12) <br>
 				i - Minutes with leading zeros (00 to 59) <br>
@@ -194,7 +194,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				// 'frontend_available' => true,
 			]
 		);
-		
+
 
 		$this->add_responsive_control(
 			'event_columns',
@@ -265,7 +265,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				],
 				'default' => [
 					'size' =>20
-				],				
+				],
 				'selectors' => [
 					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_wrapper' => 'margin-bottom: {{SIZE}}px'
 				],
@@ -604,6 +604,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'l dS F Y',
 				'options' => [
+					'' => __( 'Select', 'elementor-for-extensions' ),
 					'l dS F Y' => __( 'Monday 30th June 2008', 'elementor-for-extensions' ),
 					'd-m-Y' => __( '30-06-2008', 'elementor-for-extensions' ),
 					'Y-m-d' => __( '2008-06-30', 'elementor-for-extensions' ),
@@ -611,6 +612,17 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'M dS, Y' => __( 'July 1st, 2008', 'elementor-for-extensions' ),
 				],
 				'frontend_available' => true,
+				'condition' => ['event_view' => 'detail'],
+			]
+		);
+
+		$this->add_control(
+			'free_event_date_formate',
+			[
+				'label' => __( 'Text Date Format', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::TEXT,
+				'frontend_available' => true,
+				'description' => esc_html__( 'Manually type date format ex. M jS Y (May 10th 2022)', 'elementor-for-extensions' ),
 				'condition' => ['event_view' => 'detail'],
 			]
 		);
@@ -1031,7 +1043,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				],
 			]
 		);
-	
+
 		$this->add_responsive_control(
 			'event_image_width',
 			[
@@ -1224,7 +1236,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
 			]
 		);
-	
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1232,7 +1244,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summary_filter > div > a',
             ]
 		);
-		
+
 		$this->add_control(
             'event_summary_filter_font_color',
             [
@@ -1254,7 +1266,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_summary_filter_active_color',
             [
@@ -1298,9 +1310,9 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
-	
-		
+
+
+
 		$this->add_responsive_control(
 			'event_summary_filter_spacing',
 			[
@@ -1351,7 +1363,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1359,7 +1371,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList .summary_title_wrapper > .summary_month_title',
             ]
         );
-		
+
 		$this->add_responsive_control(
 			'event_date_main_title_spacing',
 			[
@@ -1433,7 +1445,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList .summary_title_wrapper > .summary_nextprev_buttons',
             ]
         );
-		
+
 		$this->add_responsive_control(
 			'event_summary_next_prev_button_spacing',
 			[
@@ -1578,11 +1590,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above' => 'color: {{VALUE}};',
-					
+
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_date_hover_color',
             [
@@ -1591,12 +1603,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
                 'selectors' => [
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above:hover' => 'color: {{VALUE}};',
-					
+
                 ],
             ]
 		);
 
-		
+
 		$this->add_control(
             'event_date_background',
             [
@@ -1609,7 +1621,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_date_hover_background',
             [
@@ -1622,7 +1634,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1630,7 +1642,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_date_align',
 			[
@@ -1742,7 +1754,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1750,7 +1762,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .month',
             ]
         );
-		
+
 		$this->add_responsive_control(
 			'event_summary_month_spacing',
 			[
@@ -1791,7 +1803,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_title_hover_color',
             [
@@ -1805,7 +1817,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1813,7 +1825,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper a h3,{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper h3,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.event_title > h4',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_title_align',
 			[
@@ -1925,7 +1937,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_excerpt_hover_color',
             [
@@ -1936,7 +1948,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -1944,7 +1956,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_excerpt',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_excerpt_align',
 			[
@@ -2052,7 +2064,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_content_hover_color',
             [
@@ -2063,7 +2075,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2071,7 +2083,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_content',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_content_align',
 			[
@@ -2336,7 +2348,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_summary_show_more_bg_color',
             [
@@ -2347,7 +2359,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2355,7 +2367,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_summary_eventlist_wrapper .summaryEventList > .show_more_events',
             ]
         );
-		
+
 		$this->add_responsive_control(
 			'event_summary_show_more_spacing',
 			[
@@ -2403,7 +2415,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2411,7 +2423,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_time',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_time_align',
 			[
@@ -2477,7 +2489,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2509,7 +2521,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2517,7 +2529,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_venue',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_venue_align',
 			[
@@ -2561,7 +2573,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->end_controls_section();
-		
+
 
 		/*@Link style*/
 		$this->start_controls_section(
@@ -2584,7 +2596,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'event_link_hover_color',
             [
@@ -2595,7 +2607,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2603,7 +2615,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'event_link_align',
 			[
@@ -2784,7 +2796,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2792,7 +2804,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .past_events_wrapper.tec-wrapper h2',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'past_event_header_align',
 			[
@@ -2855,7 +2867,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2911,7 +2923,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -2920,7 +2932,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_calendar .fc-header-toolbar h2',
             ]
 		);
-	
+
 		$this->add_control(
 			'button_styles_seperator_heading',
 			[
@@ -2950,7 +2962,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_control(
             'eb_header_button_background',
             [
@@ -2962,7 +2974,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_header_active_button_text_color',
             [
@@ -2973,7 +2985,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_header_active_button_background',
             [
@@ -2995,7 +3007,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_header_hover_button_background',
             [
@@ -3006,7 +3018,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
 			'event_header_buttons_hr',
 			[
@@ -3046,7 +3058,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_day_month_background_color',
             [
@@ -3057,7 +3069,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(), [
 				'name' => 'event_calendar_grid_day_border',
@@ -3074,7 +3086,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'style' => 'thick',
 			]
 		);
-		
+
 		$this->end_controls_section();
 
 
@@ -3106,7 +3118,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_date_month_background_color',
             [
@@ -3117,7 +3129,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(), [
 				'name' => 'eb_date_border',
@@ -3127,7 +3139,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'separator' => 'before',
 			]
 		);
-		
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -3156,7 +3168,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'style' => 'thick',
 			]
 		);
-		
+
 		$this->add_control(
             'eb_hover_background_color',
             [
@@ -3178,7 +3190,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'eb_cal_oddrow_color',
             [
@@ -3189,7 +3201,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_control(
             'eb_cal_evenrow_color',
             [
@@ -3200,11 +3212,11 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->end_controls_section();
 
-		// Add new option in Tec 
-		
+		// Add new option in Tec
+
 		$this->start_controls_section(
 			'eb_list_view_content',
 			[
@@ -3268,9 +3280,9 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
 			'eb_month_view_content',
 			[
@@ -3278,7 +3290,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
-		);		
+		);
 
 		$this->add_control(
             'eb_month_bg_color',
@@ -3400,9 +3412,9 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
 			'eb_week_view_content',
 			[
@@ -3534,9 +3546,9 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->end_controls_section();
-		
+
 		$this->start_controls_section(
 			'eb_day_view_content',
 			[
@@ -3658,9 +3670,9 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->end_controls_section();
-	
+
 		// Add new option in Tec
 		$this->start_controls_section(
 			'eb_event_content',
@@ -3671,7 +3683,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'condition' => ['event_view' => 'calendar'],
 			]
 		);
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -3723,7 +3735,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->end_controls_section();
 
 		/*@Calendar detail view style */
@@ -3825,7 +3837,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'detail_event_date_hover_color',
             [
@@ -3844,7 +3856,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.date_wrapper > .day',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'detail_event_date_spacing',
 			[
@@ -3891,7 +3903,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'detail_event_summary_month_hover_color',
             [
@@ -3902,7 +3914,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -3910,7 +3922,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.date_wrapper > .month',
             ]
         );
-		
+
 		$this->add_responsive_control(
 			'detail_event_summary_month_spacing',
 			[
@@ -3958,7 +3970,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_control(
             'detail_event_title_hover_color',
             [
@@ -3969,7 +3981,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
         );
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -3977,7 +3989,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview ul > li > a > div.event_title > h4',
             ]
         );
-				
+
 		$this->add_responsive_control(
 			'detail_event_title_align',
 			[
@@ -4082,7 +4094,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 ],
             ]
 		);
-		
+
 		$this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -4091,7 +4103,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'selector' => '{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .time_icon > i,{{WRAPPER}} .myeventon_calendar_summaryview .summary_cal_description .summary_cal_data h3,{{WRAPPER}} .summaryEventList .summary_cal_description .time_icon > i,{{WRAPPER}} .summaryEventList .summary_cal_description .summary_cal_data h3',
             ]
 		);
-		
+
 		$this->add_control(
             'detail_event_dropdown_time_string_color',
             [
@@ -4124,7 +4136,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
             ]
 		);
-		
+
 		$this->add_control(
             'default_to_show_time_background',
             [
@@ -4159,7 +4171,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		}
 
 		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
-		
+
 		$categories_tribe = get_terms( $defaults );
 		foreach ($categories_tribe as $category_tribe){
 			$name =  $category_tribe->name;
@@ -4179,7 +4191,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
 		$categories_tribe = get_terms( $defaults );
 		?>
-		<?php 
+		<?php
 		if($settings['event_view'] == 'detail'):
 			if($settings['show_filter'] == 'yes'):
 		?>
@@ -4188,10 +4200,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 				echo '<option value="">All</option>';
 				foreach($categories_tribe as $categories) {
 					echo '<option value="'.$categories->slug.'">'.$categories->name.'</option>';
-				} 
+				}
 				?>
 			</select>
-		<?php 
+		<?php
 			endif;
 		endif;
 		?>
@@ -4212,7 +4224,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			// 	'hide_past_events' => $settings['hide_past_events'],
 			// 	'offset' => $settings['event_offset'],
 			// );
-			
+
 			// after
 			$atts = $settings;
 
@@ -4227,7 +4239,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 			$all_years = $this->getAllYears();
 			$all_months = $this->getAllMonths();
-			
+
 			$current_year = date('Y');
 
 			echo '<div class="myeventon_summary_eventlist_wrapper">';
@@ -4252,13 +4264,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endforeach;
 					echo '</div>';
 				echo '</div>';
- 
+
 				echo '<div class="summaryEventList '.$settings['event_date_layout'].'">';
 						echo '<div class="elementor_extensions_loading_overlay">';
 							echo '<div class="elementor_extensions_loader"></div>';
 						echo '</div>';
 					$this->ee_mb_fetch_events($atts);
-				echo '</div>';	
+				echo '</div>';
 
 			echo '</div>';
 		elseif($settings['event_view'] == 'calendar'):
@@ -4269,11 +4281,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 	/*@ Event View : Detail View */
 	public function ee_mb_detail_event_view($settings){
-		
+
 		if(!empty($settings['setting'])){
 			$settings = $settings['setting'];
 		}
-		
+
 		$events = $this->eeMbGetEventList($settings);
 		$column_gap = (is_array($settings['column_gap']) == 1) ? $settings['column_gap']['default'] : $settings['column_gap'];
 
@@ -4281,38 +4293,39 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$match_height = '';
 		if($settings['auto_height'] === 'yes') :
 			$match_height = 'data-match-height="groupName"';
-		endif;	
+		endif;
 		/*
 		 *@ If event present then show otherwise display not found message
 		 */
 		if(!empty($events)):
-			
+
 			$past_events = '';
 			echo '<div id="filter" class="tec-wrapper '.$auto_height.'">';
 			echo '<div class="tec_ee_mb_events_wrapper parent-'.$column_gap.'">';
-			
+
 			foreach($events as $event_key => $event):
-				
+
 				$event_id = $event->ID;
 				$event_title = $event->post_title;
 				$event_excerpt = $event->post_excerpt;
 				$event_content = $event->post_content;
-				
+
 				$image_size = $settings['thumbnail_size'];
 				$event_image = wp_get_attachment_image_src(get_post_thumbnail_id($event_id),$image_size);
 
 				$event_start_time = $event_end_time = $event_start_date = $event_end_date = $venue = $link_icon = $event_external_url = $compare_date = $event_inner_page_link = $start_time = $end_time = '';
-				
+
 				$event_meta = get_post_meta($event_id);
-				
+
 				/*@ Event start date */
 				if(!empty($event_meta['_EventStartDate'][0])):
 					$event_start_date = $event_meta['_EventStartDate'][0];
 
 					$start_time = date('H:i:s', strtotime($event_start_date));
 
-					$event_start_time = date('g:i a',strtotime($event_start_date));	
-					$event_date_formate = $settings['event_date_formate'];
+					$event_start_time = date('g:i a',strtotime($event_start_date));
+					$event_date_formate = ($settings['free_event_date_formate']) ? $settings['free_event_date_formate'] : $settings['event_date_formate'];
+
 					// if(!empty($event_date_formate)){
 					// 	$event_date_formate = 'l dS F Y';
 					// }
@@ -4341,21 +4354,21 @@ class EE_The_Events_Calendar extends Base_Widget {
 				if(!empty($event_meta['_ee_mb_event_page_link'][0])):
 					$event_inner_page_link = $event_meta['_ee_mb_event_page_link'][0];
 				endif;
-				
+
 				$event_link = 'javascript:void(0);';
 
 				if(empty($settings['disable_link'])):
 					if(!empty($event_meta['_ee_mb_event_external_link'][0])):
-						$event_link = $event_meta['_ee_mb_event_external_link'][0];	
+						$event_link = $event_meta['_ee_mb_event_external_link'][0];
 					elseif(!empty($event_inner_page_link)):
 						$event_link = get_the_permalink($event_inner_page_link);
 					else:
 						$event_link = get_the_permalink($event_id);
 					endif;
 				endif;
-				
+
 				$venue = $this->build_venue($event_id);
-				
+
 				/*@ Read more button with or without icon*/
 				if(!empty($settings['event_read_more_text'])):
 					$link_icon = $settings['event_read_more_text'];
@@ -4363,12 +4376,12 @@ class EE_The_Events_Calendar extends Base_Widget {
 					if ( ! empty( $settings['selected_icon']['value'] ) ) :
 						if($settings['icon_align'] == 'right'):
 							$link_icon = $settings['event_read_more_text'].' <span class="read_more_icon right">';
-							
+
 							if ( !empty($settings['selected_icon']) ) :
 								ob_start();
 								Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
 								$link_icon .= ob_get_clean();
-						   endif; 
+						   endif;
 							$link_icon .= '</span>';
 
 						elseif($settings['icon_align'] == 'left'):
@@ -4379,7 +4392,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 								Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
 								$link_icon .= ob_get_clean();
 						   	endif;
-								
+
 							$link_icon .= '</span> '.$settings['event_read_more_text'];
 						endif;
 					else:
@@ -4395,10 +4408,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 				);
 				$classes = sprintf( ' %s', implode( ' ', $classes ) );
 				$event_html.='<div class="myeventon_wrapper'.$classes.' row-gap-'.$column_gap.'">';  // style="width: '.(100/$settings['event_columns']).'%"
-						
+
 						if($settings['show_image'] == 'yes'):
 							if(!empty($event_image[0])):
-								if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):		
+								if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
 									$event_html.='<div class="myeventon_img_wrapper"><a href="'.$event_link.'" class="img_link">
 									<img src="'.$event_image[0].'" alt="'.basename($event_image[0]).'"/>
 									</a></div>';
@@ -4412,8 +4425,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						$event_html.='<div class="myeventon_content_wrapper">';
 						$event_html.='<div class="inner_content_wrapper" '.$match_height.'>';
-						
-						if($settings['show_title'] == 'yes'):	
+
+						if($settings['show_title'] == 'yes'):
 							if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
 								if(!empty($event_title)):
 									$event_html.='<div class="link_wrapper">';
@@ -4425,33 +4438,33 @@ class EE_The_Events_Calendar extends Base_Widget {
 									$event_html.='<div class="link_wrapper">';
 										$event_html.='<a href="javascript:void(0)" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></a>';
 									$event_html.='</div>';
-								endif;	
+								endif;
 							endif;
-							
+
 						endif;
 
-						if($settings['show_date'] == 'yes'):	
-							if($settings['show_end_date'] == 'yes'):	
+						if($settings['show_date'] == 'yes'):
+							if($settings['show_end_date'] == 'yes'):
 								$event_html.='<span class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</span>';
 							else:
 								$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
 							endif;
 						endif;
 
-						if($settings['show_time'] == 'yes'):	
+						if($settings['show_time'] == 'yes'):
 						$event_html.='<span class="myeventon_time">'.$event_start_time.' - '.$event_end_time.'</span>';
 						endif;
 
-						if($settings['show_option_excerpt_content'] == 'content' && !empty($event_content)):	
+						if($settings['show_option_excerpt_content'] == 'content' && !empty($event_content)):
 							$event_html.='<span class="myeventon_content">'. wpautop($event_content) .'</span>';
 						endif;
 
-						if($settings['show_option_excerpt_content'] == 'excerpt' && !empty($event_excerpt)):	
+						if($settings['show_option_excerpt_content'] == 'excerpt' && !empty($event_excerpt)):
 							$event_html.='<span class="myeventon_excerpt">'.(($settings['excerpt_length']) ? substr($event_excerpt, 0, $settings['excerpt_length']) : substr($event_excerpt, 0, 50)).'</span>';
 						endif;
-						
+
 						$event_html.='</div>';
-						
+
 						if(!empty($link_icon)):
 							if($settings['read_more_text'] == 'yes'):
 								$event_html.='<div class="link_read_wrapper">';
@@ -4459,7 +4472,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 								$event_html.='</div>';
 							endif;
 						endif;
-						
+
 						if(!empty($event_meta['_EventCurrencySymbol'][0]) || !empty($event_meta['_EventCost'][0]) || array_filter($venue) || !empty($event_meta['_EventURL'][0])):
 
 							$seperator = (!empty($settings['show_seperator'])) ? 'seperator' : '';
@@ -4467,7 +4480,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 							$event_html.="<div class='meta_data ".$seperator."'>";
 								$event_html.='<div class="myeventon_cost_data">';
 								if($settings['show_cost'] == 'yes') :
-									if(!empty($event_meta['_EventCost'][0])):	
+									if(!empty($event_meta['_EventCost'][0])):
 										$event_html.='<span class="myeventon_cost">Cost:  '.(($event_meta['_EventCurrencyPosition'][0] == 'prefix') ? $event_meta['_EventCurrencySymbol'][0].''.$event_meta['_EventCost'][0] : $event_meta['_EventCost'][0].''.$event_meta['_EventCurrencySymbol'][0]).'</span>';
 									endif;
 								endif;
@@ -4483,13 +4496,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 										else:
 											$event_html.='<a href="'.$event_meta['_EventURL'][0].'" target="_blank" class="myeventon_link event_website_text_icon">'.$settings['event_website_text'].'</a>';
 										endif;
-									endif;		
+									endif;
 								endif;
 
 								if($settings['show_location'] == 'yes'):
 									if(!empty($venue)):
 										if(array_filter($venue)) :
-										
+
 										$event_html.=' <a href="https://maps.google.com/?q='.implode(',', $venue).'" class="myeventon_link" target="_blank"><i class="fas fa-map-marker-alt"></i></a>';
 										endif;
 									endif;
@@ -4497,11 +4510,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 							$event_html.="</div>";
 							$event_html.="</div>";
 						endif;
-						
+
 						$event_html.='</div>';
 
 					$event_html.='</div>';
-				
+
 				if(($settings['past_event_section'] == 'yes') && ($compare_date < time())):
 					$past_events.=$event_html;
 				else:
@@ -4537,7 +4550,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if ($this->is_tac_installed_activated()) {
 			return [];
 		}
-		
+
 		$eventLimit = -1;
 		if (!empty($settings)) :
 
@@ -4546,7 +4559,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$atts['event_tax'] = '';
 				$start_date = ( 'custom' == $settings['start_date'] ) ? $settings['custom_start_date'] : $settings['start_date'];
 				$end_date   = ( 'custom' == $settings['end_date'] ) ? $settings['custom_end_date'] : $settings['end_date'];
-				$hide_past_events = (!empty($settings['past_event_section'])) ?  sanitize_text_field($settings['past_event_section']) : '';	
+				$hide_past_events = (!empty($settings['past_event_section'])) ?  sanitize_text_field($settings['past_event_section']) : '';
 
 				if (!empty($settings['limit'])) :
 					$eventLimit = $settings['limit'];
@@ -4569,7 +4582,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					$query_args['start_date'] = 'now';
 					$query_args['posts_per_page'] = $eventLimit;
 				endif;
-				
+
 				if ( 'by_name' === $settings['source'] && !empty($settings['event_categories']) ) {
 					if(isset($settings['slug']) && !empty($settings['slug'])){
 						$query_args['tax_query'][] =  [
@@ -4608,32 +4621,32 @@ class EE_The_Events_Calendar extends Base_Widget {
 					$query_args['posts_per_page'] = -1;
 				}
 
-				$query_args = tribe_get_events( $query_args ); 
+				$query_args = tribe_get_events( $query_args );
 			// endif;
 
 			return $query_args;
 
 		endif;
-		
+
 		// $event_args = array(
 		// 	'post_type' => 'tribe_events',
 		// 	'post_status' => 'publish',
 		// 	'posts_per_page' => $eventLimit,
 		// 	'tax_query'=> $atts['event_tax'],
 		// );
-		
+
 		return [];
 	}
 
 	/*@ Check for the month whose have events */
 	public function checkEventExistInCurrentMonthSummaryList($atts){
-		
-		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';	
-		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';	
-		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';	
-		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';	
+
+		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';
+		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';
+		$default_to_show_time_formate = (!empty($atts['default_to_show_time_formate'])) ?  sanitize_text_field($atts['default_to_show_time_formate']) : '';
+		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';
 		$month_array = explode("-", $atts['month']);
-			
+
 		$month_yearstr = sanitize_text_field($month_array[0]);
 		$month_monthstr = sanitize_text_field($month_array[1]);
 		$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
@@ -4672,7 +4685,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			foreach($event_categories as $cat){
 				$args['tax_query'][] = [
 					'taxonomy' => 'tribe_events_cat',
-					'terms' => $cat, 
+					'terms' => $cat,
 					'field' => 'slug',
 					// 'include_children' => true,
 					// 'operator' => 'IN'
@@ -4714,7 +4727,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		endif;
 
 		wp_reset_postdata();
-		
+
 		$incremented_month_year = date('Y',strtotime('+1 month',strtotime($atts['month'])));
 		$current_year = date('Y');
 		if(empty($temp_array) && $incremented_month_year <= $current_year):
@@ -4746,9 +4759,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$end_date   = ( 'custom' == $atts['end_date'] ) ? $atts['custom_end_date'] : $atts['end_date'];
 		$eventDisplay = ( 'custom' == $atts['start_date'] or 'custom' == $atts['end_date'] ) ? 'custom' : 'all';
 		$order = $atts['order'];
-		$posts_per_page = (!empty($atts['limit'])) ? intval($atts['limit']) : 3; 
+		$posts_per_page = (!empty($atts['limit'])) ? intval($atts['limit']) : 3;
 		$event_categories = (!empty($atts['event_categories'])) ?  $atts['event_categories'] : '';
-		
+
 		// Check if summary view's show more button clicked
 		if(!empty($atts['ajax_request'])):
 			$offset = $event_limit = intval($atts['offset']);
@@ -4876,7 +4889,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$month_monthstr = sanitize_text_field($month_array[1]);
 			$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
-			
+
 			if(!empty($future_events_only)):
 				$atts['meta_date'] = array(
 					'relation' => 'AND',
@@ -4935,23 +4948,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 			foreach($event_categories as $cat){
 				$args['tax_query'][] = [
 					'taxonomy' => 'tribe_events_cat',
-					'terms' => $cat, 
+					'terms' => $cat,
 					'field' => 'slug',
 				];
 			}
 		}
 
 		$posts = tribe_get_events($args);
-		
+
 		$total_events = count($posts);
-	
+
 		// if($hide_past_events == 'yes'):
 		// 	$posts = array_reverse($posts);
 		// endif;
 
 		$next_month = date('Y-m', strtotime("+1 months", strtotime($atts['month'])));
 		$prev_month = date('Y-m', strtotime("-1 months", strtotime($atts['month'])));
-			
+
 		echo '<div class="summary_title_wrapper">';
 			echo '<p class="summary_month_title">'.date('F, Y',strtotime($atts['month'])).'</p>';
 			echo '<p class="summary_nextprev_buttons">
@@ -5006,7 +5019,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$event_link = 'javascript:void(0);';
 				if(empty($disable_link)):
 					if(!empty($event_meta['_ee_mb_event_external_link'][0])):
-						$event_link = $event_meta['_ee_mb_event_external_link'][0];	
+						$event_link = $event_meta['_ee_mb_event_external_link'][0];
 					elseif(!empty($event_inner_page_link)):
 						$event_link = get_the_permalink($event_inner_page_link);
 					else:
@@ -5033,10 +5046,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$allPosts = array_slice($allPosts, 0, $event_limit, true);
 
 			if (!empty($allPosts)):
-			
+
 				echo '<ul>';
 					foreach((array) $allPosts as $post_index => $post):
-						
+
 						$hide_events = $post['hide_events'];
 						$start_date = $post['start_date'];
 						$end_date = $post['end_date'];
@@ -5046,13 +5059,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						echo '<li>';
 							$eventlink = ($atts['enable_event_detail'] == 'yes' || (!empty($disable_link)  && $disable_link == 'yes')) ? 'javascript:void(0);' : $event_link;
-							
+
 
 							echo '<a href="' .$eventlink. '">';
 								echo '<div class="date_wrapper '.$event_date_layout.'">';
 									if($event_date_layout == 'above'):
 										echo '<div class="date_above">' . date('F d, Y', strtotime($start_date) ) . '</div>';
-									else:	
+									else:
 										echo '<div class="day">' . date('j', strtotime($start_date) ) . '</div>';
 										echo '<div class="month">' . date('M', strtotime($start_date) ) . '</div>';
 									endif;
@@ -5068,7 +5081,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 											$startdate = date('dS', strtotime($start_date));
 											echo date($default_to_show_time_formate, strtotime($start_date));
 										endif;
-										
+
 										if(!empty($end_date)):
 											$enddate = date('dS', strtotime($end_date));
 											echo ' - ';
@@ -5082,9 +5095,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						if($atts['enable_event_detail'] == 'yes'):
 							echo '<div class="summary_cal_description">';
-									
+
 								echo '<a href="'.$event_link.'">';
-									
+
 									echo '<span class="time_icon"><i class="fa fa-clock-o"></i></span>';
 
 									echo '<div class="summary_cal_data">';
@@ -5096,7 +5109,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 											echo '('.$day.' '.$startdate.') ';
 											echo date('h:i', strtotime($start_date));
 										endif;
-										
+
 										if(!empty($end_date)):
 											$endday = date('l', strtotime($end_date));
 											$enddate = date('dS', strtotime($end_date));
@@ -5106,9 +5119,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 										endif;
 										echo '</p>';
 									echo '</div>';
-								
+
 								echo '</a>';
-								
+
 							echo '</div>';
 						endif;
 
@@ -5121,7 +5134,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				if($event_limit >= $total_events):
 					$limit = false;
 				endif;
-				
+
 				if(isset($atts['hide_show_more']) && empty($atts['hide_show_more']) && $limit):
 					echo '<p class="show_more_events">Show More Events</p>';
 				else:
@@ -5130,11 +5143,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 				echo '<input type="hidden" name="hd_limit_offset" id="hd_limit_offset" value="'.$limit_offset.'" autocomplete="off"/>';
 				echo '<input type="hidden" name="hd_offset" id="hd_offset" value="'.$offset.'" autocomplete="off"/>';
-			else:	
+			else:
 				echo '<p class="no_events">No more events found</p>';
 			endif;
 
-		else:	
+		else:
 			echo '<p class="no_events">No more events found</p>';
 		endif;
 
@@ -5193,7 +5206,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if(isset($request['limit']) && !empty($request)):
 			$atts['limit'] = intval($request['limit']);
 		endif;
-		
+
 		if(isset($request['event_date_layout'])):
 			$atts['event_date_layout'] = sanitize_text_field($request['event_date_layout']);
 		endif;
@@ -5285,7 +5298,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				$event_link = get_the_permalink($event_id);
 
 				$event_start_date = $event_end_date = '';
-				
+
 				$event_meta = get_post_meta($event_id);
 				if(!empty($event_meta['_EventStartDate'][0])):
 					$event_start_date = $event_meta['_EventStartDate'][0];
@@ -5318,7 +5331,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 	/*@ Event list below calendar*/
 	public function getEventListByDay($request){
-	
+
 		if(!empty($request['date'])):
 
 			$posts = get_posts( array(
@@ -5335,9 +5348,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 					),
 				),
 			));
-			
+
 			if (!empty($posts)):
-				
+
 				echo '<ul>';
 					foreach((array) $posts as $post_index => $post):
 						$id = $post->ID;
@@ -5366,14 +5379,14 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						if(empty($request['disable_link'])):
 							if(!empty($event_meta['_ee_mb_event_external_link'][0])):
-								$event_link = $event_meta['_ee_mb_event_external_link'][0];	
+								$event_link = $event_meta['_ee_mb_event_external_link'][0];
 							elseif(!empty($event_inner_page_link)):
 								$event_link = get_the_permalink($event_inner_page_link);
 							else:
 								$event_link = get_the_permalink($id);
 							endif;
 						endif;
-	
+
 						echo '<li>';
 							echo '<a href="javascript:void(0);">';
 								echo '<div class="date_wrapper">';
@@ -5401,7 +5414,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 										echo '('.$day.') ';
 										echo date('h:i', strtotime($event_start_date));
 									endif;
-									
+
 									if(!empty($event_end_date)):
 										echo ' - ';
 										echo date('h:i', strtotime($event_end_date));
@@ -5413,7 +5426,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					endforeach;
 				echo '</ul>';
 
-			else:	
+			else:
 				echo '<p class="no_events">No more events found</p>';
 			endif;
 		endif;
@@ -5430,7 +5443,7 @@ class EE_The_Events_Calendar extends Base_Widget {
             // $state                 = tribe_get_state( $id );
             $province              = tribe_get_province( $id );
             $zip                   = tribe_get_zip( $id );
- 
+
             $properties = [
                 'address'               => $address,
                 'country'               => $country,
@@ -5443,20 +5456,20 @@ class EE_The_Events_Calendar extends Base_Widget {
         } catch ( \Exception $e ) {
             return [];
 		}
-		
+
         return $properties;
     }
-	
+
 	protected function content_template() {
-		
+
 	}
 
 	public function is_tac_installed_activated() {
-		
+
 		$plugin = 'the-events-calendar/the-events-calendar.php';
 		$installed_plugins = get_plugins();
 		$admin_url = get_admin_url();
-		
+
 		if ( isset( $installed_plugins[ $plugin ] ) && !is_plugin_active( $plugin )) {
 			if ( ! current_user_can( 'activate_plugins' ) ) {
 				return;
