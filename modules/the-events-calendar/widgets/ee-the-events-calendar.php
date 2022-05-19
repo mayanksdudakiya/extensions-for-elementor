@@ -369,6 +369,39 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'show_date_before_title',
+			[
+				'label' => __( 'Show Date Before Title', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'label_off',
+				'condition' => [
+					'event_view' => 'detail',
+					'show_date' => 'yes'
+				],
+			]
+		);
+
+		$this->add_control(
+			'add_link_to_date',
+			[
+				'label' => __( 'Add Page Link To Date', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'label_off',
+				'condition' => [
+					'event_view' => 'detail',
+				],
+			]
+		);
+
+		$this->add_control(
 			'show_end_date',
 			[
 				'label' => __( 'Show End Date', 'elementor-for-extensions' ),
@@ -1587,7 +1620,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Color', 'elementor-for-extensions' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above' => 'color: {{VALUE}};',
 
@@ -1639,7 +1672,7 @@ class EE_The_Events_Calendar extends Base_Widget {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'event_date_typography',
-                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above',
+                'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper.above .date_above',
             ]
         );
 
@@ -1669,8 +1702,8 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'condition' => ['event_view' => 'detail'],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date > .day' => 'text-align: {{VALUE}};',  // old
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date' => 'text-align: {{VALUE}};', // new
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date > .day' => 'text-align: {{VALUE}};',  // old
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date' => 'text-align: {{VALUE}};', // new
 				],
 			]
 		);
@@ -1696,7 +1729,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					'size' => 0,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => ['event_date_layout' => 'above', 'event_view' => 'summary'],
 			]
@@ -1709,7 +1742,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper span.myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .myeventon_date,{{WRAPPER}} .myeventon_summary_eventlist_wrapper ul > li > a > div.date_wrapper > .day,{{WRAPPER}} .myeventon_summary_eventlist_wrapper > .summaryEventList.above > ul > li > a > div.date_wrapper.above' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -4170,7 +4203,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			return $list;
 		}
 
-		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
+		$defaults = array( 'taxonomy' => 'tribe_events_cat', 'hide_empty' => false );
 
 		$categories_tribe = get_terms( $defaults );
 		foreach ($categories_tribe as $category_tribe){
@@ -4426,6 +4459,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 						$event_html.='<div class="myeventon_content_wrapper">';
 						$event_html.='<div class="inner_content_wrapper" '.$match_height.'>';
 
+						if($settings['show_date'] == 'yes' && $settings['show_date_before_title'] === 'yes'):
+							if($settings['show_end_date'] == 'yes'):
+								if($settings['add_link_to_date'] == 'yes'):
+									$event_html.='<a href="'.$event_link.'" class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</a>';
+								else:
+									$event_html.='<span class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</span>';
+								endif;
+							else:
+								if($settings['add_link_to_date'] == 'yes'):
+									$event_html.='<a href="'.$event_link.'" class="myeventon_date">'.$event_start_date.'</a>';
+								else:
+									$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
+								endif;
+							endif;
+						endif;
+
 						if($settings['show_title'] == 'yes'):
 							if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
 								if(!empty($event_title)):
@@ -4443,11 +4492,19 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 						endif;
 
-						if($settings['show_date'] == 'yes'):
+						if($settings['show_date'] == 'yes' && $settings['show_date_before_title'] !== 'yes'):
 							if($settings['show_end_date'] == 'yes'):
-								$event_html.='<span class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</span>';
+								if($settings['add_link_to_date'] == 'yes'):
+									$event_html.='<a href="'.$event_link.'" class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</a>';
+								else:
+									$event_html.='<span class="myeventon_date">'.$event_start_date.' - '.$event_end_date.'</span>';
+								endif;
 							else:
-								$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
+								if($settings['add_link_to_date'] == 'yes'):
+									$event_html.='<a href="'.$event_link.'" class="myeventon_date">'.$event_start_date.'</a>';
+								else:
+									$event_html.='<span class="myeventon_date">'.$event_start_date.'</span>';
+								endif;
 							endif;
 						endif;
 

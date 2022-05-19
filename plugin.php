@@ -69,7 +69,7 @@ class Plugin {
 			EE_MB_Admin::instance();
 			Cpt_Generator::get_instance();
 			include_once ELEMENTOR_EXTENSIONS_PATH.'classes/ee-mb-wordpress-metabox.php';
-		}		
+		}
 		EE_MB_Run_On_Fly::instance();
 		EE_MB_Front::instance();
 		EE_MB_Templates::instance();
@@ -197,7 +197,7 @@ class Plugin {
 		$prefix = $this->prefix;
 
 		wp_enqueue_style( 'font-awesome' );
-		
+
 		wp_enqueue_style(
 			$prefix.'editor-css',
 			ELEMENTOR_EXTENSIONS_URL . 'assets/css/editor' . $suffix . '.css',
@@ -227,27 +227,27 @@ class Plugin {
 			$map_url = 'https://maps.googleapis.com/maps/api/js?key='.$gmap_key.'&libraries=places';
 		endif;
 
-		$isEnabledWidget = EE_MB_Setting_Common::get_settings_key('ee_mb_hide_show_widgets');
-		
-		if ( empty((array)$isEnabledWidget) || (!empty((array)$isEnabledWidget) && (in_array('map', $isEnabledWidget) || in_array('google-map', $isEnabledWidget)) ) ):
+		$isEnabledWidget = (array) EE_MB_Setting_Common::get_settings_key('ee_mb_hide_show_widgets');
+
+		if ( empty($isEnabledWidget) || (!empty($isEnabledWidget) && (in_array('map', $isEnabledWidget) || in_array('google-map', $isEnabledWidget)) ) ):
 			wp_enqueue_script(
 				$prefix.'googlemap-api',
 				$map_url,
-				[ 
-					'jquery', 
-				],
-				Plugin::instance()->get_version(),
-				true 
-			);
-			
-			wp_enqueue_script(
-				$prefix.'gmap3',
-				ELEMENTOR_EXTENSIONS_URL . 'assets/lib/gmap3/gmap3' . $suffix . '.js',
-				[ 
+				[
 					'jquery',
 				],
 				Plugin::instance()->get_version(),
-				true 
+				true
+			);
+
+			wp_enqueue_script(
+				$prefix.'gmap3',
+				ELEMENTOR_EXTENSIONS_URL . 'assets/lib/gmap3/gmap3' . $suffix . '.js',
+				[
+					'jquery',
+				],
+				Plugin::instance()->get_version(),
+				true
 			);
 		endif;
 
@@ -336,21 +336,21 @@ class Plugin {
 		wp_enqueue_script(
             'ee-mb-fancybox-jquery',
             ELEMENTOR_EXTENSIONS_URL . 'assets/lib/fancybox/jquery.fancybox.min.js',
-            [ 
-                'jquery', 
+            [
+                'jquery',
             ],
             Plugin::instance()->get_version(),
-            true 
+            true
         );
 
         wp_enqueue_script(
             'ee-mb-slick',
             ELEMENTOR_EXTENSIONS_URL . 'assets/lib/slick/slick.min.js',
-            [ 
-                'jquery', 
+            [
+                'jquery',
             ],
             Plugin::instance()->get_version(),
-            true 
+            true
         );
 
 		wp_enqueue_script(
@@ -391,7 +391,7 @@ class Plugin {
 				'nonce' => wp_create_nonce( 'elementor-extensions-js' ),
 				'ee_mb_path' => ELEMENTOR_EXTENSIONS_URL,
 			]
-		);	
+		);
 	}
 
 	public function enqueue_editor_scripts() {
@@ -417,7 +417,7 @@ class Plugin {
 				'nonce' => wp_create_nonce( 'elementor-extensions-js' ),
 				'ee_mb_path' => ELEMENTOR_EXTENSIONS_URL,
 			]
-		);	
+		);
 	}
 
 	public function enqueue_panel_scripts() {}
@@ -453,7 +453,7 @@ class Plugin {
 		spl_autoload_register( [ $this, 'autoload' ] );
 		$this->_includes();
 		$this->add_actions();
-	}	
+	}
 }
 
 if ( ! defined( 'ELEMENTOR_EXTENSIONS_TESTS' ) ) {
