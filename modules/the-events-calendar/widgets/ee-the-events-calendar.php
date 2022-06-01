@@ -786,6 +786,32 @@ class EE_The_Events_Calendar extends Base_Widget {
 			]
 		);
 
+		$taxonomies = $this->getEventCalendarTaxonomies();
+		$termsByTaxonomyName = $this->getTermsByTaxonomyName();
+
+		if (!empty($taxonomies)) {
+			foreach ($taxonomies as $slug => $taxonomy) {
+
+				$this->add_control(
+					$slug,
+					[
+						'label'       => esc_html__( $taxonomy, 'elementor-for-extensions' ),
+						'type'        => Controls_Manager::SELECT2,
+						'options'     => $termsByTaxonomyName[$slug],
+						'default'     => [],
+						'label_block' => true,
+						'multiple'    => true,
+						'condition'   => [
+							'source'    => 'by_name',
+							'event_view' => 'detail'
+						],
+						'frontend_available' => true,
+					]
+				);
+
+			}
+		}
+
 		$this->add_control(
 			'event_categories',
 			[
@@ -801,7 +827,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'frontend_available' => true,
 			]
 		);
-
 
 		$this->add_control(
 			'start_date',
@@ -4195,6 +4220,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		/*@ Calendar view style ends here*/
 	}
+
 	protected function getEventCalendarCategories(){
 
 		$list = array();
@@ -4213,6 +4239,52 @@ class EE_The_Events_Calendar extends Base_Widget {
 		return $list;
 	}
 
+	protected function getEventCalendarTaxonomies(){
+
+		$list = array();
+
+		if ($this->is_tac_installed_activated()) {
+			return $list;
+		}
+
+		$taxonomies = get_object_taxonomies('tribe_events');
+
+		foreach ($taxonomies as $taxonomy) {
+
+			if ($taxonomy === 'tribe_events_cat') {
+				continue;
+			}
+
+			$slug = $taxonomy;
+			$taxonomy = ucwords(str_replace('_', ' ', $taxonomy));
+			$list[$slug] = __( $taxonomy, 'elementor-for-extensions' );
+		}
+
+		return $list;
+	}
+
+	protected function getTermsByTaxonomyName(){
+
+		$taxonomies = $this->getEventCalendarTaxonomies();
+
+		$termsByTaxonomy = [];
+
+		foreach($taxonomies as $slug => $taxonomy) {
+			$terms = get_terms( $slug, array(
+				'hide_empty' => false,
+			) );
+
+			$termList = [];
+			foreach ($terms as $term) {
+				$termList[$term->slug] = $term->name;
+			}
+
+			$termsByTaxonomy[$slug] = $termList;
+		}
+
+		return $termsByTaxonomy;
+	}
+
 	protected function render() {
 
 		if ( $this->is_tac_installed_activated() ) {
@@ -4221,6 +4293,18 @@ class EE_The_Events_Calendar extends Base_Widget {
 		}
 
 		$settings = $this->get_settings_for_display();
+		$taxonomies = $this->getEventCalendarTaxonomies();
+		$taxonomy_settings = [];
+		$setting_keys = array_keys($settings);
+
+		foreach ($taxonomies as $slug => $taxonomy) {
+			if (in_array($slug, $setting_keys)) {
+				$taxonomy_settings[] = $slug;
+			}
+		}
+
+		$settings['taxonomy_settings'] = $taxonomy_settings;
+
 		$defaults = array( 'taxonomy' => 'tribe_events_cat' );
 		$categories_tribe = get_terms( $defaults );
 		?>
@@ -4244,21 +4328,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		if($settings['event_view'] == 'detail'):
 			$this->ee_mb_detail_event_view($settings);
 		elseif($settings['event_view'] == 'summary'):
-			// before
 
-			// $atts = array(
-			// 	'month' => date('Y-m'),
-			// 	'limit' => $settings['event_limit'],
-			// 	'event_date_layout' => $settings['event_date_layout'],
-			// 	'enable_event_detail' => $settings['enable_event_detail'],
-			// 	'default_to_show_time' => $settings['default_to_show_time'],
-			// 	'default_to_show_time_formate' => $settings['default_to_show_time_formate'],
-			// 	'disable_link' => $settings['disable_link'],
-			// 	'hide_past_events' => $settings['hide_past_events'],
-			// 	'offset' => $settings['event_offset'],
-			// );
-
-			// after
 			$atts = $settings;
 
 			$atts['month'] = date('Y-m');
@@ -4601,9 +4671,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 	}
 
 	public function eeMbGetEventList($settings=null){
-		/*@
-		 * Getting the events data
-		 */
+
 		if ($this->is_tac_installed_activated()) {
 			return [];
 		}
@@ -4640,36 +4708,32 @@ class EE_The_Events_Calendar extends Base_Widget {
 					$query_args['posts_per_page'] = $eventLimit;
 				endif;
 
-				if ( 'by_name' === $settings['source'] && !empty($settings['event_categories']) ) {
-					if(isset($settings['slug']) && !empty($settings['slug'])){
-						$query_args['tax_query'][] =  [
+				if ( 'by_name' === $settings['source']) {
+
+					$query_args['tax_query'] = array(
+						'relation' => 'OR',
+					);
+
+					if (!empty($settings['event_categories'])) {
+						$query_args['tax_query'][] = [
 							'taxonomy' => 'tribe_events_cat',
-							'terms' => $settings['slug'],
-							'field' => 'slug',
-							'include_children' => true,
+							'field'    => 'slug',
+							'terms'    => $settings['event_categories'],
 							'operator' => 'IN'
 						];
-					} else{
-						$query_args['tax_query'] = array(
-							'relation' => 'AND',
-						);
-						foreach($settings['event_categories'] as $cat){
-							$query_args['tax_query'][] = [
-								'taxonomy' => 'tribe_events_cat',
-								'field'    => 'slug',
-								'terms'    => $cat,
-							];
-						}
 					}
-				}else{
-					if(isset($settings['slug']) && !empty($settings['slug'])){
-						$query_args['tax_query'][] =  [
-								'taxonomy' => 'tribe_events_cat',
-								'terms' => $settings['slug'],
-								'field' => 'slug',
-								'include_children' => true,
-								'operator' => 'IN'
-						];
+
+					if (!empty($settings['taxonomy_settings'])) {
+						foreach ($settings['taxonomy_settings'] as $taxonomy) {
+							if (!empty($settings[$taxonomy])) {
+								$query_args['tax_query'][] = [
+									'taxonomy' => $taxonomy,
+									'field'    => 'slug',
+									'terms'    => $settings[$taxonomy],
+									'operator' => 'IN'
+								];
+							}
+						}
 					}
 				}
 
@@ -4679,18 +4743,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 				}
 
 				$query_args = tribe_get_events( $query_args );
-			// endif;
 
 			return $query_args;
 
 		endif;
-
-		// $event_args = array(
-		// 	'post_type' => 'tribe_events',
-		// 	'post_status' => 'publish',
-		// 	'posts_per_page' => $eventLimit,
-		// 	'tax_query'=> $atts['event_tax'],
-		// );
 
 		return [];
 	}
@@ -4739,15 +4795,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$args['tax_query'] = array(
 				'relation' => 'AND',
 			);
-			foreach($event_categories as $cat){
-				$args['tax_query'][] = [
-					'taxonomy' => 'tribe_events_cat',
-					'terms' => $cat,
-					'field' => 'slug',
-					// 'include_children' => true,
-					// 'operator' => 'IN'
-				];
-			}
+
+			$args['tax_query'][] = [
+				'taxonomy' => 'tribe_events_cat',
+				'terms' => $event_categories,
+				'field' => 'slug',
+				'operator' => 'IN'
+			];
 		}
 		$posts = get_posts($args);
 
