@@ -3,9 +3,9 @@ Contributors: mayanksdudakiya
 Donate link: mayanksdudakiya@gmail.com
 Tags: elementor, extensions, elementor extensions, elements, addons, elementor addon, elementor widget, page builder, builder, visual editor, wordpress page builder, elementor form, elementor megamenu, elementor stretch column, elementor clickable column, 'hello'
 Requires at least: 5.0
-Tested up to: 5.9.3
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -83,6 +83,9 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+= 2.0.8 - 09/06/22 =
+* Minor bug fixing
+* TEC - Custom taxonomy added
 
 = 2.0.7 - 20/05/22 =
 * Minor bug fixing and new functionalities

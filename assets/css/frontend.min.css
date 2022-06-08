@@ -6496,7 +6496,7 @@ line-height: 30px;
     z-index: 9;
   }
   /* Navigation Menu - Megamenu */
-  .ee-mb-megamenu-wrapper .elementor-nav-menu li {
+  .ee-mb-megamenu-wrapper .elementor-nav-menu li:not(.menu-item-has-children) {
     position: static;
   }
 

@@ -537,7 +537,8 @@ class Nav_Menu extends Widget_Base {
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
-				'selector' => '{{WRAPPER}} .elementor-nav-menu--main ul li a.elementor-item, {{WRAPPER}} .elementor-nav-menu--main ul li ul li a.elementor-sub-item, {{WRAPPER}} .elementor-nav-menu .elementor-item',
+				'selector' => '{{WRAPPER}} .elementor-nav-menu--main ul li a.elementor-item, {{WRAPPER}} .elementor-nav-menu--dropdown  .elementor-sub-item, {{WRAPPER}} .elementor-nav-menu .elementor-item, {{WRAPPER}} .elementor-nav-menu--dropdown .elementor-item',
+
 			]
 		);
 
