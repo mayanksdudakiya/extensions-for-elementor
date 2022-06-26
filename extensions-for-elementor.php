@@ -54,12 +54,12 @@ if (!is_acf_pro_active()) :
 
 endif;
 
-//if(!function_exists('ee_mb_custom_field_settings_show_admin')){
-// add_filter('acf/settings/show_admin', 'ee_mb_custom_field_settings_show_admin');
-// function ee_mb_custom_field_settings_show_admin( $show_admin ) {
-//     return false;
+// if(!function_exists('ee_mb_custom_field_settings_show_admin')){
+// 	add_filter('acf/settings/show_admin', 'ee_mb_custom_field_settings_show_admin');
+// 	function ee_mb_custom_field_settings_show_admin( $show_admin ) {
+// 		return false;
+// 	}
 // }
-//}
 
 if(!function_exists('ee_mb_customfield_json_save_point')){
 	add_filter('acf/settings/save_json', 'ee_mb_customfield_json_save_point');

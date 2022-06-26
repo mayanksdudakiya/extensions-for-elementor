@@ -5263,6 +5263,11 @@ line-height: 30px;
     margin: 0px;
 }
 
+.no_events_msg {
+  display: inline-block;
+  width: 100%;
+}
+
 /*@ Event Slider */
 .ee_mb_event_slider .ee_mb_img_wrapper{
   background-repeat: no-repeat!important;

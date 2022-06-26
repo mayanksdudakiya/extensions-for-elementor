@@ -4216,9 +4216,93 @@ class EE_The_Events_Calendar extends Base_Widget {
         );
 
 		$this->end_controls_section();
-
-
 		/*@ Calendar view style ends here*/
+
+		/*@ No events found message style */
+		$this->start_controls_section(
+            'no_events_message_section',
+            [
+                'label' => __( 'No Events Message', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => ['event_view' => 'detail'],
+            ]
+		);
+
+		$this->add_control(
+            'no_events_message_color',
+            [
+                'label' => __( 'Color', 'elementor-for-extensions' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+					'{{WRAPPER}} .no_events_msg' => 'color: {{VALUE}};',
+                ],
+            ]
+		);
+
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'no_events_message_typography',
+                'selector' => '{{WRAPPER}} .no_events_msg',
+            ]
+        );
+
+		$this->add_responsive_control(
+			'no_events_message_align',
+			[
+				'label' => __( 'Alignment', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => __( 'Left', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-right',
+					],
+					'justify' => [
+						'title' => __( 'Justified', 'elementor-for-extensions' ),
+						'icon' => 'fa fa-align-justify',
+					],
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .no_events_msg' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'no_events_message_margin',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .no_events_msg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'no_events_message_padding',
+			[
+				'label' => __( 'Padding', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .no_events_msg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	protected function getEventCalendarCategories(){
@@ -4666,7 +4750,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 			echo '</div>';
 
 		else:
-			echo (!empty($settings['no_events_message'])) ? $settings['no_events_message'] : 'There are no events available, please add new event.';
+			echo (!empty($settings['no_events_message'])) ? "<span class='no_events_msg'>{$settings['no_events_message']}</span>" : "<span class='no_events_msg'>There are no events available, please add new event.</span>";
 		endif;
 	}
 
