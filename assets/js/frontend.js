@@ -1271,7 +1271,7 @@ var cookieHelper = {
 
                   if ( $(document).find('.ee-mb-megamenu-wrapper').length > 0 ) {
 
-                      jQuery(document).find('.ee-mb-megamenu-wrapper .menu-item:not(.menu-item-has-children.menu-item)').on('click touchstart', function(e) {
+                      jQuery(document).find('.ee-mb-megamenu-wrapper > ul > .menu-item').on('click touchstart', function(e) {
 
                          let menuAnchor = $(this).find('a').attr('href'),
                              liIndex = jQuery(this).index();

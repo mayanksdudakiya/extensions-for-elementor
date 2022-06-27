@@ -6,6 +6,7 @@ if( ! defined( 'ABSPATH' ) ) exit;
 // vars
 $url = $this->settings['url'];
 $version = $this->settings['version'];
+wp_enqueue_media();
 
 // register & include JS
 wp_enqueue_script( 'jquery-ui-sortable' );
