@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Extensions For Elementor
  * Description: Extend your elementor capability by adding elementor extension.
- * Version: 2.0.8
+ * Version: 2.0.9
  * Text Domain: elementor-extensions
  * Author: mayanksdudakiya
  * Author URI: https://www.linkedin.com/in/mayanksdudakiya/
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.8' );
+define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.9' );
 
 define( 'ELEMENTOR_EXTENSIONS__FILE__', __FILE__ );
 define( 'ELEMENTOR_EXTENSIONS_PLUGIN_BASE', plugin_basename( ELEMENTOR_EXTENSIONS__FILE__ ) );
@@ -53,13 +53,6 @@ if (!is_acf_pro_active()) :
 	}
 
 endif;
-
-// if(!function_exists('ee_mb_custom_field_settings_show_admin')){
-// 	add_filter('acf/settings/show_admin', 'ee_mb_custom_field_settings_show_admin');
-// 	function ee_mb_custom_field_settings_show_admin( $show_admin ) {
-// 		return false;
-// 	}
-// }
 
 if(!function_exists('ee_mb_customfield_json_save_point')){
 	add_filter('acf/settings/save_json', 'ee_mb_customfield_json_save_point');
