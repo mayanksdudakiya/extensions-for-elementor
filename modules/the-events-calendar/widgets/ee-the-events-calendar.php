@@ -13,6 +13,7 @@ use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Control_Media;
 use Elementor\Icons_Manager;
+use Elementor\Group_Control_Box_Shadow;
 
 class EE_The_Events_Calendar extends Base_Widget {
 
@@ -1194,6 +1195,15 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'detail_event_shadow',
+				'label' => esc_html__( 'Box Shadow', 'elementor-for-extensions' ),
+				'selector' => '{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper',
 			]
 		);
 
