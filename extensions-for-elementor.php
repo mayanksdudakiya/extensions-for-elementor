@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Extensions For Elementor
  * Description: Extend your elementor capability by adding elementor extension.
- * Version: 2.0.9
+ * Version: 2.0.10
  * Text Domain: elementor-extensions
  * Author: mayanksdudakiya
  * Author URI: https://www.linkedin.com/in/mayanksdudakiya/
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.9' );
+define( 'ELEMENTOR_EXTENSIONS_VERSION', '2.0.10' );
 
 define( 'ELEMENTOR_EXTENSIONS__FILE__', __FILE__ );
 define( 'ELEMENTOR_EXTENSIONS_PLUGIN_BASE', plugin_basename( ELEMENTOR_EXTENSIONS__FILE__ ) );
@@ -37,22 +37,21 @@ if ( ! function_exists( 'is_acf_pro_active' ) ) {
 	}
 }
 
-include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH.'includes/custom-field-photo-gallery/custom-field-photo-gallery.php' );
-include_once( ELEMENTOR_EXTENSIONS_PATH.'includes/ee-mb-default-values.php' );
+if ( is_admin() ) {
+	include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH.'includes/custom-field-photo-gallery/custom-field-photo-gallery.php' );
+	include_once( ELEMENTOR_EXTENSIONS_PATH.'includes/ee-mb-default-values.php' );
 
+	if (!is_acf_pro_active()) {
+		include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH . 'custom-fields.php' );
 
-if (!is_acf_pro_active()) :
-	include_once( EE_MB_CUSTOM_FIELD_PLUG_PATH . 'custom-fields.php' );
-
-
-	if(!function_exists('ee_mb_customfield_settings_url')){
-		add_filter('acf/settings/url', 'ee_mb_customfield_settings_url');
-		function ee_mb_customfield_settings_url( $url ) {
-		    return EE_MB_CUSTOM_FIELD_PLUG_URL;
+		if(!function_exists('ee_mb_customfield_settings_url')){
+			add_filter('acf/settings/url', 'ee_mb_customfield_settings_url');
+			function ee_mb_customfield_settings_url( $url ) {
+				return EE_MB_CUSTOM_FIELD_PLUG_URL;
+			}
 		}
 	}
-
-endif;
+}
 
 if(!function_exists('ee_mb_customfield_json_save_point')){
 	add_filter('acf/settings/save_json', 'ee_mb_customfield_json_save_point');
