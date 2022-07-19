@@ -1,7 +1,7 @@
 <?php
 namespace ElementorExtensions\Modules\NavMenu;
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 use ElementorExtensions\Base\Module_Base;
 use Elementor\Controls_Manager;
@@ -13,13 +13,13 @@ class Module extends Module_Base {
 		parent::__construct();
 		$this->add_actions();
 	}
-	
+
 	protected function add_actions() {
 
 		//add_filter( 'walker_nav_menu_start_el', [$this, 'ee_mb_nav_menu_megamenu_shortcode' ], 10, 4 );
 
 		add_action('wp_footer', [$this, 'ee_mb_megamenu_html']);
-		
+
 		add_action( 'elementor/element/section/section_effects/before_section_end', function( $element, $args ) {
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_header',
@@ -91,7 +91,7 @@ class Module extends Module_Base {
 		        'ee_mb_shrink_header_logo',
 		        [
 		            'label' => __( 'Logo', 'elementor-extensions' ),
-		            'type' => Controls_Manager::SWITCHER,				
+		            'type' => Controls_Manager::SWITCHER,
 		            'return_value' => 'yes',
 		            'separator' => 'before',
 		            'description' => __( 'Choose logo height after scrolling', 'elementor-extensions' ),
@@ -124,7 +124,7 @@ class Module extends Module_Base {
 		                'ee_mb_shrink_header' => 'yes',
 		                'ee_mb_shrink_header_logo' => 'yes',
 		                'sticky!' => ''
-		            ]		
+		            ]
 		        ]
 		    );
 		    $element->add_control(
@@ -140,10 +140,10 @@ class Module extends Module_Base {
 		            ],
 		            'selectors' => [
 		                '{{WRAPPER}}.elementor-sticky--effects' => 'border-bottom-style: solid;',
-		            ]	
+		            ]
 		        ]
 		    );
-		            
+
 		    $element->add_control(
 		        'ee_mb_shrink_bottom_border_color',
 		        [
@@ -156,10 +156,10 @@ class Module extends Module_Base {
 		            ],
 		            'selectors' => [
 		                '{{WRAPPER}}.elementor-sticky--effects' => 'border-bottom-color: {{VALUE}};',
-		            ]				
+		            ]
 		        ]
 		    );
-		            
+
 		    $element->add_responsive_control(
 		        'ee_mb_shrink_bottom_border_size',
 		        [
@@ -169,7 +169,7 @@ class Module extends Module_Base {
 		                'size' => 0,
 		            ],
 		            'range' => [
-		                'px' => [ 
+		                'px' => [
 		                    'min' => 0,
 		                    'max' => 100,
 		                ],
@@ -190,7 +190,7 @@ class Module extends Module_Base {
 		        Group_Control_Box_Shadow::get_type(),
 		        [
 		            'name' => 'ee_mb_shrink_header_shadow',
-		            'label' => __( 'Box Shadow', 'elementor-extensions' ),            
+		            'label' => __( 'Box Shadow', 'elementor-extensions' ),
 		            'selector' => '{{WRAPPER}}.elementor-sticky--effects',
 		            'condition' => [
 		                'ee_mb_shrink_header' => 'yes',
@@ -198,7 +198,7 @@ class Module extends Module_Base {
 		            ]
 		        ]
 		    );
-		    
+
 		}, 10, 2 );
 	}
 
@@ -206,15 +206,15 @@ class Module extends Module_Base {
 		echo '<div class="ee-mb-megamenu-submenu" id="mainNavigation">
 		</div>';
 	}
-	
+
 	public function ee_mb_nav_menu_megamenu_shortcode( $item_output, $item, $depth, $args ) {
-    
+
 	    $desc = '';
 	    if( ! $depth && $item->description ):
 	        $desc = do_shortcode($item->description);
 			$item_output = str_replace( '</a>', '</a> <div class="ee-mb-nav-shortcode">' . $desc . '</div>', $item_output );
 		endif;
-			
+
 		return $item_output;
 	}
 

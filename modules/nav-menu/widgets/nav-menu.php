@@ -12,7 +12,7 @@ use Elementor\Widget_Base;
 use Elementor\Plugin;
 use Elementor\Icons_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Nav_Menu extends Widget_Base {
 
@@ -1612,7 +1612,7 @@ class Nav_Menu extends Widget_Base {
 				'label' => esc_html__( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li::before' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li::before' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1632,10 +1632,10 @@ class Nav_Menu extends Widget_Base {
 				'label' => esc_html__( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li:hover::before' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} .elementor-widget-container .elementor-nav-menu > li:hover::before' => 'color: {{VALUE}}',
 				],
 			]
-		);		
+		);
 
 		$this->end_controls_tab();
 
@@ -1742,8 +1742,8 @@ class Nav_Menu extends Widget_Base {
 				'label' => esc_html__( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::before,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::after' => 'background: {{VALUE}}', 
-					'{{WRAPPER}} div.ee-mb-menu-toggle-button span' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::before,{{WRAPPER}} div.ee-mb-menu-toggle-button .hamburger-inner::after' => 'background: {{VALUE}}',
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button span' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1774,7 +1774,7 @@ class Nav_Menu extends Widget_Base {
 				'label' => esc_html__( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.ee-mb-menu-toggle-button:hover' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} div.ee-mb-menu-toggle-button:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1841,7 +1841,7 @@ class Nav_Menu extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section( 
+		$this->start_controls_section(
 			'style_mega_menu',
 			[
 				'label' => esc_html__( 'Megamenu', 'elementor-extensions' ),
@@ -1870,7 +1870,7 @@ class Nav_Menu extends Widget_Base {
 				],
 				'frontend_available' => true
 			]
-		);  
+		);
 
 		$this->add_control(
 			'mobile_megamenu_style',
@@ -1921,7 +1921,7 @@ class Nav_Menu extends Widget_Base {
 				'label' => esc_html__( 'Color', 'elementor-extensions' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .btn_slideout_close i' => 'color: {{VALUE}}', 
+					'{{WRAPPER}} .btn_slideout_close i' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -2095,7 +2095,7 @@ class Nav_Menu extends Widget_Base {
 
 		$settings['mega_menu'] = $megamenuHtml = '';
 		if ( 'mega_menu' == $settings['layout']) :
-			
+
 			$settings['layout'] = 'horizontal';
 			$settings['mega_menu'] = 'ee-mb-megamenu-wrapper';
 
@@ -2105,8 +2105,10 @@ class Nav_Menu extends Widget_Base {
 			$megamenuHtml = '<div class="ee-mb-megamenu-submenu '.$settings['dropdown'].'" id="templateMainNav" style="display:none;">';
 
 			foreach ($megaMenuItems as $key => $item) {
-				$desc = do_shortcode($item->post_content);
-				$megamenuHtml .= '<div class="ee-mb-nav-shortcode">' . $desc . '</div>';
+				if ($item->menu_item_parent == 0) {
+					$desc = do_shortcode($item->post_content);
+					$megamenuHtml .= '<div class="ee-mb-nav-shortcode">' . $desc . '</div>';
+				}
 			}
 			$megamenuHtml .= '</div>';
 		endif;
@@ -2119,7 +2121,7 @@ class Nav_Menu extends Widget_Base {
 				$settings['layout'] = 'horizontal';
 			endif;
 
-		
+
 			$this->add_render_attribute( 'main-menu', 'class', [
 				'elementor-nav-menu--main',
 				'elementor-nav-menu__container',
@@ -2138,7 +2140,7 @@ class Nav_Menu extends Widget_Base {
 						break;
 					endif;
 				endforeach;
-			endif; 
+			endif;
 			?>
 			<nav <?php $this->print_render_attribute_string( 'main-menu' ); ?>>
 				<?php
