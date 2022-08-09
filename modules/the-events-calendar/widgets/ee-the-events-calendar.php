@@ -662,6 +662,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'hide_future_events',
+			[
+				'label' => __( 'Hide Future Events', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Show', 'elementor-for-extensions' ),
+				'label_off' => __( 'Hide', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+				'condition' => [
+					'event_view' => [ 'detail', 'calendar']
+				],
+				'frontend_available' => true
+			]
+		);
+
+		$this->add_control(
 			'past_event_section',
 			[
 				'label' => __( 'Show Past Event Section', 'elementor-for-extensions' ),
@@ -670,7 +686,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'label_off' => __( 'Hide', 'elementor-for-extensions' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
-				'condition' => ['event_view' => 'detail', 'event_view' => 'calendar'],
+				'condition' => [
+					'event_view' => [ 'detail', 'calendar']
+				],
 				'frontend_available' => true
 			]
 		);
@@ -2575,7 +2593,7 @@ class EE_The_Events_Calendar extends Base_Widget {
                 'label' => __( 'Venue Styles', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
-				'condition' => ['event_view' => 'detail_'],
+				'condition' => ['event_view' => 'detail'],
             ]
 		);
 
@@ -4731,20 +4749,19 @@ class EE_The_Events_Calendar extends Base_Widget {
 							$event_html.="</div>";
 							$event_html.="</div>";
 						endif;
-
 						$event_html.='</div>';
-
 					$event_html.='</div>';
 
 				if(($settings['past_event_section'] == 'yes') && ($compare_date < time())):
 					$past_events.=$event_html;
 				else:
-					if($compare_date > time()):
+					if(!empty($settings['hide_future_events']) && $settings['hide_future_events'] === 'yes' && $compare_date > time()):
 						echo $event_html;
 					endif;
 				endif;
 			endforeach;
 			echo '</div>';
+
 			if($settings['past_event_section'] == 'yes'):
 				echo '</div>';
 
@@ -4756,9 +4773,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 					echo $past_events;
 				echo '</div>';
 			endif;
-
 			echo '</div>';
-
 		else:
 			echo (!empty($settings['no_events_message'])) ? "<span class='no_events_msg'>{$settings['no_events_message']}</span>" : "<span class='no_events_msg'>There are no events available, please add new event.</span>";
 		endif;

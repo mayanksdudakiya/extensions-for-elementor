@@ -78,121 +78,13 @@
                 "4": "4",
                 "5": "5+"
             },
-            "default_value": false,
+            "default_value": [],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
             "placeholder": ""
-        },
-        {
-            "key": "field_5c3843b8e901a",
-            "label": "Bathrooms",
-            "name": "bathrooms",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_5c384700c5e25",
-            "label": "Floors",
-            "name": "floors",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_5c384722c5e26",
-            "label": "Area",
-            "name": "area",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_5f84b5d57c2f8",
-            "label": "Square Footage",
-            "name": "square_footage",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
-        },
-        {
-            "key": "field_5c385d150783d",
-            "label": "Buy or Rent",
-            "name": "buy_or_rent",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "buy": "Buy",
-                "rent": "Rent"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "",
-            "layout": "horizontal",
-            "return_format": "value",
-            "save_other_choice": 0
         },
         {
             "key": "field_5c385d540783e",
@@ -238,7 +130,7 @@
                 "Commercial": "Commercial",
                 "Other": "Other"
             },
-            "default_value": false,
+            "default_value": [],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -306,7 +198,6 @@
                 "Land (Residential)": "Land (Residential)",
                 "Ranch-Style": "Ranch-Style",
                 "Mobile Home": "Mobile Home",
-                "Square Footage \/ Acreage": "Square Footage \/ Acreage",
                 "Town Home": "Town Home",
                 "Tiny Home": "Tiny Home",
                 "Container Home": "Container Home",
@@ -318,7 +209,7 @@
                 "Villa": "Villa",
                 "Yurt": "Yurt"
             },
-            "default_value": false,
+            "default_value": [],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -346,7 +237,7 @@
             "key": "field_5c383af504f06",
             "label": "Gallery",
             "name": "gallery",
-            "type": "photo_gallery",
+            "type": "gallery",
             "instructions": "Insert or Edit the property gallery images from here.",
             "required": 0,
             "conditional_logic": 0,
@@ -355,10 +246,19 @@
                 "class": "",
                 "id": ""
             },
-            "fields[gallery": {
-                "edit_modal": "Default"
-            },
-            "edit_modal": "Default"
+            "min": "",
+            "max": "",
+            "insert": "append",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "return_format": "array",
+            "preview_size": "medium"
         },
         {
             "key": "field_5c3846a292056",
@@ -375,6 +275,25 @@
             },
             "placement": "left",
             "endpoint": 0
+        },
+        {
+            "key": "field_5c626dd70ef45",
+            "label": "Short Overview",
+            "name": "short_overview",
+            "type": "wysiwyg",
+            "instructions": "Insert or Edit the short overview from here for the list view.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_5c383a1c1b35f",
@@ -417,7 +336,7 @@
             "name": "location",
             "type": "google_map",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -431,7 +350,7 @@
         },
         {
             "key": "field_5c385e0c7d190",
-            "label": "Floor Plan",
+            "label": "Schedule",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -468,6 +387,57 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_61df275854a9c",
+            "label": "Schedule PDF",
+            "name": "schedule_pdf",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_62e4f9f37e407",
+            "label": "Video",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_62e4f9fa7e408",
+            "label": "Video Link",
+            "name": "video_link",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_5c3846bd92058",
@@ -544,5 +514,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1611235105
+    "show_in_rest": 0,
+    "modified": 1659173386
 }
