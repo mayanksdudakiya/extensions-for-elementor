@@ -1271,7 +1271,7 @@ var cookieHelper = {
 
                   if ( $(document).find('.ee-mb-megamenu-wrapper').length > 0 ) {
 
-                      jQuery(document).find('.ee-mb-megamenu-wrapper > ul > .menu-item').on('click touchstart', function(e) {
+                      jQuery(document).find('.ee-mb-megamenu-wrapper > ul > li:not(.menu-item-has-children)').on('click touchstart', function(e) {
 
                          let menuAnchor = $(this).find('a').attr('href'),
                              liIndex = jQuery(this).index();
@@ -1320,7 +1320,6 @@ var cookieHelper = {
 
                        jQuery(document).find('.ee-mb-megamenu-wrapper > ul > .menu-item').mouseenter(function() {
                           let liIndex = jQuery(this).index();
-                          console.log('liindex:'+liIndex);
                           $(document).find('#mainNavigation').show();
 
                           /*@ If menu sticky then support it */
@@ -3284,8 +3283,8 @@ var cookieHelper = {
               event_calendar.event_calendar_fun.init = function() {
 
                   jQuery('.categories_tribe_filter').change(function(){
-                      var slug = this.value;
-                      elementSettings['slug'] = slug;
+                      var categorySlug = jQuery(this).val();
+                      elementSettings['event_categories'] = categorySlug;
                       jQuery.ajax({
                           url : ElementorExtensionsFrontendConfig.ajaxurl,
                           data:{

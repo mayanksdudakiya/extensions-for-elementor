@@ -2729,7 +2729,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper' => 'text-align: {{VALUE}};',
 				],
-				'condition' => [ 'auto_height!' => 'yes' ],
 			]
 		);
 
@@ -4426,10 +4425,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 		?>
 			<select class="categories_tribe_filter">
 				<?php
-				echo '<option value="">All</option>';
-				foreach($categories_tribe as $categories) {
-					echo '<option value="'.$categories->slug.'">'.$categories->name.'</option>';
-				}
+					echo '<option value="">All</option>';
+					foreach($categories_tribe as $categories) {
+						echo '<option value="'.$categories->slug.'">'.$categories->name.'</option>';
+					}
 				?>
 			</select>
 		<?php
@@ -4823,6 +4822,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 						'relation' => 'OR',
 					);
 
+					// For Query selection
 					if (!empty($settings['event_categories'])) {
 						$query_args['tax_query'][] = [
 							'taxonomy' => 'tribe_events_cat',
@@ -4849,6 +4849,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 				// Show all events for calendar
 				if (!empty($settings) && $settings['event_view'] === 'calendar'){
 					$query_args['posts_per_page'] = -1;
+				}
+
+				// For frontend filters
+				if (!empty($settings['event_categories'])) {
+					$query_args['tax_query'][] = [
+						'taxonomy' => 'tribe_events_cat',
+						'field'    => 'slug',
+						'terms'    => $settings['event_categories'],
+						'operator' => 'IN'
+					];
 				}
 
 				$query_args = tribe_get_events( $query_args );

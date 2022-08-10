@@ -5,7 +5,7 @@ use ElementorExtensions\Base\Module_Base;
 use ElementorExtensions\Modules\TheEventsCalendar\Widgets\EE_The_Events_Calendar;
 
 class Module extends Module_Base {
-	
+
 	public function __construct() {
 		parent::__construct();
 
@@ -51,10 +51,10 @@ class Module extends Module_Base {
 
 		add_action('wp_ajax_getEventListByDayTec', [ $this, 'getEventListByDay' ]);
 		add_action('wp_ajax_nopriv_getEventListByDayTec', [ $this, 'getEventListByDay' ]);
-	} 
+	}
 
 	/*
-	 * @ Run ajax on calendar click 
+	 * @ Run ajax on calendar click
 	 * It will fetch the list of events and display below the calendar
 	 */
 	public function getEventListByDay(){
@@ -66,4 +66,4 @@ class Module extends Module_Base {
 		$myeventon->getEventListByDay($_POST);
 		wp_die();
 	}
-} 
+}
