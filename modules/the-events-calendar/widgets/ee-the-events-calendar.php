@@ -2766,7 +2766,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -2778,7 +2778,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper > a.myeventon_link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tec-wrapper .tec_ee_mb_events_wrapper .myeventon_content_wrapper .link_read_wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
