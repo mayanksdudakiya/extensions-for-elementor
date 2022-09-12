@@ -5263,6 +5263,11 @@ padding-left: 5px;
   margin: 0px;
 }
 
+.no_events_msg {
+display: inline-block;
+width: 100%;
+}
+
 /*@ Event Slider */
 .ee_mb_event_slider .ee_mb_img_wrapper{
 background-repeat: no-repeat!important;
@@ -6787,3 +6792,6 @@ margin: 0px!important;
 }
 
 /*@ End: Form above error */
+.pointer-events-none {
+  pointer-events: none;
+}

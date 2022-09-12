@@ -954,7 +954,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_global_style',
             [
-                'label' => __( 'Global Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Global', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1172,7 +1172,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_view_content_style',
             [
-                'label' => __( 'Content Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Content', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1243,7 +1243,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_image_style',
             [
-                'label' => __( 'Image Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Image', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -1300,7 +1300,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_filter_styles',
             [
-                'label' => __( 'Filter Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Filter', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1417,7 +1417,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_date_main_title_style',
             [
-                'label' => __( 'Month Heading Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Month Heading', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1506,7 +1506,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_next_prev_button_style',
             [
-                'label' => __( 'Next Prev Button Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Next Prev Button', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1562,7 +1562,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'left_handbar_style',
             [
-                'label' => __( 'Left Border Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Left Border', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -1643,7 +1643,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_date_style',
             [
-                'label' => __( 'Event Date Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Event Date', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1820,7 +1820,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_month_style',
             [
-                'label' => __( 'Event Month Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Event Month', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -1867,7 +1867,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_title_style',
             [
-                'label' => __( 'Event Title Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Event Title', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -2004,7 +2004,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_excerpt_style',
             [
-                'label' => __( 'Excerpt Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Excerpt', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -2131,7 +2131,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_content_style',
             [
-                'label' => __( 'Content Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Content', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => [
@@ -2258,7 +2258,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'line_between_events_style',
             [
-                'label' => __( 'Line Between Events Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Line Between Events', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary','event_date_layout' => 'above'],
@@ -2402,7 +2402,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_summary_show_more_style',
             [
-                'label' => __( 'Show More Button Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Show More Button', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'summary'],
@@ -2484,7 +2484,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_time_style',
             [
-                'label' => __( 'Time Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Time', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -2558,7 +2558,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_cost_style',
             [
-                'label' => __( 'Cost Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Cost', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -2590,7 +2590,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_venue_style',
             [
-                'label' => __( 'Venue Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Venue', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -2665,7 +2665,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_link_style',
             [
-                'label' => __( 'Link Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Link', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'detail'],
@@ -2864,7 +2864,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'past_events_style',
             [
-                'label' => __( 'Past Event Heading Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Past Event Heading', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['past_event_section' => 'yes','event_view' => 'detail'],
@@ -2991,7 +2991,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_style',
             [
-                'label' => __( 'Main Header Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Main Header', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3021,7 +3021,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->add_control(
 			'button_styles_seperator_heading',
 			[
-				'label' => __( 'Button Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Button', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -3118,7 +3118,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_day_header_style',
             [
-                'label' => __( 'Day Header Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Day Header', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3178,7 +3178,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'event_calendar_view_date_style',
             [
-                'label' => __( 'Date Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Date', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3230,7 +3230,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_grid_cell_styles',
 			[
-				'label' => __( 'Grid Cell Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Grid Cell', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3305,7 +3305,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_list_view_content',
 			[
-				'label' => __( 'List View Styles', 'elementor-for-extensions' ),
+				'label' => __( 'List View', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -3371,7 +3371,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_month_view_content',
 			[
-				'label' => __( 'Month View Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Month View', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -3503,7 +3503,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_week_view_content',
 			[
-				'label' => __( 'Week View Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Week View', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -3637,7 +3637,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_day_view_content',
 			[
-				'label' => __( 'Day View Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Day View', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -3762,7 +3762,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
 			'eb_event_content',
 			[
-				'label' => __( 'Event Label Styles', 'elementor-for-extensions' ),
+				'label' => __( 'Event Label', 'elementor-for-extensions' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3828,7 +3828,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_left_handbar_style',
             [
-                'label' => __( 'Detail Left Border Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Detail Left Border', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3905,7 +3905,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_date_style',
             [
-                'label' => __( 'Detail Event Date Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Detail Event Date', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -3971,7 +3971,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_summary_month_style',
             [
-                'label' => __( 'Detail Event Month Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Detail Event Month', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -4038,7 +4038,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_title_style',
             [
-                'label' => __( 'Detail Event Title Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Detail Event Title', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view' => 'calendar'],
@@ -4134,7 +4134,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'detail_event_dropdown_style',
             [
-                'label' => __( 'Detail Event Dropdown Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Detail Event Dropdown', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['event_view!' => 'detail'],
@@ -4215,7 +4215,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 		$this->start_controls_section(
             'default_to_show_time_style',
             [
-                'label' => __( 'Time Styles', 'elementor-for-extensions' ),
+                'label' => __( 'Time', 'elementor-for-extensions' ),
                 'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
@@ -4325,6 +4325,61 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .no_events_msg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		/*@ Filters */
+		$this->start_controls_section(
+            'event_filter_section',
+            [
+                'label' => __( 'Filter', 'elementor-for-extensions' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+				'condition' => [
+                    'event_view' => 'detail',
+					'show_filter' => 'yes'
+                ],
+            ]
+		);
+
+        $this->add_responsive_control(
+			'filters_width',
+			[
+				'label' => __( 'Width', 'elementor-extensions' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ '%', 'px' ],
+				'default' => [
+                    'unit' => '%',
+					'size' => '20',
+				],
+				'range' => [
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+                    ],
+                    'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .categories_tribe_filter' => 'width: {{SIZE}}{{UNIT}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'filters_margin',
+			[
+				'label' => __( 'Margin', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .categories_tribe_filter' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);

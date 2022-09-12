@@ -4893,7 +4893,7 @@ line-height: 30px;
 
 
 .categories_tribe_filter{
-  width: 20%;
+  /* width: 20%; */
   margin-bottom: 10px;
 }
 
@@ -6792,3 +6792,6 @@ line-height: 30px;
 }
 
 /*@ End: Form above error */
+.pointer-events-none {
+  pointer-events: none;
+}

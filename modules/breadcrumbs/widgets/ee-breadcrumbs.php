@@ -1,14 +1,14 @@
 <?php
 namespace ElementorExtensions\Modules\Breadcrumbs\Widgets;
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 use ElementorExtensions\Base\Base_Widget;
 use ElementorExtensions\Classes\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Modules\DynamicTags\Module as TagsModule;	
+use Elementor\Modules\DynamicTags\Module as TagsModule;
 use Elementor\Icons_Manager;
 
 class EE_Breadcrumbs extends Base_Widget {
@@ -29,7 +29,7 @@ class EE_Breadcrumbs extends Base_Widget {
 	}
 
 	protected function _register_controls() {
-		
+
 		$this->start_controls_section(
 			'section_content',
 			[
@@ -103,7 +103,7 @@ class EE_Breadcrumbs extends Base_Widget {
 		);
 
 		$pages = $this->get_available_pages();
-		
+
 		$this->add_control(
 			'cpt_page',
 			[
@@ -327,33 +327,33 @@ class EE_Breadcrumbs extends Base_Widget {
 				]
 			);
 
-			$this->start_controls_tabs( 'crumb_style' );		
-			
-			$this->start_controls_tab( 'crumb_default', [ 'label' => __( 'Default', 'elementor-extensions' ) ] );		
-		
-				$this->add_control(		
-					'item_background_color',		
-					[		
-						'label' 	=> __( 'Background Color', 'elementor-extensions' ),		
-						'type' 		=> Controls_Manager::COLOR,		
-						'selectors' => [		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item' => 'background-color: {{VALUE}};',		
-						],		
-					]		
-				);		
-		
-				$this->add_control(		
-					'item_color',		
-					[		
-						'label' 	=> __( 'Color', 'elementor-extensions' ),		
-						'type' 		=> Controls_Manager::COLOR,		
-						'default'	=> '',		
-						'selectors' => [		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item' => 'color: {{VALUE}};',		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item a' => 'color: {{VALUE}};',		
-						],		
-					]		
-				);		
+			$this->start_controls_tabs( 'crumb_style' );
+
+			$this->start_controls_tab( 'crumb_default', [ 'label' => __( 'Default', 'elementor-extensions' ) ] );
+
+				$this->add_control(
+					'item_background_color',
+					[
+						'label' 	=> __( 'Background Color', 'elementor-extensions' ),
+						'type' 		=> Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item' => 'background-color: {{VALUE}};',
+						],
+					]
+				);
+
+				$this->add_control(
+					'item_color',
+					[
+						'label' 	=> __( 'Color', 'elementor-extensions' ),
+						'type' 		=> Controls_Manager::COLOR,
+						'default'	=> '',
+						'selectors' => [
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item' => 'color: {{VALUE}};',
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item a' => 'color: {{VALUE}};',
+						],
+					]
+				);
 
 				$this->add_group_control(
 					Group_Control_Typography::get_type(),
@@ -363,35 +363,35 @@ class EE_Breadcrumbs extends Base_Widget {
 						'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__item',
 					]
 				);
-		
-			$this->end_controls_tab();		
-		
-			$this->start_controls_tab( 'crumb_hover', [ 'label' => __( 'Hover', 'elementor-extensions' ) ] );		
-		
-				$this->add_control(		
-					'item_background_color_hover',		
-					[		
-						'label' 	=> __( 'Background Color', 'elementor-extensions' ),		
-						'type' 		=> Controls_Manager::COLOR,		
-						'selectors' => [		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover' => 'background-color: {{VALUE}};',		
-						],		
-					]		
-				);		
-		
-				$this->add_control(		
-					'item_color_hover',		
-					[		
-						'label' 	=> __( 'Color', 'elementor-extensions' ),		
-						'type' 		=> Controls_Manager::COLOR,		
-						'default'	=> '',		
-						'selectors' => [		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover' => 'color: {{VALUE}};',		
-							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover a' => 'color: {{VALUE}};',		
-						],		
-					]		
+
+			$this->end_controls_tab();
+
+			$this->start_controls_tab( 'crumb_hover', [ 'label' => __( 'Hover', 'elementor-extensions' ) ] );
+
+				$this->add_control(
+					'item_background_color_hover',
+					[
+						'label' 	=> __( 'Background Color', 'elementor-extensions' ),
+						'type' 		=> Controls_Manager::COLOR,
+						'selectors' => [
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover' => 'background-color: {{VALUE}};',
+						],
+					]
 				);
-				
+
+				$this->add_control(
+					'item_color_hover',
+					[
+						'label' 	=> __( 'Color', 'elementor-extensions' ),
+						'type' 		=> Controls_Manager::COLOR,
+						'default'	=> '',
+						'selectors' => [
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover' => 'color: {{VALUE}};',
+							'{{WRAPPER}} .ee-mb-breadcrumbs__item:hover a' => 'color: {{VALUE}};',
+						],
+					]
+				);
+
 				$this->add_group_control(
 					Group_Control_Typography::get_type(),
 					[
@@ -400,9 +400,9 @@ class EE_Breadcrumbs extends Base_Widget {
 						'selector' 	=> '{{WRAPPER}} .ee-mb-breadcrumbs__item:hover',
 					]
 				);
-					
-			$this->end_controls_tab();		
-		
+
+			$this->end_controls_tab();
+
 			$this->end_controls_tabs();
 
 		$this->end_controls_section();
@@ -580,18 +580,18 @@ class EE_Breadcrumbs extends Base_Widget {
 		$settings = $this->get_settings_for_display();
 
 		if ( 'icon' === $settings['separator_type'] ) {
-			
+
 			if ( !empty($settings['separator_icon']['value']) ) :
 				ob_start();
 					Icons_Manager::render_icon( $settings['separator_icon'], [ 'aria-hidden' => 'true' ] );
 				$separator = ob_get_clean();
-			endif;  
-		
+			endif;
+
 		} else {
 
 			$this->add_inline_editing_attributes( 'separator_text' );
 			$this->add_render_attribute( 'separator_text', 'class', 'ee-mb-breadcrumbs__separator__text' );
-			
+
 			$separator = '<span ' . $this->get_render_attribute_string( 'separator_text' ) . '>' . $settings['separator_text'] . '</span>';
 
 		}
@@ -667,11 +667,11 @@ class EE_Breadcrumbs extends Base_Widget {
 				<span <?php echo $this->get_render_attribute_string( 'home-text' ); ?>>
 					<?php echo $settings['home_text']; ?>
 				</span>
+				<meta itemprop="position" content="1" />
 			</a>
 		</li><?php
 
 		$this->render_separator();
-
 	}
 
 	protected function render_separator( $output = true ) {
@@ -707,46 +707,41 @@ class EE_Breadcrumbs extends Base_Widget {
 		$separator = $this->get_separator();
 
 		$custom_taxonomy = 'product_cat';
-
+		$index = 0;
 		if ( ! $query->is_front_page() ) { ?>
-		
 			<ul <?php echo $this->get_render_attribute_string( 'breadcrumbs' ); ?>>
-
 			<?php
-
 			if ( 'yes' === $settings['show_home'] ) {
 				$this->render_home_link();
+				$index = 1;
 			}
 
 			/* ——— Custom Archive ——— */
 			if ( $query->is_archive() && ! $query->is_tax() && ! $query->is_category() && ! $query->is_tag() && ! $query->is_date() && ! $query->is_author() ) {
-
+				$index++;
 				$this->render_item( 'archive', [
-					'index'		=> 1,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'archive',
 					'content' 	=> post_type_archive_title( '', false ),
 				] );
-				
+
 			/* ——— Custom Taxonomy Archive ——— */
 			} else if ( $query->is_archive() && $query->is_tax() && ! $query->is_category() && ! $query->is_tag() ) {
-
 				$queried_object = get_queried_object();
 				$parents = get_ancestors( $queried_object->term_id, $queried_object->taxonomy );
-
 				$parent_terms = get_terms( [
 					'taxonomy' => $queried_object->taxonomy,
 					'include' => $parents,
 				] );
-
 				$parent_terms = array_reverse( $parent_terms );
-
 				$post_type = get_post_type();
 				$post_type_object = get_post_type_object( $post_type );
 
+				$index++;
 				$this->render_item( 'post-type-archive', [
-					'index'		=> 1,
+					'index'		=> $index,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'post-type-archive',
@@ -755,6 +750,9 @@ class EE_Breadcrumbs extends Base_Widget {
 					'link'		=> get_post_type_archive_link( $post_type ),
 				] );
 
+				$index++;
+				$counter = $index;
+
 				if ( $parents )  {
 					$parent_terms = get_terms( [
 						'taxonomy' => $queried_object->taxonomy,
@@ -762,8 +760,6 @@ class EE_Breadcrumbs extends Base_Widget {
 					] );
 
 					$parent_terms = array_reverse( $parent_terms );
-
-					$counter = 2;
 					foreach ( $parent_terms as $term ) {
 						$this->render_item( 'custom-tax-archive-parents', [
 							'index'		=> $counter,
@@ -776,6 +772,7 @@ class EE_Breadcrumbs extends Base_Widget {
 						] );
 						$counter++;
 					}
+					$counter++;
 				}
 
 				$this->render_item( 'custom-tax-archive', [
@@ -789,12 +786,12 @@ class EE_Breadcrumbs extends Base_Widget {
 				] );
 
 			} else if ( $query->is_post_type_archive() ) {
-
 				$post_type = get_post_type();
 				$post_type_object = get_post_type_object( $post_type );
+				$index++;
 
 				$this->render_item( 'post-type-archive', [
-					'index'		=> 1,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'post-type-archive',
@@ -802,19 +799,21 @@ class EE_Breadcrumbs extends Base_Widget {
 					'content' 	=> $post_type_object->labels->name,
 					'link'		=> get_post_type_archive_link( $post_type ),
 				] );
-				
+
 			} else if ( $query->is_single() ) {
-				
 				$post_type = get_post_type();
-				
-				$counter = 1;
+				$index++;
+				$counter = $index;
 
 				if ( $post_type !== 'post' ) {
-
 					if ( '' === $settings['cpt_crumbs'] || 'both' === $settings['cpt_crumbs'] ) {
-
 						$post_type_object = get_post_type_object( $post_type );
 						$item_content = $post_type_object->labels->name;
+						$postTypeLink = get_post_type_archive_link( $post_type );
+
+						if (empty($postTypeLink)) {
+							$postTypeLink = get_home_url().'/'.$post_type;
+						}
 
 						$this->render_item( 'post-type-archive', [
 							'index'		=> $counter,
@@ -823,7 +822,7 @@ class EE_Breadcrumbs extends Base_Widget {
 							'key' 		=> 'post-type-archive',
 							'ids' 		=> [ $post_type ],
 							'content' 	=> $item_content,
-							'link'		=> get_post_type_archive_link( $post_type ),
+							'link'		=> $postTypeLink,
 						] );
 
 						$counter++;
@@ -831,11 +830,9 @@ class EE_Breadcrumbs extends Base_Widget {
 
 					if ( in_array( $settings['cpt_crumbs'], [ 'terms', 'both' ] ) ) {
 						$item_content = 'terms';
-
 						$terms = Utils::get_parent_terms_highest( $post->ID );
 
 						if ( $terms ) {
-							
 							foreach( $terms as $term ) {
 								$this->render_item( 'post-type-terms', [
 									'index'		=> $counter,
@@ -849,20 +846,15 @@ class EE_Breadcrumbs extends Base_Widget {
 
 								$counter++;
 							}
+							$counter++;
 						}
-
 					}
-					
 				} else {
-
 					$posts_page_id = get_option( 'page_for_posts' );
-
 					if ( $posts_page_id ) {
-
 						$posts_page = get_post( $posts_page_id );
-
 						$this->render_item( 'blog', [
-							'index'		=> 1,
+							'index'		=> $counter,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'blog',
@@ -870,21 +862,17 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $posts_page->post_title,
 							'link'		=> get_permalink( $posts_page->ID ),
 						] );
+						$counter++;
 					}
 				}
 
-
 				if ( 'page' === $settings['cpt_crumbs']) {
-
 					if ( $post->post_parent && 'yes' !== $settings['hide_parent']) {
-					
 						$anc = get_post_ancestors( $post->ID );
 						$anc = array_reverse($anc);
-							
 						if ( ! isset( $parents ) ) $parents = null;
-	
+
 						foreach ( $anc as $ancestor ) {
-	
 							$this->render_item( 'ancestor', [
 								'index'		=> $counter,
 								'current' 	=> false,
@@ -894,16 +882,15 @@ class EE_Breadcrumbs extends Base_Widget {
 								'content' 	=> get_the_title( $ancestor ),
 								'link'		=> get_permalink( $ancestor ),
 							] );
-	
+
 							$counter++;
 						}
+						$counter++;
 					}
-	
-					$page_id = $settings['cpt_page'];
 
+					$page_id = $settings['cpt_page'];
 					if (!empty($page_id)) {
 						$page = get_post($page_id);
-
 						$this->render_item('post-type-page', [
 							'index'		=> $counter,
 							'current' 	=> false,
@@ -913,13 +900,11 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $page->post_title,
 							'link'		=> get_the_permalink($page_id),
 						]);
-
 						$counter++;
 					}
 
 					if(!empty($settings['show_current_page'])):
 						$page = get_post(get_the_ID());
-
 						$this->render_item('post-type-page', [
 							'index'		=> $counter,
 							'current' 	=> true,
@@ -929,31 +914,21 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $page->post_title,
 							'link'		=> get_the_permalink($page_id),
 						]);
-
 						$counter++;
 					endif;
-					
 				}else{
-
 					$category = get_the_category();
 					$last_category = null;
-
 					if( ! empty( $category ) ) {
-
 						$cat_display = '';
-
 						$values = array_values($category);
-
 						$last_category = get_term( Utils::get_most_parents_category( $category ) );
-							
 						$cat_parents = array_reverse( get_ancestors( $last_category->term_id, 'category' ) );
 					}
-
 					$taxonomy_exists = taxonomy_exists( $custom_taxonomy );
 
 					if( empty( $last_category ) && ! empty( $custom_taxonomy ) && $taxonomy_exists ) {
-							$taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
-
+						$taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
 						if ( $taxonomy_terms ) {
 							$cat_id = $taxonomy_terms[0]->term_id;
 							$cat_nicename = $taxonomy_terms[0]->slug;
@@ -963,12 +938,10 @@ class EE_Breadcrumbs extends Base_Widget {
 					}
 
 					if( ! empty( $last_category ) ) {
-						
+						$tempCounter = 0;
 						foreach ( $cat_parents as $parent ) {
 							$_parent = get_term( $parent );
-
 							if ( has_category( $_parent->term_id, $post ) ) {
-
 								$this->render_item( 'category', [
 									'index'		=> $counter,
 									'current' 	=> false,
@@ -978,13 +951,17 @@ class EE_Breadcrumbs extends Base_Widget {
 									'content' 	=> $_parent->name,
 									'link'		=> get_term_link( $_parent ),
 								] );
-
 								$counter++;
+								$tempCounter++;
 							}
 						}
 
+						if ($tempCounter > 0) {
+							$counter++;
+						}
+
 						$this->render_item( 'category', [
-							'index'		=> $counter++,
+							'index'		=> $counter,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'category' . $last_category->term_id,
@@ -992,20 +969,18 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $last_category->name,
 							'link'		=> get_term_link( $last_category ),
 						] );
-
+						$counter++;
 						$this->render_item( 'single', [
-							'index'		=> $counter++,
+							'index'		=> $counter,
 							'current' 	=> true,
 							'separator'	=> false,
 							'key' 		=> 'single',
 							'ids' 		=> [ $post->ID ],
 							'content' 	=> get_the_title(),
 						] );
-						
 					} else if ( ! empty( $cat_id ) ) {
-
 						$this->render_item( 'category', [
-							'index'		=> $counter++,
+							'index'		=> $counter,
 							'current' 	=> false,
 							'separator'	=> true,
 							'key' 		=> 'category',
@@ -1013,20 +988,18 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $cat_name,
 							'link'		=> $cat_link,
 						] );
-
+						$counter++;
 						$this->render_item( 'single', [
-							'index'		=> $counter++,
+							'index'		=> $counter,
 							'current' 	=> true,
 							'separator'	=> false,
 							'key' 		=> 'single',
 							'ids' 		=> [ $post->ID ],
 							'content' 	=> get_the_title(),
 						] );
-
 					} else {
-
 						$this->render_item( 'single', [
-							'index'		=> $counter++,
+							'index'		=> $counter,
 							'current' 	=> true,
 							'separator'	=> false,
 							'key' 		=> 'single',
@@ -1036,50 +1009,47 @@ class EE_Breadcrumbs extends Base_Widget {
 					}
 				}
 			} else if ( $query->is_category() ) {
-
 				$cat_id = get_query_var( 'cat' );
 				$cat = get_category( $cat_id );
-
 				$cat_parents = array_reverse( get_ancestors( $cat_id, 'category' ) );
-				$counter = 1;
+				$index++;
+				$counter = $index;
 
-				foreach ( $cat_parents as $parent ) {
-					$_parent = get_term( $parent );
-
-					$this->render_item( 'category', [
-						'index'		=> $counter,
-						'current' 	=> false,
-						'separator'	=> true,
-						'key' 		=> 'category-' . $_parent->term_id,
-						'ids' 		=> [ $_parent->term_id, $_parent->slug ],
-						'content' 	=> $_parent->name,
-						'link'		=> get_term_link( $_parent ),
-					] );
+				if (!empty($cat_parents)) {
+					foreach ( $cat_parents as $parent ) {
+						$_parent = get_term( $parent );
+						$this->render_item( 'category', [
+							'index'		=> $counter,
+							'current' 	=> false,
+							'separator'	=> true,
+							'key' 		=> 'category-' . $_parent->term_id,
+							'ids' 		=> [ $_parent->term_id, $_parent->slug ],
+							'content' 	=> $_parent->name,
+							'link'		=> get_term_link( $_parent ),
+						] );
+						$counter++;
+					}
 					$counter++;
 				}
 
 				$this->render_item( 'category', [
-					'index'		=> $counter++,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'category',
 					'ids' 		=> [ $cat_id, $cat->slug ],
 					'content' 	=> single_cat_title( '', false ),
 				] );
-				
-			} else if ( $query->is_page() ) {
-				
-				$counter = 1;
 
+			} else if ( $query->is_page() ) {
+				$index++;
+				$counter = $index;
 				if ( $post->post_parent && 'yes' !== $settings['hide_parent']) {
-						
 					$anc = get_post_ancestors( $post->ID );
 					$anc = array_reverse($anc);
-						
 					if ( ! isset( $parents ) ) $parents = null;
 
 					foreach ( $anc as $ancestor ) {
-
 						$this->render_item( 'ancestor', [
 							'index'		=> $counter,
 							'current' 	=> false,
@@ -1089,18 +1059,15 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> get_the_title( $ancestor ),
 							'link'		=> get_permalink( $ancestor ),
 						] );
-
 						$counter++;
 					}
+					$counter++;
 				}
 
 				if ( 'page' === $settings['cpt_crumbs']) {
-
 					$page_id = $settings['cpt_page'];
-
                     if (!empty($page_id)) {
                         $page = get_post($page_id);
-
                         $this->render_item('post-type-page', [
 							'index'		=> $counter,
 							'current' 	=> false,
@@ -1110,22 +1077,22 @@ class EE_Breadcrumbs extends Base_Widget {
 							'content' 	=> $page->post_title,
 							'link'		=> get_the_permalink($page_id),
 						]);
-
                         $counter++;
                     }
 				}
 
 				$this->render_item( 'page', [
-					'index'		=> $counter++,
+					'index'		=> $counter,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'page',
 					'ids' 		=> [ $post->ID ],
 					'content' 	=> get_the_title(),
+					'link'		=> get_the_permalink(),
 				] );
-				
+
 			} else if ( $query->is_tag() ) {
-				
+				$index++;
 				$term_id 		= get_query_var('tag_id');
 				$taxonomy 		= 'post_tag';
 				$args 			= 'include=' . $term_id;
@@ -1135,18 +1102,18 @@ class EE_Breadcrumbs extends Base_Widget {
 				$get_term_name 	= $terms[0]->name;
 
 				$this->render_item( 'tag', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'tag',
 					'ids' 		=> [ $get_term_id, $get_term_slug ],
 					'content' 	=> sprintf( __( 'Tag: %s', 'elementor-extensions' ), $get_term_name ),
 				] );
-			
-			} else if ( $query->is_day() ) {
 
+			} else if ( $query->is_day() ) {
+				$index++;
 				$this->render_item( 'year', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'year',
@@ -1154,9 +1121,9 @@ class EE_Breadcrumbs extends Base_Widget {
 					'content' 	=> sprintf( __( '%s Archives', 'elementor-extensions' ), get_the_time('Y') ),
 					'link'		=> get_year_link( get_the_time('Y') ),
 				] );
-
+				$index++;
 				$this->render_item( 'month', [
-					'index'		=> $counter++,
+					'index'		=> $index,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'month',
@@ -1164,20 +1131,20 @@ class EE_Breadcrumbs extends Base_Widget {
 					'content' 	=> sprintf( __( '%s Archives', 'elementor-extensions' ), get_the_time('F') ),
 					'link'		=> get_month_link( get_the_time('Y'), get_the_time('m') ),
 				] );
-
+				$index++;
 				$this->render_item( 'day', [
-					'index'		=> $counter++,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'day',
 					'ids' 		=> [ get_the_time('j') ],
 					'content' 	=> sprintf( __( '%1$s %2$s Archives', 'elementor-extensions' ), get_the_time('F'), get_the_time('jS') ),
 				] );
-				
-			} else if ( $query->is_month() ) {
 
+			} else if ( $query->is_month() ) {
+				$index++;
 				$this->render_item( 'year', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> false,
 					'separator'	=> true,
 					'key' 		=> 'year',
@@ -1185,65 +1152,60 @@ class EE_Breadcrumbs extends Base_Widget {
 					'content' 	=> sprintf( __( '%s Archives', 'elementor-extensions' ), get_the_time('Y') ),
 					'link'		=> get_year_link( get_the_time('Y') ),
 				] );
-
+				$index++;
 				$this->render_item( 'month', [
-					'index'		=> $counter++,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'month',
 					'ids' 		=> [ get_the_time('m') ],
 					'content' 	=> sprintf( __( '%s Archives', 'elementor-extensions' ), get_the_time('F') ),
 				] );
-				
-			} else if ( $query->is_year() ) {
 
+			} else if ( $query->is_year() ) {
+				$index++;
 				$this->render_item( 'year', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'year',
 					'ids' 		=> [ get_the_time('Y') ],
 					'content' 	=> sprintf( __( '%s Archives', 'elementor-extensions' ), get_the_time('Y') ),
 				] );
-				
+
 			} else if ( $query->is_author() ) {
-				
 				global $author;
-
+				$index++;
 				$userdata = get_userdata( $author );
-
 				$this->render_item( 'author', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'author',
 					'ids' 		=> [ $userdata->user_nicename ],
 					'content' 	=> sprintf( __( 'Author: %s', 'elementor-extensions' ), $userdata->display_name ),
 				] );
-				
-			} else if ( $query->is_search() ) {
 
+			} else if ( $query->is_search() ) {
+				$index++;
 				$this->render_item( 'search', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> 'search',
 					'content' 	=> sprintf( __( 'Search results for: %s', 'elementor-extensions' ), get_search_query() ),
 				] );
-			
 			} elseif ( $query->is_404() ) {
-
+				$index++;
 				$this->render_item( '404', [
-					'index'		=> $counter,
+					'index'		=> $index,
 					'current' 	=> true,
 					'separator'	=> false,
 					'key' 		=> '404',
 					'content' 	=> __( 'Page not found', 'elementor-extensions' ),
 				] );
 			}
-		
 			echo '</ul>';
-			
 		}
 	}
 
@@ -1265,12 +1227,14 @@ class EE_Breadcrumbs extends Base_Widget {
 		$text_key 	= $args['key'] . '-text';
 		$link_key 	= ( ! $args['current'] ) ? '-link' : '-current';
 		$link_key 	= $args['key'] . $link_key;
-		$link_tag 	= ( ! $args['current'] ) ? 'a' : 'strong';
-		$link 		= ( ! $args['current'] ) ? ' href="' . $args['link'] .'" ' : ' ';
+		$link_tag 	= 'a';
+		//$link_tag 	= ( ! $args['current'] ) ? 'a' : 'strong';
+		$link 		= ' href="' . $args['link'] .'" ';
+		//$link 		= ( ! $args['current'] ) ? ' href="' . $args['link'] .'" ' : ' ';
 		$classes 	= [];
 
 		if ( $args['current'] ) {
-			$classes[] = 'ee-mb-breadcrumbs__item--current';
+			$classes[] = 'ee-mb-breadcrumbs__item--current pointer-events-none';
 		} else {
 			$classes[] = 'ee-mb-breadcrumbs__item--parent';
 		}
@@ -1302,6 +1266,7 @@ class EE_Breadcrumbs extends Base_Widget {
 				<span <?php echo $this->get_render_attribute_string( $text_key ); ?>>
 					<?php echo $args['content']; ?>
 				</span>
+				<meta itemprop="position" content="<?php echo $args['index']; ?>"/>
 			</<?php echo $link_tag; ?>>
 		</li><?php
 
@@ -1316,7 +1281,6 @@ class EE_Breadcrumbs extends Base_Widget {
 				'ee-mb-breadcrumbs__item',
 			],
 			'itemprop' 	=> 'itemListElement',
-			'position' 	=> $index,
 			'itemscope' => '',
 			'itemtype' 	=> 'http://schema.org/ListItem',
 		] );
@@ -1342,7 +1306,7 @@ class EE_Breadcrumbs extends Base_Widget {
 		));
 
 		$options = [];
-	
+
 		foreach ( $pages as $page ) {
 			$options[ $page->ID ] = $page->post_title;
 		}
@@ -1351,6 +1315,6 @@ class EE_Breadcrumbs extends Base_Widget {
 	}
 
 	protected function content_template() {
-		
+
 	}
 }
