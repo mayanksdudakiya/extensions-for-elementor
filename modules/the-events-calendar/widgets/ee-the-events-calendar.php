@@ -403,6 +403,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 		);
 
 		$this->add_control(
+			'add_link_to_title',
+			[
+				'label' => __( 'Add Page Link To Title', 'elementor-for-extensions' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor-for-extensions' ),
+				'label_off' => __( 'No', 'elementor-for-extensions' ),
+				'return_value' => 'yes',
+				'frontend_available' => true,
+				'default' => 'label_off',
+				'condition' => [
+					'event_view' => 'detail',
+				],
+			]
+		);
+
+		$this->add_control(
 			'show_end_date',
 			[
 				'label' => __( 'Show End Date', 'elementor-for-extensions' ),
@@ -4712,7 +4728,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 						endif;
 
 						if($settings['show_title'] == 'yes'):
-							if($settings['anchor_link'] == 'yes' and $settings['read_more_text'] != 'yes'):
+							if(($settings['anchor_link'] == 'yes' && $settings['read_more_text'] != 'yes') || $settings['add_link_to_title'] === 'yes'):
 								if(!empty($event_title)):
 									$event_html.='<div class="link_wrapper">';
 										$event_html.='<a href="'.$event_link.'" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></a>';
