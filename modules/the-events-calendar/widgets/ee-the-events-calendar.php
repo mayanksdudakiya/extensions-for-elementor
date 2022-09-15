@@ -4701,9 +4701,9 @@ class EE_The_Events_Calendar extends Base_Widget {
 									<img src="'.$event_image[0].'" alt="'.basename($event_image[0]).'"/>
 									</a></div>';
 								else :
-									$event_html.='<div class="myeventon_img_wrapper"><a href="javascript:void(0)" class="img_link">
+									$event_html.='<div class="myeventon_img_wrapper"><span class="img_link">
 									<img src="'.$event_image[0].'" alt="'.basename($event_image[0]).'"/>
-									</a></div>';
+									</span></div>';
 								endif;
 							endif;
 						endif;
@@ -4737,7 +4737,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 							else :
 								if(!empty($event_title)):
 									$event_html.='<div class="link_wrapper">';
-										$event_html.='<a href="javascript:void(0)" class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></a>';
+										$event_html.='<span class="myeventon_link"><h3 class="myeventon_title">'.$event_title.'</h3></span>';
 									$event_html.='</div>';
 								endif;
 							endif;
