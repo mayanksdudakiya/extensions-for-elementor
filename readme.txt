@@ -5,7 +5,7 @@ Tags: elementor, extensions, elementor extensions, elements, addons, elementor a
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -83,6 +83,9 @@ Your existing elements/content will work with premium version. So you won't lose
 
 
 == Changelog ==
+
+= 2.0.12 - 12/10/22 =
+* Minor bug fixing
 
 = 2.0.11 - 25/08/22 =
 * Minor bug fixing

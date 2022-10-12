@@ -815,6 +815,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'options' => [
 					''        => esc_html__( 'Show All', 'elementor-for-extensions' ),
 					'by_name' => esc_html__( 'Manual Selection', 'elementor-for-extensions' ),
+					'exclude' => esc_html__( 'Exclude', 'elementor-for-extensions' ),
 				],
 				'label_block' => true,
 				'frontend_available' => true,
@@ -844,6 +845,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 					]
 				);
 
+				$this->add_control(
+					'exclude_'.$slug,
+					[
+						'label'       => esc_html__( $taxonomy, 'elementor-for-extensions' ),
+						'type'        => Controls_Manager::SELECT2,
+						'options'     => $termsByTaxonomyName[$slug],
+						'default'     => [],
+						'label_block' => true,
+						'multiple'    => true,
+						'condition'   => [
+							'source'    => 'exclude',
+							'event_view' => 'detail'
+						],
+						'frontend_available' => true,
+					]
+				);
+
 			}
 		}
 
@@ -858,6 +876,22 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'multiple'    => true,
 				'condition'   => [
 					'source'    => 'by_name',
+				],
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
+			'exclude_event_categories',
+			[
+				'label'       => esc_html__( 'Categories', 'elementor-for-extensions' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => $this->getEventCalendarCategories(),
+				'default'     => [],
+				'label_block' => true,
+				'multiple'    => true,
+				'condition'   => [
+					'source'    => 'exclude',
 				],
 				'frontend_available' => true,
 			]
@@ -4911,6 +4945,36 @@ class EE_The_Events_Calendar extends Base_Widget {
 									'field'    => 'slug',
 									'terms'    => $settings[$taxonomy],
 									'operator' => 'IN'
+								];
+							}
+						}
+					}
+				}
+
+				if ( 'exclude' === $settings['source']) {
+
+					$query_args['tax_query'] = array(
+						'relation' => 'AND',
+					);
+
+					// For Query selection
+					if (!empty($settings['exclude_event_categories'])) {
+						$query_args['tax_query'][] = [
+							'taxonomy' => 'tribe_events_cat',
+							'field'    => 'slug',
+							'terms'    => $settings['exclude_event_categories'],
+							'operator' => 'NOT IN'
+						];
+					}
+
+					if (!empty($settings['taxonomy_settings'])) {
+						foreach ($settings['taxonomy_settings'] as $taxonomy) {
+							if (!empty($settings['exclude_'.$taxonomy])) {
+								$query_args['tax_query'][] = [
+									'taxonomy' => $taxonomy,
+									'field'    => 'slug',
+									'terms'    => $settings['exclude_'.$taxonomy],
+									'operator' => 'NOT IN'
 								];
 							}
 						}
