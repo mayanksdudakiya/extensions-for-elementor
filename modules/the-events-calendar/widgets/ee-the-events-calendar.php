@@ -170,16 +170,16 @@ class EE_The_Events_Calendar extends Base_Widget {
 				'return_value' => 'yes',
 				'default' => '',
 				'condition' => ['event_view' => 'summary'],
-				// 'frontend_available' => true,
+				'frontend_available' => true,
 			]
 		);
 		$this->add_control(
 			'default_to_show_time_formate',
 			[
-				'label' => __( 'Time Formate', 'elementor-for-extensions' ),
+				'label' => __( 'Time Format', 'elementor-for-extensions' ),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
-				'condition' => ['default_to_show_time' => 'yes', 'event_view' => 'summary'],
+				'condition' => ['event_view' => 'summary'],
 				'default' => __( 'h:i A', 'elementor-for-extensions'),
 				'placeholder' => __( 'Enter time formate', 'elementor-for-extensions' ),
 				'description' => __( 'h:i a => 05:00 pm, <br>
@@ -192,7 +192,6 @@ class EE_The_Events_Calendar extends Base_Widget {
 				a - Lowercase Ante meridiem and Post meridiem (am or pm) <br>
 				', 'elementor-for-extensions' ),
 				'frontend_available' => true
-				// 'frontend_available' => true,
 			]
 		);
 
@@ -4546,20 +4545,23 @@ class EE_The_Events_Calendar extends Base_Widget {
 		elseif($settings['event_view'] == 'summary'):
 
 			$atts = $settings;
-
 			$atts['month'] = date('Y-m');
+			$atts['next_available_loop'] = 1;
 			$current_month = date('m');
+			$current_year = date('Y');
+
 			/*@ If current month have no any events then enable next the month who have events */
 			if(!empty($settings['default_to_next_event'])):
 				$current_month = $this->checkEventExistInCurrentMonthSummaryList($atts);
+
 				$atts['month'] = $current_month;
-				$current_month = date('m',strtotime($current_month));
+				$availableMonthYear = explode('-', $current_month);
+				$current_month = $availableMonthYear[1];
+				$current_year = $availableMonthYear[0];
 			endif;
 
 			$all_years = $this->getAllYears();
 			$all_months = $this->getAllMonths();
-
-			$current_year = date('Y');
 
 			echo '<div class="myeventon_summary_eventlist_wrapper">';
 				echo '<div class="summary_filter" data-date-layout="'.$settings['event_date_layout'].'" data-event-limit="'.$settings['event_limit'].'" data-event-detail="'.$settings['enable_event_detail'].'" data-disable-link="'.$settings['disable_link'].'" data-hide-past-events="'.$settings['hide_past_events'].'" data-future-events="'.$settings['show_future_events'].'" data-event-offset="'.$settings['event_offset'].'">';
@@ -4639,35 +4641,37 @@ class EE_The_Events_Calendar extends Base_Widget {
 				/*@ Event start date */
 				if(!empty($event_meta['_EventStartDate'][0])):
 					$event_start_date = $event_meta['_EventStartDate'][0];
-
 					$start_time = date('H:i:s', strtotime($event_start_date));
 
 					$event_start_time = date('g:i a',strtotime($event_start_date));
 					$event_date_formate = ($settings['free_event_date_formate']) ? $settings['free_event_date_formate'] : $settings['event_date_formate'];
-
-					// if(!empty($event_date_formate)){
-					// 	$event_date_formate = 'l dS F Y';
-					// }
 					$event_start_date = date($event_date_formate,strtotime($event_start_date));
+
+					$original_start_date_time = $event_meta['_EventStartDate'][0];
 				endif;
 
 				/*@ Event end date */
 				if(!empty($event_meta['_EventEndDate'][0])):
 					$event_end_date = $event_meta['_EventEndDate'][0];
-
 					$end_time = date('H:i:s', strtotime($event_end_date));
-
 					$event_end_time = date('g:i a',strtotime($event_end_date));
-
 					$event_end_date = date($event_date_formate,strtotime($event_end_date));
+					$original_end_date_time = $event_meta['_EventEndDate'][0];
 				endif;
 
 				/*@ Use compare date for past event */
-				if(empty($event_end_date)):
-					$compare_date = strtotime($event_start_date);
-				else:
-					$compare_date = strtotime($event_end_date);
-				endif;
+				if(empty($event_end_date)) {
+					$compare_date = strtotime($original_start_date_time);
+
+					// If Query date set to today then show all future events inlcuding today
+					if ($start_date === 'today') {
+						if (strtotime(date('Y-m-d')) >= strtotime($original_start_date_time)) {
+							$compare_date = date('Y-m-d H:i:s');
+						}
+					}
+				} else {
+					$compare_date = strtotime($original_end_date_time);
+				}
 
 				/*@ Event link start */
 				if(!empty($event_meta['_ee_mb_event_page_link'][0])):
@@ -4917,7 +4921,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 				if($hide_past_events != 'yes'):
 					$query_args['eventDisplay'] = 'list';
-					$query_args['start_date'] = 'now';
+					//$query_args['start_date'] = 'now';
 					$query_args['posts_per_page'] = $eventLimit;
 				endif;
 
@@ -5016,7 +5020,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		$month_yearstr = sanitize_text_field($month_array[0]);
 		$month_monthstr = sanitize_text_field($month_array[1]);
-		$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
+		$current_day = '-01';
+
+		// First time should from current and then from next month it should be 01
+		if ($atts['next_available_loop'] === 1) {
+			$current_day = '-'.date('d');
+		}
+		$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr.$current_day ));
 		$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
 		$atts['meta_date'] = array(
@@ -5059,46 +5069,11 @@ class EE_The_Events_Calendar extends Base_Widget {
 		}
 		$posts = get_posts($args);
 
-		if($hide_past_events == 'yes'):
-			$posts = array_reverse($posts);
-		endif;
+		$incremented_month_year = date('Y-m',strtotime('+1 month', strtotime($atts['month'])));
 
-		$temp_array = [];
-		if (!empty($posts)):
-			foreach((array) $posts as $post_index => $post):
-				$id = $post->ID;
-
-				$start_date = get_post_meta($id,'_EventStartDate');
-				$end_date = get_post_meta($id,'_EventEndDate');
-
-				$is_hide = '';
-				if(empty($end_date[0])):
-					$is_hide = strtotime($start_date[0]);
-				else:
-					$is_hide = strtotime($end_date[0]);
-				endif;
-
-				$hide_events = true;
-				if($is_hide >= time() && $hide_past_events == 'yes'):
-					$hide_events = false;
-				endif;
-
-				if($hide_events):
-					setup_postdata( $post );
-					$temp_array[] = $post;
-				endif;
-
-			endforeach;
-		endif;
-
-		wp_reset_postdata();
-
-		$incremented_month_year = date('Y',strtotime('+1 month',strtotime($atts['month'])));
-		$current_year = date('Y');
-		if(empty($temp_array) && $incremented_month_year <= $current_year):
-			$incremented_month = date('Y-m',strtotime('+1 month',strtotime($atts['month'])));
-
-			$atts['month'] = $incremented_month;
+		if(empty($posts)):
+			$atts['month'] = $incremented_month_year;
+			$atts['next_available_loop'] = $atts['next_available_loop'] + 1;
 			return $this->checkEventExistInCurrentMonthSummaryList($atts);
 		endif;
 
@@ -5254,6 +5229,13 @@ class EE_The_Events_Calendar extends Base_Widget {
 			$month_monthstr = sanitize_text_field($month_array[1]);
 			$month_startdate = date( "Y-m-d", strtotime( $month_yearstr . "-" . $month_monthstr . "-01" ) );
 			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
+
+			// If Query date set to today then show all future events inlcuding today
+			if ($start_date === 'today') {
+				if (strtotime(date('Y-m-d')) >= strtotime($month_startdate)) {
+					$month_startdate = date('Y-m-d');
+				}
+			}
 
 			if(!empty($future_events_only)):
 				$atts['meta_date'] = array(
@@ -5470,17 +5452,17 @@ class EE_The_Events_Calendar extends Base_Widget {
 										echo '<p>';
 										if(!empty($start_date)):
 											$day = date('l', strtotime($start_date));
-											$startdate = date('dS', strtotime($start_date));
+											$startdate = date('jS', strtotime($start_date));
 											echo '('.$day.' '.$startdate.') ';
-											echo date('h:i', strtotime($start_date));
+											echo date($default_to_show_time_formate, strtotime($start_date));
 										endif;
 
 										if(!empty($end_date)):
 											$endday = date('l', strtotime($end_date));
-											$enddate = date('dS', strtotime($end_date));
+											$enddate = date('jS', strtotime($end_date));
 											echo ' - ';
 											echo '('.$endday.' '.$enddate.') ';
-											echo date('h:i', strtotime($end_date));
+											echo date($default_to_show_time_formate, strtotime($end_date));
 										endif;
 										echo '</p>';
 									echo '</div>';
