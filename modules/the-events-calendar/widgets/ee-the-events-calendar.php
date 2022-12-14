@@ -4552,7 +4552,21 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 			/*@ If current month have no any events then enable next the month who have events */
 			if(!empty($settings['default_to_next_event'])):
-				$current_month = $this->checkEventExistInCurrentMonthSummaryList($atts);
+
+				$upcomingEvents = tribe_get_events([
+					'ends_after'     => 'now',
+					'posts_per_page' => 1,
+					'order'          => 'DESC'
+				]);
+
+				$limitMonthYear = date('Y-m-d');
+				if (!empty($upcomingEvents)) {
+					$limitMonthYear = $upcomingEvents[0]->event_date;
+				}
+
+				$upcomingYearLimit = date('Y-m', strtotime('+1 month', strtotime($limitMonthYear)));
+
+				$current_month = $this->checkEventExistInCurrentMonthSummaryList($atts, $upcomingYearLimit);
 
 				$atts['month'] = $current_month;
 				$availableMonthYear = explode('-', $current_month);
@@ -5010,7 +5024,7 @@ class EE_The_Events_Calendar extends Base_Widget {
 	}
 
 	/*@ Check for the month whose have events */
-	public function checkEventExistInCurrentMonthSummaryList($atts){
+	public function checkEventExistInCurrentMonthSummaryList($atts, $upcomingYearLimit){
 
 		$hide_past_events = (!empty($atts['hide_past_events'])) ?  sanitize_text_field($atts['hide_past_events']) : '';
 		$default_to_show_time = (!empty($atts['default_to_show_time'])) ?  sanitize_text_field($atts['default_to_show_time']) : '';
@@ -5071,10 +5085,10 @@ class EE_The_Events_Calendar extends Base_Widget {
 
 		$incremented_month_year = date('Y-m',strtotime('+1 month', strtotime($atts['month'])));
 
-		if(empty($posts)):
+		if(empty($posts) && $incremented_month_year !== $upcomingYearLimit):
 			$atts['month'] = $incremented_month_year;
 			$atts['next_available_loop'] = $atts['next_available_loop'] + 1;
-			return $this->checkEventExistInCurrentMonthSummaryList($atts);
+			return $this->checkEventExistInCurrentMonthSummaryList($atts, $upcomingYearLimit);
 		endif;
 
 		return $atts['month'];
