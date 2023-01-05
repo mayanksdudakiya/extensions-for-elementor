@@ -4553,19 +4553,17 @@ class EE_The_Events_Calendar extends Base_Widget {
 			/*@ If current month have no any events then enable next the month who have events */
 			if(!empty($settings['default_to_next_event'])):
 
-				$upcomingEvents = tribe_get_events([
-					'ends_after'     => 'now',
+				$upcomingEvents = tribe_get_events( array(
 					'posts_per_page' => 1,
-					'order'          => 'DESC'
-				]);
+					'eventDisplay' => 'list' // only upcoming
+				));
 
 				$limitMonthYear = date('Y-m-d');
 				if (!empty($upcomingEvents)) {
-					$limitMonthYear = $upcomingEvents[0]->event_date;
+					$limitMonthYear = tribe_get_start_date($upcomingEvents[0]->ID, false, 'Y-m-d');
 				}
 
 				$upcomingYearLimit = date('Y-m', strtotime('+1 month', strtotime($limitMonthYear)));
-
 				$current_month = $this->checkEventExistInCurrentMonthSummaryList($atts, $upcomingYearLimit);
 
 				$atts['month'] = $current_month;
